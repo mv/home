@@ -18,6 +18,8 @@ lndir() {
 lnfile dot.bashrc.sh    .bashrc
 lnfile dot.profile.sh   .profile
 lnfile dot.vimrc        .vimrc
+lnfile dot.gitconfig    .gitconfig
+lnfile dot.gitignore    .gitignore
 
 lndir  dot.vim          .vim
 lndir  bin.macOS        bin
