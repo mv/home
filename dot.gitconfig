@@ -1,0 +1,22 @@
+[user]
+	name = Marcus Vinicius Ferreira
+	email = mferreira@webcointernet.com
+[color]
+	ui = always
+
+[alias]
+	ci   = commit
+	co   = checkout
+	br   = branch
+	bra  = branch -a
+	st   = status
+	stat = status
+	sw   = show
+	dc   = diff --cached
+
+[apply]
+	whitespace = nowarn
+
+[merge]
+	summary = true
+
