@@ -57,7 +57,6 @@ function psg {
         ps -ef | more
     fi
 }
-export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
 
 alia s gb='git branch'
 alias gba='git branch -a'
@@ -92,9 +91,11 @@ MANPATH=$MANPATH:/Developer/usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
 
+export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
+
 export VIM_APP_DIR=/Applications/Desenv
 export EDITOR=vim
-alias   vi='/Applications/Desenv/MacVim.app/Contents/MacOS/Vim'
-alias  vim='/Applications/Desenv/MacVim.app/Contents/MacOS/Vim --remote-tab'
-alias gvim='/Applications/Desenv/MacVim.app/Contents/MacOS/Vim -g'
+alias  vim='~/App/MacVim.app/Contents/MacOS/Vim '
+alias mvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
+alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 
