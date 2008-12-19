@@ -36,17 +36,19 @@ alias  l='ls -CF'                             #
 
 alias      ..="\cd .. ; ls"
 alias    cd..="\cd .. ; ls"
-function c  {  
-    \cd "$1" ; ls 
+
+function mkcd  {  
+    mkdir -p "$1" && cd "$1"
 }
 
 alias rehash='source ~/.bashrc'
 
-alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
-alias svnpset='svn propset svn:keywords "Id URL Rev Author Date"'
-alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
-
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
+alias netr='netstat -rn -f inet'
+alias neta='netstat -an -f inet'
+alias netl='netstat -an -f inet | grep -i listen'
+alias ifcfl='ifconfig en0 ; ifconfig en1'
+alias ifcfa='ifconfig -a'
 
 alias    msg='tail -f /var/log/system.log' # MacOS
 function psg {
@@ -58,13 +60,19 @@ function psg {
     fi
 }
 
-alia s gb='git branch'
+alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
+alias svnpset='svn propset svn:keywords "Id URL Rev Author Date"'
+alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
+
+alias  gb='git branch'
 alias gba='git branch -a'
 alias  gc='git commit -v'
-alias  gd='git diff | mate'
 alias  gl='git pull'
 alias  gp='git push'
 alias gst='git status'
+alias  gd='git diff | vim -'
+
+alias github='git push git@github.com:mv/home.git'
 
 PATH=~/bin
 PATH=$PATH:/usr/local/bin

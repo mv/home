@@ -11,6 +11,7 @@
 .svn
 .CVS
 .DS_Store
+.*
 
 *.[oa]
 *.log
