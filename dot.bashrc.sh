@@ -73,6 +73,7 @@ alias gst='git status'
 alias  gd='git diff | vim -'
 
 alias github='git push git@github.com:mv/home.git'
+[ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh ]
 
 PATH=~/bin
 PATH=$PATH:/usr/local/bin
