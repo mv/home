@@ -1,0 +1,67 @@
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.file-description-pl == start ==
+#!/usr/bin/perl 
+#
+# |FILENAME|
+#     . <CURSOR> ...Description goes here....
+#     .
+#
+#
+#     |AUTHOR|               |EMAIL|
+#     |DATE|
+#
+
+use strict;
+use warnings;
+
+
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.file-description-pm == start ==
+#!/usr/bin/perl 
+#
+# |FILENAME|
+#     Module: <CURSOR> ...Description goes here....
+#             .
+#
+#
+#     |AUTHOR|               |EMAIL|
+#     |DATE|
+#
+#
+
+use strict;
+use warnings;
+
+
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.file-description-t == start ==
+#!/usr/bin/perl 
+#
+# |FILENAME|
+#     Test: <CURSOR> ...Description goes here....
+#           .
+#
+#     |AUTHOR|               |EMAIL|
+#     |DATE|
+#
+
+use strict;
+use warnings;
+
+use Test::More tests => 1;                      # last test to print
+
+
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== comment.file-description-pod == start ==
+#
+# |FILENAME|
+#     POD: <CURSOR> ...Description goes here....
+#          .
+#
+#     |AUTHOR|               |EMAIL|
+#     |DATE|
+#
+use strict;
+
+
+§%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

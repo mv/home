@@ -134,6 +134,11 @@ let g:BASH_Company      = 'Webco Internet'
 let g:BASH_FormatDate   = '%b/%Y'
 let g:BASH_FormatTime   = '%R' 
 let g:BASH_DoOnNewLine  = 'yes'
-let g:BASH_LineEndCommColDefault    = 49
+let g:BASH_LineEndCommColDefault = 49
+
+" perl-support
+let g:Perl_FormatDate   = '%b/%Y'
+let g:Perl_FormatTime   = '%R'
+let g:Perl_LineEndCommColDefault  = 49
 
 
