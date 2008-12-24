@@ -103,8 +103,11 @@ autocmd FileType python   set noexpandtab
 
 " Plugins
 " -------
+
+" NerdTree
 nmap <C-D><C-D> :execute 'NERDTreeToggle ' . getcwd()<CR>
 
+" FuzzyFinder
 map <leader>c :FuzzyFinderMruCmd    <CR>
 map <leader>m :FuzzyFinderMruFile   <CR>
 map <leader>f :FuzzyFinderFile      <CR>
@@ -122,4 +125,15 @@ map <leader>t :FuzzyFinderTextMate  <CR>
 
 let g:fuzzy_ignore = "*.log"
 let g:fuzzy_matching_limit = 70
+
+" bash-support
+let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
+let g:BASH_AuthorRef    = 'mvf'                         
+let g:BASH_Email        = 'ferreira.mv[ at ]gmail.com'
+let g:BASH_Company      = 'Webco Internet'
+let g:BASH_FormatDate   = '%b/%Y'
+let g:BASH_FormatTime   = '%R' 
+let g:BASH_DoOnNewLine  = 'yes'
+let g:BASH_LineEndCommColDefault    = 49
+
 
