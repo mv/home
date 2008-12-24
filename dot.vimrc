@@ -5,6 +5,7 @@
 " MacVim Help: hints
 " ----------------------------------------------
 syntax on
+set nocompatible
 set mouse=a
 set tabpagemax=100
 set guifont=Monaco:h12
@@ -137,6 +138,8 @@ let g:BASH_DoOnNewLine  = 'yes'
 let g:BASH_LineEndCommColDefault = 49
 
 " perl-support
+" http://www.perlmonks.org/?node_id=540393
+" http://www.perlmonks.org/?node_id=540167
 let g:Perl_FormatDate   = '%b/%Y'
 let g:Perl_FormatTime   = '%R'
 let g:Perl_LineEndCommColDefault  = 49
