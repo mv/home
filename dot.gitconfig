@@ -13,6 +13,8 @@
 	stat = status
 	sw   = show
 	dc   = diff --cached
+	ls   = ls-files --stage
+	one  = log --pretty='format:%Cgreen%H %Cred%ai %Creset- %s'
 
 [apply]
 	whitespace = nowarn

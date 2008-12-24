@@ -3,6 +3,8 @@
 # mv/home (git repos) install
 # Marcus Vinicius Ferreira  ferreira.mv[ at ]gmail.com
 #
+#    git clone git://github.com/mv/home mv_home
+#
 
 
 lnfile() {
@@ -15,12 +17,15 @@ lndir() {
     ln -s $1 $2
 }
 
-lnfile dot.bashrc.sh    .bashrc
-lnfile dot.profile.sh   .profile
-lnfile dot.vimrc        .vimrc
-lnfile dot.gitconfig    .gitconfig
-lnfile dot.gitignore    .gitignore
+DIR=~/Work/mv_home
 
-lndir  dot.vim          .vim
-lndir  bin.macOS        bin
+lnfile ${DIR}/dot.bashrc.sh    ~/.bashrc
+lnfile ${DIR}/dot.profile.sh   ~/.profile
+lnfile ${DIR}/dot.vimrc        ~/.vimrc
+lnfile ${DIR}/dot.gitconfig    ~/.gitconfig
+lnfile ${DIR}/dot.gitignore    ~/.gitignore
+
+lndir  ${DIR}/dot.vim          ~/.vim
+lndir  ${DIR}/bin              ~/bin
+
 

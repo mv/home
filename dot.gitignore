@@ -17,6 +17,7 @@
 *.log
 *.tmp
 *.pid
+*.swp
 
 *.tar
 *.[t]gz
