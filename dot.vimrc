@@ -80,7 +80,7 @@ set wildmode=list:longest
 " ---------
 set tabstop=4
 set shiftwidth=4
-set autoindent
+set noautoindent
 set expandtab
 set smarttab
 set backspace=start,indent
@@ -95,9 +95,9 @@ autocmd BufRead letter* set filetype=mail
 
 autocmd Filetype mail     set fo -=l autoindent spell
 autocmd Filetype c,cpp,h  set tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype sh       set ts=4 shiftwidth=2 expandtab color desert
-autocmd Filetype ruby     set ts=2 shiftwidth=2 
-autocmd Filetype xml,html set ts=8 shiftwidth=2 
+autocmd Filetype sh,bash  set ts=4 shiftwidth=4 expandtab autoindent
+autocmd Filetype ruby     set ts=2 shiftwidth=2
+autocmd Filetype xml,html set ts=8 shiftwidth=8
 autocmd FileType make     set noexpandtab
 autocmd FileType python   set noexpandtab
 
