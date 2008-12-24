@@ -144,4 +144,10 @@ let g:Perl_FormatDate   = '%b/%Y'
 let g:Perl_FormatTime   = '%R'
 let g:Perl_LineEndCommColDefault  = 49
 
+" rails
+" http://www.vim.org/scripts/script.php?script_id=1567
+" http://wiki.rubyonrails.org/rails/pages/HowtoUseVimWithRails
+
+" ruby
+" http://vim-ruby.rubyforge.org/
 
