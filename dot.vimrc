@@ -34,6 +34,8 @@ set bg=dark
 " http://weblog.jamisbuck.org/2008/11/17/vim-follow-up
 " ----------------------------------------------------
 let mapleader = ","
+set grepprg=ack
+set grepformat=%f:%l:%m
 
 " http://items.sjbach.com/319/configuring-vim-right
 " -------------------------------------------------
@@ -117,11 +119,16 @@ map <leader>tl  :TlistSessionLoad .proj_vim.tmp<CR>
 
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
 
+" Scratch.vim
+map <leader>s  :Scratch  <CR>
+map <leader>ss :Sscratch <CR>
+
 " FuzzyFinder
 map <leader>c :FuzzyFinderMruCmd    <CR> " Command
 map <leader>b :FuzzyFinderBuffer    <CR> " Buffer
 map <leader>f :FuzzyFinderFile      <CR> " File
 map <leader>r :FuzzyFinderMruFile   <CR> " Recent
+map <leader>tm   :FuzzyFinderTextMate  <CR>
 
 map <leader>ffc  :FuzzyFinderMruCmd    <CR> " Command
 map <leader>ffcm :FuzzyFinderCmd       <CR> " CoMmand
