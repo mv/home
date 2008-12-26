@@ -1,0 +1,43 @@
+
+let mapleader = ","
+
+, be    BufExplorer
+, bv    BufExplorer, Vertical
+, bs    BufExplorer, Split
+
+, d     NERDTree
+, tree  NERDTree
+, t     Tags
+, tag   Tags
+
+, n     Nohlsearch
+, s     remove trailing spaces
+
+, c     FuzzyFinderMruCmd   
+, ffc
+, b     FuzzyFinderBuffer   
+, ffb
+, f     FuzzyFinderFile     
+, fff
+, r     FuzzyFinderMruFile  
+, ffr
+
+, ffcm  FuzzyFinderCmd       
+, ffd   FuzzyFinderDir       
+, ffb   FuzzyFinderBookmark  
+, fft   FuzzyFinderTag       
+, fftf  FuzzyFinderTaggedFile
+, fftm  FuzzyFinderTextMate  
+
+<ctrl><ctrl>
+    n   toggle number
+
+<ctrl>ww    toggle between split windows
+    
+Tag Windown
+    -/+     Collapse/Expand item
+    =/*     Collapses/Expands all 
+    <ctrl>]/g]  goto tag definition
+    <ctrl>t     back from tag definition
+    
+    
