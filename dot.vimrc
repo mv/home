@@ -104,6 +104,9 @@ autocmd Filetype xml,html set ts=8 shiftwidth=8
 autocmd FileType make     set noexpandtab
 autocmd FileType python   set noexpandtab
 
+" git.git/contrib
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
+
 " Plugins
 " -------
 
