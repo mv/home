@@ -9,9 +9,7 @@
 # Background color codes:
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #   \[\e[01;36m\]
-PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
-export PS1
-
+export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
 
 # System-wide .bashrc file
 
@@ -34,15 +32,19 @@ alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias  l='ls -CF'                             #
 
+alias rehash='source ~/.bashrc'
+
+# dir/files
 alias      ..="\cd .. ; ls"
 alias    cd..="\cd .. ; ls"
-
 function mkcd  {  
     mkdir -p "$1" && cd "$1"
 }
+alias  findmod='find .         -exec chmod g+w,o-w {} \;'
+alias findmodd='find . -type d -exec chmod 775 {} \;'
+alias findmodf='find . -type f -exec chmod 664 {} \;'
 
-alias rehash='source ~/.bashrc'
-
+# net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 alias netr='netstat -rn -f inet'
 alias neta='netstat -an -f inet'
@@ -50,16 +52,24 @@ alias netl='netstat -an -f inet | grep -i listen'
 alias ifcfl='ifconfig en0 ; ifconfig en1'
 alias ifcfa='ifconfig -a'
 
+# processes
 alias    msg='tail -f /var/log/system.log' # MacOS
 function psg {
-    if [ "$1" ] 
-    then
-        ps -ef | grep -v grep  | grep "$1"
-    else
-        ps -ef | more
+    if [ "$1" ] ;
+    then ps -ef | grep -v grep  | grep "$1"
+    else ps -ef | more
+    fi
+}
+function psga {
+    if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}'
+    fi
+}
+function psgk {
+    if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}' | xargs kill
     fi
 }
 
+# vcs
 alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
 alias svnpset='svn propset svn:keywords "Id URL Rev Author Date"'
 alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
