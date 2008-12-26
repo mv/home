@@ -107,11 +107,13 @@ autocmd FileType python   set noexpandtab
 
 " NerdTree
 nmap <C-D><C-D> :execute 'NERDTreeToggle' . getcwd()<CR>
-map <leader>d :NERDTreeToggle <CR>      " Dir tree
+map <leader>d    :NERDTreeToggle <CR>      " Dir tree
+map <leader>tree :NERDTreeToggle <CR>      " Dir tree
 
 " TagList
-nmap <C-T><C-T> :execute 'TlistToggle' . getcwd()<CR>
-map <leader>t :TlistToggle  <CR>        " Tag
+map <leader>t   :TlistToggle  <CR>        " Tag
+map <leader>tag :TlistToggle  <CR>        " Tag
+
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
 
 " FuzzyFinder
@@ -120,17 +122,18 @@ map <leader>b :FuzzyFinderBuffer    <CR> " Buffer
 map <leader>f :FuzzyFinderFile      <CR> " File
 map <leader>r :FuzzyFinderMruFile   <CR> " Recent
 
-"map <leader>t :FuzzyFinderTextMate  <CR>
-"map <leader>1 :FuzzyFinderMruCmd    <CR>
-"map <leader>2 :FuzzyFinderMruFile   <CR>
-"map <leader>3 :FuzzyFinderFile      <CR>
-"map <leader>4 :FuzzyFinderBuffer    <CR>
-map <leader>1 :FuzzyFinderDir       <CR>
-map <leader>2 :FuzzyFinderBookmark  <CR>
-map <leader>3 :FuzzyFinderTag       <CR>
-map <leader>4 :FuzzyFinderTaggedFile<CR>
+map <leader>ffc  :FuzzyFinderMruCmd    <CR> " Command
+map <leader>ffcm :FuzzyFinderCmd       <CR> " CoMmand
+map <leader>ffb  :FuzzyFinderBuffer    <CR> " Buffer
+map <leader>fff  :FuzzyFinderFile      <CR> " File
+map <leader>ffr  :FuzzyFinderMruFile   <CR> " Recent
+map <leader>ffd  :FuzzyFinderDir       <CR>
+map <leader>ffb  :FuzzyFinderBookmark  <CR>
+map <leader>fft  :FuzzyFinderTag       <CR>
+map <leader>fftf :FuzzyFinderTaggedFile<CR>
+map <leader>fftm :FuzzyFinderTextMate  <CR>
    
-let g:fuzzy_ignore = "*.log"
+let g:fuzzy_ignore         = "*.log"
 let g:fuzzy_matching_limit = 70
 
 " bash-support
