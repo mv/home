@@ -106,13 +106,14 @@ autocmd FileType python   set noexpandtab
 " -------
 
 " NerdTree
-nmap <C-D><C-D> :execute 'NERDTreeToggle' . getcwd()<CR>
 map <leader>d    :NERDTreeToggle <CR>      " Dir tree
 map <leader>tree :NERDTreeToggle <CR>      " Dir tree
 
 " TagList
-map <leader>t   :TlistToggle  <CR>        " Tag
-map <leader>tag :TlistToggle  <CR>        " Tag
+map <leader>t   :TlistToggle     <CR>
+map <leader>tag :TlistToggle     <CR>
+map <leader>ts  :TlistSessionSave .proj_vim.tmp<CR>
+map <leader>tl  :TlistSessionLoad .proj_vim.tmp<CR>
 
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
 
