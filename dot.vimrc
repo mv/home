@@ -1,16 +1,22 @@
 "
 " mvf: ferreira.mv[ at ]gmail.com
 " -------------------------------
+set nocompatible
 
 " MacVim Help: hints
 " ----------------------------------------------
 syntax on
-set nocompatible
-set mouse=a
-set tabpagemax=100
-set guifont=Monaco:h12
+set cursorline
+set cursorcolumn
 set nowrap
 set viminfo='1000,f1,<500,/50,:50,@50,h,%
+set modeline            " ml: string /* vim:set ... : */
+set modelines=10
+
+set guifont=Monaco:h12
+set mouse=a
+set tabpagemax=100      " tpm: max nro of tab windows
+set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 
 " MyColors
 " --------
@@ -26,10 +32,12 @@ set bg=dark
 
 " Abbreviations
 " -------------
-:ab _b        ______________________________________________________________________
-:ab _e        ______________________________________________________________________
-:ab #b        ______________________________________________________________________
-:ab #e        ______________________________________________________________________
+:ab b_        ______________________________________________________________________
+:ab e_        ______________________________________________________________________
+:ab b-        ----------------------------------------------------------------------
+:ab e-        ----------------------------------------------------------------------
+:ab b#        ######################################################################
+:ab e#        ######################################################################
 
 " http://weblog.jamisbuck.org/2008/11/17/vim-follow-up
 " ----------------------------------------------------
@@ -41,30 +49,27 @@ set grepformat=%f:%l:%m
 " -------------------------------------------------
 set history=1000
 set hidden
-set ignorecase 
+set ignorecase
 set smartcase
 set title
 set ruler
-" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set scrolloff=5 " viewpoint
 " scroll viewpoint by 'n' lines
-nnoremap <C-e> 5<C-e> 
+nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 
 set backspace=indent,eol,start " Intuitive backspacing in insert mode
- 
+
 set hlsearch  " Highlight search terms...
 set incsearch " ...dynamically as they are typed.
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <leader>n :silent :nohlsearch<CR> " turn off hlsearch
 
-set listchars=tab:>-,trail:·,eol:$ " list invisible spaces
+" list invisible spaces
 set listchars=tab:>-,trail:·,eol:_
-nmap <silent> <leader>s :set nolist!<CR>
-" set list/nolist
-nmap <C-V><C-V> :set invlist<CR>
-" Remove trailing spaces
-map <leader>s :%s/\s*$//g
+nmap <C-V><C-V> :set invlist<CR> " set list/nolist
+nmap <C-L><C-L> :set invcuc <CR> " set cursorcolumn/nocursorcolumn
+nmap <C-S><C-S> :%s/\s*$//g <CR> " Remove trailing spaces
+nmap <C-D><C-D> :%s/\r$//g  <CR> " dos2unix
 
 " Line numbers and line number colors
 " http://vim.wikia.com/wiki/Display_line_numbers
@@ -81,12 +86,15 @@ set wildmode=list:longest
 
 " FileTypes
 " ---------
-set tabstop=4
-set shiftwidth=4
-set noautoindent
-set expandtab
-set smarttab
-set backspace=start,indent
+set tabstop=8       " ts
+set softtabstop=4   " sts: space in place of tabs
+set expandtab       " et: space in place of tabs
+set shiftwidth=4    " sw: nr of spaces for autoindent
+set smarttab        " sta: space in place of tabs in a new line
+
+set autoindent      " ai: pre-req for si
+set smartindent     " si: on
+set backspace=start,indent,eol
 
 filetype on
 filetype plugin on
@@ -97,7 +105,7 @@ autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 
 autocmd Filetype mail     set fo -=l autoindent spell
-autocmd Filetype c,cpp,h  set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype c,cpp,h  set softtabstop=4 shiftwidth=4
 autocmd Filetype sh,bash  set ts=4 shiftwidth=4 expandtab autoindent
 autocmd Filetype ruby     set ts=2 shiftwidth=2
 autocmd Filetype xml,html set ts=8 shiftwidth=8
@@ -109,14 +117,19 @@ autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 
 " Plugins
 " -------
+map <leader>src :source  ~/.vimrc <CR>  " rehash
 
 " NerdTree
-map <leader>d    :NERDTreeToggle <CR>      " Dir tree
-map <leader>tree :NERDTreeToggle <CR>      " Dir tree
+map <leader>d :NERDTreeToggle <CR>      " Dir tree
+let NERDTreeCaseSensitiveSort = 1
+let NERDTreeChDirMode         = 2
+let NERDTreeIgnore            = ['\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git']
+let NERDTreeMouseMode         = 2
+let NERDTreeShowLineNumbers   = 0
+let NERDTreeWinSize           = 35
 
 " TagList
 map <leader>t   :TlistToggle     <CR>
-map <leader>tag :TlistToggle     <CR>
 map <leader>ts  :TlistSessionSave .proj_vim.tmp<CR>
 map <leader>tl  :TlistSessionLoad .proj_vim.tmp<CR>
 
@@ -143,17 +156,17 @@ map <leader>ffb  :FuzzyFinderBookmark  <CR>
 map <leader>fft  :FuzzyFinderTag       <CR>
 map <leader>fftf :FuzzyFinderTaggedFile<CR>
 map <leader>fftm :FuzzyFinderTextMate  <CR>
-   
+
 let g:fuzzy_ignore         = "*.log"
 let g:fuzzy_matching_limit = 70
 
 " bash-support
 let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
-let g:BASH_AuthorRef    = 'mvf'                         
+let g:BASH_AuthorRef    = 'mvf'
 let g:BASH_Email        = 'ferreira.mv[ at ]gmail.com'
 let g:BASH_Company      = 'Webco Internet'
 let g:BASH_FormatDate   = '%b/%Y'
-let g:BASH_FormatTime   = '%R' 
+let g:BASH_FormatTime   = '%R'
 let g:BASH_DoOnNewLine  = 'yes'
 let g:BASH_LineEndCommColDefault = 49
 
@@ -170,4 +183,7 @@ let g:Perl_LineEndCommColDefault  = 49
 
 " ruby
 " http://vim-ruby.rubyforge.org/
+
+
+" vim: set ft=vim:
 
