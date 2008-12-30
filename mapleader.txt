@@ -27,6 +27,9 @@ let mapleader = ","
 , w	:w
 , ls	:ls
 
+, cal	:Calendar
+, caL	:CalendarH
+
 <ctrl><ctrl>
     n	toggle number
     v	toggle list
@@ -72,6 +75,9 @@ Tag Windown
 	:map		Normal, Visual and Operator-pending
 	:map!		Insert and Command-line
 	[un][{cnivo}]map[!]
+
+Plugin
+	:VE	VimExplorer
 
 # vim: set sts=0 noet list:
 

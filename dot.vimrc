@@ -159,6 +159,9 @@ let g:Perl_LineEndCommColDefault  = 49
 " map <leader>Ss :Scratch  <CR>
 " map <leader>SS :Sscratch <CR>
 
+" Obvioumode
+set laststatus=2
+
 " Abbreviations
 " -------------
 ab _b        ______________________________________________________________________
