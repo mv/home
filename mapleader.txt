@@ -78,6 +78,11 @@ Tag Windown
 
 Plugin
 	:VE	VimExplorer
+	mm	mark
+	mv	move to mark
+	mb	move back to mark
+	m.	displace mark
+	F4	remove all marks
 
 # vim: set sts=0 noet list:
 
