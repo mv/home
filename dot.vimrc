@@ -27,6 +27,7 @@ set bg=dark
 set guifont=Monaco:h12
 set mouse=a
 set tabpagemax=100      " tpm: max nro of tab windows
+set gtl=%t gtt=%F       " snapshot40
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -82,8 +83,9 @@ nmap <leader>w  :w <CR>
 nmap <leader>ls :ls <CR>
 command! W w
 command! Q q
-command! Rehash source ~/.vimrc
-command! Color  echo g:colors_name
+command! Rehash     source ~/.vimrc
+command! Color      echo g:colors_name
+command! Helptags   helptags ~/.vim/doc
 
 " Line numbers and line number colors
 " http://vim.wikia.com/wiki/Display_line_numbers
