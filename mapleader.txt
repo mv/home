@@ -1,43 +1,77 @@
 
 let mapleader = ","
 
-, be    BufExplorer
-, bv    BufExplorer, Vertical
-, bs    BufExplorer, Split
+, be	BufExplorer
+, bv	BufExplorer, Vertical
+, bs	BufExplorer, Split
 
-, d     NERDTree
-, tree  NERDTree
-, t     Tags
-, tag   Tags
+, d	NERDTree
+, t	Tags , n	Nohlsearch 
 
-, n     Nohlsearch
-, s     remove trailing spaces
+, tm	FuzzyFinderTextMate
+, ffb	FuzzyFinderBuffer
+, fff	FuzzyFinderFile
+, ffmf	FuzzyFinderMruFile
+, ffc	FuzzyFinderCmd
+, ffmc	FuzzyFinderMruCmd
+, ffd	FuzzyFinderDir
+, ffbm	FuzzyFinderBookmark
+, fft	FuzzyFinderTag
+, fftf	FuzzyFinderTaggedFile
 
-, c     FuzzyFinderMruCmd   
-, ffc
-, b     FuzzyFinderBuffer   
-, ffb
-, f     FuzzyFinderFile     
-, fff
-, r     FuzzyFinderMruFile  
-, ffr
+, t	tags
+, ts	TListSave
+, tl	TListLoad
 
-, ffcm  FuzzyFinderCmd       
-, ffd   FuzzyFinderDir       
-, ffb   FuzzyFinderBookmark  
-, fft   FuzzyFinderTag       
-, fftf  FuzzyFinderTaggedFile
-, fftm  FuzzyFinderTextMate  
+, q	:q
+, w	:w
+, ls	:ls
 
 <ctrl><ctrl>
-    n   toggle number
+    n	toggle number
+    v	toggle list
+    l	toggle cursorcolumn
+    s	remove trailing spaces
+    d	dos2unix
 
-<ctrl>ww    toggle between split windows
-    
+<ctrl>
+    w
+	w	toggle between split windows
+	hl	nav left/right
+	jk	nav up/down
+	tb	nav top/bottom
+
+	rRx	rotate/exchange
+	HL	move left/right
+	JK	move up/down
+	T	move to a new tab page
+
+	-+=<>	resize
+	|_	set size/maximize size
+
+	split horizontal
+	v	split vertial
+	n	new buffer horizontal
+
+	o	keep this window, close the rest
+	q	close buffer
+	c	close window
+
+
 Tag Windown
-    -/+     Collapse/Expand item
-    =/*     Collapses/Expands all 
-    <ctrl>]/g]  goto tag definition
-    <ctrl>t     back from tag definition
-    
-    
+    -/+		Collapse/Expand item
+    =/*		Collapses/Expands all
+    <ctrl>]/g]	goto tag definition
+    <ctrl>tback from tag definition
+
+	:cmap		Command-line
+	:nmap		Normal
+	:imap		Insert
+	:vmap		Visual
+	:omap		Operator-pending
+	:map		Normal, Visual and Operator-pending
+	:map!		Insert and Command-line
+	[un][{cnivo}]map[!]
+
+# vim: set sts=0 noet list:
+
