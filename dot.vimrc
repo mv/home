@@ -61,7 +61,6 @@ autocmd BufRead letter* set filetype=mail
 autocmd Filetype mail     set fo-=l autoindent spell
 autocmd Filetype ruby     set sts=2 sw=2
 autocmd FileType make     set noet nosta
-autocmd FileType python   set noet nosta
 " autocmd Filetype c,cpp,h  colorscheme slate
 " autocmd Filetype bash,sh  colorscheme murphy
 "
