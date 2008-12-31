@@ -25,12 +25,12 @@ alias du='du -h'
 alias less='less -r'                          # raw control characters
 alias grep='egrep --color'                    # show differences in colour
 
-alias ls='ls -hAFG'
-alias ls='gls -hAF --color'
-alias  l='ls'
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias  l='ls -CF'                             #
+alias  ls='ls -hAFG'
+alias  ls='gls -hF --color'
+alias   l='ls'
+alias  ll='ls -l'                              # long list
+alias  la='ls -A'                              # all but . and ..
+alias lla='ls -A'                              # all but . and ..
 
 alias rehash='source ~/.bashrc'
 
@@ -85,6 +85,10 @@ alias  gd='git diff | vim -'
 alias github='git push git@github.com:mv/home.git'
 [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh ]
 
+# Security
+alias auth='vim ~/.auth.bfa'
+
+# *PATH
 PATH=~/bin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
