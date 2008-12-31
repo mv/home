@@ -1,4 +1,5 @@
 
+
 let mapleader = ","
 
 , be	BufExplorer
@@ -78,11 +79,22 @@ Tag Windown
 
 Plugin
 	:VE	VimExplorer
+
 	mm	mark
 	mv	move to mark
 	mb	move back to mark
 	m.	displace mark
 	F4	remove all marks
+
+	,cc	comment
+	,cu	uncomment
+	,c<sp>	comment toggle
+	,cy	comment and yank
+	,cA	comment at the end of line
+	,cm	comment mininal
+	,cn	comment nested
+	,cs	comment sexy
+
 
 # vim: set sts=0 noet list:
 
