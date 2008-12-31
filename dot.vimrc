@@ -22,8 +22,6 @@ set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resi
 set wildmenu            " Bash-like filename completion in command line
 set wildmode=list:longest
 
-colorscheme torte
-set bg=dark
 set guifont=Monaco:h12
 set mouse=a
 set tabpagemax=100      " tpm: max nro of tab windows
@@ -36,7 +34,6 @@ set ignorecase
 set smartcase
 set hlsearch  " Highlight search terms...
 set incsearch " ...dynamically as they are typed.
-map <silent> <leader>n :silent :nohlsearch<CR> " turn off hlsearch
 
 set autoindent      " ai: pre-req for si
 set smartindent     " si: on
@@ -80,11 +77,17 @@ let mapleader=","
 nmap <leader>q  :q <CR>
 nmap <leader>w  :w <CR>
 nmap <leader>ls :ls <CR>
+nmap <leader>n  :set invhls<CR>
 command! W w
 command! Q q
 command! Rehash     source ~/.vimrc
 command! Color      echo g:colors_name
 command! Helptags   helptags ~/.vim/doc
+nmap <C-N><C-N> :set invnumber<CR>
+nmap <C-V><C-V> :set invlist  <CR> " set list/nolist
+nmap <C-L><C-L> :set invcuc   <CR> " set cursorcolumn/nocursorcolumn
+nmap <C-S><C-S> :%s/\s*$//g   <CR> | set nohlsearch " Remove trailing spaces
+nmap <C-D><C-D> :%s/\r$//g    <CR> " dos2unix
 
 " Line numbers and line number colors
 " http://vim.wikia.com/wiki/Display_line_numbers
@@ -92,12 +95,6 @@ command! Helptags   helptags ~/.vim/doc
 set number
 set numberwidth=5
 set cpoptions-=n
-highlight LineNr term=bold cterm=NONE ctermfg=Blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-nmap <C-N><C-N> :set invnumber<CR>
-nmap <C-V><C-V> :set invlist  <CR> " set list/nolist
-nmap <C-L><C-L> :set invcuc   <CR> " set cursorcolumn/nocursorcolumn
-nmap <C-S><C-S> :%s/\s*$//g   <CR> " Remove trailing spaces
-nmap <C-D><C-D> :%s/\r$//g    <CR> " dos2unix
 
 " Plugins
 " -------
@@ -183,6 +180,11 @@ map <leader>7 :colorscheme slate    <CR>
 map <leader>9 :colorscheme torte    <CR>
 map <leader>0 :echo g:colors_name   <CR>
 
+colorscheme torte
+set bg=dark
+highlight Folded guibg=blue guifg=white
+highlight LineNr term=bold cterm=NONE ctermfg=Blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
 " MyLib
 " -----
 source ~/.vim/autoload/mvf-lib.vim
@@ -201,5 +203,5 @@ map <leader>l :call Add_Last_Line_as_Blank() <CR>
 " ``        jump back (to position where jumped from)
 " :marks    list all the current marks
 "
-" vim: set ft=vim:
+" vim: ft=vim:
 
