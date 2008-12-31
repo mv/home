@@ -80,6 +80,17 @@ Tag Windown
 Plugin
 	:VE	VimExplorer
 
+	<n><CTRL+V>j
+		:Inc <step>
+			  9
+			 10
+			101
+		:IncR <step>
+			9
+			10
+			101
+		:IncN <step>
+
 	mm	mark
 	mv	move to mark
 	mb	move back to mark
