@@ -159,6 +159,9 @@ let g:Perl_LineEndCommColDefault  = 49
 " Obvioumode
 set laststatus=2
 
+" openssl (password safe)
+let g:openssl_timeout = 15000
+
 " Abbreviations
 " -------------
 ab _b        ______________________________________________________________________
