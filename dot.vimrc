@@ -56,8 +56,8 @@ autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 
 autocmd Filetype mail     set fo-=l autoindent spell
-autocmd Filetype ruby     set sts=2 sw=2
 autocmd FileType make     set noet nosta
+" autocmd Filetype ruby     set sts=2 sw=2
 " autocmd Filetype c,cpp,h  colorscheme slate
 " autocmd Filetype bash,sh  colorscheme murphy
 "
@@ -149,8 +149,18 @@ let g:Perl_LineEndCommColDefault  = 49
 " http://www.vim.org/scripts/script.php?script_id=1567
 " http://wiki.rubyonrails.org/rails/pages/HowtoUseVimWithRails
 
-" ruby
+" ruby complete
 " http://vim-ruby.rubyforge.org/
+" http://hasno.info/2006/04/10/vim-7-ruby-omni-completion
+" -------------------------------------------------------
+" enable rubycomplete
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" if you want buffer/rails/global completion you must add the following:
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" if you want rails support add the following in addition
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" if you want classes included in global completions add the following
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " Scratch.vim
 " map <leader>Ss :Scratch  <CR>
