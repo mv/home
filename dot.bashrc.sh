@@ -29,6 +29,7 @@ alias  ls='ls -hAFG'
 alias  ls='gls -hF --color'
 alias   l='ls'
 alias  ll='ls -l'                              # long list
+alias  lr='ls -ltr'                            # long list
 alias  la='ls -A'                              # all but . and ..
 alias lla='ls -A'                              # all but . and ..
 
