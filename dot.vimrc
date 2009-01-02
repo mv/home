@@ -13,7 +13,11 @@ set scrolloff=5 " viewpoint
 set listchars=tab:>-,trail:·,eol:_,extends:>,precedes:<
 set title
 set ruler
+set showcmd
+set showmatch
+set whichwrap+=<,>,[,]
 
+set autochdir
 set history=1000
 set viminfo='1000,f1,<500,/50,:50,@50,h,%
 set modeline            " ml: string /* vim:set ... : */
@@ -21,9 +25,13 @@ set modelines=10
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
 set wildmenu            " Bash-like filename completion in command line
 set wildmode=list:longest
+set wildignore+=*.o,*~,.lo
+" set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
+" set speel
 
 set guifont=Monaco:h12
 set mouse=a
+set mousehide
 set tabpagemax=100      " tpm: max nro of tab windows
 set gtl=%t gtt=%F       " snapshot40
 
@@ -62,7 +70,8 @@ autocmd FileType make     set noet nosta
 " autocmd Filetype bash,sh  colorscheme murphy
 "
 autocmd BufReadPost  *.log      normal G
-autocmd BufWritePost ~/Work/mv_home/dot.vimrc   so ~/.vimrc
+"autocmd BufWritePost ~/Work/mv_home/dot.vimrc   so ~/.vimrc
+
 "
 " git.git/contrib
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
@@ -78,6 +87,8 @@ nmap <leader>q  :q <CR>
 nmap <leader>w  :w <CR>
 nmap <leader>ls :ls <CR>
 nmap <leader>n  :set invhls<CR>
+map H ^
+map L $
 command! W w
 command! Q q
 command! Rehash     source ~/.vimrc
@@ -88,6 +99,16 @@ nmap <C-V><C-V> :set invlist  <CR> " set list/nolist
 nmap <C-L><C-L> :set invcuc   <CR> " set cursorcolumn/nocursorcolumn
 nmap <C-S><C-S> :%s/\s*$//g   <CR> | set nohlsearch " Remove trailing spaces
 nmap <C-D><C-D> :%s/\r$//g    <CR> " dos2unix
+
+" http://blog.learnr.org/post/59098925/configuring-vim-some-more
+" buffer switching/management, might as well use those keys for something useful
+"set hidden
+" map <Del> :bd<CR>
+" map <Left>       :bprev<CR>
+" map <Right>      :bnext<CR>
+"imap <Left>  <ESC>:bprev<CR>
+"imap <Right> <ESC>:bnext<CR>
+
 
 " Line numbers and line number colors
 " http://vim.wikia.com/wiki/Display_line_numbers
@@ -100,7 +121,7 @@ set cpoptions-=n
 " -------
 
 " NerdTree
-map <leader>d :NERDTreeToggle <CR>      " Dir tree
+map <leader>d :NERDTreeToggle <CR> " Dir tree
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode         = 2
 let NERDTreeIgnore            = ['\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git']
@@ -127,6 +148,7 @@ let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
 map <leader>t   :TlistToggle     <CR>
 map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
 map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
+" set showfulltag
 
 " bash-support
 let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
@@ -165,6 +187,15 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " Scratch.vim
 " map <leader>Ss :Scratch  <CR>
 " map <leader>SS :Sscratch <CR>
+"function! ToggleScratch()
+  "if expand('%') == g:ScratchBufferName
+    "quit
+  "else
+    "Sscratch
+  "endif
+"endfunction
+"map <leader>s :call ToggleScratch()<CR>
+
 
 " Obvioumode
 set laststatus=2
@@ -190,10 +221,11 @@ map <leader>4 :colorscheme murphy   <CR>
 map <leader>5 :colorscheme pablo    <CR>
 map <leader>6 :colorscheme ron      <CR>
 map <leader>7 :colorscheme slate    <CR>
+map <leader>8 :colorscheme ir_black <CR>
 map <leader>9 :colorscheme torte    <CR>
 map <leader>0 :echo g:colors_name   <CR>
 
-colorscheme torte
+colorscheme ir_black
 set bg=dark
 highlight Folded guibg=blue guifg=white
 highlight LineNr term=bold cterm=NONE ctermfg=Blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -217,4 +249,69 @@ map <leader>l :call Add_Last_Line_as_Blank() <CR>
 " :marks    list all the current marks
 "
 " vim: ft=vim:
+
+" http://steveno.wordpress.com/vimrc/
+"set laststatus=2
+"set statusline=
+"set statusline+=%2*%-3.3n%0*                    " buffer number
+"set statusline+=%f                              " file name
+"set statusline+=%h%1*%m%r%w%0*                  " flags
+"set statusline+=[%{strlen(&ft)?&ft:'none'},     " filetype
+"set statusline+=%{&encoding},                   " encoding
+"set statusline+=%{&fileformat}]                 " file format
+"set statusline+=%=                              " right align
+"set statusline+=%2*0x%-8B                       " current char
+"set statusline+=%-14.(%l,%c%V%)                 " offset
+"
+" http://steveno.wordpress.com/vimrc/
+" Nice window title
+"if has('title') && (has('gui_running') || &title)
+    "set titlestring=
+    "set titlestring+=%f " file name
+    "set titlestring+=%h%m%r%w " flags
+    "set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
+"endif
+
+" http://github.com/ciaranm/dotfiles-ciaranm/tree/master/vimrc
+" Nice statusbar
+"set laststatus=2
+"set statusline=
+"set statusline+=%2*%-3.3n%0*\ " buffer number
+"set statusline+=%f\ " file name
+"if has("eval")
+    "let g:scm_cache = {}
+    "fun! ScmInfo()
+        "let l:key = getcwd()
+        "if ! has_key(g:scm_cache, l:key)
+            "if (isdirectory(getcwd() . "/.git"))
+                "let g:scm_cache[l:key] = "[" . substitute(readfile(getcwd() . "/.git/HEAD", "", 1)[0],
+                            "\ "^.*/", "", "") . "] "
+            "else
+                "let g:scm_cache[l:key] = ""
+            "endif
+        "endif
+        "return g:scm_cache[l:key]
+    "endfun
+    "set statusline+=%{ScmInfo()} " scm info
+"endif
+"set statusline+=%h%1*%m%r%w%0* " flags
+"set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
+"set statusline+=%{&encoding}, " encoding
+"set statusline+=%{&fileformat}] " file format
+"if filereadable(expand("$VIM/vimfiles/plugin/vimbuddy.vim"))
+    "set statusline+=\ %{VimBuddy()} " vim buddy
+"endif
+"set statusline+=%= " right align
+"set statusline+=%2*0x%-8B\ " current char
+"set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
+ 
+"" Nice window title
+"if has('title') && (has('gui_running') || &title)
+    "set titlestring=
+    "set titlestring+=%f\ " file name
+    "set titlestring+=%h%m%r%w " flags
+    "set titlestring+=\ -\ %{v:progname} " program name
+    "set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')} " working directory
+"endif
+ 
 
