@@ -41,9 +41,11 @@ alias    cd..="\cd .. ; ls"
 function mkcd  {  
     mkdir -p "$1" && cd "$1"
 }
-alias  findmod='find .         -exec chmod g+w,o-w {} \;'
-alias findmodd='find . -type d -exec chmod 775 {} \;'
-alias findmodf='find . -type f -exec chmod 664 {} \;'
+alias findd='find . -type d | grep '
+alias findf='find . -type f | grep '
+alias   chg='find .         -exec chmod g+w,o-w {} \;'
+alias   chd='find . -type d -exec chmod 775 {} \;'
+alias   chf='find . -type f -exec chmod 664 {} \;'
 
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
