@@ -12,6 +12,7 @@
 .CVS
 .DS_Store
 .netrwhist
+.VimballRecord
 
 *.[oa]
 *.log
