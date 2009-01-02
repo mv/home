@@ -47,6 +47,10 @@ alias   chg='find .         -exec chmod g+w,o-w {} \;'
 alias   chd='find . -type d -exec chmod 775 {} \;'
 alias   chf='find . -type f -exec chmod 664 {} \;'
 
+alias   .vim='cd ~/.vim'
+alias   vimp='cd ~/Public/vim/plugins'
+alias mvhome='cd ~/Work/mv_home'
+
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 alias netr='netstat -rn -f inet'
