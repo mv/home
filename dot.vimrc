@@ -8,26 +8,40 @@ set nocompatible
 syntax on
 set cursorline
 set nocursorcolumn
-set nowrap sidescroll=1 
 set scrolloff=5 " viewpoint
 set listchars=tab:>-,trail:·,eol:_,extends:>,precedes:<
-set title
-set ruler
-set showcmd
-set showmatch
-set whichwrap+=<,>,[,]
+set nowrap sidescroll=1 
+"set whichwrap=b,s
+"set whichwrap+=<,>,[,]
 
-set autochdir
 set history=1000
-set viminfo='1000,f1,<500,/50,:50,@50,h,%
 set modeline            " ml: string /* vim:set ... : */
 set modelines=10
-set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize
+set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize " mksession
+set viminfo='1000,f1,<500,/50,:50,@50,h,%
+
+set number
+set numberwidth=5
+set cpoptions-=n
+set title
+set ruler
+set laststatus=2
+set statusline =%<buf:[%n]\ %f\ %h%m%r          " buffer, filename, flags
+set statusline+=\ \ [
+set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
+"set statusline+=,%{&encoding}                  " encoding
+"set statusline+=,%{&fileformat}                " file format
+set statusline+=]\ "
+set statusline+=%=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
+set statusline+=\ col/line:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
+if filereadable(expand("~/.vim/plugin/vimbuddy.vim"))
+    set statusline+=\ %{VimBuddy()} " vim buddy
+endif
+
+set showcmd
 set wildmenu            " Bash-like filename completion in command line
 set wildmode=list:longest
 set wildignore+=*.o,*~,.lo
-" set shortmess+=filmnrxoOtT     	" abbrev. of messages (avoids 'hit enter')
-" set speel
 
 set guifont=Monaco:h12
 set mouse=a
@@ -40,6 +54,7 @@ set grepformat=%f:%l:%m
 
 set ignorecase
 set smartcase
+set showmatch
 set hlsearch  " Highlight search terms...
 set incsearch " ...dynamically as they are typed.
 
@@ -87,8 +102,6 @@ nmap <leader>q  :q <CR>
 nmap <leader>w  :w <CR>
 nmap <leader>ls :ls <CR>
 nmap <leader>n  :set invhls<CR>
-map H ^
-map L $
 command! W w
 command! Q q
 command! Rehash     source ~/.vimrc
@@ -99,23 +112,18 @@ nmap <C-V><C-V> :set invlist  <CR> " set list/nolist
 nmap <C-L><C-L> :set invcuc   <CR> " set cursorcolumn/nocursorcolumn
 nmap <C-S><C-S> :%s/\s*$//g   <CR> | set nohlsearch " Remove trailing spaces
 nmap <C-D><C-D> :%s/\r$//g    <CR> " dos2unix
-
-" http://blog.learnr.org/post/59098925/configuring-vim-some-more
-" buffer switching/management, might as well use those keys for something useful
-"set hidden
-" map <Del> :bd<CR>
-" map <Left>       :bprev<CR>
-" map <Right>      :bnext<CR>
-"imap <Left>  <ESC>:bprev<CR>
-"imap <Right> <ESC>:bnext<CR>
-
-
-" Line numbers and line number colors
-" http://vim.wikia.com/wiki/Display_line_numbers
-" ----------------------------------------------
-set number
-set numberwidth=5
-set cpoptions-=n
+" home/end in a line
+map H ^
+map L $
+" moving buffers/windows
+nmap <leader>bj :bnext<CR>
+nmap <leader>bk :bprev<CR>
+nmap <leader>bd :bd<CR>
+nmap <leader>bf :FuzzyFinderBuffer<CR> " Buffer
+nmap <leader>wj <C-W>j
+nmap <leader>wk <C-W>k
+nmap <leader>wh <C-W>h
+nmap <leader>wl <C-W>l
 
 " Plugins
 " -------
@@ -185,22 +193,19 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " Scratch.vim
-" map <leader>Ss :Scratch  <CR>
-" map <leader>SS :Sscratch <CR>
-"function! ToggleScratch()
-  "if expand('%') == g:ScratchBufferName
-    "quit
-  "else
-    "Sscratch
-  "endif
-"endfunction
-"map <leader>s :call ToggleScratch()<CR>
-
-
-" Obvioumode
-set laststatus=2
+function! ToggleScratch()
+  if expand('%') == g:ScratchBufferName
+    quit
+  else
+    Sscratch
+  endif
+endfunction
+map <leader>s :call ToggleScratch()<CR>
 
 " openssl (password safe)
+" ms: 15000 - 15s
+"     30000 - 20s
+"    300000 -  5m
 let g:openssl_timeout = 15000
 
 " Abbreviations
@@ -214,21 +219,21 @@ ab #c        # #################################################################
 
 " MyColors
 " --------
-map <leader>1 :colorscheme desert   <CR>
-map <leader>2 :colorscheme elflord  <CR>
-map <leader>3 :colorscheme koehler  <CR>
-map <leader>4 :colorscheme murphy   <CR>
-map <leader>5 :colorscheme pablo    <CR>
-map <leader>6 :colorscheme ron      <CR>
-map <leader>7 :colorscheme slate    <CR>
-map <leader>8 :colorscheme ir_black <CR>
-map <leader>9 :colorscheme torte    <CR>
-map <leader>0 :echo g:colors_name   <CR>
+"map <leader>4 :colorscheme elflord  <CR>
+"map <leader>5 :colorscheme koehler  <CR>
+"map <leader>6 :colorscheme slate    <CR>
+"map <leader>7 :colorscheme murphy   <CR>
+"map <leader>8 :colorscheme pablo    <CR>
+"map <leader>9 :colorscheme ron      <CR>
+map <leader>1 :colorscheme ir_black2<CR>
+map <leader>2 :colorscheme ir_black <CR>
+map <leader>3 :colorscheme torte    <CR>
+map <leader>4 :colorscheme desert   <CR>
 
-colorscheme ir_black
+map <leader>9 :highlight Folded guibg=blue guifg=white <CR>
+map <leader>0 :echo g:colors_name   <CR>
+colorscheme ir_black2
 set bg=dark
-highlight Folded guibg=blue guifg=white
-highlight LineNr term=bold cterm=NONE ctermfg=Blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " MyLib
 " -----
@@ -249,69 +254,4 @@ map <leader>l :call Add_Last_Line_as_Blank() <CR>
 " :marks    list all the current marks
 "
 " vim: ft=vim:
-
-" http://steveno.wordpress.com/vimrc/
-"set laststatus=2
-"set statusline=
-"set statusline+=%2*%-3.3n%0*                    " buffer number
-"set statusline+=%f                              " file name
-"set statusline+=%h%1*%m%r%w%0*                  " flags
-"set statusline+=[%{strlen(&ft)?&ft:'none'},     " filetype
-"set statusline+=%{&encoding},                   " encoding
-"set statusline+=%{&fileformat}]                 " file format
-"set statusline+=%=                              " right align
-"set statusline+=%2*0x%-8B                       " current char
-"set statusline+=%-14.(%l,%c%V%)                 " offset
-"
-" http://steveno.wordpress.com/vimrc/
-" Nice window title
-"if has('title') && (has('gui_running') || &title)
-    "set titlestring=
-    "set titlestring+=%f " file name
-    "set titlestring+=%h%m%r%w " flags
-    "set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}  " working directory
-"endif
-
-" http://github.com/ciaranm/dotfiles-ciaranm/tree/master/vimrc
-" Nice statusbar
-"set laststatus=2
-"set statusline=
-"set statusline+=%2*%-3.3n%0*\ " buffer number
-"set statusline+=%f\ " file name
-"if has("eval")
-    "let g:scm_cache = {}
-    "fun! ScmInfo()
-        "let l:key = getcwd()
-        "if ! has_key(g:scm_cache, l:key)
-            "if (isdirectory(getcwd() . "/.git"))
-                "let g:scm_cache[l:key] = "[" . substitute(readfile(getcwd() . "/.git/HEAD", "", 1)[0],
-                            "\ "^.*/", "", "") . "] "
-            "else
-                "let g:scm_cache[l:key] = ""
-            "endif
-        "endif
-        "return g:scm_cache[l:key]
-    "endfun
-    "set statusline+=%{ScmInfo()} " scm info
-"endif
-"set statusline+=%h%1*%m%r%w%0* " flags
-"set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-"set statusline+=%{&encoding}, " encoding
-"set statusline+=%{&fileformat}] " file format
-"if filereadable(expand("$VIM/vimfiles/plugin/vimbuddy.vim"))
-    "set statusline+=\ %{VimBuddy()} " vim buddy
-"endif
-"set statusline+=%= " right align
-"set statusline+=%2*0x%-8B\ " current char
-"set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
- 
-"" Nice window title
-"if has('title') && (has('gui_running') || &title)
-    "set titlestring=
-    "set titlestring+=%f\ " file name
-    "set titlestring+=%h%m%r%w " flags
-    "set titlestring+=\ -\ %{v:progname} " program name
-    "set titlestring+=\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')} " working directory
-"endif
- 
 
