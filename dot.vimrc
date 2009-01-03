@@ -1,4 +1,4 @@
-"
+" 
 " mvf: ferreira.mv[ at ]gmail.com
 " -------------------------------
 set nocompatible
@@ -32,7 +32,7 @@ set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
 "set statusline+=,%{&encoding}                  " encoding
 "set statusline+=,%{&fileformat}                " file format
 set statusline+=]\ "
-set statusline+=%=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
+"set statusline+=%=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
 set statusline+=\ col/line:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
 if filereadable(expand("~/.vim/plugin/vimbuddy.vim"))
     set statusline+=\ %{VimBuddy()} " vim buddy
@@ -99,6 +99,7 @@ nnoremap <C-y> 5<C-y>
 
 let mapleader=","
 nmap <leader>q  :q <CR>
+nmap <leader>q1 :q!<CR>
 nmap <leader>w  :w <CR>
 nmap <leader>ls :ls <CR>
 nmap <leader>n  :set invhls<CR>
