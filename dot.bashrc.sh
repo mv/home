@@ -53,11 +53,11 @@ alias mvhome='cd ~/Work/mv_home'
 
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
-alias netr='netstat -rn -f inet'
-alias neta='netstat -an -f inet'
-alias netl='netstat -an -f inet | grep -i listen'
-alias ifcfl='ifconfig en0 ; ifconfig en1'
-alias ifcfa='ifconfig -a'
+alias   netr='netstat -rn -f inet'
+alias   neta='netstat -an -f inet'
+alias   netl='netstat -an -f inet | grep -i listen'
+alias  ifcfl='ifconfig en0 ; ifconfig en1'
+alias  ifcfa='ifconfig -a'
 
 # processes
 alias    msg='tail -f /var/log/system.log' # MacOS
@@ -94,6 +94,11 @@ alias github='git push git@github.com:mv/home.git'
 
 # Security
 alias auth='vim ~/.auth.bfa'
+
+# Others
+alias dtfile='date "+%Y-%m-%d_%H%M"'
+alias  dtiso='date "+%Y-%m-%d %X"'
+alias  dtdns='date "+%Y%m%d%H%M%S"'
 
 # *PATH
 PATH=~/bin
