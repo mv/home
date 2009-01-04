@@ -1,5 +1,6 @@
 
 
+
 let mapleader = ","
 
 , be	BufExplorer
@@ -21,6 +22,18 @@ let mapleader = ","
 , fftf	FuzzyFinderTaggedFile
 
 , t	tags
+        p               show tag
+        o               show tag in new window
+        t               show tag in a new tab
+        <ctrl>+t        show tag, force open in a new tab
+        [[/]]           jump to each file in Tag window
+        tab/bakcpsace   jump to each file in Tag window
+	d		remove file from list
+	u		update list
+	<space>		show funct signature on status line
+	:TlistAddFilesRecursive /my/project/dir *.c
+	:TlistSessionSave ~/sessions/tsession.vim
+	:TlistSessionLoad ~/sessions/tsession.vim
 , ts	TListSave
 , tl	TListLoad
 
