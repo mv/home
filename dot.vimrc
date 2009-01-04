@@ -141,6 +141,7 @@ let NERDTreeWinSize           = 35
 " FuzzyFinder
 let g:fuzzy_ignore         = "*.log"
 let g:fuzzy_matching_limit = 70
+let g:fuzzy_ceiling = 95000
 map <leader>tm   :FuzzyFinderTextMate  <CR>
 map <leader>ffb  :FuzzyFinderBuffer    <CR> " Buffer
 map <leader>fff  :FuzzyFinderFile      <CR> " File
