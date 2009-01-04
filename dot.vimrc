@@ -32,8 +32,11 @@ set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
 "set statusline+=,%{&encoding}                  " encoding
 "set statusline+=,%{&fileformat}                " file format
 set statusline+=]\ "
-"set statusline+=%=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
-set statusline+=\ col/line:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
+set statusline+=%=
+"set statusline+=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
+set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
+"set statusline+=\ col/lin:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
+set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
 if filereadable(expand("~/.vim/plugin/vimbuddy.vim"))
     set statusline+=\ %{VimBuddy()} " vim buddy
 endif
@@ -153,12 +156,13 @@ map <leader>ffbm :FuzzyFinderBookmark  <CR>
 map <leader>fft  :FuzzyFinderTag       <CR>
 map <leader>fftf :FuzzyFinderTaggedFile<CR>
 
-" TagList
+" taglist
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Show_Menu = 1
 map <leader>t   :TlistToggle     <CR>
 map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
 map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
-" set showfulltag
 
 " bash-support
 let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
@@ -208,7 +212,7 @@ map <leader>s :call ToggleScratch()<CR>
 " ms: 15000 - 15s
 "     30000 - 20s
 "    300000 -  5m
-let g:openssl_timeout = 15000
+let g:openssl_timeout = 301000
 
 " Abbreviations
 " -------------
