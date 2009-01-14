@@ -41,15 +41,21 @@ alias    cd..="\cd .. ; ls"
 function mkcd  {  
     mkdir -p "$1" && cd "$1"
 }
-alias findd='find . -type d | grep '
-alias findf='find . -type f | grep '
-alias   chg='find .         -exec chmod g+w,o-w {} \;'
-alias   chd='find . -type d -exec chmod 775 {} \;'
-alias   chf='find . -type f -exec chmod 664 {} \;'
+alias  findd='find . -type d | grep '
+alias  findf='find . -type f | grep '
+alias    chg='find .         -exec chmod g+w,o-w {} \;'
+alias    chd='find . -type d -exec chmod 775 {} \;'
+alias    chf='find . -type f -exec chmod 664 {} \;'
+alias     kd='find . -type d | wc -l'
+alias     kf='find . -type f | wc -l'
+alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; done'
+alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
 
-alias   .vim='cd ~/.vim'
-alias   vimp='cd ~/Public/vim/plugins'
+alias  cdvim='cd ~/.vim'
+alias cdvimp='cd ~/Public/vim/plugins'
 alias mvhome='cd ~/Work/mv_home'
+alias vibash='vim ~/.bashrc'
+alias  vivim='vim ~/.vimrc'
 
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
@@ -60,6 +66,7 @@ alias  ifcfl='ifconfig en0 ; ifconfig en1'
 alias  ifcfa='ifconfig -a'
 
 # processes
+alias    top='top -ocpu -Otime -X' # MacOS: order by cpu and then time, old display format
 alias    msg='tail -f /var/log/system.log' # MacOS
 function psg {
     if [ "$1" ] ;
@@ -123,14 +130,15 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/local/lib
 MANPATH=/usr/local/share/man
 MANPATH=$MANPATH:/opt/local/share/man
 MANPATH=$MANPATH:/Developer/usr/share/man
+MANPATH=$MANPATH:/usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
+export MANPAGER="col -b | ~/bin/view -c 'set ft=man nomod nolist' -"
 
-export MANPAGER="col -b | view -c 'set ft=man nomod nolist' -"
-
-export VIM_APP_DIR=/Applications/Desenv
+export VIM_APP_DIR=~/App
 export EDITOR=vim
-alias  vim='~/App/MacVim.app/Contents/MacOS/Vim '
-alias mvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
+alias   vi='~/App/MacVim.app/Contents/MacOS/Vim '
+alias  vim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
+alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
 
