@@ -27,7 +27,7 @@ set title
 set ruler
 set laststatus=2
 set statusline =%<buf:[%n]\ %f\ %h%m%r          " buffer, filename, flags
-set statusline+=\ \ [
+set statusline+=\ \ ft:[
 set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
 "set statusline+=,%{&encoding}                  " encoding
 "set statusline+=,%{&fileformat}                " file format
