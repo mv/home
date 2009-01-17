@@ -3,6 +3,7 @@
 " -------------------------------
 set nocompatible
 
+" ----------------------------------------------
 " MacVim Help: hints
 " ----------------------------------------------
 syntax on
@@ -71,6 +72,7 @@ set expandtab       " et: space in place of tabs
 set shiftwidth=4    " sw: nr of spaces for autoindent
 set smarttab        " sta: space in place of tabs in a new line
 
+" ---------
 " FileTypes
 " ---------
 filetype on
@@ -94,8 +96,11 @@ autocmd BufReadPost  *.log      normal G
 " git.git/contrib
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 
-" http://items.sjbach.com/319/configuring-vim-right
 " -------------------------------------------------
+"  key configuration 
+" -------------------------------------------------
+
+" http://items.sjbach.com/319/configuring-vim-right
 " scroll viewpoint by 'n' lines
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
@@ -108,9 +113,10 @@ nmap <leader>ls :ls <CR>
 nmap <leader>n  :set invhls<CR>
 command! W w
 command! Q q
+command! Myvimrc    tabnew ~/.vimrc
 command! Rehash     source ~/.vimrc
-command! Color      echo g:colors_name
 command! Helptags   helptags ~/.vim/doc
+command! Color      echo g:colors_name
 nmap <C-N><C-N> :set invnumber<CR>
 nmap <C-V><C-V> :set invlist  <CR> " set list/nolist
 nmap <C-L><C-L> :set invcuc   <CR> " set cursorcolumn/nocursorcolumn
@@ -129,11 +135,15 @@ nmap <leader>wk <C-W>k
 nmap <leader>wh <C-W>h
 nmap <leader>wl <C-W>l
 
+" -------
 " Plugins
 " -------
 
+" """"""""""
 " NerdTree
-map <leader>d :NERDTreeToggle <CR> " Dir tree
+" """"""""""
+map <leader>d  :NERDTreeToggle <CR> " Dir tree
+map <leader>dd :NERDTreeMirror <CR> " Dir tree
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode         = 2
 let NERDTreeIgnore            = ['\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git']
@@ -141,7 +151,9 @@ let NERDTreeMouseMode         = 2
 let NERDTreeShowLineNumbers   = 0
 let NERDTreeWinSize           = 35
 
+" """"""""""""
 " FuzzyFinder
+" """"""""""""
 let g:fuzzy_ignore         = "*.log"
 let g:fuzzy_matching_limit = 70
 let g:fuzzy_ceiling = 95000
@@ -156,7 +168,9 @@ map <leader>ffbm :FuzzyFinderBookmark  <CR>
 map <leader>fft  :FuzzyFinderTag       <CR>
 map <leader>fftf :FuzzyFinderTaggedFile<CR>
 
+" """"""""
 " taglist
+" """"""""
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Show_Menu = 1
@@ -164,7 +178,9 @@ map <leader>t   :TlistToggle     <CR>
 map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
 map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
 
+" """""""""""""
 " bash-support
+" """""""""""""
 let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
 let g:BASH_AuthorRef    = 'mvf'
 let g:BASH_Email        = 'ferreira.mv[ at ]gmail.com'
@@ -174,7 +190,9 @@ let g:BASH_FormatTime   = '%R'
 let g:BASH_DoOnNewLine  = 'yes'
 let g:BASH_LineEndCommColDefault = 49
 
+" """""""""""""
 " perl-support
+" """""""""""""
 " http://www.perlmonks.org/?node_id=540393
 " http://www.perlmonks.org/?node_id=540167
 let g:Perl_FormatDate   = '%b/%Y'
@@ -217,10 +235,8 @@ let g:openssl_timeout = 301000
 " Abbreviations
 " -------------
 ab _b        ______________________________________________________________________
-ab -b        ----------------------------------------------------------------------
 ab #b        ######################################################################
 ab _c        # ______________________________________________________________________
-ab -c        # ----------------------------------------------------------------------
 ab #c        # ######################################################################
 
 " MyColors
