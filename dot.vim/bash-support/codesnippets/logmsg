@@ -1,4 +1,4 @@
-
+### logmsg
  LOGDIR=/webco/BKP/log
    FILE=${0##*/}
 LOGFILE=${LOGDIR}/${FILE%.*}.log
@@ -7,10 +7,10 @@ logmsg() {
     if [ "$PS1" ] # interactive
     then
         echo "`date '+%Y-%m-%d %H:%M:%S'` : $1" | tee -a $LOGFILE
-    then
+    else
         echo "`date '+%Y-%m-%d %H:%M:%S'` : $1" >> $LOGFILE
     fi
 }
-
+### logmsg
 # vim: set ft=sh:
 
