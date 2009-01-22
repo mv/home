@@ -10,6 +10,7 @@
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #   \[\e[01;36m\]
 export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
+export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
 
 # System-wide .bashrc file
 
@@ -134,7 +135,6 @@ MANPATH=$MANPATH:/usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
 export MANPAGER="col -b | ~/bin/view -c 'set ft=man nomod nolist' -"
-export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
 
 export VIM_APP_DIR=~/App
 export EDITOR=vim
