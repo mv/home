@@ -135,6 +135,7 @@ MANPATH=$MANPATH:/usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
 export MANPAGER="col -b | ~/bin/view -c 'set ft=man nomod nolist' -"
+export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
 
 export VIM_APP_DIR=~/App
 export EDITOR=vim
