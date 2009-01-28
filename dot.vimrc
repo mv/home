@@ -89,6 +89,9 @@ autocmd BufRead *.qcf   set filetype=lisp
 autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 
+autocmd BufNewFile,BufRead *.notes set filetype=notes
+autocmd BufNewFile,BufRead *.notes.txt set filetype=notes
+
 autocmd Filetype mail     set fo-=l autoindent spell
 autocmd FileType make     set noet nosta
 " autocmd Filetype ruby     set sts=2 sw=2
