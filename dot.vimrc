@@ -21,11 +21,14 @@ set modelines=10
 set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,resize " mksession
 set viminfo='1000,f1,<500,/50,:50,@50,h,%
 
+set hidden
+
 set number
 set numberwidth=5
 set cpoptions-=n
 set title
 set ruler
+
 set laststatus=2
 set statusline =%<buf:[%n]\ %f\ %h%m%r          " buffer, filename, flags
 set statusline+=\ \ ft:[
@@ -52,6 +55,9 @@ set mouse=a
 set mousehide
 set tabpagemax=100      " tpm: max nro of tab windows
 set gtl=%t gtt=%F       " snapshot40
+
+set splitbelow          " sb: new split below current window
+set splitright          " spr: new split to the right
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -169,6 +175,30 @@ map <leader>fft  :FuzzyFinderTag       <CR>
 map <leader>fftf :FuzzyFinderTaggedFile<CR>
 
 " """"""""
+" autocomplpop : autocomplete
+" """"""""
+let g:AutoComplPop_NotEnableAtStartup = 0
+let g:AutoComplPop_MappingDriven      = 1 
+let g:AutoComplPop_BehaviorKeywordLength = 2
+map <leader>lac :AutoComplPopEnable <CR>
+map <leader>uac :AutoComplPopDisable <CR>
+
+" """"""""
+" bufexplorer
+" """"""""
+" ,be / ,bv / ,bs
+let g:bufExplorerReverseSort  = 0
+let g:bufExplorerShowUnlisted = 1
+let g:bufExplorerSortBy       ='name'
+
+" """"""""
+" calendar
+" """"""""
+" ,ca / ,ch / :Calendar / :CalendarH
+let g:calendar_focus_today = 1
+let g:calendar_weeknm = 2
+
+" """"""""
 " taglist
 " """"""""
 let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
@@ -181,6 +211,7 @@ map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
 " """""""""""""
 " bash-support
 " """""""""""""
+" ,lbs / ,ubs
 let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
 let g:BASH_AuthorRef    = 'mvf'
 let g:BASH_Email        = 'ferreira.mv[ at ]gmail.com'
@@ -195,6 +226,7 @@ let g:BASH_LineEndCommColDefault = 49
 " """""""""""""
 " http://www.perlmonks.org/?node_id=540393
 " http://www.perlmonks.org/?node_id=540167
+" ,lps / ,ups
 let g:Perl_FormatDate   = '%b/%Y'
 let g:Perl_FormatTime   = '%R'
 let g:Perl_LineEndCommColDefault  = 49
