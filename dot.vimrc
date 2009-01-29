@@ -36,8 +36,8 @@ set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
 "set statusline+=,%{&encoding}                  " encoding
 "set statusline+=,%{&fileformat}                " file format
 set statusline+=]\ "
-set statusline+=%=
-"set statusline+=asc:[%3.(%b%)\ %4.(0x%B%)]    " current char
+set statusline+=%=                              " break
+"set statusline+=asc:[%3.(%b%)\ %4.(0x%B%)]     " current char
 set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
 "set statusline+=\ col/lin:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
 set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
