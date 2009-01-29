@@ -201,16 +201,6 @@ let g:bufExplorerSortBy       ='name'
 let g:calendar_focus_today = 1
 let g:calendar_weeknm = 2
 
-" """"""""
-" taglist
-" """"""""
-let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Show_Menu = 1
-map <leader>t   :TlistToggle     <CR>
-map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
-map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
-
 " """""""""""""
 " bash-support
 " """""""""""""
@@ -251,7 +241,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 " if you want classes included in global completions add the following
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+" """"""""""""
 " Scratch.vim
+" """"""""""""
 function! ToggleScratch()
   if expand('%') == g:ScratchBufferName
     quit
@@ -266,6 +258,25 @@ map <leader>s :call ToggleScratch()<CR>
 "     30000 - 20s
 "    300000 -  5m
 let g:openssl_timeout = 301000
+
+" """"""""
+" readcsv
+" """"""""
+autocmd BufNewFile,Bufread *.csv call CSVSELECT()
+map <leader>c1 :call CSV_HighlightPrevCol()<CR> 
+map <leader>c2 :call CSV_HighlightNextCol()<CR> 
+map <leader>c3 :call CSV_goto_field()      <CR>
+map <leader>c4 :call CSV_SE()              <CR>
+
+" """"""""
+" taglist
+" """"""""
+let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Show_Menu = 1
+map <leader>t   :TlistToggle     <CR>
+map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
+map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
 
 " Abbreviations
 " -------------
