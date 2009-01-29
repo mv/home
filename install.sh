@@ -9,7 +9,8 @@
 
 lnfile() {
     [ -f $2 ] && /bin/rm $2
-    ln $1 $2
+#   ln $1 $2
+    ln -s $1 $2
 }
 
 lndir() {

@@ -15,6 +15,7 @@
 	dc   = diff --cached
 	ls   = ls-files --stage
 	one  = log --pretty='format:%Cgreen%H %Cred%ai %Creset- %s'
+	gr   = log --graph --pretty=oneline --abbrev-commit
 
 [apply]
 	whitespace = nowarn
