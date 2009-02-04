@@ -97,7 +97,9 @@ alias  gp='git push'
 alias gst='git status'
 alias  gd='git diff | vim -'
 
-alias github='git push git@github.com:mv/home.git'
+alias gitclean='git remote prune origin && git remote update'
+alias   github='git push git@github.com:mv/home.git'
+
 [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh ]
 
 # Security
