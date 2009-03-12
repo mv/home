@@ -146,3 +146,9 @@ alias  vim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
 
+
+# if [ -f /opt/local/etc/bash_completion ]; then
+#     . /opt/local/etc/bash_completion
+# fi
+
+                    
