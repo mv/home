@@ -1,4 +1,4 @@
-" 
+" vi/vim: dot.vimrc 
 " mvf: ferreira.mv[ at ]gmail.com
 " -------------------------------
 set nocompatible
@@ -29,32 +29,28 @@ set cpoptions-=n
 set title
 set ruler
 
-set laststatus=2
-set statusline =%<buf:[%n]\ %f\ %h%m%r          " buffer, filename, flags
-set statusline+=\ \ ft:[
-set statusline+=%{strlen(&ft)?&ft:'none'}       " filetype
+" My status line
+" --------------
+ set laststatus=2
+ set statusline =%<buf:[%n]\ %f\ %h%m%r         " buffer, filename, flags
+ set statusline+=\ \ ft:[
+ set statusline+=%{strlen(&ft)?&ft:'none'}      " filetype
 "set statusline+=,%{&encoding}                  " encoding
 "set statusline+=,%{&fileformat}                " file format
-set statusline+=]\ "
-set statusline+=%=                              " break
+ set statusline+=]\ "
+ set statusline+=%=                             " break
 "set statusline+=asc:[%3.(%b%)\ %4.(0x%B%)]     " current char
-set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
+ set statusline+=%(tag:[%{Tlist_Get_Tagname_By_Line()}]%)
 "set statusline+=\ col/lin:[%3.(%c%)\ %-7.(%l/%L%)]\ %P
-set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
-if filereadable(expand("~/.vim/plugin/vimbuddy.vim"))
+ set statusline+=\ [%3.(%c%)\ %-7.(%l/%L%)]\ %P
+ if filereadable(expand("~/.vim/plugin/vimbuddy.vim"))
     set statusline+=\ %{VimBuddy()} " vim buddy
-endif
+ endif
 
 set showcmd
 set wildmenu            " Bash-like filename completion in command line
 set wildmode=list:longest
 set wildignore+=*.o,*~,.lo
-
-set guifont=Monaco:h12
-set mouse=a
-set mousehide
-set tabpagemax=100      " tpm: max nro of tab windows
-set gtl=%t gtt=%F       " snapshot40
 
 set splitbelow          " sb: new split below current window
 set splitright          " spr: new split to the right
@@ -85,25 +81,25 @@ filetype on
 filetype plugin on
 filetype indent on
 
-autocmd BufRead *.qcf   set filetype=lisp
-autocmd BufRead qpx.inc set filetype=make
-autocmd BufRead letter* set filetype=mail
+ autocmd BufRead *.qcf   set filetype=lisp
+ autocmd BufRead qpx.inc set filetype=make
+ autocmd BufRead letter* set filetype=mail
 
-autocmd BufNewFile,BufRead *.notes set filetype=notes
-autocmd BufNewFile,BufRead *.notes.txt set filetype=notes
+ autocmd BufNewFile,BufRead *.notes     set filetype=notes
+ autocmd BufNewFile,BufRead *.notes.txt set filetype=notes
 
-autocmd Filetype mail     set fo-=l autoindent spell
-autocmd FileType make     set noet nosta
-" autocmd Filetype ruby     set sts=2 sw=2
-" autocmd Filetype c,cpp,h  colorscheme slate
-" autocmd Filetype bash,sh  colorscheme murphy
+ autocmd Filetype mail     set fo-=l autoindent spell
+ autocmd FileType make     set noet nosta
+"autocmd Filetype ruby     set sts=2 sw=2
+"autocmd Filetype c,cpp,h  colorscheme slate
+"autocmd Filetype bash,sh  colorscheme murphy
 "
-autocmd BufReadPost  *.log      normal G
+ autocmd BufReadPost  *.log      normal G
 "autocmd BufWritePost ~/Work/mv_home/dot.vimrc   so ~/.vimrc
 
 "
 " git.git/contrib
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
+ autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 
 " -------------------------------------------------
 "  key configuration 
@@ -118,6 +114,7 @@ let mapleader=","
 nmap <leader>q  :q <CR>
 nmap <leader>q1 :q!<CR>
 nmap <leader>w  :w <CR>
+nmap <leader>wa :wa<CR>
 nmap <leader>ls :ls <CR>
 nmap <leader>n  :set invhls<CR>
 command! W w
@@ -144,182 +141,17 @@ nmap <leader>wk <C-W>k
 nmap <leader>wh <C-W>h
 nmap <leader>wl <C-W>l
 
-" -------
-" Plugins
-" -------
-
-" """"""""""
-" NerdTree
-" """"""""""
-map <leader>d  :NERDTreeToggle <CR> " Dir tree
-map <leader>dd :NERDTreeMirror <CR> " Dir tree
-let NERDTreeCaseSensitiveSort = 1
-let NERDTreeChDirMode         = 2
-let NERDTreeIgnore            = ['\.[ao]$','\.swp$','\.DS_Store','\.svn','\.CVS','\.git']
-let NERDTreeMouseMode         = 2
-let NERDTreeShowLineNumbers   = 0
-let NERDTreeWinSize           = 35
-
-" """"""""""""
-" FuzzyFinder
-" """"""""""""
-let g:fuzzy_ignore         = "*.log"
-let g:fuzzy_matching_limit = 70
-let g:fuzzy_ceiling = 95000
-map <leader>tm   :FuzzyFinderTextMate  <CR>
-map <leader>ffb  :FuzzyFinderBuffer    <CR> " Buffer
-map <leader>fff  :FuzzyFinderFile      <CR> " File
-map <leader>ffmf :FuzzyFinderMruFile   <CR> " Recent
-map <leader>ffc  :FuzzyFinderCmd       <CR> " CoMmand
-map <leader>ffmc :FuzzyFinderMruCmd    <CR> " Command
-map <leader>ffd  :FuzzyFinderDir       <CR>
-map <leader>ffbm :FuzzyFinderBookmark  <CR>
-map <leader>fft  :FuzzyFinderTag       <CR>
-map <leader>fftf :FuzzyFinderTaggedFile<CR>
-
-" """"""""
-" autocomplpop : autocomplete
-" """"""""
-let g:AutoComplPop_NotEnableAtStartup = 0
-let g:AutoComplPop_MappingDriven      = 1 
-let g:AutoComplPop_BehaviorKeywordLength = 2
-map <leader>lac :AutoComplPopEnable <CR>
-map <leader>uac :AutoComplPopDisable <CR>
-
-" """"""""
-" bufexplorer
-" """"""""
-" ,be / ,bv / ,bs
-let g:bufExplorerReverseSort  = 0
-let g:bufExplorerShowUnlisted = 1
-let g:bufExplorerSortBy       ='name'
-
-" """"""""
-" calendar
-" """"""""
-" ,ca / ,ch / :Calendar / :CalendarH
-let g:calendar_focus_today = 1
-let g:calendar_weeknm = 2
-
-" """""""""""""
-" bash-support
-" """""""""""""
-" ,lbs / ,ubs
-let g:BASH_AuthorName   = 'Marcus Vinicius Ferreira'
-let g:BASH_AuthorRef    = 'mvf'
-let g:BASH_Email        = 'ferreira.mv[ at ]gmail.com'
-let g:BASH_Company      = 'Webco Internet'
-let g:BASH_FormatDate   = '%b/%Y'
-let g:BASH_FormatTime   = '%R'
-let g:BASH_DoOnNewLine  = 'yes'
-let g:BASH_LineEndCommColDefault = 49
-
-" """""""""""""
-" perl-support
-" """""""""""""
-" http://www.perlmonks.org/?node_id=540393
-" http://www.perlmonks.org/?node_id=540167
-" ,lps / ,ups
-let g:Perl_FormatDate   = '%b/%Y'
-let g:Perl_FormatTime   = '%R'
-let g:Perl_LineEndCommColDefault  = 49
-
-" rails
-" http://www.vim.org/scripts/script.php?script_id=1567
-" http://wiki.rubyonrails.org/rails/pages/HowtoUseVimWithRails
-
-" ruby complete
-" http://vim-ruby.rubyforge.org/
-" http://hasno.info/2006/04/10/vim-7-ruby-omni-completion
-" -------------------------------------------------------
-" enable rubycomplete
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-" if you want buffer/rails/global completion you must add the following:
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" if you want rails support add the following in addition
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" if you want classes included in global completions add the following
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
-" """"""""""""
-" Scratch.vim
-" """"""""""""
-function! ToggleScratch()
-  if expand('%') == g:ScratchBufferName
-    quit
-  else
-    Sscratch
-  endif
-endfunction
-map <leader>s :call ToggleScratch()<CR>
-
-" openssl (password safe)
-" ms: 15000 - 15s
-"     30000 - 20s
-"    300000 -  5m
-let g:openssl_timeout = 301000
-
-" """"""""
-" readcsv
-" """"""""
-autocmd BufNewFile,Bufread *.csv call CSVSELECT()
-map <leader>c1 :call CSV_HighlightPrevCol()<CR> 
-map <leader>c2 :call CSV_HighlightNextCol()<CR> 
-map <leader>c3 :call CSV_goto_field()      <CR>
-map <leader>c4 :call CSV_SE()              <CR>
-
-" """"""""
-" taglist
-" """"""""
-let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Show_Menu = 1
-map <leader>t   :TlistToggle     <CR>
-map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
-map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
-
 " Abbreviations
 " -------------
-ab _b        ______________________________________________________________________
-ab #b        ######################################################################
-ab _c        # ______________________________________________________________________
-ab #c        # ######################################################################
+" ab _b        ______________________________________________________________________
+" ab #b        ######################################################################
+" ab _c        # ______________________________________________________________________
+" ab #c        # ######################################################################
 
-" MyColors
-" --------
-"map <leader>4 :colorscheme elflord  <CR>
-"map <leader>5 :colorscheme koehler  <CR>
-"map <leader>6 :colorscheme slate    <CR>
-"map <leader>7 :colorscheme murphy   <CR>
-"map <leader>8 :colorscheme pablo    <CR>
-"map <leader>9 :colorscheme ron      <CR>
-map <leader>1 :colorscheme ir_black2<CR>
-map <leader>2 :colorscheme ir_black <CR>
-map <leader>3 :colorscheme torte    <CR>
-map <leader>4 :colorscheme desert   <CR>
-
-map <leader>9 :highlight Folded guibg=blue guifg=white <CR>
-map <leader>0 :echo g:colors_name   <CR>
-colorscheme ir_black2
+" Terminal vim theme
+" ------------------
+colorscheme desert
 set bg=dark
 
-" MyLib
-" -----
-source ~/.vim/autoload/mvf-lib.vim
-map <leader>l :call Add_Last_Line_as_Blank() <CR>
-
-" http://vim.wikia.com/wiki/Using_marks
-" ma        set mark '''a''' at current cursor location
-" 'a        jump to line of mark a (beginning of line)
-" `a        jump to position of mark a
-" d'a       delete from current line to line of mark a
-" d`a       delete from current cursor position to position of mark a
-" c'a       change text from current line to line of mark a
-" y`a       yank text to unnamed buffer from cursor to position of mark a
-" ''        jump back (to line where jumped from)
-" `0        jump to position in last file edited (when exited Vim)
-" ``        jump back (to position where jumped from)
-" :marks    list all the current marks
-"
 " vim: ft=vim:
 
