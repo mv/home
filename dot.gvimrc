@@ -8,6 +8,8 @@ set mousehide
 set tabpagemax=100      " tpm: max nro of tab windows
 set gtl=%t gtt=%F       " snapshot40
 
+set invcuc              " vertical cursorline
+
 " MyColors
 " --------
 "map <leader>4 :colorscheme elflord  <CR>
@@ -16,15 +18,19 @@ set gtl=%t gtt=%F       " snapshot40
 "map <leader>7 :colorscheme murphy   <CR>
 "map <leader>8 :colorscheme pablo    <CR>
 "map <leader>9 :colorscheme ron      <CR>
-map <leader>1 :colorscheme ir_black2<CR>
-map <leader>2 :colorscheme ir_black <CR>
-map <leader>3 :colorscheme torte    <CR>
-map <leader>4 :colorscheme desert   <CR>
+
+colorscheme ir_black3
+set bg=dark
+
+map <leader>1 :colorscheme ir_black3<CR>
+map <leader>2 :colorscheme ir_black2<CR>
+map <leader>3 :colorscheme ir_black <CR>
+
+map <leader>7 :colorscheme torte    <CR>
+map <leader>8 :colorscheme desert   <CR>
 
 map <leader>9 :highlight Folded guibg=blue guifg=white <CR>
 map <leader>0 :echo g:colors_name   <CR>
-colorscheme ir_black2
-set bg=dark
 
 " -------
 " Plugins
