@@ -18,6 +18,7 @@
 *.tmp
 *.pid
 *.swp
+*.swo
 
 *.tar
 *.[t]gz
