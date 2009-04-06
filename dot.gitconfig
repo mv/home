@@ -5,17 +5,19 @@
 	ui = always
 
 [alias]
-	ci   = commit
-	co   = checkout
-	br   = branch
-	bra  = branch -a
-	st   = status
-	stat = status
-	sw   = show
-	dc   = diff --cached
-	ls   = ls-files --stage
-	one  = log --pretty='format:%Cgreen%H %Cred%ai %Creset- %s'
-	gr   = log --graph --pretty=oneline --abbrev-commit
+	ci    = commit
+	co    = checkout
+	br    = branch
+	bra   = branch -a
+	st    = status
+	stat  = status
+	sw    = show
+	dc    = diff --cached
+	ls    = ls-files --stage
+	one   = log --pretty='format:%Cgreen%H %Cred%ai %Creset- %s'
+	gr    = log --graph --pretty=oneline --abbrev-commit
+
+        rshow = remote show origin
 
 [apply]
 	whitespace = nowarn
