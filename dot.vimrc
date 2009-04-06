@@ -153,5 +153,10 @@ nmap <leader>wl <C-W>l
 colorscheme desert
 set bg=dark
 
+" MyLib
+" -----
+source ~/.vim/autoload/mvf-lib.vim
+map <leader>l :call Add_Last_Line_as_Blank() <CR>
+
 " vim: ft=vim:
 

@@ -2,6 +2,8 @@
 " mvf: ferreira.mv[ at ]gmail.com
 " -------------------------------
 
+" GVIM theme
+" ------------------
 set guifont=Monaco:h12
 set mouse=a
 set mousehide
@@ -165,25 +167,6 @@ let Tlist_Show_Menu = 1
 map <leader>t   :TlistToggle     <CR>
 map <leader>ts  :TlistSessionSave ~/.tlistsession.vim.tag <CR>
 map <leader>tl  :TlistSessionLoad ~/.tlistsession.vim.tag <CR>
-
-" http://vim.wikia.com/wiki/Using_marks
-" ma        set mark '''a''' at current cursor location
-" 'a        jump to line of mark a (beginning of line)
-" `a        jump to position of mark a
-" d'a       delete from current line to line of mark a
-" d`a       delete from current cursor position to position of mark a
-" c'a       change text from current line to line of mark a
-" y`a       yank text to unnamed buffer from cursor to position of mark a
-" ''        jump back (to line where jumped from)
-" `0        jump to position in last file edited (when exited Vim)
-" ``        jump back (to position where jumped from)
-" :marks    list all the current marks
-"
-
-" MyLib
-" -----
-source ~/.vim/autoload/mvf-lib.vim
-map <leader>l :call Add_Last_Line_as_Blank() <CR>
 
 " vim: ft=vim:
 
