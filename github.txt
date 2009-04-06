@@ -1,0 +1,23 @@
+
+Private: git@github.com:mv/home.git
+
+    git remote add origin git@github.com:mv/home.git
+    git push origin new-branch
+    git push
+
+
+Public: git://github.com/mv/home.git
+
+    git clone git://github.com/mv/home.git
+
+
+Show:
+    git remote show origin
+
+
+alias:
+    alias github='git push git@github.com:mv/home.git'
+
+
+# vim: ft=text #
+
