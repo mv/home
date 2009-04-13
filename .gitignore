@@ -11,15 +11,17 @@
 .svn
 .CVS
 .DS_Store
+
 .netrwhist
 .VimballRecord
+*.swo
+*.swp
+*~
 
 *.[oa]
 *.log
 *.tmp
 *.pid
-*.swo
-*.swp
 
 *.tar
 *.[t]gz
@@ -29,7 +31,7 @@
 *.arj
 *.a[0-9][0-9]
 
-# file links at ~/bin/
+# file links at ~mv/bin/
 mate
 mvim
 vi
