@@ -9,8 +9,7 @@
 
 lnfile() {
     [ -f $2 ] && /bin/rm $2
-#   ln $1 $2
-    ln -s $1 $2
+    ln -s $1 $2      #   ln $1 $2
 }
 
 lndir() {
@@ -22,11 +21,9 @@ DIR=~/Work/mv_home
 
 lnfile ${DIR}/dot.bashrc.sh    ~/.bashrc
 lnfile ${DIR}/dot.profile.sh   ~/.profile
-lnfile ${DIR}/dot.vimrc        ~/.vimrc
 lnfile ${DIR}/dot.gitconfig    ~/.gitconfig
 lnfile ${DIR}/dot.gitignore    ~/.gitignore
 
-lndir  ${DIR}/dot.vim          ~/.vim
 lndir  ${DIR}/bin              ~/bin
 
 
