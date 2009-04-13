@@ -1,6 +1,8 @@
+#!/bin/bash
+
 ###
 ### mvf
-### macos:/etc/bashrc
+### macos:~/.bashrc
 
 # Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
@@ -23,27 +25,28 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 
-alias less='less -r'                          # raw control characters
-alias grep='egrep --color'                    # show differences in colour
+alias less='less -r'                    # raw control characters
+alias grep='egrep --color'              # show differences in colour
 
 alias  ls='ls -hAFG'
-alias  ls='gls -hF --color'
-alias   l='ls'
-alias  ll='ls -l'                              # long list
-alias  lr='ls -ltr'                            # long list
-alias  la='ls -A'                              # all but . and ..
-alias lla='ls -A'                              # all but . and ..
+alias  ls='gls -hF --color'             # MacOS/Joyent::OpenSolaris
+alias   l='/bin/ls'
+alias  ll='ls -l'                       # long list
+alias  lr='ls -ltr'                     # long list
+alias  la='ls -A'                       # all but . and ..
 
 alias rehash='source ~/.bashrc'
 
 # dir/files
 alias      ..="\cd .. ; ls"
 alias    cd..="\cd .. ; ls"
+
 function mkcd  {  
     mkdir -p "$1" && cd "$1"
 }
-alias  findd='find . -type d | grep '
-alias  findf='find . -type f | grep '
+
+alias  findd='find . -type d | egrep -i '
+alias  findf='find . -type f | egrep -i '
 alias    chg='find .         -exec chmod g+w,o-w {} \;'
 alias    chd='find . -type d -exec chmod 775 {} \;'
 alias    chf='find . -type f -exec chmod 664 {} \;'
@@ -52,11 +55,8 @@ alias     kf='find . -type f | wc -l'
 alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; done'
 alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
 
-alias  cdvim='cd ~/.vim'
-alias cdvimp='cd ~/Public/vim/plugins'
 alias mvhome='cd ~/Work/mv_home'
-alias vibash='vim ~/.bashrc'
-alias  vivim='vim ~/.vimrc'
+alias  mvvim='cd ~/Work/mv_vim'
 
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
@@ -67,18 +67,21 @@ alias  ifcfl='ifconfig en0 ; ifconfig en1'
 alias  ifcfa='ifconfig -a'
 
 # processes
-alias    top='top -ocpu -Otime -X' # MacOS: order by cpu and then time, old display format
+alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
 alias    msg='tail -f /var/log/system.log' # MacOS
+
 function psg {
     if [ "$1" ] ;
     then ps -ef | grep -v grep  | grep "$1"
     else ps -ef | more
     fi
 }
+
 function psga {
     if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}'
     fi
 }
+
 function psgk {
     if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}' | xargs kill
     fi
@@ -86,7 +89,6 @@ function psgk {
 
 # vcs
 alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
-alias svnpset='svn propset svn:keywords "Id URL Rev Author Date"'
 alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
 
 alias  gb='git branch'
@@ -98,12 +100,11 @@ alias gst='git status'
 alias  gd='git diff | vim -'
 
 alias gitclean='git remote prune origin && git remote update'
-alias   github='git push git@github.com:mv/home.git'
 
-[ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh ]
+[ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
 
 # Security
-alias auth='vim ~/.auth.bfa'
+alias auth='vim ~/auth/webco.bfa'
 
 # Others
 alias dtfile='date "+%Y-%m-%d_%H%M"'
@@ -151,4 +152,5 @@ alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
 #     . /opt/local/etc/bash_completion
 # fi
 
-                    
+# vim: ft=sh:
+
