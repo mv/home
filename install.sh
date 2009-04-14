@@ -23,6 +23,8 @@ lnfile ${DIR}/dot.bashrc.sh    ~/.bashrc
 lnfile ${DIR}/dot.profile.sh   ~/.profile
 lnfile ${DIR}/dot.gitconfig    ~/.gitconfig
 lnfile ${DIR}/dot.gitignore    ~/.gitignore
+lnfile ${DIR}/dot.gitk         ~/.gitk
+lnfile ${DIR}/dot.caprc        ~/.caprc
 
 lndir  ${DIR}/bin              ~/bin
 
