@@ -100,6 +100,7 @@ alias gst='git status'
 alias  gd='git diff | vim -'
 
 alias gitclean='git remote prune origin && git remote update'
+alias gitk='gitk --all &'
 
 [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
 
