@@ -4,12 +4,12 @@
 
 [ "$1" ] || {
     echo 
-    echo "Usage: $0  [net interface]"
+    echo "Usage: $0  [interface]"
     echo
     exit 2
 }
 
-ip=`ifconfig $1 | grep inet | awk '{print $2}'`
+ip=`ifconfig $1 | grep -w inet | awk '{print $2}'`
 if [ "$?" != 0 ]
 then
     echo
