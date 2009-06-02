@@ -4,31 +4,50 @@
 ### mvf
 ### macos:~/oracle.rc.sh
 
+pathadd () {
+    if [ -d $1 ]
+    then if ! echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then PATH=$PATH:$1
+              else PATH=$1:$PATH
+              fi
+        fi
+    fi
+}
+
+ldpathadd () {
+    if [ -d $1 ]
+    then if ! echo $LD_LIBRARY_PATH | /usr/bin/egrep -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
+              else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
+              fi
+         fi
+    fi
+}
+
 umask 002
 
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
 
-PATH=${ORACLE_HOME}/bin:$PATH
-PATH=${ORACLE_BASE}/bin:$PATH
-export PATH
+pathadd ${ORACLE_BASE}/bin
+pathadd ${ORACLE_HOME}/bin
+pathadd ${ORACLE_HOME}/dcm/bin
+pathadd ${ORACLE_HOME}/opmn/bin
 
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${ORACLE_HOME}/lib
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${ORACLE_HOME}/rdbms/lib
-if [ -d ${ORACLE_HOME}/jdk/jre/lib/i386 ]
-then
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${ORACLE_HOME}/jdk/jre/lib/i386
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${ORACLE_HOME}/jdk/jre/lib/i386/server
-fi
-export   LD_LIBRARY_PATH
+ldpathadd ${ORACLE_HOME}/lib
+ldpathadd ${ORACLE_HOME}/rdbms/lib
+ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
+ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
+
+export PATH
+export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib
 
-TNS_ADMIN=/var/opt/oracle/tns
-if [ ! -d $TNS_ADMIN ]
-then TNS_ADMIN=$ORACLE_HOME/network/admin
-fi
-export TNS_ADMIN
+                       export TNS_ADMIN=/var/opt/oracle/tns
+[ ! -d $TNS_ADMIN ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
 
 export DISPLAY=:0
 export TERM=xterm-color
@@ -68,13 +87,6 @@ _set_if() {
 
 _set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0.4/asm_1
 _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0.4/crs_1
-
-if [ ! -n $ORA_CRS_HOME ]
-then
-    PATH=$PATH:$ORACLE_HOME/dcm/bin
-    PATH=$PATH:$ORACLE_HOME/opmn/bin
-    export PATH
-fi
 
 # vim: ft=sh:
 
