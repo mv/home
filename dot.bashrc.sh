@@ -25,6 +25,11 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 
+if [ -x column ]
+then
+    alias mount='mount | column -t'
+fi
+
 alias less='less -r'                    # raw control characters
 alias grep='egrep --color'              # show differences in colour
 
@@ -58,6 +63,12 @@ alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; d
 alias mvhome='cd ~/Work/mv_home'
 alias  mvvim='cd ~/Work/mv_vim'
 
+alias  env='env | sort'
+alias     path='IFS=: && for f in $PATH; do echo $f; done'
+alias   ldpath='IFS=: && for f in $LD_LIBRARY_PATH; do echo $f; done'
+alias dyldpath='IFS=: && for f in $DYLD_LIBRARY_PATH; do echo $f; done'
+alias  manpath='IFS=: && for f in $MANPATH; do echo $f; done'
+
 # net
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 alias   netr='netstat -rn -f inet'
@@ -66,9 +77,12 @@ alias   netl='netstat -an -f inet | grep -i listen'
 alias  ifcfl='ifconfig en0 ; ifconfig en1'
 alias  ifcfa='ifconfig -a'
 
-# processes
+
 alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
 alias    msg='tail -f /var/log/system.log' # MacOS
+
+#             history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+alias hcount='history | awk "{a[\$2]++}END{for\(i in a\){print a[i], i}}" | sort -rn | head' # history count
 
 function psg {
     if [ "$1" ] ;
@@ -101,8 +115,6 @@ alias  gd='git diff | vim -'
 
 alias gitclean='git remote prune origin && git remote update'
 alias gitk='gitk --all &'
-
-[ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
 
 # Security
 alias auth='vim ~/auth/webco.bfa'
@@ -147,11 +159,14 @@ alias   vi='~/App/MacVim.app/Contents/MacOS/Vim '
 alias  vim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
+alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
 
 
-# if [ -f /opt/local/etc/bash_completion ]; then
-#     . /opt/local/etc/bash_completion
-# fi
+# [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+  [ -f ~/bin/git-completion.sh ]        && source ~/bin/git-completion.sh
+  [ -f ~/bin/oracle.rc.sh ]             && source ~/bin/oracle.rc.sh
+
+set -o vi
 
 # vim: ft=sh:
 
