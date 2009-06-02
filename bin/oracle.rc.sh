@@ -24,10 +24,16 @@ fi
 export   LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib
 
+TNS_ADMIN=/var/opt/oracle/tns
+if [ ! -d $TNS_ADMIN ]
+then TNS_ADMIN=$ORACLE_HOME/network/admin
+fi
+export TNS_ADMIN
+
 export DISPLAY=:0
 export TERM=xterm-color
 
-[ -d ${HOME}/sql ] && export ${HOME}/sql
+[ -d ${HOME}/sql ] && export SQLPATH=${HOME}/sql
 
 alias orabase='cd $ORACLE_BASE'
 alias oradmin='cd $ORACLE_BASE/admin/$ORACLE_SID'
@@ -40,11 +46,18 @@ alias   udump='cd $ORACLE_BASE/admin/$ORACLE_SID/udump'
 alias orahome='cd $ORACLE_HOME'
 alias  orabin='cd $ORACLE_HOME/bin'
 alias  oradbs='cd $ORACLE_HOME/dbs'
-alias     tns='cd $ORACLE_HOME/network/admin'
 alias   rdbms='cd $ORACLE_HOME/rdbms/admin'
+alias     tns='cd $TNS_ADMIN'
 
 alias  alert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
 alias sysdba='sqlplus / as sysdba'
+
+function tnsping() {
+    if [ -z "$2" ]
+    then $ORACLE_HOME/bin/tnsping $1 10
+    else $ORACLE_HOME/bin/tnsping $1 $2
+    fi
+}
 
 ## RAC
 _set_if() {
