@@ -4,15 +4,67 @@
 ### mvf
 ### macos:~/.bashrc
 
-# Attribute codes:
-#   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
-# Text color codes:
-#   30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
-# Background color codes:
-#   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-#   \[\e[01;36m\]
-export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
-export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
+# *PATH
+[ -x /bin/egrep     ] && EGREP=/bin/egrep
+[ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
+
+pathadd () {
+    if [ -d $1 ]
+    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then PATH=$PATH:$1
+              else PATH=$1:$PATH
+              fi
+        fi
+    fi
+}
+
+ldpathadd () {
+    if [ -d $1 ]
+    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
+              else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
+              fi
+         fi
+    fi
+}
+
+manpathadd () {
+    if [ -d $1 ]
+    then if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then MANPATH=$MANPATH:$1
+              else MANPATH=$1:$MANPATH
+              fi
+         fi
+    fi
+}
+
+PATH=~/bin
+pathadd /usr/local/bin
+pathadd /usr/local/sbin
+pathadd /opt/local/bin
+pathadd /opt/local/sbin
+pathadd /Developer/usr/bin
+pathadd /Developer/usr/sbin
+pathadd /bin
+pathadd /sbin
+pathadd /usr/bin
+pathadd /usr/sbin
+pathadd /usr/X11/bin
+
+LD_LIBRARY_PATH=/usr/local/lib
+ldpathadd /usr/local/apache/lib
+ldpathadd /usr/local/BerkeleyDB.4.6/lib
+ldpathadd /opt/local/lib
+
+MANPATH=/usr/local/share/man
+manpathadd /opt/local/share/man
+manpathadd /Developer/usr/share/man
+manpathadd /usr/share/man
+
+export PATH LD_LIBRARY_PATH MANPATH
 
 # System-wide .bashrc file
 
@@ -25,7 +77,7 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 
-if [ -x column ]
+if which column > /dev/null
 then
     alias mount='mount | column -t'
 fi
@@ -33,23 +85,37 @@ fi
 alias less='less -r'                    # raw control characters
 alias grep='egrep --color'              # show differences in colour
 
-alias  ls='ls -hAFG'
-alias  ls='gls -hF --color'             # MacOS/Joyent::OpenSolaris
-alias   l='/bin/ls'
+case `uname -s` in
+    Darwin | FreeBSD | OpenBSD)
+        alias ls='ls -hFG'
+        ;;
+    Linux)
+        alias ls='ls -hF --color'
+        ;;
+    *)
+        alias ls='ls -F'
+        ;;
+esac
+
+[ `which gls` ] && alias ls='gls -hF --color' 
+
 alias  ll='ls -l'                       # long list
 alias  lr='ls -ltr'                     # long list
 alias  la='ls -A'                       # all but . and ..
+alias   l='/bin/ls'
 
 alias rehash='source ~/.bashrc'
 
 # dir/files
-alias      ..="\cd .. ; ls"
-alias    cd..="\cd .. ; ls"
-
+function c  {  
+    cd "$1" && ls
+}
 function mkcd  {  
     mkdir -p "$1" && cd "$1"
 }
 
+alias     ..='\cd .. && ls'
+alias   cd..='\cd .. && ls'
 alias  findd='find . -type d | egrep -i '
 alias  findf='find . -type f | egrep -i '
 alias    chg='find .         -exec chmod g+w,o-w {} \;'
@@ -74,7 +140,7 @@ alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 alias   netr='netstat -rn -f inet'
 alias   neta='netstat -an -f inet'
 alias   netl='netstat -an -f inet | grep -i listen'
-alias  ifcfl='ifconfig en0 ; ifconfig en1'
+alias   ifcf='ifconfig en0 ; ifconfig en1'
 alias  ifcfa='ifconfig -a'
 
 
@@ -117,54 +183,50 @@ alias gitclean='git remote prune origin && git remote update'
 alias gitk='gitk --all &'
 
 # Security
-alias auth='vim ~/auth/webco.bfa'
 
 # Others
 alias dtfile='date "+%Y-%m-%d_%H%M"'
 alias  dtiso='date "+%Y-%m-%d %X"'
 alias  dtdns='date "+%Y%m%d%H%M%S"'
 
-# *PATH
-PATH=~/bin
-PATH=$PATH:/usr/local/bin
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/opt/local/lib/mysql5/bin
-PATH=$PATH:/opt/local/bin
-PATH=$PATH:/opt/local/sbin
-PATH=$PATH:/Developer/usr/bin
-PATH=$PATH:/Developer/usr/sbin
-PATH=$PATH:/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/sbin
-PATH=$PATH:/usr/X11/bin
-
-LD_LIBRARY_PATH=/usr/local/lib
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/apache/lib
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/BerkeleyDB.4.6/lib
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/local/lib
-
-MANPATH=/usr/local/share/man
-MANPATH=$MANPATH:/opt/local/share/man
-MANPATH=$MANPATH:/Developer/usr/share/man
-MANPATH=$MANPATH:/usr/share/man
-
-export PATH LD_LIBRARY_PATH MANPATH
-export MANPAGER="col -b | ~/bin/view -c 'set ft=man nomod nolist' -"
-export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
-
+# vim
 export VIM_APP_DIR=~/App
 export EDITOR=vim
-alias   vi='~/App/MacVim.app/Contents/MacOS/Vim '
-alias  vim='~/App/MacVim.app/Contents/MacOS/Vim -g'
+
+#lias   vi='~/App/MacVim.app/Contents/MacOS/Vim'
+alias  vim='~/App/MacVim.app/Contents/MacOS/Vim'
 alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
 alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
 
+alias auth='vim ~/auth/webco.bfa'
 
+export MANPAGER="col -b | ~/bin/view  -c 'set ft=man nomod nolist' -"
+export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
+
+# Externals
 # [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
-  [ -f ~/bin/git-completion.sh ]        && source ~/bin/git-completion.sh
-  [ -f ~/bin/oracle.rc.sh ]             && source ~/bin/oracle.rc.sh
+  [ -f ~/bin/git-completion.sh        ] && source ~/bin/git-completion.sh
+  [ -f ~/bin/oracle.rc.sh             ] && source ~/bin/oracle.rc.sh
+
+
+# Prompt
+# Attribute codes:
+#   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+#   30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+#   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#   \[\e[01;36m\]
+PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
+
+  type __git_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
+  type __ora_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\] $(__ora_ps1)\n\$ '
+
+  type __ora_ps1 > /dev/null && \
+  type __ora_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)") $(__ora_ps1)\n\$ '
+
+export PS1
 
 set -o vi
 
