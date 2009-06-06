@@ -16,6 +16,7 @@
 .VimballRecord
 *.swo
 *.swp
+*.sw?
 *~
 
 *.[oa]
@@ -37,4 +38,5 @@ mvim
 vi
 view
 vim
+tw
 
