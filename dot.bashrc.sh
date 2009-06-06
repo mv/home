@@ -46,6 +46,7 @@ pathadd /usr/local/bin
 pathadd /usr/local/sbin
 pathadd /opt/local/bin
 pathadd /opt/local/sbin
+pathadd /opt/local/lib/mysql5/bin
 pathadd /Developer/usr/bin
 pathadd /Developer/usr/sbin
 pathadd /bin
@@ -66,8 +67,6 @@ manpathadd /usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
 
-# System-wide .bashrc file
-
 # Interactive operation...
 alias cp='cp -i'
 alias mv='mv -i'
@@ -87,17 +86,17 @@ alias grep='egrep --color'              # show differences in colour
 
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
-        alias ls='ls -hFG'
+        alias ls='ls -AFhG'
         ;;
     Linux)
-        alias ls='ls -hF --color'
+        alias ls='ls -AFh --color=auto --time-style=long-iso'
         ;;
     *)
-        alias ls='ls -F'
+        alias ls='ls -AF'
         ;;
 esac
 
-[ `which gls` ] && alias ls='gls -hF --color' 
+[ `which gls` ] && alias ls='gls -AFh --color=auto'
 
 alias  ll='ls -l'                       # long list
 alias  lr='ls -ltr'                     # long list
@@ -107,10 +106,10 @@ alias   l='/bin/ls'
 alias rehash='source ~/.bashrc'
 
 # dir/files
-function c  {  
+function c  {
     cd "$1" && ls
 }
-function mkcd  {  
+function mkcd  {
     mkdir -p "$1" && cd "$1"
 }
 
@@ -135,54 +134,81 @@ alias   ldpath='IFS=: && for f in $LD_LIBRARY_PATH; do echo $f; done'
 alias dyldpath='IFS=: && for f in $DYLD_LIBRARY_PATH; do echo $f; done'
 alias  manpath='IFS=: && for f in $MANPATH; do echo $f; done'
 
-# net
+# net & processes
+case `uname -s` in
+    Darwin | FreeBSD | OpenBSD)
+        alias   netr='netstat -rn -f inet'
+        alias   neta='netstat -an -f inet'
+        alias   netl='netstat -an -f inet | grep -i listen'
+        alias   ifcf='ifconfig en0 ; ifconfig en1'
+
+        alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
+        alias    msg='tail -f /var/log/system.log' # MacOS
+        ;;
+    SunOS)
+        alias   netr='netstat -rn -f inet'
+        alias   neta='netstat -an -f inet'
+        alias   netl='netstat -an -f inet | grep -i listen'
+        alias   ifcf='ifconfig hme0 ; ifconfig bfe0'
+
+        alias    top='top -Z -B'
+        alias prstat='prstat -a'
+        alias    msg='tail -f /var/adm/messages'
+        ;;
+    Linux)
+        alias   neta='netstat -rn | grep -w tcp'
+        alias   neta='netstat -an | grep -w tcp'
+        alias   netl='netstat -an | grep -i listen'
+        alias   ifcf='ifconfig eth0 ; ifconfig eth1'
+
+        alias    top='top -Z -B'                    # color + bold
+        alias    msg='tail -f /var/log/messages'
+        ;;
+    *)
+        ;;
+esac
+
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
-alias   netr='netstat -rn -f inet'
-alias   neta='netstat -an -f inet'
-alias   netl='netstat -an -f inet | grep -i listen'
-alias   ifcf='ifconfig en0 ; ifconfig en1'
-alias  ifcfa='ifconfig -a'
+alias   ifca='ifconfig -a'
 
-
-alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
-alias    msg='tail -f /var/log/system.log' # MacOS
-
-#             history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
-alias hcount='history | awk "{a[\$2]++}END{for\(i in a\){print a[i], i}}" | sort -rn | head' # history count
+function hcount {
+    [ "$1" ] && _line=$1 || _line=10
+    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -${_line}
+}
 
 function psg {
-    if [ "$1" ] ;
-    then ps -ef | grep -v grep  | grep "$1"
-    else ps -ef | more
-    fi
+    [ "$1" ] && ps -ef | grep -v grep | grep "$1" \
+             || ps -ef | more
 }
 
 function psga {
-    if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}'
+    if [ "$1" ] ; then ps -ef | grep -v grep | grep "$1" | awk '{print $2}'
     fi
 }
 
 function psgk {
-    if [ "$1" ] ; then ps -ef | grep -v grep  | grep "$1" | awk '{print $2}' | xargs kill
+    if [ "$1" ] ; then ps -ef | grep -v grep | grep "$1" | awk '{print $2}' | xargs kill
     fi
 }
 
 # vcs
-alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
-alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
+[ `which svn` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
+[ `which svk` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
 
-alias  gb='git branch'
-alias gba='git branch -a'
-alias  gc='git commit -v'
-alias gpp='git pull && git push'
-alias  gp='git pull'
-alias gst='git status'
-alias  gd='git diff | vim -'
+if which git > /dev/null
+then
+    alias  gb='git branch'
+    alias gba='git branch -a'
+    alias  gc='git commit -v'
+    alias gpp='git pull && git push'
+    alias  gp='git pull'
+    alias gst='git status'
+    alias  gd='git diff | vim -'
 
-alias gitclean='git remote prune origin && git remote update'
-alias gitk='gitk --all &'
+    alias gitk='gitk --all &'
+    alias gitclean='git remote prune origin && git remote update'
+fi
 
-# Security
 
 # Others
 alias dtfile='date "+%Y-%m-%d_%H%M"'
@@ -190,19 +216,26 @@ alias  dtiso='date "+%Y-%m-%d %X"'
 alias  dtdns='date "+%Y%m%d%H%M%S"'
 
 # vim
-export VIM_APP_DIR=~/App
 export EDITOR=vim
 
-#lias   vi='~/App/MacVim.app/Contents/MacOS/Vim'
-alias  vim='~/App/MacVim.app/Contents/MacOS/Vim'
-alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
-alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
-alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
+case `uname -s` in
+    Darwin)
+        #lias   vi='~/App/MacVim.app/Contents/MacOS/Vim'
+        alias  vim='~/App/MacVim.app/Contents/MacOS/Vim'
+        alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
+        alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
+        alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
 
-alias auth='vim ~/auth/webco.bfa'
+        export VIM_APP_DIR=~/App
+        export MANPAGER="col -b | ~/bin/view  -c 'set ft=man nomod nolist' -"
+        export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
+        ;;
+    *)
+        export MANPAGER="col -b | view  -c 'set ft=man nomod nolist' -"
+        ;;
+esac
 
-export MANPAGER="col -b | ~/bin/view  -c 'set ft=man nomod nolist' -"
-export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
+[ -f ~/auth/webco.bfa ] && alias auth='vim ~/auth/webco.bfa'
 
 # Externals
 # [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
