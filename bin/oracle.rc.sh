@@ -72,9 +72,9 @@ alias  alert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.l
 alias sysdba='sqlplus / as sysdba'
 
 function tnsping() {
-    if [ -z "$2" ]
-    then $ORACLE_HOME/bin/tnsping $1 10
-    else $ORACLE_HOME/bin/tnsping $1 $2
+    if [ "$2" ]
+    then $ORACLE_HOME/bin/tnsping $1 $2
+    else $ORACLE_HOME/bin/tnsping $1 10
     fi
 }
 
@@ -89,10 +89,15 @@ _set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0.4/asm_1
 _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0.4/crs_1
 
 function __ora_ps1() {
-    if   [ $TWO_TASK ] 
-    then echo "[tns::$TWO_TASK]"
-    elif [ $ORACLE_SID ] 
-    then echo "[sid::$ORACLE_SID]"
+    if [ -d $ORACLE_HOME ]
+    then
+        if   [ $LOCAL      ]        # win32
+        then echo "[w32::$LOCAL]"
+        elif [ $TWO_TASK   ]        # unix
+        then echo "[tns::$TWO_TASK]"
+        elif [ $ORACLE_SID ]
+        then echo "[sid::$ORACLE_SID]"
+        fi
     fi
 }
 
