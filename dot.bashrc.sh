@@ -127,6 +127,7 @@ alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; d
 
 alias mvhome='cd ~/Work/mv_home'
 alias  mvvim='cd ~/Work/mv_vim'
+alias  mvdba='cd ~/Work/mvdba'
 
 alias  env='env | sort'
 alias     path='IFS=: && for f in $PATH; do echo $f; done'
@@ -177,8 +178,10 @@ function hcount {
 }
 
 function psg {
-    [ "$1" ] && ps -ef | grep -v grep | grep "$1" \
-             || ps -ef | more
+    if [ "$1" ]
+    then ps -ef | \grep -v grep | grep "$1"
+    else ps -ef | more
+    fi
 }
 
 function psga {
