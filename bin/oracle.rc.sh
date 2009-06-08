@@ -68,8 +68,10 @@ alias  oradbs='cd $ORACLE_HOME/dbs'
 alias   rdbms='cd $ORACLE_HOME/rdbms/admin'
 alias     tns='cd $TNS_ADMIN'
 
-alias  alert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
-alias sysdba='sqlplus / as sysdba'
+alias  alert='ll      $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log ; wc -l !$'
+alias talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
+alias valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
+alias sysdba='sqlplus -L / as sysdba'
 
 function tnsping() {
     if [ "$2" ]
@@ -100,6 +102,37 @@ function __ora_ps1() {
         fi
     fi
 }
+
+## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html
+p() {
+    sqlplus -L -s "/ as sysdba"<<SQL  | sed -n 's/@ //p'
+        set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
+        col name for a25
+
+        select '@',name, value 
+          from v$parameter2 
+         where upper(name) like upper('%$1%');
+SQL
+}
+P() {
+    sqlplus -L -s "/ as sysdba" <<SQL  | sed -n 's/@ //p'
+        set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
+        col name for a25
+
+        select '@',ksppinm name,ksppstvl value 
+          from x$ksppi join x$ksppcv using (inst_id,indx) 
+         where upper(ksppinm) like upper('%$1%');
+SQL
+}
+## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html
+
+## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html
+    alias   abort='echo shutdown abort       |sqlplus -L -s / as sysdba'
+    alias   mount='echo startup mount        |sqlplus -L -s / as sysdba'
+    alias nomount='echo startup nomount quiet|sqlplus -L -s / as sysdba'
+    alias startup='echo startup quiet        |sqlplus -L -s / as sysdba'
+    alias    pmon='ps -ef | grep [p]mon'
+## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html
 
 # vim: ft=sh:
 
