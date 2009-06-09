@@ -4,9 +4,11 @@
 ### mvf
 ### macos:~/oracle.rc.sh
 
+EGREP=`which egrep`
+
 pathadd () {
     if [ -d $1 ]
-    then if ! echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)" 
+    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)" 
          then if [ "$2" = "after" ]
               then PATH=$PATH:$1
               else PATH=$1:$PATH
@@ -17,7 +19,7 @@ pathadd () {
 
 ldpathadd () {
     if [ -d $1 ]
-    then if ! echo $LD_LIBRARY_PATH | /usr/bin/egrep -q "(^|:)$1($|:)" 
+    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)" 
          then if [ "$2" = "after" ]
               then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
               else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
@@ -31,6 +33,7 @@ umask 002
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
+export    NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
 
 pathadd ${ORACLE_BASE}/bin
 pathadd ${ORACLE_HOME}/bin
@@ -68,10 +71,10 @@ alias  oradbs='cd $ORACLE_HOME/dbs'
 alias   rdbms='cd $ORACLE_HOME/rdbms/admin'
 alias     tns='cd $TNS_ADMIN'
 
-alias  alert='ll      $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log ; wc -l !$'
-alias talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
-alias valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
-alias sysdba='sqlplus -L / as sysdba'
+alias   alert='ll      $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log ; wc -l !$'
+alias  talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
+alias  valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
+alias  sysdba='sqlplus -L / as sysdba'
 
 function tnsping() {
     if [ "$2" ]
@@ -105,7 +108,7 @@ function __ora_ps1() {
 
 ## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html
 p() {
-    sqlplus -L -s "/ as sysdba"<<SQL  | sed -n 's/@ //p'
+    sqlplus -L -s "/ as sysdba" <<SQL | sed -n 's/@ //p'
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
         col name for a25
 
@@ -115,7 +118,7 @@ p() {
 SQL
 }
 P() {
-    sqlplus -L -s "/ as sysdba" <<SQL  | sed -n 's/@ //p'
+    sqlplus -L -s "/ as sysdba" <<SQL | sed -n 's/@ //p'
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
         col name for a25
 
