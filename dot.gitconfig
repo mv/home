@@ -6,7 +6,7 @@
         ui = always
 
 [alias]
-        ci    = commit -m
+        ci    = commit -v
         co    = checkout
         br    = branch
         bra   = branch -a
