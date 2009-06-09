@@ -4,6 +4,12 @@
 ### mvf
 ### macos:~/.bashrc
 
+# Bash Options
+#hopt -s ignoreeof        # ignore CTRL-D at prompt
+shopt -s  cdspell          # corrects dir names
+export HISTIGNORE='&:ls:lr:ll:[bf]g'
+export HISTCONTROL='ignoredups:erasedups'
+
 # *PATH
 [ -x /bin/egrep     ] && EGREP=/bin/egrep
 [ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
@@ -241,8 +247,10 @@ esac
 [ -f ~/auth/webco.bfa ] && alias auth='vim ~/auth/webco.bfa'
 
 # Externals
-# [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
-  [ -f ~/bin/git-completion.sh        ] && source ~/bin/git-completion.sh
+  [ -f /opt/local/etc/bash_completion          ] && source /opt/local/etc/bash_completion
+  [ -f /opt/local/etc/profile.d/cdargs-bash.sh ] && source /opt/local/etc/profile.d/cdargs-bash.sh
+
+# [ -f ~/bin/git-completion.sh        ] && source ~/bin/git-completion.sh
   [ -f ~/bin/oracle.rc.sh             ] && source ~/bin/oracle.rc.sh
 
 
