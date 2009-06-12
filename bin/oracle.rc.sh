@@ -28,6 +28,17 @@ ldpathadd () {
     fi
 }
 
+sqlpathadd () {
+    if [ -d $1 ]
+    then if ! echo $SQLPATH | $EGREP -q "(^|:)$1($|:)" 
+         then if [ "$2" = "after" ]
+              then SQLPATH=$SQLPATH:$1
+              else SQLPATH=$1:$SQLPATH
+              fi
+         fi
+    fi
+}
+
 umask 002
 
 export ORACLE_SID=orcl
@@ -45,9 +56,17 @@ ldpathadd ${ORACLE_HOME}/rdbms/lib
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
 
+sqlpathadd ${HOME}/sql
+sqlpathadd /work/mvdba/sql
+
 export PATH
 export LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib
+export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
+export SQLPATH
+
+unset pathadd
+unset ldpathadd
+unset sqlpathadd
 
                        export TNS_ADMIN=/var/opt/oracle/tns
 [ ! -d $TNS_ADMIN ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
@@ -55,7 +74,6 @@ export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib
 export DISPLAY=:0
 export TERM=xterm-color
 
-[ -d ${HOME}/sql ] && export SQLPATH=${HOME}/sql
 
 alias orabase='cd $ORACLE_BASE'
 alias oradmin='cd $ORACLE_BASE/admin/$ORACLE_SID'
