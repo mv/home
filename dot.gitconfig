@@ -22,6 +22,8 @@
         lp    = log -p
         si    = submodule init
         su    = submodule update
+        ps    = git push
+        pl    = git push
 
         rshow = remote show origin
 
