@@ -96,6 +96,8 @@ case `uname -s` in
         ;;
     Linux)
         alias ls='ls -AFh --color=auto --time-style=long-iso'
+        # bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
+        eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
         ;;
     *)
         alias ls='ls -AF'
@@ -254,7 +256,6 @@ esac
   [ -f ~/bin/oracle.rc.sh             ] && source ~/bin/oracle.rc.sh
 
 
-# Prompt
 # Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
@@ -262,13 +263,26 @@ esac
 # Background color codes:
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #   \[\e[01;36m\]
-PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]\n\$ '
 
-  type __git_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
-  type __ora_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\] $(__ora_ps1)\n\$ '
+# ls 
+[ -z "$LS_COLORS" ] && LS_COLORS=$LS_COLORS:'*sql=33:*log=93:*buf=31' || LS_COLORS='*sql=33:*log=93:*buf=31'
+export LS_COLORS
 
-  type __ora_ps1 > /dev/null && \
-  type __ora_ps1 > /dev/null && PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)") $(__ora_ps1)\n\$ '
+# Prompt
+# export yellow="\[\e[01;33m\]"
+# export  white="\[\e[01;37m\]"
+# export   cyan="\[\e[01;36m\]"
+# export    red="\[\e[01;31m\]"
+# export orange="\[\e[00;33m\]"
+# export  reset="\[\e[0m\]"
+#            r1='\[\e]0;\w\a\]\n'                          
+# prompt="${yellow}\u${white}@${cyan}\h${white}:${orange}\w${reset}"
+
+  type __git_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)")\n\$ '
+  type __ora_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
+
+  type __git_ps1 > /dev/null && \
+  type __ora_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 
 export PS1
 
