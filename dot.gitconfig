@@ -6,18 +6,19 @@
         ui = always
 
 [alias]
-        ci    = commit -v
+        ci    = commit
         co    = checkout
-        br    = branch
-        bra   = branch -a
+        b     = branch
+        ba    = branch -a
         st    = status
         stat  = status
         sw    = show
+        d     = diff
         dc    = diff --cached
         ls    = ls-files --stage
         one   = log --pretty='format:%Cgreen%H %Cred%ai %Creset- %s'
         gr    = log --graph --pretty=oneline --abbrev-commit
-        logp  = log -p
+        lp    = log -p
         si    = submodule init
         su    = submodule update
 
