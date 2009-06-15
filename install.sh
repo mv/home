@@ -28,4 +28,5 @@ lnfile ${DIR}/dot.caprc        ~/.caprc
 
 lndir  ${DIR}/bin              ~/bin
 
+[ ! -d ~/var ] && mkdir ~/var
 
