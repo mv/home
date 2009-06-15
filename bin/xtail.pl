@@ -1,4 +1,4 @@
-#! perl
+#!/usr/bin/perl
 
   ######################################################
   # xtail.pl, modeled after the functionality of       #
