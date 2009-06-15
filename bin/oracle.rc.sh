@@ -43,7 +43,8 @@ umask 002
 
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
+export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_2
+export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/client_1
 export    NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
 
 pathadd ${ORACLE_BASE}/bin
@@ -68,15 +69,19 @@ unset pathadd
 unset ldpathadd
 unset sqlpathadd
 
-                       export TNS_ADMIN=/var/opt/oracle/tns
-[ ! -d $TNS_ADMIN ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
+                          export TNS_ADMIN=/u01/app/oracle/tns
+[ ! -d $TNS_ADMIN    ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
 
-export DISPLAY=:0
+[   -z "$SSH_CLIENT" ] && export DISPLAY=:0 \
+                       || export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }' `:0"
+
 export TERM=xterm-color
 
-
 alias orabase='cd $ORACLE_BASE'
-alias oradmin='cd $ORACLE_BASE/admin/$ORACLE_SID'
+alias oradmin='cd $ORACLE_BASE/admin'
+alias  oraetc='cd $ORACLE_BASE/etc'
+alias  oralog='cd $ORACLE_BASE/log'
+alias  orasid='cd $ORACLE_BASE/admin/$ORACLE_SID'
 alias   pfile='cd $ORACLE_BASE/admin/$ORACLE_SID/pfile'
 alias   adump='cd $ORACLE_BASE/admin/$ORACLE_SID/adump'
 alias   bdump='cd $ORACLE_BASE/admin/$ORACLE_SID/bdump'
@@ -85,14 +90,15 @@ alias   udump='cd $ORACLE_BASE/admin/$ORACLE_SID/udump'
 
 alias orahome='cd $ORACLE_HOME'
 alias  orabin='cd $ORACLE_HOME/bin'
-alias  oradbs='cd $ORACLE_HOME/dbs'
+alias     dbs='cd $ORACLE_HOME/dbs'
 alias   rdbms='cd $ORACLE_HOME/rdbms/admin'
+alias  oratns='cd $ORACLE_HOME/network/admin'
 alias     tns='cd $TNS_ADMIN'
 
 alias   alert='ll      $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log ; wc -l !$'
 alias  talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
 alias  valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
-alias  sysdba='sqlplus -L / as sysdba'
+#lias sqlplus='sqlplus -L '
 
 function tnsping() {
     if [ "$2" ]
