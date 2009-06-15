@@ -4,11 +4,12 @@
 ### mvf
 ### macos:~/.bashrc
 
-# Bash Options
+# Bash Options {
 #hopt -s ignoreeof        # ignore CTRL-D at prompt
-shopt -s  cdspell          # corrects dir names
+shopt -s  cdspell         # corrects dir names
 export HISTIGNORE='&:ls:lr:ll:[bf]g'
 export HISTCONTROL='ignoredups:erasedups'
+# }
 
 # *PATH
 [ -x /bin/egrep     ] && EGREP=/bin/egrep
@@ -16,7 +17,7 @@ export HISTCONTROL='ignoredups:erasedups'
 
 pathadd () {
     if [ -d $1 ]
-    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then PATH=$PATH:$1
               else PATH=$1:$PATH
@@ -27,7 +28,7 @@ pathadd () {
 
 ldpathadd () {
     if [ -d $1 ]
-    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
               else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
@@ -38,7 +39,7 @@ ldpathadd () {
 
 manpathadd () {
     if [ -d $1 ]
-    then if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then MANPATH=$MANPATH:$1
               else MANPATH=$1:$MANPATH
@@ -104,7 +105,7 @@ case `uname -s` in
         ;;
 esac
 
-[ `which gls` ] && alias ls='gls -AFh --color=auto'
+[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto'
 
 alias  ll='ls -l'                       # long list
 alias  lr='ls -ltr'                     # long list
@@ -203,8 +204,8 @@ function psgk {
 }
 
 # vcs
-[ `which svn` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
-[ `which svk` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
+[ `which svn 2> /dev/null` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
+[ `which svk 2> /dev/null` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
 
 if which git > /dev/null
 then
@@ -264,9 +265,9 @@ esac
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #   \[\e[01;36m\]
 
-# ls 
-[ -z "$LS_COLORS" ] && LS_COLORS=$LS_COLORS:'*sql=33:*log=93:*buf=31' || LS_COLORS='*sql=33:*log=93:*buf=31'
-export LS_COLORS
+# ls
+# [ -z "$LS_COLORS" ] && LS_COLORS=$LS_COLORS:'*sql=33:*log=93:*buf=31' || LS_COLORS='*sql=33:*log=93:*buf=31'
+export LS_COLORS='*sql=33:*log=93:*buf=31'
 
 # Prompt
 # export yellow="\[\e[01;33m\]"
@@ -275,15 +276,15 @@ export LS_COLORS
 # export    red="\[\e[01;31m\]"
 # export orange="\[\e[00;33m\]"
 # export  reset="\[\e[0m\]"
-#            r1='\[\e]0;\w\a\]\n'                          
+#            r1='\[\e]0;\w\a\]\n'
 # prompt="${yellow}\u${white}@${cyan}\h${white}:${orange}\w${reset}"
 
-  type __git_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)")\n\$ '
-  type __ora_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
+export PS1='\u@\h:\w\n\$ '
+  type __git_ps1 2>/dev/null 1>/dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)")\n\$ '
+  type __ora_ps1 2>/dev/null 1>/dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 
-  type __git_ps1 > /dev/null && \
-  type __ora_ps1 > /dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
-
+  type __git_ps1 2>/dev/null 1>/dev/null && \
+  type __ora_ps1 2>/dev/null 1>/dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 export PS1
 
 set -o vi
