@@ -39,14 +39,12 @@ sqlpathadd () {
     fi
 }
 
-umask 002
-
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_2
-export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/client_1
+export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
 export    NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
 
+### Oracle PATH's {
 pathadd ${ORACLE_BASE}/bin
 pathadd ${ORACLE_HOME}/bin
 pathadd ${ORACLE_HOME}/dcm/bin
@@ -57,13 +55,28 @@ ldpathadd ${ORACLE_HOME}/rdbms/lib
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
 
-sqlpathadd ${HOME}/sql
+sqlpathadd ${ORACLE_BASE}/sql
 sqlpathadd /work/mvdba/sql
+# }
 
 export PATH
 export LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
 export SQLPATH
+
+### Multi-OS # {
+case `uname -s` in
+    Darwin)
+        # MacOS
+        export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
+        # Must match kern.maxprocperuid
+        ulimit -Hu 512
+        ulimit -Su 512
+        # Must match kern.maxfilesperproc
+        ulimit -Hn 65536 
+        ulimit -Sn 65536 
+        ;;
+esac
+#}
 
 unset pathadd
 unset ldpathadd
@@ -73,14 +86,17 @@ unset sqlpathadd
 [ ! -d $TNS_ADMIN    ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
 
 [   -z "$SSH_CLIENT" ] && export DISPLAY=:0 \
-                       || export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }' `:0"
+                       || export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }'`:0"
 
 export TERM=xterm-color
+umask 002
 
+# MVF: Aliases on ORACLE_BASE e ORACLE_HOME {
 alias orabase='cd $ORACLE_BASE'
 alias oradmin='cd $ORACLE_BASE/admin'
 alias  oraetc='cd $ORACLE_BASE/etc'
 alias  oralog='cd $ORACLE_BASE/log'
+alias  orainv='cd $ORACLE_BASE/oraInventory'
 alias  orasid='cd $ORACLE_BASE/admin/$ORACLE_SID'
 alias   pfile='cd $ORACLE_BASE/admin/$ORACLE_SID/pfile'
 alias   adump='cd $ORACLE_BASE/admin/$ORACLE_SID/adump'
@@ -95,10 +111,26 @@ alias   rdbms='cd $ORACLE_HOME/rdbms/admin'
 alias  oratns='cd $ORACLE_HOME/network/admin'
 alias     tns='cd $TNS_ADMIN'
 
-alias   alert='ll      $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log ; wc -l !$'
+alias   alert='wc -l   $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
 alias  talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
 alias  valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
-#lias sqlplus='sqlplus -L '
+# }
+
+## RAC #{
+# _set_if() {
+#     if [ -d $2 ]
+#     then eval 'export $1=$2 ; export PATH=$2/bin:$PATH'
+#     fi
+# }
+# 
+# _set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0.4/asm_1
+# _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0.4/crs_1
+# }
+
+## Goodies
+alias sqlplus='sqlplus -L '
+alias  sysdba='sqlplus / as sysdba'
+alias sysoper='sqlplus / as sysoper'
 
 function tnsping() {
     if [ "$2" ]
@@ -106,16 +138,6 @@ function tnsping() {
     else $ORACLE_HOME/bin/tnsping $1 10
     fi
 }
-
-## RAC
-_set_if() {
-    if [ -d $2 ]
-    then eval 'export $1=$2 ; export PATH=$2/bin:$PATH'
-    fi
-}
-
-_set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0.4/asm_1
-_set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0.4/crs_1
 
 function __ora_ps1() {
     if [ -d $ORACLE_HOME ]
@@ -130,7 +152,7 @@ function __ora_ps1() {
     fi
 }
 
-## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html
+## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html #{
 p() {
     sqlplus -L -s "/ as sysdba" <<SQL | sed -n 's/@ //p'
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
@@ -151,15 +173,19 @@ P() {
          where upper(ksppinm) like upper('%$1%');
 SQL
 }
-## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html
+## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html #}
 
-## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html
-    alias   abort='echo shutdown abort       |sqlplus -L -s / as sysdba'
-    alias   mount='echo startup mount        |sqlplus -L -s / as sysdba'
-    alias nomount='echo startup nomount quiet|sqlplus -L -s / as sysdba'
-    alias startup='echo startup quiet        |sqlplus -L -s / as sysdba'
-    alias    pmon='ps -ef | grep [p]mon'
-## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html
+## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html #{
+    alias startup='echo startup  quiet        |sqlplus -L -s / as sysdba'
+    alias startup='echo startup               |sqlplus -L    / as sysdba'
+    alias nomount='echo startup  nomount quiet|sqlplus -L -s / as sysdba'
+    alias nomount='echo startup  nomount      |sqlplus -L    / as sysdba'
+    alias   mount='echo startup  mount        |sqlplus -L    / as sysdba'
+    alias   abort='echo shutdown abort        |sqlplus -L    / as sysdba'
+    alias   immed='echo shutdown immediate    |sqlplus -L    / as sysdba'
+    alias    pmon='ps -ef | egrep [sp]mon'
+## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html #}
 
-# vim: ft=sh:
+
+# vim: ft=sh foldlevel=0:
 
