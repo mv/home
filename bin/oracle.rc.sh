@@ -55,8 +55,9 @@ ldpathadd ${ORACLE_HOME}/rdbms/lib
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
 
-sqlpathadd ${ORACLE_BASE}/sql
 sqlpathadd /work/mvdba/sql
+sqlpathadd ${ORACLE_BASE}/sql
+sqlpathadd ${ORACLE_BASE}/scripts
 # }
 
 export PATH
@@ -131,6 +132,28 @@ alias  valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.
 alias sqlplus='sqlplus -L '
 alias  sysdba='sqlplus / as sysdba'
 alias sysoper='sqlplus / as sysoper'
+
+function sqlplus() {
+    # http://www.oracledba.ru/notes_sqlplus_readline_en.html
+    if which rlwrap 2>&1 > /dev/null
+    then
+        echo ; echo "rlwrap loaded...."
+        rlwrap $ORACLE_HOME/bin/sqlplus $@
+#       rlwrap -b '' -f ~/sql/sqlplus.dict $ORACLE_HOME/bin/sqlplus $@
+    else
+        $ORACLE_HOME/bin/sqlplus $@
+    fi
+}
+
+function rman() {
+    if which rlwrap 2>&1 > /dev/null
+    then
+        echo ; echo "rlwrap loaded...."
+        rlwrap $ORACLE_HOME/bin/rman $@
+    else
+        $ORACLE_HOME/bin/rman $@
+    fi
+}
 
 function tnsping() {
     if [ "$2" ]
