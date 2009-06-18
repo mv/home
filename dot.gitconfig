@@ -22,6 +22,7 @@
         lp    = log -p
         si    = submodule init
         su    = submodule update
+        ss    = submodule status
         ps    = git push
         pl    = git push
 
