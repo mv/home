@@ -4,14 +4,7 @@
 ### mvf
 ### macos:~/.bashrc
 
-# Bash Options {
-#hopt -s ignoreeof        # ignore CTRL-D at prompt
-shopt -s  cdspell         # corrects dir names
-export HISTIGNORE='&:ls:lr:ll:[bf]g'
-export HISTCONTROL='ignoredups:erasedups'
-# }
-
-# *PATH
+# *PATH {
 [ -x /bin/egrep     ] && EGREP=/bin/egrep
 [ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
 
@@ -73,13 +66,9 @@ manpathadd /Developer/usr/share/man
 manpathadd /usr/share/man
 
 export PATH LD_LIBRARY_PATH MANPATH
+# }
 
-# Interactive operation...
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-
-# Default to human readable figures
+# Volumes {
 alias df='df -h'
 alias du='du -h'
 
@@ -87,10 +76,9 @@ if which column > /dev/null
 then
     alias mount='mount | column -t'
 fi
+# }
 
-alias less='less -r'                    # raw control characters
-alias grep='egrep --color'              # show differences in colour
-
+# ls {
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias ls='ls -AFhG'
@@ -98,25 +86,29 @@ case `uname -s` in
     Linux)
         alias ls='ls -AFh --color=auto --time-style=long-iso'
         # bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
-        eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
+        # eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
         ;;
     *)
         alias ls='ls -AF'
         ;;
 esac
 
-[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto'
+[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto --time-style=long-iso'
 
-alias  ll='ls -l'                       # long list
-alias  lr='ls -ltr'                     # long list
-alias  la='ls -A'                       # all but . and ..
-alias   l='/bin/ls'
+alias ll='ls -l'                       # long list
+alias lr='ls -ltr'                     # long list
+alias la='ls -A'                       # all but . and ..
+alias  l='/bin/ls'
+export LS_COLORS='*sql=33:*log=93:*buf=31'
+# }
 
-alias rehash='source ~/.bashrc'
+# Dir/files {
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
 
-# dir/files
-function c  {
-    cd "$1" && ls
+function cd  {
+    builtin cd "$1" && ls
 }
 function mkcd  {
     mkdir -p "$1" && cd "$1"
@@ -134,17 +126,14 @@ alias     kf='find . -type f | wc -l'
 alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; done'
 alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
 
-alias mvhome='cd ~/Work/mv_home'
-alias  mvvim='cd ~/Work/mv_vim'
-alias  mvdba='cd ~/Work/mvdba'
-
-alias  env='env | sort'
+alias env='env | sort'
 alias     path='IFS=: && for f in $PATH; do echo $f; done'
 alias   ldpath='IFS=: && for f in $LD_LIBRARY_PATH; do echo $f; done'
 alias dyldpath='IFS=: && for f in $DYLD_LIBRARY_PATH; do echo $f; done'
 alias  manpath='IFS=: && for f in $MANPATH; do echo $f; done'
+# }
 
-# net & processes
+# Net & processes {
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias   netr='netstat -rn -f inet'
@@ -179,11 +168,12 @@ case `uname -s` in
 esac
 
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
-alias   ifca='ifconfig -a'
 
-function hcount {
-    [ "$1" ] && _line=$1 || _line=10
-    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -${_line}
+function ifconfig {
+    if [ "$1" ]
+    then /sbin/ifconfig $1
+    else /sbin/ifconfig -a
+    fi
 }
 
 function psg {
@@ -193,17 +183,9 @@ function psg {
     fi
 }
 
-function psga {
-    if [ "$1" ] ; then ps -ef | grep -v grep | grep "$1" | awk '{print $2}'
-    fi
-}
+# }
 
-function psgk {
-    if [ "$1" ] ; then ps -ef | grep -v grep | grep "$1" | awk '{print $2}' | xargs kill
-    fi
-}
-
-# vcs
+# Version control {
 [ `which svn 2> /dev/null` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
 [ `which svk 2> /dev/null` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
 
@@ -220,19 +202,22 @@ then
     alias gitk='gitk --all &'
     alias gitclean='git remote prune origin && git remote update'
 fi
+# }
 
-
-# Others
+# Others {
 alias dtfile='date "+%Y-%m-%d_%H%M"'
 alias  dtiso='date "+%Y-%m-%d %X"'
 alias  dtdns='date "+%Y%m%d%H%M%S"'
+alias   less='less -r'                    # raw control characters
+alias   grep='egrep --color'              # show differences in colour
+# }
 
-# vim
+# Vim {
 export EDITOR=vim
 
 case `uname -s` in
     Darwin)
-        #lias   vi='~/App/MacVim.app/Contents/MacOS/Vim'
+        alias   vi='/usr/bin/vim'
         alias  vim='~/App/MacVim.app/Contents/MacOS/Vim'
         alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
         alias tvim='~/App/MacVim.app/Contents/MacOS/Vim --remote-tab'
@@ -243,20 +228,41 @@ case `uname -s` in
         export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
         ;;
     *)
-        export MANPAGER="col -b | view  -c 'set ft=man nomod nolist' -"
+        alias vi=vim
+        export MANPAGER="col -b | view  -c 'setspool ft=man nomod nolist' -"
         ;;
 esac
 
 [ -f ~/auth/webco.bfa ] && alias auth='vim ~/auth/webco.bfa'
+# }
 
-# Externals
+# Bash Options {
+#hopt -s ignoreeof        # ignore CTRL-D at prompt
+shopt -s  cdspell         # corrects dir names
+
+export CDPATH=~:/work:/public
+export HISTIGNORE='&:ls:lr:ll:[bf]g'
+export HISTCONTROL='ignoredups:erasedups'
+
+function hcount {
+    [ "$1" ] && _line=$1 || _line=10
+    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -${_line}
+}
+
+alias rehash='source ~/.bashrc'
+set -o vi
+
+# }
+
+# Externals {
   [ -f /opt/local/etc/bash_completion          ] && source /opt/local/etc/bash_completion
   [ -f /opt/local/etc/profile.d/cdargs-bash.sh ] && source /opt/local/etc/profile.d/cdargs-bash.sh
 
 # [ -f ~/bin/git-completion.sh        ] && source ~/bin/git-completion.sh
   [ -f ~/bin/oracle.rc.sh             ] && source ~/bin/oracle.rc.sh
+# }
 
-
+# Prompt {
 # Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
@@ -265,11 +271,6 @@ esac
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #   \[\e[01;36m\]
 
-# ls
-# [ -z "$LS_COLORS" ] && LS_COLORS=$LS_COLORS:'*sql=33:*log=93:*buf=31' || LS_COLORS='*sql=33:*log=93:*buf=31'
-export LS_COLORS='*sql=33:*log=93:*buf=31'
-
-# Prompt
 # export yellow="\[\e[01;33m\]"
 # export  white="\[\e[01;37m\]"
 # export   cyan="\[\e[01;36m\]"
@@ -286,8 +287,9 @@ export PS1='\u@\h:\w\n\$ '
   type __git_ps1 2>/dev/null 1>/dev/null && \
   type __ora_ps1 2>/dev/null 1>/dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 export PS1
+# }
 
-set -o vi
+umask 002
 
-# vim: ft=sh:
+# vim: ft=sh foldlevel=0:
 
