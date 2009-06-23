@@ -155,6 +155,16 @@ function rman() {
     fi
 }
 
+function lsnr() {
+    if which rlwrap 2>&1 > /dev/null
+    then
+        echo ; echo "rlwrap loaded...."
+        rlwrap $ORACLE_HOME/bin/lsnrctl $@
+    else
+        $ORACLE_HOME/bin/lsnrctl $@
+    fi
+}
+
 function tnsping() {
     if [ "$2" ]
     then $ORACLE_HOME/bin/tnsping $1 $2
