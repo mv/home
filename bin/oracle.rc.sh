@@ -39,6 +39,10 @@ sqlpathadd () {
     fi
 }
 
+alias     path='IFS=: && echo path     ; for f in $PATH             ; do echo "    $f"; done'
+alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo "    $f"; done'
+alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
+
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
