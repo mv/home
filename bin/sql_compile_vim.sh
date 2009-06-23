@@ -8,14 +8,19 @@
 #     autocmd BufRead *sql set efm=%E%l/%c%m,%C%m,%Z
 #
 
-export DYLD_LIBRARY_PATH=/u01/app/oracle/product/10.2.0.4/db_1/lib
-export LD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
+cat <<CAT
 
-# echo "1: $1" ;echo "2: $2" ;exit 99
+Params:
+    1: $1
+    2: $2
+CAT
+# exit 99
+
+source ~/bin/oracle.rc.sh
 
 [ -z "$2" ] && connect=$( cat ~/config/ora_connect.txt ) || connect="$2"
 
-sqlplus -s "$connect" <<SQL
+$ORACLE_HOME/bin/sqlplus -l -s "$connect" <<SQL
 
    @ "$1"
 
@@ -25,3 +30,4 @@ sqlplus -s "$connect" <<SQL
 SQL
 
 exit 0
+
