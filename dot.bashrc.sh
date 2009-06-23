@@ -84,7 +84,7 @@ case `uname -s` in
         alias ls='ls -AFhG'
         ;;
     Linux)
-        alias ls='ls -AFh --color=auto --time-style=long-iso'
+        alias ls='ls -AFh --color=auto --time-style=long-iso --group-directories-first'
         # bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
         # eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
         ;;
@@ -93,7 +93,7 @@ case `uname -s` in
         ;;
 esac
 
-[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto --time-style=long-iso'
+[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto --time-style=long-iso --group-directories-first'
 
 alias ll='ls -l'                       # long list
 alias lr='ls -ltr'                     # long list
@@ -108,7 +108,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 function cd  {
-    builtin cd "$1" && ls
+    builtin cd "$@" && ls
 }
 function mkcd  {
     mkdir -p "$1" && cd "$1"
@@ -127,13 +127,18 @@ alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; d
 alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
 
 alias env='env | sort'
-alias     path='IFS=: && for f in $PATH; do echo $f; done'
-alias   ldpath='IFS=: && for f in $LD_LIBRARY_PATH; do echo $f; done'
-alias dyldpath='IFS=: && for f in $DYLD_LIBRARY_PATH; do echo $f; done'
-alias  manpath='IFS=: && for f in $MANPATH; do echo $f; done'
+alias     path='IFS=: && echo path     ; for f in $PATH             ; do echo "    $f"; done'
+alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo "    $f"; done'
+alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
+alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
 # }
 
 # Net & processes {
+    # http://serverfault.com/questions/15365/favorite-unix-command-line-aliases
+    alias memusage='ps -o rss,command -waxc | sort -n'
+    alias rdt='rdesktop -d UOFA -g 1024x768 -u '
+    alias csort='sort | uniq -c | sort -n' # column sort/count
+
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias   netr='netstat -rn -f inet'
@@ -143,6 +148,10 @@ case `uname -s` in
 
         alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
         alias    msg='tail -f /var/log/system.log' # MacOS
+
+        alias sleep_ram='sudo pmset -a hibernatemode 0'
+        alias sleep_hdd='sudo pmset -a hibernatemode 1'
+        alias sleep_combined='sudo pmset -a hibernatemode 3'
         ;;
     SunOS)
         alias   netr='netstat -rn -f inet'
@@ -208,6 +217,7 @@ fi
 alias dtfile='date "+%Y-%m-%d_%H%M"'
 alias  dtiso='date "+%Y-%m-%d %X"'
 alias  dtdns='date "+%Y%m%d%H%M%S"'
+
 alias   less='less -r'                    # raw control characters
 alias   grep='egrep --color'              # show differences in colour
 # }
