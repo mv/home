@@ -8,7 +8,7 @@ EGREP=`which egrep`
 
 pathadd () {
     if [ -d $1 ]
-    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then PATH=$PATH:$1
               else PATH=$1:$PATH
@@ -19,7 +19,7 @@ pathadd () {
 
 ldpathadd () {
     if [ -d $1 ]
-    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
               else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
@@ -30,7 +30,7 @@ ldpathadd () {
 
 sqlpathadd () {
     if [ -d $1 ]
-    then if ! echo $SQLPATH | $EGREP -q "(^|:)$1($|:)" 
+    then if ! echo $SQLPATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
               then SQLPATH=$SQLPATH:$1
               else SQLPATH=$1:$SQLPATH
@@ -45,14 +45,28 @@ alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo " 
 
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0.4/db_1
+export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0/db_1
 export    NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
+
+## RAC #{
+_set_if() {
+    if [ -d $2 ]
+    then # eval 'export $1=$2 ; export PATH=$2/bin:$PATH'
+        eval 'export $1=$2'
+    fi
+}
+
+_set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0/asm_1
+_set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0/crs_1
+# }
 
 ### Oracle PATH's {
 pathadd ${ORACLE_BASE}/bin
 pathadd ${ORACLE_HOME}/bin
 pathadd ${ORACLE_HOME}/dcm/bin
 pathadd ${ORACLE_HOME}/opmn/bin
+pathadd ${ORACLE_CRS_HOME}/bin
+pathadd ${ORACLE_ASM_HOME}/bin
 
 ldpathadd ${ORACLE_HOME}/lib
 ldpathadd ${ORACLE_HOME}/rdbms/lib
@@ -77,8 +91,8 @@ case `uname -s` in
         ulimit -Hu 512
         ulimit -Su 512
         # Must match kern.maxfilesperproc
-        ulimit -Hn 65536 
-        ulimit -Sn 65536 
+        ulimit -Hn 65536
+        ulimit -Sn 65536
         ;;
 esac
 #}
@@ -121,22 +135,7 @@ alias  talert='tail -f $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.
 alias  valert='vim     $ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_${ORACLE_SID}.log'
 # }
 
-## RAC #{
-# _set_if() {
-#     if [ -d $2 ]
-#     then eval 'export $1=$2 ; export PATH=$2/bin:$PATH'
-#     fi
-# }
-# 
-# _set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0.4/asm_1
-# _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0.4/crs_1
-# }
-
 ## Goodies
-alias sqlplus='sqlplus -L '
-alias  sysdba='sqlplus / as sysdba'
-alias sysoper='sqlplus / as sysoper'
-
 function sqlplus() {
     # http://www.oracledba.ru/notes_sqlplus_readline_en.html
     if which rlwrap 2>&1 > /dev/null
@@ -160,6 +159,11 @@ function rman() {
 }
 
 function lsnr() {
+    if [ "$1" == "restart" ]
+    then
+        $ORACLE_HOME/bin/lsnrctl stop
+        $ORACLE_HOME/bin/lsnrctl start
+    fi
     if which rlwrap 2>&1 > /dev/null
     then
         echo ; echo "rlwrap loaded...."
@@ -194,9 +198,10 @@ p() {
     sqlplus -L -s "/ as sysdba" <<SQL | sed -n 's/@ //p'
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
         col name for a25
+alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 
-        select '@',name, value 
-          from v$parameter2 
+        select '@',name, value
+          from v$parameter2
          where upper(name) like upper('%$1%');
 SQL
 }
@@ -205,12 +210,16 @@ P() {
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
         col name for a25
 
-        select '@',ksppinm name,ksppstvl value 
-          from x$ksppi join x$ksppcv using (inst_id,indx) 
+        select '@',ksppinm name,ksppstvl value
+          from x$ksppi join x$ksppcv using (inst_id,indx)
          where upper(ksppinm) like upper('%$1%');
 SQL
 }
 ## http://laurentschneider.com/wordpress/2006/05/set-my-oracle_home-path-oracle_sid.html #}
+
+alias sqlplus='sqlplus -L '
+alias  sysdba='sqlplus / as sysdba'
+alias sysoper='sqlplus / as sysoper'
 
 ## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html #{
     alias startup='echo startup  quiet        |sqlplus -L -s / as sysdba'
@@ -223,6 +232,8 @@ SQL
     alias    pmon='ps -ef | egrep [sp]mon'
 ## http://laurentschneider.blogspot.com/2006/05/ocm-preparation.html #}
 
+alias  ps1="export PS1='\u@\h:\w\n\$ '"
+export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 
 # vim: ft=sh foldlevel=0:
 
