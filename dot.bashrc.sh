@@ -250,7 +250,7 @@ esac
 #hopt -s ignoreeof        # ignore CTRL-D at prompt
 shopt -s  cdspell         # corrects dir names
 
-export CDPATH=~:/work:/public
+export CDPATH=.:~:/work:/public
 export HISTIGNORE='&:ls:lr:ll:[bf]g'
 export HISTCONTROL='ignoredups:erasedups'
 
