@@ -42,11 +42,14 @@ sqlpathadd () {
 alias     path='IFS=: && echo path     ; for f in $PATH             ; do echo "    $f"; done'
 alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo "    $f"; done'
 alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
+alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 
 export ORACLE_SID=orcl
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=${ORACLE_BASE}/product/10.2.0/db_1
-export    NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
+
+export NLS_LANG='AMERICAN_AMERICA.WE8ISO8859P1'
+export NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
 
 ## RAC #{
 _set_if() {
@@ -198,11 +201,13 @@ p() {
     sqlplus -L -s "/ as sysdba" <<SQL | sed -n 's/@ //p'
         set echo off lin 9999 trimsp on feedb off head off pages 0 tab off
         col name for a25
-alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 
-        select '@',name, value
-          from v$parameter2
-         where upper(name) like upper('%$1%');
+        select '@',name, value from v$parameter2 where upper(name) like upper('%$1%');
+
+        SELECT name,value,'MEMORY' as scope FROM v$parameter   upper(name) like upper('%$1%')
+        UNION
+        SELECT name,value,'SPFILE' as scope FROM v$spparameter upper(name) like upper('%$1%');
+
 SQL
 }
 P() {
