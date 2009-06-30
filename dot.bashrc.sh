@@ -250,8 +250,8 @@ esac
 #hopt -s ignoreeof        # ignore CTRL-D at prompt
 shopt -s  cdspell         # corrects dir names
 
-export CDPATH=.:~:/work:/public
-export HISTIGNORE='&:ls:lr:ll:[bf]g'
+export CDPATH=.:~:/work:/work/mvdba:/work/webcointernet:/public
+export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
 export HISTCONTROL='ignoredups:erasedups'
 
 function hcount {
