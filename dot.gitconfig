@@ -37,3 +37,7 @@
 [push]
         default = matching
 
+# http://www.tpope.net/node/109
+[diff "ruby"]
+	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+
