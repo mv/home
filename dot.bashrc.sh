@@ -201,7 +201,7 @@ function psg {
 if which git > /dev/null
 then
     alias  gb='git branch'
-    alias gba='git branch -a'
+    alias gba='git branch -a -v'
     alias  gc='git commit -v'
     alias gpp='git pull && git push'
     alias  gp='git pull'
@@ -210,6 +210,24 @@ then
 
     alias gitk='gitk --all &'
     alias gitclean='git remote prune origin && git remote update'
+
+function git-new-branch() {
+    [ -z "$1" ] && return
+    set -x
+    git push origin origin:refs/heads/$1
+    git checkout --track -b $1 origin/$1
+    set +x
+}
+
+function git-rm-branch() {
+    [ -z "$1" ] && return
+    set -x
+    git checkout master
+    git branch -d           $1
+    git branch -d -r origin/$1
+    set +x
+}
+
 fi
 # }
 
