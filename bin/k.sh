@@ -17,6 +17,8 @@
 filename=$( awk '{print $3}' $1 )
 
 file="${filename}_${keytype}.pub"
-echo "Creating $file ..."
+echo
+echo "Creating [$file] ..."
+echo
 /bin/cp "$1" ${file}
 
