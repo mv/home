@@ -64,8 +64,8 @@ _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0/crs_1
 # }
 
 ### Oracle PATH's {
-pathadd ${ORACLE_BASE}/bin
 pathadd ${ORACLE_HOME}/bin
+pathadd ${ORACLE_BASE}/bin
 pathadd ${ORACLE_HOME}/dcm/bin
 pathadd ${ORACLE_HOME}/opmn/bin
 pathadd ${ORACLE_CRS_HOME}/bin
