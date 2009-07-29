@@ -41,29 +41,28 @@ manpathadd () {
     fi
 }
 
-PATH=~/bin
-pathadd /usr/local/bin
-pathadd /usr/local/sbin
-pathadd /opt/local/bin
-pathadd /opt/local/sbin
-pathadd /opt/local/lib/mysql5/bin
-pathadd /Developer/usr/bin
-pathadd /Developer/usr/sbin
-pathadd /bin
-pathadd /sbin
-pathadd /usr/bin
-pathadd /usr/sbin
-pathadd /usr/X11/bin
+PATH=/opt/local/bin
+pathadd /opt/local/sbin             after
+pathadd /opt/local/lib/mysql5/bin   after
+pathadd /usr/local/bin              after
+pathadd /usr/local/sbin             after
+pathadd /Developer/usr/bin          after
+pathadd /Developer/usr/sbin         after
+pathadd /bin                        after
+pathadd /sbin                       after
+pathadd /usr/bin                    after
+pathadd /usr/sbin                   after
+pathadd /usr/X11/bin                after
 
-LD_LIBRARY_PATH=/usr/local/lib
-ldpathadd /usr/local/apache/lib
-ldpathadd /usr/local/BerkeleyDB.4.6/lib
-ldpathadd /opt/local/lib
+LD_LIBRARY_PATH=/opt/local/lib
+ldpathadd /usr/local/apache/lib         after
+ldpathadd /usr/local/BerkeleyDB.4.6/lib after
+ldpathadd /usr/local/lib                after
 
-MANPATH=/usr/local/share/man
-manpathadd /opt/local/share/man
-manpathadd /Developer/usr/share/man
-manpathadd /usr/share/man
+MANPATH=/opt/local/share/man
+manpathadd /usr/local/share/man         after
+manpathadd /Developer/usr/share/man     after
+manpathadd /usr/share/man               after
 
 export PATH LD_LIBRARY_PATH MANPATH
 # }
@@ -177,6 +176,10 @@ case `uname -s` in
 esac
 
 alias sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
+alias   nmap='sudo nmap -v -A'
+alias  nmap0='sudo nmap -v -A -P0'
+
+which rlwrap > /dev/null && alias nslookup='rlwrap nslookup'
 
 function ifconfig {
     if [ "$1" ]
@@ -229,6 +232,17 @@ function git-rm-branch() {
 }
 
 fi
+# }
+
+# Devel {
+
+function tags() {
+    if [ -z "$1" ]
+    then ctags --verbose --recurse
+    else ctags --verbose --recurse --languages=$1
+    fi
+}
+
 # }
 
 # Others {
