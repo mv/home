@@ -76,7 +76,7 @@ ldpathadd ${ORACLE_HOME}/rdbms/lib
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
 ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
 
-sqlpathadd /work/mvdba/sql
+sqlpathadd /work/mv-dba/sql
 sqlpathadd ${ORACLE_BASE}/sql
 sqlpathadd ${ORACLE_BASE}/scripts
 # }
