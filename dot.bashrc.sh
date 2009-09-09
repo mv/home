@@ -207,12 +207,23 @@ then
     alias gba='git branch -a -v'
     alias  gc='git commit -v'
     alias gpp='git pull && git push'
-    alias  gp='git pull'
+    alias gpl='git pull'
+    alias gps='git push'
+    alias  gp='git push'
     alias gst='git status'
     alias  gd='git diff | vim -'
 
     alias gitk='gitk --all &'
     alias gitclean='git remote prune origin && git remote update'
+
+function git-add() {
+    [ -z "$1" ] && return
+    set -x
+    git add "$1"
+    git commit -m 'Added.'
+    git push
+    set +x
+}
 
 function git-new-branch() {
     [ -z "$1" ] && return
@@ -304,6 +315,36 @@ set -o vi
   [ -f ~/bin/oracle.rc.sh             ] && source ~/bin/oracle.rc.sh
 # }
 
+# MacOS Tab Name {
+function set_window_and_tab_title {
+    local title="$1"
+    if [[ -z "$title" ]]; then
+        title="root"
+    fi
+
+    local tmpdir=/tmp/cache/${FUNCNAME}_temp
+    local cmdfile="$tmpdir/$title"
+
+    # Set window title
+    echo -n -e "\e]0;${title}\a"
+
+    # Set tab title
+    if [[ -n ${CURRENT_TAB_TITLE_PID:+1} ]]; then
+        kill $CURRENT_TAB_TITLE_PID
+    fi
+    mkdir -p $tmpdir
+    ln /bin/sleep "$cmdfile"
+    "$cmdfile" 10 &
+    CURRENT_TAB_TITLE_PID=$(jobs -x echo %+)
+    disown %+
+    kill -STOP $CURRENT_TAB_TITLE_PID
+    command rm -f "$cmdfile"
+}
+
+PROMPT_COMMAND='set_window_and_tab_title "${PWD##*/}"'
+
+# }
+
 # Prompt {
 # Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
@@ -329,6 +370,10 @@ export PS1='\u@\h:\w\n\$ '
   type __git_ps1 2>/dev/null 1>/dev/null && \
   type __ora_ps1 2>/dev/null 1>/dev/null && export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 export PS1
+# }
+
+# ABD {
+alias sshroot='ssh -p 5022 -l root '
 # }
 
 umask 002
