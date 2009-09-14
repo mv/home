@@ -125,6 +125,9 @@ alias     kf='find . -type f | wc -l'
 alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; done'
 alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
 
+alias rmsvn='find . -type d -name .svn      | xargs rm -rf'
+alias rmdst='find . -type f -name .DS_Store | xargs rm -f'
+
 alias env='env | sort'
 alias     path='IFS=: && echo path     ; for f in $PATH             ; do echo "    $f"; done'
 alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo "    $f"; done'
