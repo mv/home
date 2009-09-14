@@ -17,7 +17,7 @@ lndir() {
     ln -s $1 $2
 }
 
-DIR=~/Work/mv_home
+DIR=~/work/mv-home
 
 lnfile ${DIR}/dot.bashrc.sh    ~/.bashrc
 lnfile ${DIR}/dot.profile.sh   ~/.profile
@@ -25,6 +25,7 @@ lnfile ${DIR}/dot.gitconfig    ~/.gitconfig
 lnfile ${DIR}/dot.gitignore    ~/.gitignore
 lnfile ${DIR}/dot.gitk         ~/.gitk
 lnfile ${DIR}/dot.caprc        ~/.caprc
+lnfile ${DIR}/dot.hgrc         ~/.hgrc
 
 lndir  ${DIR}/bin              ~/bin
 

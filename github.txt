@@ -1,23 +1,43 @@
 
-Private: git@github.com:mv/home.git
+NewBranch: # {
+
+    # git@github.com:mv/home.git
 
     git remote add origin git@github.com:mv/home.git
-    git push origin new-branch
-    git push
+    git push origin "[new-branch]"
+
+}
 
 
-Public: git://github.com/mv/home.git
+git clone ssh://git@github.com/mv
 
-    git clone git://github.com/mv/home.git
+    git config --global user.name "Marcus Vinicius Ferreira"
+    git config --global user.email ferreira.mv@gmail.com
+    git config --global github.user mv
+    git config --global github.token b2578f3f3901d24fabc5d1780d54516e
 
+    codework
+    home
+    vim
 
-Show:
-    git remote show origin
+git clone ssh://git@github.com/mvdba
 
+    git config --global user.name "Marcus Vinicius Ferreira"
+    git config --global user.email marcus_ferreira@yahoo.com
+    git config --global github.user mvdba
+    git config --global github.token e4bc8bea4158b67275c5b9b6f79b105a
 
-alias:
-    alias github='git push git@github.com:mv/home.git'
+    adp2
+    db-consolid
+    dba
 
+    nagios
+    check_oracle_health
 
-# vim: ft=text #
+        Ref:
+            http://www.consol.de/fileadmin/opensource/Nagios/check_oracle_health-1.6.2.tar.gz
+            http://www.consol.com/opensource/nagios/
+ 
+
+# vim: ft=text :#
 
