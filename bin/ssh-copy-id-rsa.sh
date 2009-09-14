@@ -18,5 +18,5 @@ exit 1
 }
 
 set -x
-cat ~/.ssh/id_rsa.pub | ssh $1 "cat - >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh -p 5022 $1 "cat - >> ~/.ssh/authorized_keys"
 
