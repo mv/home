@@ -242,7 +242,7 @@ alias  abdh1='~/bin/mvdba.sh ~/config/ora-mvdba-abdh1.txt'
 alias  abdh2='~/bin/mvdba.sh ~/config/ora-mvdba-abdh2.txt'
 alias abdps1='~/bin/mvdba.sh ~/config/ora-mvdba-abdps1.txt'
 alias abdps2='~/bin/mvdba.sh ~/config/ora-mvdba-abdps2.txt'
-alias  dev01='~/bin/mvdba.sh ~/config/ora-system-dev01.txt'
+alias  dev01='~/bin/mvdba.sh ~/config/ora-mvdba-dev01.txt'
 # }
 
 alias  ps1="export PS1='\u@\h:\w\n\$ '"
