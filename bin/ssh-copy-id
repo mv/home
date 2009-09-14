@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Ref: http://anoncvs.mindrot.org/index.cgi/openssh/contrib/ssh-copy-id?view=markup
+
 # Shell script to install your public key on a remote machine
 # Takes the remote machine name as an argument.
 # Obviously, the remote machine must accept password authentication,
