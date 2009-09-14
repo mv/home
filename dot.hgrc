@@ -1,0 +1,42 @@
+[ui]
+username = Marcus Vinicius Ferreira <ferreira.mv@gmail.com>
+
+[extensions]
+# prompt = /Users/lsdr/Sources/hg/hg-prompt/prompt.py
+# hgshelve = /Users/lsdr/Sources/hg/hgshelve/hgshelve.py
+color =
+
+[alias]
+cm = commit
+st = status
+log = log -l 7
+
+# [color]
+# status.modified = blue bold underline red_background
+# status.modified = magenta bold
+# status.modified = magenta
+# status.added = green bold
+# status.removed = red bold blue_background
+# status.deleted = cyan bold underline
+# status.deleted = cyan
+# status.unknown = magenta bold underline
+# status.unknown = blue bold
+# status.ignored = black bold
+# 
+# # status.clean = none
+# # status.copied = none
+# 
+# qseries.applied = blue bold underline
+# qseries.unapplied = black bold
+# qseries.missing = red bold
+# 
+# diff.diffline = bold
+# diff.extended = cyan bold
+# diff.file_a = red bold
+# diff.file_b = green bold
+# diff.hunk = magenta
+# diff.deleted = red
+# diff.inserted = green
+# diff.changed = white
+# diff.trailingwhitespace = bold red_background
+
