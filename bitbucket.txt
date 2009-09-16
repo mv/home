@@ -1,0 +1,47 @@
+
+
+hg clone ssh://hg@bitbucket.org/mv/
+hg clone ssh://hg@bitbucket.org/mvdba/
+
+mv/priv {
+    config/
+    tns/
+    hosts/
+        abd
+        mvdba.lan
+    cap/
+        abd
+    pass
+}
+
+mv/cursos {
+    mm-openldap
+    mm-ruby
+}
+
+mvdba/legacy {
+    adp1/
+    acs/
+        greeenline,griffo,edinfor,sinacor,gaudi
+    mdias/
+    atg-crisanto
+}
+
+
+Quickstart
+
+    $ hg clone http://bitbucket.org/mv/cursos/
+    ...
+    $ hg pull -u # to pull changes and update
+    $ hg push # to push changes to this repo
+
+Import existing data?
+
+    $ cd /path/to/existing/hg/repo/
+    $ hg push http://bitbucket.org/mv/cursos/
+
+Prefer SSH?
+
+    $ hg clone ssh://hg@bitbucket.org/mv/cursos/
+    $ hg push ssh://hg@bitbucket.org/mv/cursos/
+
