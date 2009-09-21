@@ -9,7 +9,7 @@
 ###
   [  -f  ~/bin/bashrc.path.sh          ]  &&  .       ~/bin/bashrc.path.sh
 
-  [  -f  ~/bin/bashrc.cmd-utils.sh     ]  &&  .       ~/bin/bashrc.cmd-utils.sh
+  [  -f  ~/bin/bashrc.alias.sh         ]  &&  .       ~/bin/bashrc.alias.sh
   [  -f  ~/bin/bashrc.dev.sh           ]  &&  .       ~/bin/bashrc.dev.sh
   [  -f  ~/bin/bashrc.du-utils.sh      ]  &&  .       ~/bin/bashrc.du-utils.sh
   [  -f  ~/bin/bashrc.filedir.sh       ]  &&  .       ~/bin/bashrc.filedir.sh
@@ -22,6 +22,7 @@
   [  -f  ~/bin/oracle.alias.rc.sh      ]  &&  source  ~/bin/oracle.alias.rc.sh
 # [  -f  ~/bin/bashrc.oracle.r11i.sh   ]  &&  source  ~/bin/bashrc.oracle.r11i.sh
 
+  [  -f  ~/bin/bashrc.perl.sh          ]  &&  .       ~/bin/bashrc.perl.sh
   [  -f  ~/bin/bashrc.job-abd.sh       ]  &&  .       ~/bin/bashrc.job-abd.sh
 
 ###
