@@ -1,0 +1,1 @@
+/work/codework/synergy/synergy-server.sh
