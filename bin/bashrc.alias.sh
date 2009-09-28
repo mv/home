@@ -14,10 +14,12 @@ alias  dtdns='date "+%Y%m%d%H%M%S"'
 
 alias  csort='sort | uniq -c | sort -n' # column sort/count
 
-alias    h='fc -l'
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+alias    h='history'
 function hcount {
     [ "$1" ] && _line=$1 || _line=10
-    history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -${_line}
+  # history | awk '{a[$2]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
+    history | awk '{a[$4]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
 }
 
 # vim: ft=sh:
