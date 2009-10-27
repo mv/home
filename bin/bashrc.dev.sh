@@ -28,15 +28,15 @@ function git-add() {
     set -x
     git add "$1"
     git commit -m 'Added.'
-    git push
+#   git push
     set +x
 }
 
 function git-new-branch() {
     [ -z "$1" ] && return
     set -x
-    git push origin origin:refs/heads/$1
-    git checkout --track -b $1 origin/$1
+    git push origin $1:refs/heads/$1
+#   git checkout --track -b $1 origin/$1
     set +x
 }
 
