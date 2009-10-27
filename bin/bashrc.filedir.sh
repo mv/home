@@ -24,8 +24,8 @@ alias    chd='find . -type d -exec chmod 775 {} \;'
 alias    chf='find . -type f -exec chmod 664 {} \;'
 alias     kd='find . -type d | wc -l'
 alias     kf='find . -type f | wc -l'
-alias kountd='for f in *; do printf "%30s %5d\n" $f `find $f -type d | wc -l`; done'
-alias kountf='for f in *; do printf "%30s %5d\n" $f `find $f -type f | wc -l`; done'
+alias kountd='for f in *; do printf "%40s %9d\n" $f `find $f -type d | wc -l`; done'
+alias kountf='for f in *; do printf "%40s %9d\n" $f `find $f -type f | wc -l`; done'
 
 # vim: ft=sh:
 
