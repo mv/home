@@ -36,6 +36,7 @@
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
 shopt -s cdspell          # corrects dir names
+shopt -s cdable_vars      # enable 'cd mydir' for 'cd $mydir'
 shopt -s cmdhist          # saves multines in one history line
 shopt -s mailwarn         # check mailfile
 
