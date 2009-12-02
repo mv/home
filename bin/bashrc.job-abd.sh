@@ -8,6 +8,8 @@
 alias sshroot='ssh -p 5022 -l root'
 alias  sshabd='ssh -p 5022'
 alias  scpabd='scp -P 5022'
+alias   sshgw='ssh -t gategw'
+alias   sshxp='ssh -t gatexp'
 
 # if which autossh 2>&1 > /dev/null
 # then
