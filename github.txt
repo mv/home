@@ -9,24 +9,49 @@ NewBranch: # {
 }
 
 
-git clone ssh://git@github.com/mv
-
+###
+### user mv
+###
     git config --global user.name "Marcus Vinicius Ferreira"
     git config --global user.email ferreira.mv@gmail.com
     git config --global github.user mv
     git config --global github.token b2578f3f3901d24fabc5d1780d54516e
 
+### ssh config
+Host githubmv
+     User git
+     Port 22
+     Hostname github.com
+     IdentityFile ~/.ssh/marcus_anirul_id_rsa
+     IdentitiesOnly yes
+     TCPKeepAlive yes
+
+
+git clone ssh://git@github.com:mv/codework
+git clone             githubmv:mv/codework
     codework
     home
     vim
 
-git clone ssh://git@github.com/mvdba
-
+###
+### user mvdba
+###
     git config --global user.name "Marcus Vinicius Ferreira"
     git config --global user.email marcus_ferreira@yahoo.com
     git config --global github.user mvdba
     git config --global github.token e4bc8bea4158b67275c5b9b6f79b105a
 
+### ssh config
+Host githubmvdba
+     User git
+     Port 22
+     Hostname github.com
+     IdentityFile ~/.ssh/marcus_anirul_id_dsa
+     IdentitiesOnly yes
+     TCPKeepAlive yes
+
+git clone ssh://git@github.com:mvdba/adp2.git
+git clone          githubmvdba:mvdba/adp2.git
     adp2
     db-consolid
     dba
@@ -38,6 +63,5 @@ git clone ssh://git@github.com/mvdba
             http://www.consol.de/fileadmin/opensource/Nagios/check_oracle_health-1.6.2.tar.gz
             http://www.consol.com/opensource/nagios/
  
-
-# vim: ft=text :#
+# vim: ft=text:
 
