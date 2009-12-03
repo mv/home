@@ -4,16 +4,16 @@
 ### mvf
 ### bashrc lib
 
-PERLDIR=/u01/perl
- MYPERL=${PERLDIR}/bin/perl
+DIR=/u01/perl
+APP=${DIR}/bin/perl
 
 # set -x
 if [ -x "${MYPERL}" ]
 then
-    alias perl="${MYPERL}"
-    pathadd "${PERLDIR}/bin"
-    manpathadd "${PERLDIR}/share/man"
-    manpathadd "${PERLDIR}/site_perl/man"
+    alias perl="${APP}"
+    pathadd "${DIR}/bin"
+    manpathadd "${DIR}/share/man"
+    manpathadd "${DIR}/site_perl/man"
 
     export PATH MANPATH
 
