@@ -43,7 +43,6 @@ manpathadd () {
 
 PATH=/opt/local/bin
 pathadd /opt/local/sbin             after
-pathadd /opt/local/lib/mysql5/bin   after
 pathadd /usr/local/bin              after
 pathadd /usr/local/sbin             after
 pathadd /Developer/usr/bin          after
@@ -55,8 +54,6 @@ pathadd /usr/sbin                   after
 pathadd /usr/X11/bin                after
 
 LD_LIBRARY_PATH=/opt/local/lib
-ldpathadd /usr/local/apache/lib         after
-ldpathadd /usr/local/BerkeleyDB.4.6/lib after
 ldpathadd /usr/local/lib                after
 
 MANPATH=/opt/local/share/man
@@ -71,7 +68,9 @@ alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo " 
 alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
 
-# }
+# Find In Path
+fip()  { find ${PATH//:/ } -name \*${1}\*; }
+filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
 
 # vim: ft=sh:
 

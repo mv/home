@@ -14,6 +14,8 @@ alias  dtdns='date "+%Y%m%d%H%M%S"'
 
 alias  csort='sort | uniq -c | sort -n' # column sort/count
 
+alias aliasg='alias | grep'
+
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 alias    h='history'
 function hcount {

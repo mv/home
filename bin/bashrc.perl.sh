@@ -8,7 +8,7 @@ DIR=/u01/perl
 APP=${DIR}/bin/perl
 
 # set -x
-if [ -x "${MYPERL}" ]
+if [ -x "${APP}" ]
 then
     alias perl="${APP}"
     pathadd "${DIR}/bin"

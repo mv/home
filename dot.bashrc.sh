@@ -10,20 +10,24 @@
   [  -f  ~/bin/bashrc.path.sh          ]  &&  .       ~/bin/bashrc.path.sh
 
   [  -f  ~/bin/bashrc.alias.sh         ]  &&  .       ~/bin/bashrc.alias.sh
-  [  -f  ~/bin/bashrc.dev.sh           ]  &&  .       ~/bin/bashrc.dev.sh
   [  -f  ~/bin/bashrc.du-utils.sh      ]  &&  .       ~/bin/bashrc.du-utils.sh
   [  -f  ~/bin/bashrc.filedir.sh       ]  &&  .       ~/bin/bashrc.filedir.sh
   [  -f  ~/bin/bashrc.ls.sh            ]  &&  .       ~/bin/bashrc.ls.sh
-  [  -f  ~/bin/bashrc.macosx.sh        ]  &&  .       ~/bin/bashrc.macosx.sh
-  [  -f  ~/bin/bashrc.vim.sh           ]  &&  .       ~/bin/bashrc.vim.sh
+  [  -f  ~/bin/bashrc.netproc.sh       ]  &&  .       ~/bin/bashrc.netproc.sh
   [  -f  ~/bin/bashrc.ps1.sh           ]  &&  .       ~/bin/bashrc.ps1.sh
+
+  [  -f  ~/bin/bashrc.dev.sh           ]  &&  .       ~/bin/bashrc.dev.sh
+  [  -f  ~/bin/bashrc.macosx.sh        ]  &&  .       ~/bin/bashrc.macosx.sh
+  [  -f  ~/bin/bashrc.mysql.sh         ]  &&  .       ~/bin/bashrc.mysql.sh
+  [  -f  ~/bin/bashrc.perl.sh          ]  &&  .       ~/bin/bashrc.perl.sh
+  [  -f  ~/bin/bashrc.vim.sh           ]  &&  .       ~/bin/bashrc.vim.sh
+
+  [  -f  ~/bin/bashrc.job-abd.sh       ]  &&  .       ~/bin/bashrc.job-abd.sh
 
   [  -f  ~/bin/oracle.rc.sh            ]  &&  source  ~/bin/oracle.rc.sh
   [  -f  ~/bin/oracle.alias.rc.sh      ]  &&  source  ~/bin/oracle.alias.rc.sh
 # [  -f  ~/bin/bashrc.oracle.r11i.sh   ]  &&  source  ~/bin/bashrc.oracle.r11i.sh
 
-  [  -f  ~/bin/bashrc.perl.sh          ]  &&  .       ~/bin/bashrc.perl.sh
-  [  -f  ~/bin/bashrc.job-abd.sh       ]  &&  .       ~/bin/bashrc.job-abd.sh
 
 ###
 ### Add-ons
