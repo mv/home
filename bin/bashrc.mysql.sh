@@ -16,11 +16,12 @@ then
     manpathadd "${DIR}/current/share/man"
     export PATH MANPATH
 
-#   printf "\nUsing perl [ $MYPERL ]\n\n"
-fi
-# set +x
+    alias mysql.base="cd ${DIR}         && ls -l"
+    alias mysql.home="cd ${DIR}/current && ls -l"
+    alias mysql.log=" cd ${DIR}/log     && ls -l *log"
+    alias mysql.data="cd ${DIR}/data    && ls -l"
 
-# export PERL5LIB=/work/perl/lib
+fi
 
 # vim: ft=sh:
 
