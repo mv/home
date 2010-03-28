@@ -1,0 +1,14 @@
+
+# Always sort the files
+# --sort-files
+
+# Always color, even if piping to a another program
+# --color
+
+# Use "less -r" as my pager
+# --pager=less -r
+
+# Operate on all files, regardless of type (but still skip directories like blib, CVS, etc.)
+--all
+
+
