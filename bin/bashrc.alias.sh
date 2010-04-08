@@ -24,5 +24,17 @@ function hcount {
     history | awk '{a[$4]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
 }
 
+# Auto chdir
+function preexec () {
+    if [ ! `which $BASH_COMMAND` ]                \
+    && [   `echo  $BASH_COMMAND  | wc -w` = '1' ] \
+    && [       -d $BASH_COMMAND  ]
+    then
+        cd $BASH_COMMAND
+        return 1
+    fi
+}
+
+
 # vim: ft=sh:
 
