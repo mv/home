@@ -50,6 +50,10 @@ export HISTCONTROL='ignoredups:erasedups'
 
 alias rehash='source ~/.bashrc'
 
+function gpass() {
+    grep -i -n "$1" /work/mv-priv/pass/pass.txt
+}
+
 set -o vi
 umask 002
 
