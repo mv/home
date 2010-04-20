@@ -16,6 +16,8 @@ alias  csort='sort | uniq -c | sort -n' # column sort/count
 
 alias aliasg='alias | grep'
 
+alias scpresume='rsync --partial --progress --rsh=ssh'
+
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 alias    h='history'
 function hcount {
