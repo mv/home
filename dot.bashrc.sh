@@ -33,9 +33,10 @@
 ### Add-ons
 ###
   [ -f /opt/local/etc/bash_completion          ] && source /opt/local/etc/bash_completion
+# [ -f /usr/local/etc/bash_completion          ] && source /usr/local/etc/bash_completion
   [ -f /opt/local/etc/profile.d/cdargs-bash.sh ] && source /opt/local/etc/profile.d/cdargs-bash.sh
 
-# [ -f ~/bin/git-completion.sh                 ] && source ~/bin/git-completion.sh
+  [ -f ~/bin/git-completion.sh                 ] && source ~/bin/git-completion.sh
 
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
