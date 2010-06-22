@@ -1,0 +1,30 @@
+#
+# ~/.csshrc
+#     csshX config file
+#
+
+### Global
+screen = 1
+ping_test
+ping_timeout = 3
+
+### My clusters
+clusters = veja-adm veja-db veja-ws
+veja-adm = veja-adm0[1-2]
+veja-db  = fis-db01 veja-db01 v-veja-db02
+veja-ws  = veja-ws0[1-4] fis-ws01 fis-ws02
+
+clusters = bbs bbsws bbswg brasigo live
+bbs   = bbsws bbswg
+bbsws = wsbb01 wsbb02 wsbb03
+bbswg = wgbb01 wgbb02 wgbb03
+live  = live01 live02 wsls01 wsls02
+brasigo = wsbr01 wsbr02
+
+clusters = leadplace iphone viaje
+leadplace = leadplace-0[1-4]
+iphone    = iphone-prod0[1-2]
+viaje     = viaje-ws0[1-2]
+
+# vim:ft=conf:
+
