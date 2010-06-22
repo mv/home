@@ -26,6 +26,7 @@ lnfile ${DIR}/dot.gitignore    ~/.gitignore
 lnfile ${DIR}/dot.gitk         ~/.gitk
 lnfile ${DIR}/dot.caprc        ~/.caprc
 lnfile ${DIR}/dot.hgrc         ~/.hgrc
+lnfile ${DIR}/dot.csshrc       ~/.csshrc
 
 lndir  ${DIR}/bin              ~/bin
 
