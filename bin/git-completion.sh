@@ -52,8 +52,8 @@
 #       git@vger.kernel.org
 #
 
-export PS1='[\u@\h \W$(__git_ps1 "(%s)")]\$ '
-export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
+# export PS1='[\u@\h \W$(__git_ps1 "(%s)")]\$ '
+# export PS1='\[\e]0;\w\a\]\n\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w \[\e[0m\]$(__git_ps1 "(%s)")\n\$ '
 
 case "$COMP_WORDBREAKS" in
 *:*) : great ;;
@@ -1975,3 +1975,4 @@ if [ Cygwin = "$(uname -o 2>/dev/null)" ]; then
 complete -o bashdefault -o default -o nospace -F _git git.exe 2>/dev/null \
 	|| complete -o default -o nospace -F _git git.exe
 fi
+
