@@ -45,7 +45,7 @@ shopt -s cdable_vars      # enable 'cd mydir' for 'cd $mydir'
 shopt -s cmdhist          # saves multines in one history line
 shopt -s mailwarn         # check mailfile
 
-export CDPATH=.:~:/work:/work/mv-dba:/work/webcointernet:/public
+export CDPATH=.:~:/work:/work/abd:/work/mv-dba:/work/webcointernet:/public
 export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
 export HISTCONTROL='ignoredups:erasedups'
 
