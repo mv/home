@@ -10,9 +10,9 @@ ping_timeout = 3
 
 ### My clusters
 clusters = veja-adm veja-db veja-ws
-veja-adm = veja-adm0[1-2]
-veja-db  = fis-db01 veja-db01 v-veja-db02
-veja-ws  = veja-ws0[1-4] fis-ws01 fis-ws02
+veja-adm = v-veja-adm0[1-2]
+veja-ws  = v-veja-ws0[1-4] veja-ws0[1-2]
+veja-db  = veja-db01 v-veja-db0[1-2] v-veja-ws01
 
 clusters = bbs bbsws bbswg brasigo live
 bbs   = bbsws bbswg
@@ -22,9 +22,9 @@ live  = live01 live02 wsls01 wsls02
 brasigo = wsbr01 wsbr02
 
 clusters = leadplace iphone viaje
-leadplace = leadplace-0[1-4]
-iphone    = iphone-prod0[1-2]
-viaje     = viaje-ws0[1-2]
+leadplace = v-leadplace-0[1-4]
+iphone    = v-iphone-prod0[1-2]
+viaje     = v-viaje-ws0[1-2]
 
 # vim:ft=conf:
 
