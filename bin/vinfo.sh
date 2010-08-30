@@ -16,12 +16,12 @@ then
 fi
 
 # svk
-info="$(svk info 2>/dev/null)"
-if [ "$info" ]
-then
-    printf "\nSVK Info\n--------\n"
-    svk info
-fi
+# info="$(svk info 2>/dev/null)"
+# if [ "$info" ]
+# then
+#     printf "\nSVK Info\n--------\n"
+#     svk info
+# fi
 
 # Git
 git_dir="$(git rev-parse --git-dir 2>/dev/null)"
