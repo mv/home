@@ -23,5 +23,12 @@ then
 
 fi
 
+function __mysql_ps1() {
+    if which mysql 2>/dev/null 1>/dev/null
+    then
+        echo "[mysql:$( mysql --version | awk '{print $5}' | awk -F, '{print $1}' )]"
+    fi
+}
+
 # vim: ft=sh:
 

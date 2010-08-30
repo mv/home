@@ -10,6 +10,10 @@
 
 if which git > /dev/null
 then
+
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+
     alias  gb='git branch'
     alias gba='git branch -a -v'
     alias  gc='git commit -v'
