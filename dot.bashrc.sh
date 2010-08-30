@@ -14,7 +14,6 @@
   [  -f  ~/bin/bashrc.filedir.sh       ]  &&  .       ~/bin/bashrc.filedir.sh
   [  -f  ~/bin/bashrc.ls.sh            ]  &&  .       ~/bin/bashrc.ls.sh
   [  -f  ~/bin/bashrc.netproc.sh       ]  &&  .       ~/bin/bashrc.netproc.sh
-  [  -f  ~/bin/bashrc.ps1.sh           ]  &&  .       ~/bin/bashrc.ps1.sh
 
   [  -f  ~/bin/bashrc.dev.sh           ]  &&  .       ~/bin/bashrc.dev.sh
   [  -f  ~/bin/bashrc.macosx.sh        ]  &&  .       ~/bin/bashrc.macosx.sh
@@ -28,6 +27,7 @@
   [  -f  ~/bin/oracle.alias.rc.sh      ]  &&  source  ~/bin/oracle.alias.rc.sh
 # [  -f  ~/bin/bashrc.oracle.r11i.sh   ]  &&  source  ~/bin/bashrc.oracle.r11i.sh
 
+  [  -f  ~/bin/bashrc.ps1.sh           ]  &&  .       ~/bin/bashrc.ps1.sh
 
 ###
 ### Add-ons
