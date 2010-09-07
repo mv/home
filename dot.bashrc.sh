@@ -38,6 +38,9 @@
 
   [ -f ~/bin/git-completion.sh                 ] && source ~/bin/git-completion.sh
 
+### RVM
+ [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
 shopt -s cdspell          # corrects dir names
