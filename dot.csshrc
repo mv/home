@@ -11,7 +11,7 @@ ping_timeout = 3
 ### My clusters
 clusters = veja-adm veja-db veja-ws
 veja-adm = v-veja-adm0[1-2]
-veja-ws  = v-veja-ws0[1-4] veja-ws0[1-2]
+veja-ws  = v-veja-ws0[1-4]
 veja-db  = veja-db01 v-veja-db0[1-2] v-veja-ws01
 
 clusters = bbs bbsws bbswg brasigo live
