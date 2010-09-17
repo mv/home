@@ -95,8 +95,8 @@ _set_if ORA_ASM_HOME ${ORACLE_BASE}/product/10.2.0/asm_1
 _set_if ORA_CRS_HOME ${ORACLE_BASE}/product/10.2.0/crs_1
 # }
 
-alias  ps1="export PS1='\u@\h:\w\n\$ '"
-export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
+# alias  ps1="export PS1='\u@\h:\w\n\$ '"
+# export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[01;31m\]$(__ora_ps1)\[\e[0m\]\n\$ '
 
 # vim: ft=sh foldlevel=0:
 
