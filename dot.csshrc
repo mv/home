@@ -14,6 +14,11 @@ veja-adm = v-veja-adm0[1-2]
 veja-ws  = v-veja-ws0[1-4]
 veja-db  = veja-db01 v-veja-db0[1-2] v-veja-ws01
 
+clusters = exame-adm exame-db exame-ws
+exame-adm = v-exame-adm0[1-2]
+exame-ws  = v-exame-ws0[1-4]
+exame-db  = v-exame-db0[1-2]
+
 clusters = bbs bbsws bbswg brasigo live
 bbs   = bbsws bbswg
 bbsws = wsbb01 wsbb02 wsbb03
