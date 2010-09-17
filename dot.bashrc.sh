@@ -19,6 +19,7 @@
   [  -f  ~/bin/bashrc.macosx.sh        ]  &&  .       ~/bin/bashrc.macosx.sh
   [  -f  ~/bin/bashrc.mysql.sh         ]  &&  .       ~/bin/bashrc.mysql.sh
   [  -f  ~/bin/bashrc.perl.sh          ]  &&  .       ~/bin/bashrc.perl.sh
+  [  -f  ~/bin/bashrc.rails.sh         ]  &&  .       ~/bin/bashrc.rails.sh
   [  -f  ~/bin/bashrc.vim.sh           ]  &&  .       ~/bin/bashrc.vim.sh
 
   [  -f  ~/bin/bashrc.job-abd.sh       ]  &&  .       ~/bin/bashrc.job-abd.sh
@@ -61,5 +62,8 @@ function gpass() {
 set -o vi
 umask 002
 
+[  -f  ~/bin/bashrc.ps1.sh           ]  &&  .       ~/bin/bashrc.ps1.sh
+
 # vim: ft=sh foldlevel=0:
+
 
