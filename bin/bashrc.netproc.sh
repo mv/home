@@ -15,8 +15,10 @@ function ifconfig {
 
 function psg {
     if [ "$1" ]
-    then ps -ef | \grep -v grep | grep "$1"
+    then ps -ef | \grep -v grep | egrep "$1"
+    else ps -ef | more
     fi
+    # ps wwwaux | egrep "($1|%CPU)" | grep -v grep
 }
 
 case `uname -s` in
