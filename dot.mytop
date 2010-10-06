@@ -1,0 +1,12 @@
+host=localhost
+port=3306
+db=mysql
+user=root
+pass=r00t
+delay=5
+batchmode=0
+header=1
+color=1
+idle=1
+socket=/tmp/mysql.sock
+

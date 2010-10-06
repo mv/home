@@ -1,0 +1,15 @@
+
+# no welcome message
+startup_message off
+
+# force reload of ~/.*profile
+shell -$SHELL
+
+# Enable scrollbar
+termcapinfo xterm       ti@:te@
+termcapinfo xterm-color ti@:te@
+
+# Permanent statusline
+hardstatus alwayslastline "%w"
+hardstatus alwayslastline "%{= kG}%{w}[ %{g}%H %{w}]  [ %{= kw}%?%-Lw%?%{r}|%{c}%n %f%t%?(%u)%?%{r}|%{w}%?%+Lw%?%?%= %{w}]  [%{r}  %d-%m-%Y %{y}%c:%s %{w}]"
+
