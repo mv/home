@@ -30,6 +30,7 @@ lnfile ${DIR}/dot.csshrc       ~/.csshrc
 lnfile ${DIR}/dot.my.cnf       ~/.my.cnf
 lnfile ${DIR}/dot.mytop        ~/.mytop
 lnfile ${DIR}/dot.screenrc     ~/.screenrc
+lnfile ${DIR}/dot.inputrc      ~/.inputrc
 
 lndir  ${DIR}/bin              ~/bin
 

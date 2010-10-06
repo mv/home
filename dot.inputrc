@@ -1,0 +1,14 @@
+
+# http://www.caliban.org/bash/
+#
+
+# <Tab> only once
+set show-all-if-ambiguous on
+
+# append ls -F codes
+set visible-stats on
+
+# vi mode
+set editing-mode vi
+set keymap vi
+
