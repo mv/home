@@ -32,6 +32,8 @@
 *.arj
 *.a[0-9][0-9]
 
+*.patch
+
 # file links at ~mv/bin/
 mate
 mvim
