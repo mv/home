@@ -19,20 +19,10 @@ lndir() {
 
 DIR=~/work/mv-home
 
-lnfile  ${DIR}/dot.bashrc.sh      ~/.bashrc
-lnfile  ${DIR}/dot.profile.sh     ~/.profile
-lnfile  ${DIR}/dot.gitattributes  ~/.gitattributes
-lnfile  ${DIR}/dot.gitconfig      ~/.gitconfig
-lnfile  ${DIR}/dot.gitignore      ~/.gitignore
-lnfile  ${DIR}/dot.gitk           ~/.gitk
-lnfile  ${DIR}/dot.caprc          ~/.caprc
-lnfile  ${DIR}/dot.hgrc           ~/.hgrc
-lnfile  ${DIR}/dot.csshrc         ~/.csshrc
-lnfile  ${DIR}/dot.my.cnf         ~/.my.cnf
-lnfile  ${DIR}/dot.mytop          ~/.mytop
-lnfile  ${DIR}/dot.screenrc       ~/.screenrc
-lnfile  ${DIR}/dot.inputrc        ~/.inputrc
-lnfile  ${DIR}/dot.irbrc          ~/.irbrc
+for f in ${DIR}/dot.*
+do
+    lnfile $f ~/.${f#*.}
+done
 
 lndir  ${DIR}/bin              ~/bin
 
