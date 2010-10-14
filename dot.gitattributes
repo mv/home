@@ -1,3 +1,13 @@
 
-*.rb diff=ruby
+# XCode project: treat as binary
+*.pbxproj -crlf -diff
+
+# MS-Word
+*.doc diff=word
+
+# Ruby code
+#*.rb diff=ruby
+
+# Images: diff on metadata
+*.png diff=exif
 
