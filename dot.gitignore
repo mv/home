@@ -21,6 +21,7 @@
 *.pid
 *swp
 *sw?
+*~
 
 *.tar
 *.[t]gz
@@ -33,4 +34,5 @@
 afiedt.buf
 sqlnet.log
 *.lst
+
 
