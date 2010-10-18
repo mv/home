@@ -3,9 +3,10 @@ require 'capistrano_colors'
 
 capistrano_color_matchers = [
     { :match => /command finished/,       :color => :hide,      :prio => 10 },
-    { :match => /executing command/,      :color => :blue,      :prio => 10, :attribute => :bright  },
-    { :match => /^transaction: commit$/,  :color => :green,     :prio => 10, :attribute => :blink   },
-    { :match => /git/,                    :color => :white,     :prio => 20, :attribute => :none    },
+    { :match => /executing command/,      :color => :blue,      :prio => 10, :attribute => :bright },
+    { :match => /^transaction: commit$/,  :color => :red,       :prio => 10, :attribute => :blink  },
+    { :match => /^servers:/,              :color => :cyan,      :prio => 10, :attribute => :bright },
+    { :match => /git/,                    :color => :red,       :prio => 20, :attribute => :bright },
 ]
 
 colorize( capistrano_color_matchers )
