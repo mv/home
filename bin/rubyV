@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Just like perl -V
+#
+# 2010/10
+#
+
+
+ruby --version
+echo
+ruby --copyright
+echo
+
+echo "LIB_PATH:"
+echo
+ruby -e "puts $:"
+
+
