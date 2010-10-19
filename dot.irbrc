@@ -2,12 +2,12 @@
 # ~/.irbrc
 #
 
-require 'irb/completion'
-
 require 'rubygems'
 require 'utility_belt'
 
 ### Ref: Programming Ruby, by Dave Thomas
+
+require 'irb/completion'
 
 IRB.conf[:PROMPT][:MY_PROMPT] = { 
   :PROMPT_I => "%N (%m): %03n:%i > ",
