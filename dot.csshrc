@@ -9,16 +9,18 @@ ping_test
 ping_timeout = 3
 
 ### My clusters
-clusters = veja-adm veja-db veja-ws veja-ws2
-veja-db  = veja-db01 v-veja-db0[1-2] v-veja-ws01
+clusters = veja-adm veja-db veja-ws veja-all veja-ws2
+veja-db  = veja-db01 v-veja-db0[1-2]
 veja-adm = v-veja-adm0[1-2]
 veja-ws  = v-veja-ws0[1-4]
+veja-all = v-veja-ws0[1-4] v-veja-adm0[1-2] veja-db01 v-veja-db0[1-2]
 veja-ws2 = v-veja-ws0[5-8]
 
-clusters = exame-adm exame-db exame-ws
+clusters = exame-adm exame-db exame-ws exame-all
 exame-adm = v-exame-adm0[1-2]
 exame-ws  = v-exame-ws0[1-4]
 exame-db  = v-exame-db0[1-2]
+exame-all = v-exame-db0[1-2] v-exame-ws0[1-4] v-exame-adm0[1-2]
 
 clusters = bbs bbsws bbswg brasigo live
 bbs   = bbsws bbswg
