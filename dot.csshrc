@@ -34,5 +34,11 @@ leadplace = v-leadplace-0[1-4]
 iphone    = v-iphone-prod0[1-2]
 viaje     = v-viaje-ws0[1-2]
 
+clusters = moncgu
+moncgu = v-moncgu-app0[1-2]
+
+clusters = cacti
+cacti = v-cacti-0[1-2]
+
 # vim:ft=conf:
 
