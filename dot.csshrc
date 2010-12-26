@@ -16,11 +16,12 @@ veja-ws  = v-veja-ws0[1-4]
 veja-all = v-veja-ws0[1-4] v-veja-adm0[1-2] veja-db01 v-veja-db0[1-2]
 veja-ws2 = v-veja-ws0[5-8]
 
-clusters = exame-adm exame-db exame-ws exame-all
+clusters = exame-adm exame-db exame-ws exame-all exame-prod
 exame-adm = v-exame-adm0[1-2]
 exame-ws  = v-exame-ws0[1-4]
 exame-db  = v-exame-db0[1-2]
 exame-all = v-exame-db0[1-2] v-exame-ws0[1-4] v-exame-adm0[1-2]
+exame-prod = v-exame-prod0[1-2]
 
 clusters = bbs bbsws bbswg brasigo live
 bbs   = bbsws bbswg
