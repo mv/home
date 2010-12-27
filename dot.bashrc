@@ -33,18 +33,10 @@
 ###
 ### Add-ons
 ###
-  [ -f /opt/local/etc/bash_completion          ] && source /opt/local/etc/bash_completion
-# [ -f /usr/local/etc/bash_completion          ] && source /usr/local/etc/bash_completion
-  [ -f /opt/local/etc/profile.d/cdargs-bash.sh ] && source /opt/local/etc/profile.d/cdargs-bash.sh
-
-  [ -f ~/bin/git-completion.sh                 ] && source ~/bin/git-completion.sh
-# [ -f /usr/local/Cellar/coreutils/8.5/aliases ] && source /usr/local/Cellar/coreutils/8.5/aliases
-
-
-### RVM
-#[[ -s "$HOME/.rvm/scripts/rvm"     ]] && source "$HOME/.rvm/scripts/rvm"       # This loads RVM into a shell session.
- [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"   # This loads RVM into a shell session.
- which rvm 2>&1>/dev/null && rvm ree
+  [ -f ~/bin/git-completion.sh                         ] && source ~/bin/git-completion.sh
+  [ -f /usr/local/etc/bash_completion                  ] && source /usr/local/etc/bash_completion
+# [ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ] && source /usr/local/etc/bash_completion.d/cdargs-bash.sh
+# [ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && source /usr/local/Cellar/coreutils/8.5/aliases
 
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
