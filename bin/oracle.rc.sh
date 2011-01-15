@@ -39,14 +39,14 @@ export LD_LIBRARY_PATH
 ### Multi-OS # {
 case `uname -s` in
     Darwin)
-        # MacOS
-        export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
-        # Must match kern.maxprocperuid
-        ulimit -Hu 512
-        ulimit -Su 512
-        # Must match kern.maxfilesperproc
-        ulimit -Hn 65536
-        ulimit -Sn 65536
+        # # MacOS
+        # export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
+        # # Must match kern.maxprocperuid
+        # ulimit -Hu 512
+        # ulimit -Su 512
+        # # Must match kern.maxfilesperproc
+        # ulimit -Hn 65536
+        # ulimit -Sn 65536
         ;;
     AIX)
         export LIBPATH=${ORACLE_HOME}/lib
