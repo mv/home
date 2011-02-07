@@ -28,13 +28,13 @@ done
 #[[ -s "$HOME/.rvm/scripts/rvm"     ]] && source "$HOME/.rvm/scripts/rvm"       # This loads RVM into a shell session.
  [[ -s "/usr/local/rvm/scripts/rvm" ]] && {
 
+    # Pre-req: /etc/rvmrc
     source "/usr/local/rvm/scripts/rvm"   # This loads RVM into a shell session.
-    rvm ree
 
-    function __rvm_ps1() {
+}
+
+function __rvm_ps1() {
     [ "$rvm_ruby_string" ] && echo "[$rvm_ruby_string]"
-    }
-
 }
 
 # vim: ft=sh:
