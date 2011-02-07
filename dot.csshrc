@@ -9,12 +9,12 @@ ping_test
 ping_timeout = 3
 
 ### My clusters
-clusters = veja-adm veja-db veja-ws veja-all veja-ws2
+clusters = veja-adm veja-db veja-ws veja-all veja-stage
 veja-db  = veja-db01 v-veja-db0[1-2]
 veja-adm = v-veja-adm0[1-2]
 veja-ws  = v-veja-ws0[1-4]
 veja-all = v-veja-ws0[1-4] v-veja-adm0[1-2] veja-db01 v-veja-db0[1-2]
-veja-ws2 = v-veja-ws0[5-8]
+veja-stage = v-veja-stage0[1-2]
 
 clusters = exame-adm exame-db exame-ws exame-all exame-prod
 exame-adm = v-exame-adm0[1-2]
@@ -40,6 +40,13 @@ moncgu = v-moncgu-app0[1-2]
 
 clusters = cacti
 cacti = v-cacti-0[1-2]
+
+clusters = placar
+placar = v-placar-prod0[1-4]
+
+clusters = wcast-ws wcast-all
+wcast-all = v-wcast-dev01 v-wcast-stage01 v-wcast-ws0[1-2]
+wcast-ws  = v-wcast-ws0[1-2]
 
 # vim:ft=conf:
 
