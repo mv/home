@@ -41,7 +41,8 @@ manpathadd () {
     fi
 }
 
-PATH=/opt/local/bin
+PATH=~/bin
+pathadd /opt/local/bin
 pathadd /opt/local/sbin             after
 pathadd /usr/local/bin              after
 pathadd /usr/local/sbin             after
