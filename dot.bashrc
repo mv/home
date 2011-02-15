@@ -17,7 +17,7 @@
 
   [  -f  ~/bin/bashrc.dev.sh           ]  &&  .       ~/bin/bashrc.dev.sh
   [  -f  ~/bin/bashrc.macosx.sh        ]  &&  .       ~/bin/bashrc.macosx.sh
-  [  -f  ~/bin/bashrc.mysql.sh         ]  &&  .       ~/bin/bashrc.mysql.sh
+# [  -f  ~/bin/bashrc.mysql.sh         ]  &&  .       ~/bin/bashrc.mysql.sh
   [  -f  ~/bin/bashrc.perl.sh          ]  &&  .       ~/bin/bashrc.perl.sh
   [  -f  ~/bin/bashrc.rails.sh         ]  &&  .       ~/bin/bashrc.rails.sh
   [  -f  ~/bin/bashrc.vim.sh           ]  &&  .       ~/bin/bashrc.vim.sh
@@ -45,7 +45,7 @@ shopt -s cdable_vars      # enable 'cd mydir' for 'cd $mydir'
 shopt -s cmdhist          # saves multines in one history line
 shopt -s mailwarn         # check mailfile
 
-export CDPATH=.:~:/work:/work/abd:/work/mv-dba:/work/webcointernet:/public
+export CDPATH=.:~:/work:/work/abd:/work/mv-dba:/pub
 export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
 export HISTCONTROL='ignoredups:erasedups'
 
