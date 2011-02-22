@@ -24,7 +24,8 @@
 
   [  -f  ~/bin/bashrc.job-abd.sh       ]  &&  .       ~/bin/bashrc.job-abd.sh
 
-# [  -f  ~/bin/oracle.rc.sh            ]  &&  source  ~/bin/oracle.rc.sh
+  [  -f  ~/bin/oracle.client.rc.sh     ]  &&  source  ~/bin/oracle.client.rc.sh
+# [  -f  ~/bin/oracle.db.rc.sh         ]  &&  source  ~/bin/oracle.db.rc.sh
   [  -f  ~/bin/oracle.alias.rc.sh      ]  &&  source  ~/bin/oracle.alias.rc.sh
 # [  -f  ~/bin/bashrc.oracle.r11i.sh   ]  &&  source  ~/bin/bashrc.oracle.r11i.sh
 
