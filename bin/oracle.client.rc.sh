@@ -13,23 +13,10 @@ export NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
 export  TNS_ADMIN=/u01/app/oracle/tns
 [ ! -d $TNS_ADMIN    ] && export TNS_ADMIN=$ORACLE_HOME/network/admin
 
-[   -z "$SSH_CLIENT" ] && export DISPLAY=:0 \
-                       || export DISPLAY="`echo $SSH_CLIENT | awk '{ print $1 }'`:0"
-
-[   -z "$TERM" ] && export TERM=vt100
-
 ### Oracle PATH's {
-pathadd ${ORACLE_HOME}/bin
-pathadd ${ORACLE_BASE}/bin
-
-ldpathadd ${ORACLE_HOME}/lib
-ldpathadd ${ORACLE_HOME}/rdbms/lib
-ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386
-ldpathadd ${ORACLE_HOME}/jdk/jre/lib/i386/server
-# }
-
-export PATH
-export LD_LIBRARY_PATH
+[ -d ${ORACLE_BASE}/bin ] && echo $PATH            | grep ${ORACLE_BASE}/bin || export PATH=$PATH:${ORACLE_BASE}/bin
+[ -d ${ORACLE_HOME}/bin ] && echo $PATH            | grep ${ORACLE_HOME}/bin || export PATH=$PATH:${ORACLE_HOME}/bin
+[ -d ${ORACLE_HOME}/lib ] && echo $LD_LIBRARY_PATH | grep ${ORACLE_HOME}/lib || export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${ORACLE_HOME}/bin
 
 ### Multi-OS # {
 case `uname -s` in
@@ -37,11 +24,11 @@ case `uname -s` in
         # MacOS
         export DYLD_LIBRARY_PATH=${ORACLE_HOME}/lib     # MacOS
         # Must match kern.maxprocperuid
-        ulimit -Hu 512
-        ulimit -Su 512
+#       ulimit -Hu 512
+#       ulimit -Su 512
         # Must match kern.maxfilesperproc
-        ulimit -Hn 10240
-        ulimit -Sn 10240
+#       ulimit -Hn 10240
+#       ulimit -Sn 10240
         ;;
     AIX)
         export LIBPATH=${ORACLE_HOME}/lib
