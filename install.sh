@@ -17,7 +17,7 @@ lndir() {
     ln -s $1 $2
 }
 
-DIR=~/work/mv-home
+DIR=/work/mv-home
 
 for f in ${DIR}/dot.*
 do
