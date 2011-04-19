@@ -48,5 +48,16 @@ clusters = wcast-ws wcast-all
 wcast-all = v-wcast-dev01 v-wcast-stage01 v-wcast-ws0[1-2]
 wcast-ws  = v-wcast-ws0[1-2]
 
+cluster = alx-mundoest
+alx-mundoest = v-mundoest-alx0[1-2]
+
+clusters = alx-dom-stage alx-edit-app alx-console-app alx-midia-app alx-sitetool-app
+alx-dom-stage    = v-dominios-alx-stage0[1-2]
+alx-console-app  = v-dominios-app0[1-2]
+alx-midia-app    = v-dominios-app0[1-2]
+alx-edit-app     = v-dominios-app0[3-4]
+alx-sitetool-app = v-site-tools-app0[1-2]
+
+
 # vim:ft=conf:
 
