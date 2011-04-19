@@ -1,11 +1,15 @@
+#
+# ~/.bash_completion
+#     https://github.com/mv/home/blob/master/dot.bash_completion
+#
 
 ###
 ### Ref:
 ###     http://www.debian-administration.org/articles/316
 ###     http://www.debian-administration.org/article/An_introduction_to_bash_completion_part_2
 
-_csshx()
-{
+_csshx() {
+
     local cur prev opts base
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -22,4 +26,91 @@ _csshx()
 }
 complete -F _csshx csshx
 complete -F _csshx csshX
+
+###
+### rake <<rake task>>
+###
+
+_rake() {
+
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  Complete from rake -vT
+    #
+    local LIST=$( rake -vT 2>/dev/null | awk '/rake/ {print $2,"\n"}' )
+    [ -z "$LIST" ] && return 0
+
+    local tasks=$( echo $LIST | tr ' ' "\n" )
+    COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
+
+}
+complete -F _rake rake
+
+###
+### cap <<multistage scenario>> <<task>>
+###
+
+_cap_multistage() {
+
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  Complete from ./config/deploy/*.rb, if exists
+    #
+    local DIR="./config/deploy"
+    [ -e $DIR ] || return 0
+
+    local stages=$( cd $DIR && for f in *rb ; do echo ${f%.*} ; done )
+    COMPREPLY=( $(compgen -W "${stages}" -- ${cur}) )
+
+}
+## complete -F _cap_multistage cap
+
+
+###
+### cap <<task>>
+###
+
+_cap()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  Try multistage first
+    #
+    if [ "${prev}" == 'cap' ]
+    then
+        #
+        #  Complete from ./config/deploy/*.rb, if exists
+        #
+        local DIR="./config/deploy"
+        if [ -e $DIR ]
+        then
+            local stages=$( cd $DIR && for f in *rb ; do echo ${f%.*} ; done )
+            COMPREPLY=( $(compgen -W "${stages}" -- ${cur}) )
+            return 0
+        fi
+    fi
+
+    #
+    #  Complete from cap -vT
+    #
+    local list=$( cap -vT | awk '/^cap/ {print $2}' )
+    COMPREPLY=( $(compgen -W "${list}" -- ${cur}) )
+    return 0
+
+}
+complete -F _cap cap
+
+# vim:ft=sh:
 
