@@ -44,7 +44,7 @@ prompt="export PS1='${yellow}\\u${white}@${cyan}\\h${white}:${orange}\\w/"
   type __rvm_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__rvm_ps1)'`"
 
 # End colors and evaluate
-prompt="$prompt $reset\n\$ '"
+prompt="$prompt $reset\n\\$ '"
 eval $prompt
 
 # vim: ft=sh:
