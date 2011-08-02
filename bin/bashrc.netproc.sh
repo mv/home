@@ -65,7 +65,7 @@ alias    nmap0='sudo nmap -v -A -P0'
 
 alias      rdt='rdesktop -d UOFA -g 1024x768 -u '
 
-which rlwrap > /dev/null && alias nslookup='rlwrap nslookup'
+which rlwrap 2> /dev/null && alias nslookup='rlwrap nslookup'
 
 # vim: ft=sh:
 
