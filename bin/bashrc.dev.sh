@@ -8,7 +8,7 @@
 [ `which svn 2> /dev/null` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
 [ `which svk 2> /dev/null` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
 
-if which git 2> /dev/null
+if which git 2>&1 >/dev/null
 then
 
     export GIT_EDITOR=mvim
