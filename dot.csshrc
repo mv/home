@@ -4,23 +4,24 @@
 #
 
 ### Global
-screen = 1
+screen = 2
 ping_test
 ping_timeout = 3
 
 ### My clusters
-clusters = veja-adm veja-db veja-ws veja-all veja-stage
+clusters = veja-adm veja-db veja-ws veja-all veja-stage veja-qa
 veja-db  = veja-db01 v-veja-db0[1-2]
 veja-adm = v-veja-adm0[1-2]
 veja-ws  = v-veja-ws0[1-4]
 veja-all = v-veja-ws0[1-4] v-veja-adm0[1-2] veja-db01 v-veja-db0[1-2]
 veja-stage = v-veja-stage0[1-2]
+veja-qa    = v-veja-qa0[1-2]
 
 clusters = exame-adm exame-db exame-ws exame-all exame-prod
 exame-adm = v-exame-adm0[1-2]
-exame-ws  = v-exame-ws0[1-4]
+exame-ws  = v-exame-ws0[1-5]
 exame-db  = v-exame-db0[1-2]
-exame-all = v-exame-db0[1-2] v-exame-ws0[1-4] v-exame-adm0[1-2]
+exame-all = v-exame-db0[1-2] v-exame-ws0[1-5] v-exame-adm0[1-2]
 exame-prod = v-exame-prod0[1-2]
 
 clusters = bbs bbsws bbswg brasigo live
@@ -35,11 +36,20 @@ leadplace = v-leadplace-0[1-4]
 iphone    = v-iphone-prod0[1-2]
 viaje     = v-viaje-ws0[1-2]
 
-clusters = moncgu
+clusters = moncgu stress stress1
 moncgu = v-moncgu-app0[1-2]
+stress  = v-stress-0[1-7]
+stress1 = v-stress-0[1-4]
 
-clusters = cacti
-cacti = v-cacti-0[1-2]
+clusters = cacti git openvas
+cacti   = v-cacti-0[1-2]
+git     = v-git-0[1-2]
+openvas = v-openvas-0[1-2]
+
+clusters = csc csc-dev csc-all
+csc-dev = v-csc-4r-dev01 v-csc-4r-qa01
+csc     = v-csc-4r-ws0[1-2] v-csc-4r-stage01 v-csc-4r-app01
+csc-all = csc csc-dev
 
 clusters = placar
 placar = v-placar-prod0[1-4]
@@ -48,8 +58,28 @@ clusters = wcast-ws wcast-all
 wcast-all = v-wcast-dev01 v-wcast-stage01 v-wcast-ws0[1-2]
 wcast-ws  = v-wcast-ws0[1-2]
 
-cluster = alx-mundoest
-alx-mundoest = v-mundoest-alx0[1-2]
+clusters = mundoest recreio habla modaspot almanaq casa bravo
+bravo    = v-bravo-alx-ws0[1-2]
+mundoest = v-mundoest-alx0[1-3] v-mundoest-stage01
+recreio  = v-recreio-alx0[1-2]
+habla    = v-habla-alx0[1-2]
+modaspot = v-modaspot-alx0[1-2]
+almanaq  = v-almanaque-alx0[1-2]
+casa     = v-casa-alx0[1-2]
+
+clusters = claudia bebe elle manequim
+claudia  = v-claudia-alx0[1-2]
+bebe     = v-bebe-alx0[1-2]
+elle     = v-elle-alx0[1-2]
+manequim = v-manequim-alx0[1-2]
+
+clusters = vejasp-stage
+vejasp-stage = v-vejasp-alx-stage0[1-2]
+
+clusters = viajeaqui viajeaqui-stage viajeaqui-db
+viajeaqui       = v-viajeaqui-alx0[1-2]
+viajeaqui-stage = v-viajeaqui-alx-stage0[1-2]
+viajeaqui-db    = v-viajeaqui-alx-db01 v-viajeaqui-alx-{stage,dev}-db01
 
 clusters = alx-dom-stage alx-edit-app alx-console-app alx-midia-app alx-sitetool-app
 alx-dom-stage    = v-dominios-alx-stage0[1-2]
