@@ -41,12 +41,12 @@ function gpass() {
 ### Add-ons
 ###
   [ -f ~/bin/git-completion.sh                         ] &&      source ~/bin/git-completion.sh
+# [ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
 
 # BASH_COMPLETION_DEBUG=1
-  [ -f /usr/local/etc/bash_completion                  ] && echo_source /usr/local/etc/bash_completion
+  [ -f /usr/local/etc/bash_completion                  ] &&      source /usr/local/etc/bash_completion
 # [ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ] && echo_source /usr/local/etc/bash_completion.d/cdargs-bash.sh
 
-# [ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
 
 set -o vi
 umask 002
