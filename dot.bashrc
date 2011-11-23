@@ -14,7 +14,7 @@ echo_source() {
 ### My Bash 'modules'
 ###
 
-for file in ~/bin/bash.d/*sh
+for file in ~/bash.d/*sh
 do
     [ -x "$file" ] && echo "$file" && source "$file"
 done

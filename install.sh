@@ -6,17 +6,6 @@
 #    git clone git://github.com/mv/home mv_home
 #
 
-
-lnfile() {
-    [ -f $2 ] && /bin/rm $2
-    ln -s $1 $2      #   ln $1 $2
-}
-
-lndir() {
-    [ -e $2 ] && /bin/rm $2
-    ln -s $1 $2
-}
-
 DIR=/work/mv-home
 
 for f in ${DIR}/dot.*
@@ -24,7 +13,10 @@ do
     lnfile $f ~/.${f#*.}
 done
 
-lndir  ${DIR}/bin              ~/bin
+cd ~/
+ln -snf  ${DIR}/bin
+ln -snf  ${DIR}/bash.d
+ln -snf  ${DIR}/bash-completion.d
 
 [ ! -d ~/var ] && mkdir ~/var
 
