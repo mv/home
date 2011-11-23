@@ -16,6 +16,7 @@ _vboxmanage() {
 }
 complete -F _vboxmanage VBoxManage
 complete -F _vboxmanage vboxmanage
+complete -F _vboxmanage vbm
 
 
 # vim:ft=sh:
