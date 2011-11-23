@@ -1,0 +1,22 @@
+_rake() {
+
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  Complete from rake -vT
+    #
+    local LIST=$( rake -vT 2>/dev/null | awk '/rake/ {print $2,"\n"}' )
+    [ -z "$LIST" ] && return 0
+
+    local tasks=$( echo $LIST | tr ' ' "\n" )
+    COMPREPLY=( $(compgen -W "${tasks}" -- ${cur}) )
+
+}
+complete -F _rake rake
+
+
+# vim:ft=sh:
+

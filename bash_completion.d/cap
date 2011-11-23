@@ -1,0 +1,36 @@
+_cap()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  Try multistage first
+    #
+    if [ "${prev}" == 'cap' ]
+    then
+        #
+        #  Complete from ./config/deploy/*.rb, if exists
+        #
+        local DIR="./config/deploy"
+        if [ -e $DIR ]
+        then
+            local stages=$( cd $DIR && for f in *rb ; do echo ${f%.*} ; done )
+            COMPREPLY=( $(compgen -W "${stages}" -- ${cur}) )
+            return 0
+        fi
+    fi
+
+    #
+    #  Complete from cap -vT
+    #
+    local list=$( cap -vT | awk '/^cap/ {print $2}' )
+    COMPREPLY=( $(compgen -W "${list}" -- ${cur}) )
+    return 0
+
+}
+complete -F _cap cap
+
+# vim:ft=sh:
+
