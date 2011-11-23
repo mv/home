@@ -41,10 +41,11 @@ moncgu = v-moncgu-app0[1-2]
 stress  = v-stress-0[1-7]
 stress1 = v-stress-0[1-4]
 
-clusters = cacti git openvas
+clusters = cacti git openvas proxy
 cacti   = v-cacti-0[1-2]
 git     = v-git-0[1-2]
 openvas = v-openvas-0[1-2]
+proxy   = v-proxy-0[1-2]
 
 clusters = csc csc-dev csc-all
 csc-dev = v-csc-4r-dev01 v-csc-4r-qa01
@@ -67,11 +68,12 @@ modaspot = v-modaspot-alx0[1-2]
 almanaq  = v-almanaque-alx0[1-2]
 casa     = v-casa-alx0[1-2]
 
-clusters = claudia bebe elle manequim
+clusters = claudia bebe elle manequim mcc
 claudia  = v-claudia-alx0[1-2]
 bebe     = v-bebe-alx0[1-2]
 elle     = v-elle-alx0[1-2]
 manequim = v-manequim-alx0[1-2]
+mcc      = v-mcc-ws0[1-2]
 
 clusters = vejasp-stage
 vejasp-stage = v-vejasp-alx-stage0[1-2]
@@ -88,6 +90,9 @@ alx-midia-app    = v-dominios-app0[1-2]
 alx-edit-app     = v-dominios-app0[3-4]
 alx-sitetool-app = v-site-tools-app0[1-2]
 
+clusters = alx-varnish alx-varnish-stage
+alx-varnish       = varnish-alx-0[3-4]
+alx-varnish-stage = v-varnish-alx-stage0[1-2]
 
 # vim:ft=conf:
 
