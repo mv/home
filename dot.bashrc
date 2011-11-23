@@ -14,18 +14,10 @@ echo_source() {
 ### My Bash 'modules'
 ###
 
-for file in "~/bin/bash.d/*sh"
+for file in ~/bin/bash.d/*sh
 do
-    [ -x "$file" ] && echo_source "$file"
+    [ -x "$file" ] && echo "$file" && source "$file"
 done
-
-###
-### Add-ons
-###
-  [ -f ~/bin/git-completion.sh                         ] && my_time source ~/bin/git-completion.sh
-  [ -f /usr/local/etc/bash_completion                  ] && my_time source /usr/local/etc/bash_completion
-# [ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ] && my_time source /usr/local/etc/bash_completion.d/cdargs-bash.sh
-# [ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && my_time source /usr/local/Cellar/coreutils/8.5/aliases
 
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
@@ -44,6 +36,17 @@ alias rehash='source ~/.bashrc'
 function gpass() {
     grep -i -n "$1" /work/mv-priv/pass/pass.txt
 }
+
+###
+### Add-ons
+###
+  [ -f ~/bin/git-completion.sh                         ] &&      source ~/bin/git-completion.sh
+
+# BASH_COMPLETION_DEBUG=1
+  [ -f /usr/local/etc/bash_completion                  ] && echo_source /usr/local/etc/bash_completion
+# [ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ] && echo_source /usr/local/etc/bash_completion.d/cdargs-bash.sh
+
+# [ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
 
 set -o vi
 umask 002
