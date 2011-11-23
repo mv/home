@@ -28,6 +28,29 @@ complete -F _csshx csshx
 complete -F _csshx csshX
 
 ###
+### VBoxManage <action> <parameters>
+###
+
+_vboxmanage() {
+
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  VBoxManage installed ?
+    #
+    [ -x $( which VBoxManage ) ] || return 0
+
+    local actions=$( VBoxManage | grep VBoxManage | awk {'print $2'} | grep -v '\-\-' | sort | uniq )
+    COMPREPLY=( $(compgen -W "${actions}" -- ${cur}) )
+
+}
+complete -F _vboxmanage VBoxManage
+complete -F _vboxmanage vboxmanage
+
+####
 ### rake <<rake task>>
 ###
 
