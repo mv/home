@@ -1,3 +1,11 @@
+#
+# ClusterSSH for MacOS X
+#     http://code.google.com/p/csshx/
+#
+# Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
+# 2011-11
+#
+
 _csshx() {
 
     local cur prev opts base

@@ -1,3 +1,10 @@
+#
+# Ruby rake
+#
+# Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
+# 2011-11
+#
+
 _cap()
 {
     local cur prev opts base
