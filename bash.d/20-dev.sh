@@ -11,6 +11,8 @@
 if which git 2>&1 >/dev/null
 then
 
+    [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
+
     export GIT_EDITOR=mvim
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -30,28 +32,27 @@ then
 
 function git-add() {
     [ -z "$1" ] && return
-    set -x
+
     git add "$1"
     git commit -m 'Added.'
 #   git push
-    set +x
+
 }
 
 function git-new-branch() {
     [ -z "$1" ] && return
-    set -x
+
     git push origin $1:refs/heads/$1
 #   git checkout --track -b $1 origin/$1
-    set +x
 }
 
 function git-rm-branch() {
     [ -z "$1" ] && return
-    set -x
+
     git checkout master
     git branch -d           $1
     git branch -d -r origin/$1
-    set +x
+
 }
 
 fi
