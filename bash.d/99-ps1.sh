@@ -43,6 +43,13 @@ prompt="export PS1='${yellow}\\u${white}@${cyan}\\h${white}:${orange}\\w/"
   type __git_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${green}``echo '$(__git_ps1 "(%s)")'`"
   type __rvm_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__rvm_ps1)'`"
 
+# Terminal tab string
+function __term_string() {
+   #echo -ne "\033]0;String_Here\007"
+    echo -ne "\033]0;${PWD##*/}/\007"
+}
+prompt="`echo ${prompt}``echo '$(__term_string)'`"
+
 # End colors and evaluate
 prompt="$prompt $reset\n\\$ '"
 eval $prompt
