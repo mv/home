@@ -8,6 +8,8 @@ alias    env='env | sort'
 alias   less='less -r'                    # raw control characters
 alias   grep='egrep --color'              # show differences in colour
 
+alias  ssane='stty sane'        # restore terminal
+
 alias dtfile='date "+%Y-%m-%d_%H%M"'
 alias  dtiso='date "+%Y-%m-%d %X"'
 alias  dtdns='date "+%Y%m%d%H%M%S"'
