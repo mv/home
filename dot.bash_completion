@@ -10,7 +10,8 @@
 
 for file in ~/bash_completion.d/*
 do
-    [ -x "$file" ] && echo "$file" && source "$file"
+  # [ -x "$file" ] && echo "$file" && source "$file"
+    [ -x "$file" ] && source "$file"
 done
 
 
