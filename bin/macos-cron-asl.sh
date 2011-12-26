@@ -24,10 +24,9 @@
 }
 
 PATH="/usr/local/bin:/usr/bin:/bin"
+ LOG="/var/log/${0##*/}.log"
 
-LOG="/var/log/${0}.log"
-
-echo_do() {
+echodo() {
     echo "$@"
     $@
 }
@@ -35,8 +34,8 @@ echo_do() {
 # main: logging everything
 {
     echo "Begin"
-    echo_do "launchctl stop  com.apple.syslogd"
-    echo_do "launchctl stop  com.apple.aslmanager"
+    echodo "launchctl stop  com.apple.syslogd"
+    echodo "launchctl stop  com.apple.aslmanager"
 
     for file in $( find /var/log/asl/ -type f -mtime +1 )
     do
@@ -44,15 +43,15 @@ echo_do() {
         /bin/rm $file
     done
 
-    echo_do "launchctl start com.apple.syslogd"
+    echodo "launchctl start com.apple.syslogd"
     echo "End"
 
 } | gawk '{print strftime("%Y-%m-%d %H:%M:%S :", systime()), $0 }' \
  >> $LOG
 
 # Auto-rotate
-size=$( /bin/ls -l $LOG | awk '{print $5}' ) # size bytes
-[ $size -gt 5242880 ] && > $LOG              # truncate when > 5000k, 5mb
+size=$( /bin/ls -l $LOG | awk '{print $5}' ) # size in bytes
+[ $size -gt 5242880 ] && > $LOG              # truncate when size > 5 mega
 
 
 # vim:ft=sh:
