@@ -11,10 +11,26 @@
 #     mkdir ~/.ec2 && chmod 700 ~/.ec2
 
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
-export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
 export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.0.1/jars"
+export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
+export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
+export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
+
+function __ec2_user_id() {
+    cat $HOME/.ec2/ec2-user-id.txt
+}
+
+function __ec2_access_id() {
+    cat $HOME/.ec2/ec2-access-id.txt
+}
+
+function __ec2_secret_key() {
+    cat $HOME/.ec2/ec2-secret-key.txt
+}
+
+export    EC2_USER_ID="$( __ec2_user_id    )"
+export  EC2_ACCESS_ID="$( __ec2_access_id  )"
+export EC2_SECRET_KEY="$( __ec2_secret_key )"
 
 alias ec2-list-keypairs=' ec2-describe-keypairs | column -t | sort'
 alias ec2-list-regions='  ec2-describe-regions  | sort'
