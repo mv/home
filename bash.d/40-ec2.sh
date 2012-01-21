@@ -34,9 +34,18 @@ esac
 ### credentials
 ###     mkdir ~/.ec2 && chmod 700 ~/.ec2
 ###
+
+# EC2
 export        EC2_CERT="$(/bin/ls  $HOME/.ec2/cert-*.pem)"
 export EC2_PRIVATE_KEY="$(/bin/ls  $HOME/.ec2/pk-*.pem)"
 export     EC2_USER_ID="$(/bin/cat $HOME/.ec2/ec2-user-id.txt)"
+
+# RDS
+export        AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.3.003/jars"
+
+# Cloud-Watch
+export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.12.1/jars"
+export        SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
 
 function __ec2_access_id() {
     cat $HOME/.ec2/ec2-access-id.txt
