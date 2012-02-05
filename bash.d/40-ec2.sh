@@ -71,5 +71,10 @@ alias ec2-list-groups='   ec2-describe-group     --region sa-east-1'
 
 alias ec2-list-console='  ec2-get-console-output --region sa-east-1'
 
+alias ssh-am="ssh `cat ~/.ec2/current.txt`"
+function cat-am() {
+    [ ! -z "$1" ] && cat $1 > ~/.ec2/current.txt
+}
+
 # vim:ft=sh:
 

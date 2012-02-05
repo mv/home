@@ -16,7 +16,7 @@ alias    sshxp='ssh -t gatexp'
 alias rsyncabd="rsync --rsh='ssh -p 5022' "
 
 function gpass() {
-    grep -i -n "$1" /work/mv-priv/pass/pass.txt
+    grep -i -n "$1" /work/mv-priv/abril/pass.txt
 }
 
 # if which autossh 2>&1 > /dev/null
