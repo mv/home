@@ -9,14 +9,14 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 function cd  {
-    builtin cd "$@" && ls
+    builtin cd "$@" && ls -F --color
 }
 function mkcd  {
     mkdir -p "$1" && cd "$1"
 }
 
-alias     ..='\cd .. && ls'
-alias   cd..='\cd .. && ls'
+alias     ..='\cd .. && ls -F --color'
+alias   cd..='\cd .. && ls -F --color'
 alias  findd='find . -type d | egrep -i '
 alias  findf='find . -type f | egrep -i '
 alias    chg='find .         -exec chmod g+w,o-w {} \;'
