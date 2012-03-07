@@ -9,7 +9,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 function cd  {
-    builtin cd "$@" && ls -F --color
+    builtin cd "$@" && gls -F --color
 }
 function mkcd  {
     mkdir -p "$1" && cd "$1"
