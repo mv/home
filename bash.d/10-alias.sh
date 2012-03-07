@@ -10,9 +10,10 @@ alias   grep='egrep --color'              # show differences in colour
 
 alias  ssane='stty sane'        # restore terminal
 
-alias dtfile='date "+%Y-%m-%d_%H%M"'
-alias  dtiso='date "+%Y-%m-%d %X"'
-alias  dtdns='date "+%Y%m%d%H%M%S"'
+alias  dtfile='date "+%Y-%m-%d_%H%M"'
+alias   dtiso='date "+%Y-%m-%d %X"'
+alias   dtdns='date "+%Y%m%d%H%M%S"'
+alias dtepoch='date "+%s"'
 
 alias  csort='sort | uniq -c | sort -n' # column sort/count
 
