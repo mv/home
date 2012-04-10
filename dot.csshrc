@@ -95,9 +95,9 @@ alx-varnish       = varnish-alx-0[3-4]
 alx-varnish-stage = v-varnish-alx-stage0[1-2]
 
 clusters = twt-mongod twt-mongoc twt-mongoa twt-all
-twt-mongod = ec2-50-19-183-166.compute-1.amazonaws.com  ec2-184-72-159-58.compute-1.amazonaws.com ec2-50-16-41-224.compute-1.amazonaws.com ec2-23-20-69-254.compute-1.amazonaws.com
-twt-mongoc = ec2-174-129-146-22.compute-1.amazonaws.com ec2-184-73-108-97.compute-1.amazonaws.com ec2-23-20-57-4.compute-1.amazonaws.com
-twt-mongoa = ec2-107-20-7-46.compute-1.amazonaws.com ec2-50-17-156-22.compute-1.amazonaws.com
+twt-mongod = mongod-a01.zoemob.com mongod-a02.zoemob.com mongod-b01.zoemob.com mongod-b02.zoemob.com mongod-c01.zoemob.com mongod-c02.zoemob.com
+twt-mongoc = mongoc-01.zoemob.com  mongoc-02.zoemob.com  mongoc-03.zoemob.com
+twt-mongoa = mongoa-a01.zoemob.com mongoa-b01.zoemob.com mongoa-c01.zoemob.com
 twt-all    = twt-mongoc twt-mongoe twt-mongod
 
 # vim:ft=conf:
