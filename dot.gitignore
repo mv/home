@@ -15,24 +15,30 @@
 .*
 !.gitignore
 
-*.[oa]
-*.log
-*.tmp
-*.pid
+.bundle
+.vagrant
+
+*[oa]
+*log
+*tmp
+*pid
 *swp
 *sw?
 *~
 
-*.tar
-*.[t]gz
-*.[t]bz
-*.[t]bz2
-*.zip
-*.arj
-*.a[0-9][0-9]
+*rpm
+*deb
+*gem
+
+*tar
+*gz
+*bz
+*bz2
+*zip
+*arj
+*a[0-9][0-9]
 
 afiedt.buf
 sqlnet.log
 *.lst
-
 
