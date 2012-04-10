@@ -16,7 +16,7 @@ case $( uname -s ) in
         #     brew install ec2-api-tools
         #     mkdir ~/.ec2 && chmod 700 ~/.ec2
         export        JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
-        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.0.1/jars"
+        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
         export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
     ;;
     Linux)
@@ -25,7 +25,7 @@ case $( uname -s ) in
         #     yum install ec2-api-tools
         #     yum install ec2-ami-tools
         export        JAVA_HOME="/usr"
-        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.0.1/jars"
+        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
         export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
     ;;
 esac
