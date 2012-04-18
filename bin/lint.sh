@@ -1,0 +1,1 @@
+/work/devops/puppet/git-puppet-global/lint.sh
