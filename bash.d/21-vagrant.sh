@@ -7,10 +7,10 @@
 # set -x
 if which vagrant 2>/dev/null 1>/dev/null
 then
-    alias  vsd='vagrant destroy -f'
-    alias  vsh='vagrant halt'
+    alias  vdf='vagrant destroy -f'
     alias  vst='vagrant status'
-    alias  vsu='vagrant up'
+    alias  vht='vagrant halt'
+    alias  vup='vagrant up'
     alias vssh='vagrant ssh'
 fi
 
