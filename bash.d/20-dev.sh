@@ -20,6 +20,7 @@ then
     alias  gb='git branch'
     alias gba='git branch -a -v'
     alias  gc='git commit -v'
+    alias gpr='git pull --rebase'
     alias gpp='git pull && git push'
     alias gpl='git pull'
     alias gps='git push'
