@@ -5,21 +5,25 @@
 [ -z "$1" ] && {
 
     echo
-    echo "Usage: ${0##*/} current | list | <aws-profile>"
+    echo "Usage: . aws-credentials.sh current | list | <aws-profile>"
     echo
     echo "    current:       show current profile"
     echo "    list:          list profiles"
     echo "    <aws-profile>: set profile <aws-profile>"
     echo
-    return 2
+#   exit 2
 }
 
 DIR=/work/mv-priv/amazon
+tmp=/tmp/var.$$.sh
+cur=~/.awsenv
+
+[ -d $cur ] || mkdir $cur
 
 current_profile() {
     echo
-    echo "Current:"
-    for v in $( env | egrep 'EC2_CERT|EC2_PRIVATE_KEY|AWS_CREDENTIAL_FILE' )
+    echo "Current: $( cat $cur/current )"
+    for v in $( env | sort | egrep 'EC2_CERT|EC2_PRIVATE_KEY|AWS_.*KEY' )
     do
         echo "    $v"
     done
@@ -46,16 +50,26 @@ set_profile() {
         then
             export EC2_CERT=$( echo ${DIR}/$prf/cert*pem )
             export EC2_PRIVATE_KEY=$( echo ${DIR}/$prf/pk*pem )
-            export AWS_CREDENTIAL_FILE=$( echo ${DIR}/$prf/aws_credentials-master )
+            export AWS_CREDENTIAL_FILE=$( echo ${DIR}/$prf/aws-credentials-master )
+
+            export     AWS_ACCESS_KEY_ID=$( awk -F": " '/Access Key Id/     {print $2}' $AWS_CREDENTIAL_FILE )
+            export AWS_SECRET_ACCESS_KEY=$( awk -F": " '/Secret Access Key/ {print $2}' $AWS_CREDENTIAL_FILE )
+
+            echo $prf > $cur/$prf
+            ln -nsf $cur/$prf $cur/current
 
             echo "[$prf] set."
             current_profile
             return
         fi
     done
+
+    # Profile not found
+    current_profile
     echo
-    echo "Profile [$prf] NOT FOUND."
-    return
+    echo "To set a profile: . aws-credentials.sh <aws-profile>"
+    echo
+#   return
 }
 
 case $1 in
