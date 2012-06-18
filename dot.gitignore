@@ -17,6 +17,7 @@
 
 .bundle
 .vagrant
+*lock
 
 *[oa]
 *log
