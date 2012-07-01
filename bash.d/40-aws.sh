@@ -16,8 +16,6 @@ case $( uname -s ) in
         #     brew install ec2-api-tools
         #     mkdir ~/.ec2 && chmod 700 ~/.ec2
         export        JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
-        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
-        export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
     ;;
     Linux)
         # pre-req:
@@ -25,8 +23,8 @@ case $( uname -s ) in
         #     yum install ec2-api-tools
         #     yum install ec2-ami-tools
         export        JAVA_HOME="/usr"
-        export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
-        export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
+      # export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
+      # export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
     ;;
 esac
 
@@ -35,17 +33,34 @@ esac
 ###     mkdir ~/.ec2 && chmod 700 ~/.ec2
 ###
 
+
 # EC2
-export        EC2_CERT="$(/bin/ls  $HOME/.ec2/cert-*.pem)"
-export EC2_PRIVATE_KEY="$(/bin/ls  $HOME/.ec2/pk-*.pem)"
-export     EC2_USER_ID="$(/bin/cat $HOME/.ec2/ec2-user-id.txt)"
+export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.5.0/jars"
+export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.4.0.7/jars"
+export         EC2_CERT="$(/bin/ls  $HOME/.ec2/cert-*.pem)"
+export  EC2_PRIVATE_KEY="$(/bin/ls  $HOME/.ec2/pk-*.pem)"
+export      EC2_USER_ID="$(/bin/cat $HOME/.ec2/ec2-user-id.txt)"
+export       EC2_REGION=sa-east-1
 
 # RDS
-export        AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
+export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
+
+# ELB
+export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
+
+# IAM
+export AWS_IAM_HOME="/usr/local/Cellar/aws-iam-tools/1.5.0/jars"
+export AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
 
 # Cloud-Watch
 export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.12.1/jars"
 export        SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
+
+# ElastiCache
+export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
+
+# CloudFormation
+export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
 
 function __ec2_access_id() {
     cat $HOME/.ec2/ec2-access-id.txt
