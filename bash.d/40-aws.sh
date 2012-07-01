@@ -41,7 +41,7 @@ export EC2_PRIVATE_KEY="$(/bin/ls  $HOME/.ec2/pk-*.pem)"
 export     EC2_USER_ID="$(/bin/cat $HOME/.ec2/ec2-user-id.txt)"
 
 # RDS
-export        AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.3.003/jars"
+export        AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
 
 # Cloud-Watch
 export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.12.1/jars"
