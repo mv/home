@@ -5,20 +5,20 @@
 ### bashrc generic utils
 
 alias    env='env | sort'
-alias   less='less -r'                    # raw control characters
-alias   grep='egrep --color'              # show differences in colour
+alias   envg='env | sort | grep -i '
+alias aliasg='alias | grep -i '
 
-alias  ssane='stty sane'        # restore terminal
+alias less='less -r'                    # raw control characters
+alias grep='egrep --color'              # show differences in colour
+alias csort='sort | uniq -c | sort -n' # column sort/count
 
 alias  dtfile='date "+%Y-%m-%d_%H%M"'
 alias   dtiso='date "+%Y-%m-%d %X"'
 alias   dtdns='date "+%Y%m%d%H%M%S"'
 alias dtepoch='date "+%s"'
 
-alias  csort='sort | uniq -c | sort -n' # column sort/count
 
-alias aliasg='alias | grep'
-
+alias ssane='stty sane'        # restore terminal
 alias scpresume='rsync --partial --progress --rsh=ssh'
 
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
@@ -30,15 +30,15 @@ function hcount {
 }
 
 # Auto chdir
-function preexec () {
-    if [ ! `which $BASH_COMMAND` ]                \
-    && [   `echo  $BASH_COMMAND  | wc -w` = '1' ] \
-    && [       -d $BASH_COMMAND  ]
-    then
-        cd $BASH_COMMAND
-        return 1
-    fi
-}
+# function preexec () {
+#     if [ ! `which $BASH_COMMAND` ]                \
+#     && [   `echo  $BASH_COMMAND  | wc -w` = '1' ] \
+#     && [       -d $BASH_COMMAND  ]
+#     then
+#         cd $BASH_COMMAND
+#         return 1
+#     fi
+# }
 
 
 # vim: ft=sh:
