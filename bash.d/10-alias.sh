@@ -12,8 +12,8 @@ alias less='less -r'                    # raw control characters
 alias grep='egrep --color'              # show differences in colour
 alias csort='sort | uniq -c | sort -n' # column sort/count
 
-alias  dtfile='date "+%Y-%m-%d_%H%M"'
-alias   dtiso='date "+%Y-%m-%d %X"'
+alias  dtfile='date "+%F_%H%M"'
+alias   dtiso='date "+%F %X"'
 alias   dtdns='date "+%Y%m%d%H%M%S"'
 alias dtepoch='date "+%s"'
 
