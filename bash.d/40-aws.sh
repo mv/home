@@ -47,8 +47,8 @@ export AWS_SECRET_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 #     ec2-describe-volumes
 export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.5.0/jars"
 export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.4.0.7/jars"
-export         EC2_CERT="$(/bin/ls  $HOME/.aws/cert-*.pem)"
-export  EC2_PRIVATE_KEY="$(/bin/ls  $HOME/.aws/pk-*.pem)"
+export         EC2_CERT="$(/bin/ls $HOME/.aws/cert-*.pem)"
+export  EC2_PRIVATE_KEY="$(/bin/ls $HOME/.aws/pk-*.pem)"
 
 # Default region
 export EC2_REGION=sa-east-1
