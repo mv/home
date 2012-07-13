@@ -34,9 +34,9 @@ esac
 ###
 
 # My vars: when using aws-sdk
-export AWS_CREDENTIAL_FILE="/Users/marcus/.aws/aws-credential-file.cfg"
-export AWS_ACCESS_KEY=$( awk -F= '/AccessKey/ {print $2}' $AWS_CREDENTIAL_FILE )
-export AWS_SECRET_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
+export   AWS_CREDENTIAL_FILE="/Users/marcus/.aws/aws-credential-file.cfg"
+export     AWS_ACCESS_KEY_ID=$( awk -F= '/AccessKey/ {print $2}' $AWS_CREDENTIAL_FILE )
+export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 
 
 # EC2 api-tools/ami-tools
