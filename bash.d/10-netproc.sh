@@ -59,6 +59,8 @@ alias      ifc='/sbin/ifconfig -a | egrep "inet |^[a-z]"'
 alias       ip='curl -s "http://whatismyip.org" -w "\n"'
 alias   sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 
+alias myip='curl -s http://checkrealip.com/ | grep "Current IP Address"'
+
 alias memusage='ps -o rss,command -waxc | sort -n'
 alias     nmap='sudo nmap -v -A'
 alias    nmap0='sudo nmap -v -A -P0'
