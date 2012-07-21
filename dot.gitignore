@@ -27,19 +27,22 @@
 *sw?
 *~
 
+# Binary packages
 *rpm
 *deb
 *gem
+*pkg
 
+# Compressed
 *tar
-*gz
-*bz
+*z
 *bz2
 *zip
 *arj
 *a[0-9][0-9]
+*lha
 
-afiedt.buf
-sqlnet.log
+# Oracle: afiedt.buf, *.lst
+*.buf
 *.lst
 
