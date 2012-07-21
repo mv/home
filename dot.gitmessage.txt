@@ -1,4 +1,5 @@
 
+# Ref: https://gist.github.com/2697681
 #
 # A good commit message looks like this:
 # --------------------------------------
