@@ -103,6 +103,9 @@ export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
 # CloudFormation
 export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
 
+# SimpleNotificationService
+export AWS_SNS_HOME="/usr/local/Library/LinkedKegs/aws-sns-cli/jars"
+
 # function __ec2_access_id() {
 #     cat $HOME/.ec2/ec2-access-id.txt
 # }
