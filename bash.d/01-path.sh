@@ -54,8 +54,8 @@ pathadd /usr/bin                    after
 pathadd /usr/sbin                   after
 pathadd /usr/X11/bin                after
 
-LD_LIBRARY_PATH=/opt/local/lib
-ldpathadd /usr/local/lib                after
+# LD_LIBRARY_PATH=/opt/local/lib
+# ldpathadd /usr/local/lib                after
 
 MANPATH=/opt/local/share/man
 manpathadd /usr/local/share/man         after
