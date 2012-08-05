@@ -54,5 +54,7 @@ prompt="`echo ${prompt}``echo '$(__term_string)'`"
 prompt="$prompt $reset\n\\$ '"
 eval $prompt
 
+export PS2="\[\033[0;40m\]\[\033[0;33m\]> \[\033[1;37m\]\[\033[1m\]"
+
 # vim: ft=sh:
 
