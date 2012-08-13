@@ -4,9 +4,10 @@
 #
 
 ### Global
-#screen = 2
+screen = 2
 ping_test
 ping_timeout = 3
+no_growl
 
 ### My clusters
 clusters = veja-adm veja-db veja-ws veja-all veja-stage veja-qa
@@ -101,9 +102,22 @@ twt-mongoa = mongoa-a01.zoemob.com mongoa-b01.zoemob.com mongoa-c01.zoemob.com
 twt-all    = twt-mongoc twt-mongoe twt-mongod
 
 
+# rackspace
 clusters = dinda-all dinda-app
 dinda-all = dinda-app-[1-6] dinda-db dinda-staging
 dinda-app = dinda-app-[1-6]
+
+# aws stage
+clusters = dinda-stage dinda-web-stage dinda-worker-stage
+dinda-stage = dinda-web-stage dinda-worker-stage
+dinda-web-stage = ec2-177-71-228-167.sa-east-1.compute.amazonaws.com ec2-177-71-132-87.sa-east-1.compute.amazonaws.com
+dinda-worker-stage = ec2-177-71-159-20.sa-east-1.compute.amazonaws.com ec2-177-71-165-11.sa-east-1.compute.amazonaws.com
+
+# aws prod
+clusters = dinda-prod dinda-web-prod dinda-worker-prod
+dinda-web-prod    = ec2-177-71-159-63.sa-east-1.compute.amazonaws.com ec2-177-71-139-28.sa-east-1.compute.amazonaws.com ec2-177-71-239-47.sa-east-1.compute.amazonaws.com ec2-177-71-140-72.sa-east-1.compute.amazonaws.com ec2-177-71-163-90.sa-east-1.compute.amazonaws.com ec2-177-71-146-177.sa-east-1.compute.amazonaws.com ec2-177-71-148-191.sa-east-1.compute.amazonaws.com ec2-177-71-228-197.sa-east-1.compute.amazonaws.com ec2-177-71-237-234.sa-east-1.compute.amazonaws.com ec2-177-71-226-116.sa-east-1.compute.amazonaws.com
+dinda-worker-prod = ec2-177-71-163-90.sa-east-1.compute.amazonaws.com ec2-177-71-146-177.sa-east-1.compute.amazonaws.com
+dinda-prod        = dinda-web-prod dinda-worker-prod
 
 # vim:ft=conf:
 
