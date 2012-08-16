@@ -115,7 +115,7 @@ dinda-worker-stage = ec2-177-71-159-20.sa-east-1.compute.amazonaws.com ec2-177-7
 
 # aws prod
 clusters = dinda-prod dinda-web-prod dinda-worker-prod
-dinda-web-prod    = ec2-177-71-159-63.sa-east-1.compute.amazonaws.com ec2-177-71-139-28.sa-east-1.compute.amazonaws.com ec2-177-71-239-47.sa-east-1.compute.amazonaws.com ec2-177-71-140-72.sa-east-1.compute.amazonaws.com ec2-177-71-163-90.sa-east-1.compute.amazonaws.com ec2-177-71-146-177.sa-east-1.compute.amazonaws.com ec2-177-71-148-191.sa-east-1.compute.amazonaws.com ec2-177-71-228-197.sa-east-1.compute.amazonaws.com ec2-177-71-237-234.sa-east-1.compute.amazonaws.com ec2-177-71-226-116.sa-east-1.compute.amazonaws.com
+dinda-web-prod    = ec2-177-71-159-63.sa-east-1.compute.amazonaws.com ec2-177-71-139-28.sa-east-1.compute.amazonaws.com ec2-177-71-239-47.sa-east-1.compute.amazonaws.com ec2-177-71-140-72.sa-east-1.compute.amazonaws.com ec2-177-71-148-191.sa-east-1.compute.amazonaws.com ec2-177-71-228-197.sa-east-1.compute.amazonaws.com ec2-177-71-237-234.sa-east-1.compute.amazonaws.com ec2-177-71-226-116.sa-east-1.compute.amazonaws.com
 dinda-worker-prod = ec2-177-71-163-90.sa-east-1.compute.amazonaws.com ec2-177-71-146-177.sa-east-1.compute.amazonaws.com
 dinda-prod        = dinda-web-prod dinda-worker-prod
 
