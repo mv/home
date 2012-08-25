@@ -10,91 +10,6 @@ ping_timeout = 3
 no_growl
 
 ### My clusters
-clusters = veja-adm veja-db veja-ws veja-all veja-stage veja-qa
-veja-db  = veja-db01 v-veja-db0[1-2]
-veja-adm = v-veja-adm0[1-2]
-veja-ws  = v-veja-ws0[1-4]
-veja-all = v-veja-ws0[1-4] v-veja-adm0[1-2] veja-db01 v-veja-db0[1-2]
-veja-stage = v-veja-stage0[1-2]
-veja-qa    = v-veja-qa0[1-2]
-
-clusters = exame-adm exame-db exame-ws exame-all exame-prod
-exame-adm = v-exame-adm0[1-2]
-exame-ws  = v-exame-ws0[1-5]
-exame-db  = v-exame-db0[1-2]
-exame-all = v-exame-db0[1-2] v-exame-ws0[1-5] v-exame-adm0[1-2]
-exame-prod = v-exame-prod0[1-2]
-
-clusters = bbs bbsws bbswg brasigo live
-bbs   = bbsws bbswg
-bbsws = wsbb01 wsbb02 wsbb03
-bbswg = wgbb01 wgbb02 wgbb03
-live  = live01 live02 wsls01 wsls02
-brasigo = wsbr01 wsbr02
-
-clusters = leadplace iphone viaje
-leadplace = v-leadplace-0[1-4]
-iphone    = v-iphone-prod0[1-2]
-viaje     = v-viaje-ws0[1-2]
-
-clusters = moncgu stress stress1
-moncgu = v-moncgu-app0[1-2]
-stress  = v-stress-0[1-7]
-stress1 = v-stress-0[1-4]
-
-clusters = cacti git openvas proxy
-cacti   = v-cacti-0[1-2]
-git     = v-git-0[1-2]
-openvas = v-openvas-0[1-2]
-proxy   = v-proxy-0[1-2]
-
-clusters = csc csc-dev csc-all
-csc-dev = v-csc-4r-dev01 v-csc-4r-qa01
-csc     = v-csc-4r-ws0[1-2] v-csc-4r-stage01 v-csc-4r-app01
-csc-all = csc csc-dev
-
-clusters = placar
-placar = v-placar-prod0[1-4]
-
-clusters = wcast-ws wcast-all
-wcast-all = v-wcast-dev01 v-wcast-stage01 v-wcast-ws0[1-2]
-wcast-ws  = v-wcast-ws0[1-2]
-
-clusters = mundoest recreio habla modaspot almanaq casa bravo
-bravo    = v-bravo-alx-ws0[1-2]
-mundoest = v-mundoest-alx0[1-3] v-mundoest-stage01
-recreio  = v-recreio-alx0[1-2]
-habla    = v-habla-alx0[1-2]
-modaspot = v-modaspot-alx0[1-2]
-almanaq  = v-almanaque-alx0[1-2]
-casa     = v-casa-alx0[1-2]
-
-clusters = claudia bebe elle manequim mcc
-claudia  = v-claudia-alx0[1-2]
-bebe     = v-bebe-alx0[1-2]
-elle     = v-elle-alx0[1-2]
-manequim = v-manequim-alx0[1-2]
-mcc      = v-mcc-ws0[1-2]
-
-clusters = vejasp-stage
-vejasp-stage = v-vejasp-alx-stage0[1-2]
-
-clusters = viajeaqui viajeaqui-stage viajeaqui-db
-viajeaqui       = v-viajeaqui-alx0[1-2]
-viajeaqui-stage = v-viajeaqui-alx-stage0[1-2]
-viajeaqui-db    = v-viajeaqui-alx-db01 v-viajeaqui-alx-{stage,dev}-db01
-
-clusters = alx-dom-stage alx-edit-app alx-console-app alx-midia-app alx-sitetool-app
-alx-dom-stage    = v-dominios-alx-stage0[1-2]
-alx-console-app  = v-dominios-app0[1-2]
-alx-midia-app    = v-dominios-app0[1-2]
-alx-edit-app     = v-dominios-app0[3-4]
-alx-sitetool-app = v-site-tools-app0[1-2]
-
-clusters = alx-varnish alx-varnish-stage
-alx-varnish       = varnish-alx-0[3-4]
-alx-varnish-stage = v-varnish-alx-stage0[1-2]
-
 clusters = twt-mongod twt-mongoc twt-mongoa twt-all
 twt-mongod = mongod-a01.zoemob.com mongod-a02.zoemob.com mongod-b01.zoemob.com mongod-b02.zoemob.com mongod-c01.zoemob.com mongod-c02.zoemob.com
 twt-mongoc = mongoc-01.zoemob.com  mongoc-02.zoemob.com  mongoc-03.zoemob.com
@@ -107,17 +22,17 @@ clusters = dinda-all dinda-app
 dinda-all = dinda-app-[1-6] dinda-db dinda-staging
 dinda-app = dinda-app-[1-6]
 
-# aws stage
-clusters = dinda-stage dinda-web-stage dinda-worker-stage
-dinda-stage = dinda-web-stage dinda-worker-stage
-dinda-web-stage = ec2-177-71-228-167.sa-east-1.compute.amazonaws.com ec2-177-71-132-87.sa-east-1.compute.amazonaws.com
-dinda-worker-stage = ec2-177-71-159-20.sa-east-1.compute.amazonaws.com ec2-177-71-165-11.sa-east-1.compute.amazonaws.com
+# aws stg
+clusters = dinda-stg dinda-web-stg dinda-worker-stg
+dinda-web-stg    = dinda-web-01a-stg    dinda-web-01b-stg
+dinda-worker-stg = dinda-worker-01a-stg dinda-worker-01b-stg
+dinda-stg        = dinda-web-stg dinda-worker-stg
 
-# aws prod
-clusters = dinda-prod dinda-web-prod dinda-worker-prod
-dinda-web-prod    = ec2-177-71-159-63.sa-east-1.compute.amazonaws.com ec2-177-71-139-28.sa-east-1.compute.amazonaws.com ec2-177-71-239-47.sa-east-1.compute.amazonaws.com ec2-177-71-140-72.sa-east-1.compute.amazonaws.com ec2-177-71-148-191.sa-east-1.compute.amazonaws.com ec2-177-71-228-197.sa-east-1.compute.amazonaws.com ec2-177-71-237-234.sa-east-1.compute.amazonaws.com ec2-177-71-226-116.sa-east-1.compute.amazonaws.com
-dinda-worker-prod = ec2-177-71-163-90.sa-east-1.compute.amazonaws.com ec2-177-71-146-177.sa-east-1.compute.amazonaws.com
-dinda-prod        = dinda-web-prod dinda-worker-prod
+# aws prd
+clusters = dinda-prd dinda-web-prd dinda-worker-prd
+dinda-web-prd    = dinda-web-0[1-4]a dinda-web-0[1-4]b
+dinda-worker-prd = dinda-worker-01a dinda-worker-01b
+dinda-prd        = dinda-web-prd dinda-worker-prd
 
 # vim:ft=conf:
 
