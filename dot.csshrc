@@ -29,9 +29,10 @@ dinda-worker-stg = dinda-worker-01a-stg dinda-worker-01b-stg
 dinda-stg        = dinda-web-stg dinda-worker-stg
 
 # aws prd
-clusters = dinda-prd dinda-web-prd dinda-worker-prd
+clusters = dinda-prd dinda-web-prd dinda-worker-prd dinda-redis-prd
 dinda-web-prd    = dinda-web-0[1-4]a dinda-web-0[1-4]b
 dinda-worker-prd = dinda-worker-01a dinda-worker-01b
+dinda-redis-prd  = dinda-redis-01a dinda-redis-01b
 dinda-prd        = dinda-web-prd dinda-worker-prd
 
 # vim:ft=conf:
