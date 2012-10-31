@@ -34,7 +34,7 @@ done
 
     # Pre-req: /etc/rvmrc
     source "/usr/local/rvm/scripts/rvm"   # This loads RVM into a shell session.
-    rvm 1.9.3
+    rvm 1.8.7
 }
 
 function __rvm_ps1() {
