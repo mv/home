@@ -44,4 +44,6 @@ vim
 tw
 mvdba.sh
 
+# extra thing at ~mv/bin
+bin/
 
