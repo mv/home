@@ -1,0 +1,5 @@
+
+
+# ignore project's rvmrc
+rvm_project_rvmrc=0
+

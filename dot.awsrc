@@ -1,0 +1,7 @@
+###
+###
+###
+--region=sa-east-1
+--simple
+--insecure-aws
+
