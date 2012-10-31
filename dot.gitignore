@@ -1,3 +1,4 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 ##
 ## foo.txt      # Ignore any file named foo.txt.
 ## *.html       # Ignore (generated) html files,
@@ -43,7 +44,8 @@
 *a[0-9][0-9]
 *lha
 
-# Oracle: afiedt.buf, *.lst
+# textfiles
 *.buf
 *.lst
+*.log
 
