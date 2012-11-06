@@ -11,4 +11,9 @@
 # Operate on all files, regardless of type (but still skip directories like blib, CVS, etc.)
 --all
 
+# Just like vim:
+--smart-case
+
+# After and before, 2 lines
+# -C
 
