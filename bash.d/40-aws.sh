@@ -78,6 +78,7 @@ export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
 #     as-describe-process-types
 #     as-describe-tags
 export AWS_AUTO_SCALING_HOME="/usr/local/Library/LinkedKegs/auto-scaling/jars"
+export AWS_AUTO_SCALING_URL="http://autoscaling.sa-east-1.amazonaws.com"
 #xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
 
 # IAM
