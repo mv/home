@@ -31,7 +31,7 @@ dinda-stg        = dinda-web-stg dinda-worker-stg
 # aws prd
 clusters = dinda-prd dinda-web-prd dinda-worker-prd dinda-redis-prd
 dinda-web-prd    = dinda-web-0[1-4]a dinda-web-0[1-4]b
-dinda-worker-prd = dinda-worker-01a dinda-worker-01b dinda-worker-02b
+dinda-worker-prd = prd01-dinda-worker-01a.edenbr.net prd01-dinda-worker-02b.edenbr.net prd01-dinda-worker-01b.edenbr.net icinga-01
 dinda-redis-prd  = dinda-redis-01a dinda-redis-01b
 dinda-prd        = dinda-web-prd dinda-worker-prd
 
