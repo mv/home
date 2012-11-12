@@ -39,7 +39,9 @@ export     AWS_ACCESS_KEY_ID=$( awk -F= '/AccessKey/ {print $2}' $AWS_CREDENTIAL
 export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 
 
-# EC2 api-tools/ami-tools
+# EC2
+#     $ brew install ec2-ami-tools
+#     $ brew install ec2-api-tools
 #     http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/setting-up-your-tools.html
 #     ec2-version
 #     ec2-describe-regions
@@ -57,6 +59,7 @@ export EC2_REGION=sa-east-1
 export EC2_URL=https://ec2.sa-east-1.amazonaws.com
 
 # RDS
+#     $ brew install rds-command-line-tools
 #     http://docs.amazonwebservices.com/AmazonRDS/latest/UserGuide/StartCLI.html
 #     rds-version
 #     rds-describe-db-instances
@@ -65,6 +68,7 @@ export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
 #xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
 
 # ELB
+#     $ brew install elb-tools
 #     http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/UsingTheCommandLineTools.html
 #     elb-version
 #     elb-describe-lbs
@@ -72,6 +76,7 @@ export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
 #xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
 
 # AS
+#     $ brew install auto-scaling
 #     http://docs.amazonwebservices.com/AutoScaling/latest/GettingStartedGuide/SetupCLI.html
 #     as-version
 #     as-describe-adjustment-types
@@ -82,6 +87,7 @@ export AWS_AUTO_SCALING_URL="http://autoscaling.sa-east-1.amazonaws.com"
 #xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
 
 # IAM
+#     $ brew install aws-iam-tools
 #     http://docs.amazonwebservices.com/IAM/latest/CLIReference/Setup.html
 #     iam-accountaliaslist
 #     iam-usergetattributes
@@ -91,50 +97,30 @@ export AWS_IAM_HOME="/usr/local/Cellar/aws-iam-tools/1.5.0/jars"
 #xport AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
 
 # Cloud-Watch
+#     $ brew install cloud-watch
 #     http://docs.amazonwebservices.com/AmazonCloudWatch/latest/GettingStartedGuide/SetupCLI.html
 #     mon-version
 #     mon-list-metrics
 #     mon-describe-alarms
 export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.12.1/jars"
+export AWS_CLOUDWATCH_URL="https://monitoring.sa-east-1.amazonaws.com"
 #xport AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
 
 # ElastiCache
+#     $ brew install aws-elasticache
+#
 export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
 
 # CloudFormation
+#     $ brew install aws-cfn-tools
+#
 export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
 
 # SimpleNotificationService
+#     $ brew install aws-sns-cli
+#
 export AWS_SNS_HOME="/usr/local/Library/LinkedKegs/aws-sns-cli/jars"
 
-# function __ec2_access_id() {
-#     cat $HOME/.ec2/ec2-access-id.txt
-# }
-
-# function __ec2_secret_key() {
-#     cat $HOME/.ec2/ec2-secret-key.txt
-# }
-
-###
-### shortcuts
-###
-# alias ec2-list-keypairs=' ec2-describe-keypairs | column -t | sort'
-# alias ec2-list-regions='  ec2-describe-regions  | sort'
-# alias ec2-list-tags='     ec2-describe-tags     | sort'
-
-# alias ec2-list-available-zones='   ec2-describe-availability-zones | sort'
-# alias ec2-list-available-zones-sa='ec2-describe-availability-zones --region sa-east-1 | sort'
-
-# alias ec2-list-instances='ec2-describe-instances --region sa-east-1 | column -t | cat -n'
-# alias ec2-list-volumes='  ec2-describe-volumes   --region sa-east-1 | column -t | sort'
-# alias ec2-list-groups='   ec2-describe-group     --region sa-east-1'
-
-# alias ec2-list-console='  ec2-get-console-output --region sa-east-1'
-
-# alias ssh-am="ssh `cat ~/.ec2/current.txt`"
-# function cat-am() {
-#     [ ! -z "$1" ] && cat $1 > ~/.ec2/current.txt
-# }
 
 # vim:ft=sh:
 
