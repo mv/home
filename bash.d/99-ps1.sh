@@ -38,10 +38,11 @@
 prompt="export PS1='${yellow}\\u${white}@${cyan}\\h${white}:${orange}\\w/"
 
 # Fuctions exist?
-# type __ora_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__ora_ps1)'`"
-# type __mysql_ps1 2>/dev/null 1>/dev/null && prompt="`echo $prompt ${cyan}``echo '$(__mysql_ps1)'`"
-  type __git_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${green}``echo '$(__git_ps1 "(%s)")'`"
-  type __rvm_ps1   2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__rvm_ps1)'`"
+# type __ora_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__ora_ps1)'`"
+# type __mysql_ps1  2>/dev/null 1>/dev/null && prompt="`echo $prompt ${cyan}``echo '$(__mysql_ps1)'`"
+  type __git_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${green}``echo '$(__git_ps1 "(%s)")'`"
+  type __rvm_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__rvm_ps1)'`"
+  type __awsenv_ps1 2>/dev/null 1>/dev/null && prompt="`echo $prompt ${cyan}``echo '$(__awsenv_ps1)'`"
 
 # Terminal tab string
 function __term_string() {
