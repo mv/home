@@ -2,6 +2,6 @@
 ###
 ###
 --region=sa-east-1
---simple
+#--simple
 #--insecure-aws
 
