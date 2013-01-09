@@ -1,0 +1,27 @@
+
+#
+# http://microblog.thejof.com/post/569177095/exuberant-ctags-rocks
+#
+--langdef=puppet
+--langmap=puppet:.pp
+--regex-puppet=/^class[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/c,class/
+--regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+--regex-puppet=/^site[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/s,site/
+--regex-puppet=/^node[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/n,node/
+--regex-puppet=/^node[ \t]*['"]([a-zA-Z0-9_\-]+)['"][ \t]*\{/\1/n,node/
+
+#
+# http://microblog.thejof.com/post/569177095/exuberant-ctags-rocks
+#
+--langdef=nagios
+--langmap=nagios:.cfg
+--regex-nagios=/command_name\s+([^ ]+)/\1/c,command/
+--regex-nagios=/host_name\s+([^ ]+)/\1/h,hostname/
+--regex-nagios=/hostgroup_name\s+([^ ]+)/\1/H,hostgroup/
+--regex-nagios=/service_description\s+([^ ]+)/\1/s,service/
+--regex-nagios=/servicegroup_name\s+([^ ]+)/\1/g,servicegroup/
+--regex-nagios=/name\s+([^ ]+)/\1/n,name/
+--regex-nagios=/alias\s+([^ ]+)/\1/a,alias/
+--regex-nagios=/contact_name\s+([^ ]+)/\1/x,contact/
+--regex-nagios=/timeperiod_name\s+([^ ]+)/\1/t,timeperiod/
+
