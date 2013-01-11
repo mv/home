@@ -1,3 +1,7 @@
+--exclude=.git
+--exclude=.svn
+--exclude=blib
+--exclude='*~'
 --langdef=puppet
 --langmap=puppet:.pp
 --regex-puppet=/^class[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/c,class/
@@ -8,11 +12,11 @@
 --langdef=nagios
 --langmap=nagios:.cfg
 --regex-nagios=/^[ \t]*command_name[ \t]*(.+)[ \t]*/\1/c,command/
---regex-nagios=/^[ \t]*host_name[ \t]*(.+)[ \t]*/\1/h,host/
---regex-nagios=/^[ \t]*hostgroup_name[ \t]*(.+)[ \t]*/\1/g,hostgroup/
---regex-nagios=/^[ \t]*servicegroup_name[ \t]*(.+)[ \t]*/\1/s,servicegroup/
+--regex-nagios=/^[ \t]*host_name[ \t]*(.+)[ \t]*/\1/c,host/
+--regex-nagios=/^[ \t]*hostgroup_name[ \t]*(.+)[ \t]*/\1/c,hostgroup/
+--regex-nagios=/^[ \t]*servicegroup_name[ \t]*(.+)[ \t]*/\1/c,servicegroup/
 --regex-nagios=/^[ \t]*contact_name[ \t]*(.+)[ \t]*/\1/c,contact/
---regex-nagios=/^[ \t]*timeperiod_name[ \t]*(.+)[ \t]*/\1/t,timeperiod/
---regex-nagios=/^[ \t]*name[ \t]*(.+)[ \t]*/\1/n,name/
+--regex-nagios=/^[ \t]*timeperiod_name[ \t]*(.+)[ \t]*/\1/c,timeperiod/
+--regex-nagios=/^[ \t]*name[ \t]*(.+)[ \t]*/\1/c,name/
 
 
