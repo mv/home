@@ -43,16 +43,17 @@ manpathadd () {
 
 PATH=~/bin
 pathadd /opt/local/bin
-pathadd /opt/local/sbin             after
-pathadd /usr/local/bin              after
-pathadd /usr/local/sbin             after
-pathadd /Developer/usr/bin          after
-pathadd /Developer/usr/sbin         after
-pathadd /bin                        after
-pathadd /sbin                       after
-pathadd /usr/bin                    after
-pathadd /usr/sbin                   after
-pathadd /usr/X11/bin                after
+pathadd /opt/local/sbin                       after
+pathadd /usr/local/bin                        after
+pathadd /usr/local/sbin                       after
+pathadd /Developer/usr/bin                    after
+pathadd /Developer/usr/sbin                   after
+pathadd /bin                                  after
+pathadd /sbin                                 after
+pathadd /usr/bin                              after
+pathadd /usr/sbin                             after
+pathadd /usr/X11/bin                          after
+pathadd /usr/local/Cellar/ruby/1.9.3-p374/bin
 
 # LD_LIBRARY_PATH=/opt/local/lib
 # ldpathadd /usr/local/lib                after

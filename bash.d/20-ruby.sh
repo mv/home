@@ -27,7 +27,7 @@ done
 ### RVM
 
 # bash-completion
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+ [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
 #[[ -s "$HOME/.rvm/scripts/rvm"     ]] && source "$HOME/.rvm/scripts/rvm"       # This loads RVM into a shell session.
  [[ -s "/usr/local/rvm/scripts/rvm" ]] && {
