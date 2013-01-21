@@ -54,6 +54,7 @@ pathadd /usr/bin                              after
 pathadd /usr/sbin                             after
 pathadd /usr/X11/bin                          after
 pathadd /usr/local/Cellar/ruby/1.9.3-p374/bin
+pathadd /usr/local/heroku/bin/
 
 # LD_LIBRARY_PATH=/opt/local/lib
 # ldpathadd /usr/local/lib                after
