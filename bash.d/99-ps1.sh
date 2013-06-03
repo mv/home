@@ -27,6 +27,7 @@
  magenta="\[\e[01;35m\]"
     cyan="\[\e[01;36m\]"
    white="\[\e[01;37m\]"
+    gray="\[\e[00;37m\]"
    reset="\[\e[0m\]"
 
 # Example
@@ -34,8 +35,11 @@
 # export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\]\n\$ '
 # export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)")\n\$ '
 
-# Default
-prompt="export PS1='${yellow}\\u${white}@${cyan}\\h${white}:${orange}\\w/"
+# Default (and open single quote)
+#rompt="export PS1='${yellow}\\u${white}@${cyan}\\H${white}:${orange}\\w/"
+#rompt="export PS1='${yellow}\\u${gray}@${yellow}\\h${white}:${yellow}\\w/"
+prompt="export PS1='${orange}\\u${gray}@${orange}\\h${gray}:${orange}\\w/"
+
 
 # Fuctions exist?
 # type __ora_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__ora_ps1)'`"
@@ -51,7 +55,7 @@ function __term_string() {
 }
 prompt="`echo ${prompt}``echo '$(__term_string)'`"
 
-# End colors and evaluate
+# End colors and evaluate (and close single quote)
 prompt="$prompt $reset\n\\$ '"
 eval $prompt
 
