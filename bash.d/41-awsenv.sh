@@ -9,8 +9,8 @@
 
 
 
-export AWSENV_PROFILES_DIR="/work/mv-priv/awsenv/profiles"
-export AWSENV_TEMPLATE_DIR="/work/mv-priv/awsenv/template" # optional
+export  AWSENV_PROFILES_DIR="/work/mv-priv/awsenv/profiles"
+export AWSENV_TEMPLATES_DIR="/work/mv-priv/awsenv/templates" # optional
 
 source /work/dev/mv-awsenv/awsenv.sh
 
