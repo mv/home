@@ -1,0 +1,8 @@
+---
+authentication:
+  client_key: UmGZVEyiKylCYq6xt5Zfg
+  api_key: TF5rnIqwOHkYZ9j8puDq8EQXG89yuF3H2O2lab6no
+ssh:
+  ssh_user: marcus
+  ssh_key_path: /Users/marcus/.ssh/id_rsa
+  ssh_port: '22'
