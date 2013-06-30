@@ -34,7 +34,7 @@
 ###
 
 # My vars: when using aws-sdk
-export   AWS_CREDENTIAL_FILE="/Users/marcus/.aws/aws-credential-file.cfg"
+export   AWS_CREDENTIAL_FILE="$HOME/.aws/aws-credential-file.cfg"
 export     AWS_ACCESS_KEY_ID=$( awk -F= '/AccessKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 
@@ -66,7 +66,7 @@ export  S3_URL=https://s3.sa-east-1.amazonaws.com
 #     rds-describe-db-instances
 #     rds-describe-db-parameters default.mysql5.5
 export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
-#xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
+#xport AWS_CREDENTIAL_FILE="$HOME/.aws/edenbrasil-credential-file.cfg"
 
 # ELB
 #     $ brew install elb-tools
@@ -74,7 +74,7 @@ export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
 #     elb-version
 #     elb-describe-lbs
 export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
-#xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
+#xport AWS_CREDENTIAL_FILE="$HOME/.aws/edenbrasil-credential-file.cfg"
 
 # AS
 #     $ brew install auto-scaling
@@ -85,7 +85,7 @@ export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
 #     as-describe-tags
 export AWS_AUTO_SCALING_HOME="/usr/local/Library/LinkedKegs/auto-scaling/jars"
 export AWS_AUTO_SCALING_URL="http://autoscaling.sa-east-1.amazonaws.com"
-#xport AWS_CREDENTIAL_FILE="/Users/marcus/.aws/edenbrasil-credential-file.cfg"
+#xport AWS_CREDENTIAL_FILE="$HOME/.aws/edenbrasil-credential-file.cfg"
 
 # IAM
 #     $ brew install aws-iam-tools
