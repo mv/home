@@ -24,7 +24,7 @@ esac
 alias ll='ls -l'                       # long list
 alias lr='ls -ltr'                     # long list
 alias la='ls -A'                       # all but . and ..
-alias  l='/bin/ls'
+alias  l='gls --color'
 export LS_COLORS='*sql=33:*log=93:*buf=31'
 # }
 
