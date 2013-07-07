@@ -13,7 +13,7 @@ then
 
     [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
 
-    export GIT_EDITOR=mvim
+    export GIT_EDITOR=vim
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
 

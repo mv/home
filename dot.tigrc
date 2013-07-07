@@ -1,0 +1,83 @@
+###
+### Configuration
+###
+
+set author-width = 15
+set show-id = yes
+set show-refs = yes
+set show-rev-graph = yes
+set line-graphics = utf-8
+set read-git-colors = yes
+set ignore-case = no
+
+
+###
+### Colors
+###
+
+# Override the default terminal colors to white on black.
+color default           white   black
+
+## colors
+##   white, black, green, magenta, blue, cyan, yellow, red, default
+## attributes
+##   normal, blink, bold, dim, reverse, standout, and underline
+
+# UI
+color id      yellow  bold
+color date    cyan    bold
+color author  green   bold
+
+# graph
+color  graph-commit  white   bold
+
+color  palette-0     yellow  bold
+color  palette-2     cyan    bold
+color  palette-4     green   bold
+color  palette-1     red     bold
+color  palette-3     white   bold
+color  palette-6     magenta bold
+color  palette-5     blue    bold
+
+# tree view
+color tree-dir      yellow  default
+color tree-file     white   bold
+
+# Diff colors
+color diff-header       yellow  default
+color diff-index        red     defaul
+color diff-chunk        magenta default
+color "Reported-by:"    green   default
+
+# status view
+color stat-head      cyan   bold
+color stat-section   yellow bold
+
+color stat-staged    green  bold
+color stat-unstaged  red    bold
+color stat-untracked blue   bold
+
+# Diff
+color diff-stat    white  bold
+color diff-header  magenta bold
+color diff-index   yellow dim
+color diff-chunk   cyan  bold
+color diff-add     green bold
+color diff-del     red   dim
+
+# details for git log
+color pp-commit    yellow dim
+color pp-author    green bold
+color pp-adate     cyan bold
+color pp-cdate     cyan dim
+color pp-refs      yellow dim
+color pp-merge     red bold
+#olor pp-date
+
+# commit message (?)
+#olor commit
+#olor parent
+#olor tree
+#olor author
+#olor committer
+
