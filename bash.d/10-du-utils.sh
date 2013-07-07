@@ -4,7 +4,7 @@
 ### mvf
 ### bashrc lib
 
-alias df='df -h'
+alias df='df -Phl'
 alias du='du -h'
 
 which column > /dev/null && alias mount='mount | column -t'
