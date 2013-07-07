@@ -9,7 +9,7 @@
 # --pager=less -r
 
 # Operate on all files, regardless of type (but still skip directories like blib, CVS, etc.)
---all
+# --all  # deprecated on v2.0
 
 # Just like vim:
 --smart-case
