@@ -21,4 +21,6 @@ alias rehash='source ~/.bashrc'
 set -o vi
 umask 002
 
+# source /usr/local/lib/python2.7//site-packages/Powerline-beta-py2.7.egg/powerline/bindings/bash/powerline.sh
+
 # vim: ft=sh foldlevel=0:

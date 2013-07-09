@@ -32,12 +32,22 @@ then
     alias gitclean='git remote prune origin && git remote update'
 
 function git-add() {
-    [ -z "$1" ] && return
-
+    [ -z "$1" ] && {
+        echo "Usage: git-add [dir|file]"
+        return
+    }
     git add "$1"
     git commit -m 'Added.'
-#   git push
+}
 
+function git-upd() {
+    [ -z "$1" ] && {
+        echo "Usage: git-upd [dir|file]"
+        return
+    }
+    git add "$1"
+    git commit -m 'Updated...'
+    git pull --rebase && git push
 }
 
 function git-new-branch() {
