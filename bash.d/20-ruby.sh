@@ -36,6 +36,8 @@ done
 #    rvm 1.9.3
 # }
 
+rvm system
+
 function __rvm_ps1() {
     [ "$rvm_ruby_string" ] && echo "[$rvm_ruby_string]"
 }
