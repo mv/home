@@ -33,10 +33,27 @@
 ###     mkdir ~/.aws && chmod 700 ~/.aws
 ###
 
-# My vars: when using aws-sdk
+# My vars
 export   AWS_CREDENTIAL_FILE="$HOME/.aws/aws-credential-file.cfg"
 export     AWS_ACCESS_KEY_ID=$( awk -F= '/AccessKey/ {print $2}' $AWS_CREDENTIAL_FILE )
 export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL_FILE )
+
+
+# AWS cli, python version
+#     http://aws.amazon.com/cli/
+#     http://docs.aws.amazon.com/cli/latest/reference/
+#
+#     $ easy_install awscli
+#     or
+#     $ easy_install pip
+#     $ pip install awscli
+#
+#     aws help
+#
+export AWS_DEFAULT_REGION=sa-east-1
+export AWS_DEFAULT_OUTPUT=table
+complete -C aws_completer aws    # bash
+
 
 
 # EC2
@@ -49,15 +66,18 @@ export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL
 #     ec2-describe-volumes
 export         EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.5.0/jars"
 export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.4.0.7/jars"
+
+# EC2 cli, java version
 export         EC2_CERT="$(/bin/ls $HOME/.aws/cert-*.pem)"
 export  EC2_PRIVATE_KEY="$(/bin/ls $HOME/.aws/pk-*.pem)"
 
 # Default region
 export EC2_REGION=sa-east-1
-
 # Default Service Point
 export EC2_URL=https://ec2.sa-east-1.amazonaws.com
-export  S3_URL=https://s3.sa-east-1.amazonaws.com
+
+
+#xport  S3_URL=https://s3.sa-east-1.amazonaws.com
 
 # RDS
 #     $ brew install rds-command-line-tools
