@@ -21,7 +21,7 @@ function csshg() {
     if [ "$2" == "-d" ]
     then
         echo "List:"
-        echo "[$list]"
+        echo "$list" | sort
         return
     fi
 
