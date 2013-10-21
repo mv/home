@@ -15,7 +15,7 @@ function csshg() {
     [ -z "$1" ] && return
 
     # get running instances
-    list=$( aws din --filter "group-name=$1" --filter "instance-state-code=16" --simple | awk '{print $3}' )
+    list=$( aws.pl din --filter "group-name=$1" --filter "instance-state-code=16" --simple | awk '{print $3}' )
 
     # debug
     if [ "$2" == "-d" ]
@@ -38,7 +38,7 @@ function cssht() {
     [ -z "$1" ] && return
 
     # get running instances
-    list=$( aws din --filter "tag:Name=${1}*" --filter "instance-state-code=16" --simple | awk '{print $3}' )
+    list=$( aws.pl din --filter "tag:Name=${1}*" --filter "instance-state-code=16" --simple | awk '{print $3}' )
 
     # debug
     if [ "$2" == "-d" ]
