@@ -54,5 +54,42 @@ function cssht() {
 }
 
 
+###
+### Shortcuts
+###
+function aws-r53-list() {
+    aws route53 list-hosted-zones | grep hosted | awk '{print $4}' | \
+    while read z
+    do
+        echo $z
+        aws route53 get-hosted-zone --id $z --output json | egrep '"Name"|ns-'
+    done
+}
+
+function aws-iam-list-user-keys() {
+
+    aws.pl lu | grep arn | awk '{print $6}' | sort | \
+    while read u
+    do
+        aws.pl userlistkeys $u --simple | awk '{print $4,$1,$2,$3}'
+    done
+
+}
+
+alias aws-dtags='aws.pl dtags --filter resource-type=instance | grep Name | awk "{print \$2,\$8}" | sort -k 2'
+
+function aws-din() {
+
+    aws.pl dtags --filter resource-type=instance | grep Name | awk "{print \$2,\$8}" | sort -k 2 | \
+    while read id name
+    do
+        aws.pl din $id --simple | awk '{print $2,$3}' | while read state sg
+        do
+            echo "$id  $state  $name"
+        done
+    done
+}
+
+
 # vim:ft=sh:
 
