@@ -90,7 +90,7 @@ export EC2_URL=https://ec2.sa-east-1.amazonaws.com
 #     rds-version
 #     rds-describe-db-instances
 #     rds-describe-db-parameters default.mysql5.5
-export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
+export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.14.001/libexec"
 
 # ELB
 # ---
@@ -98,7 +98,7 @@ export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.8.002/jars"
 #     http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/UsingTheCommandLineTools.html
 #     elb-version
 #     elb-describe-lbs
-export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
+export AWS_ELB_HOME="/usr/local/Cellar/elb-tools/1.0.23.0/libexec"
 
 # AS
 # --
@@ -108,7 +108,7 @@ export AWS_ELB_HOME="/usr/local/Library/LinkedKegs/elb-tools/jars"
 #     as-describe-adjustment-types
 #     as-describe-process-types
 #     as-describe-tags
-export AWS_AUTO_SCALING_HOME="/usr/local/Library/LinkedKegs/auto-scaling/jars"
+export AWS_AUTO_SCALING_HOME="/usr/local/Cellar/auto-scaling/1.0.61.4/libexec"
 export AWS_AUTO_SCALING_URL="http://autoscaling.sa-east-1.amazonaws.com"
 
 # IAM
@@ -119,7 +119,7 @@ export AWS_AUTO_SCALING_URL="http://autoscaling.sa-east-1.amazonaws.com"
 #     iam-usergetattributes
 #     iam-userlistcerts
 #     iam-userlistkeys
-export AWS_IAM_HOME="/usr/local/Cellar/aws-iam-tools/1.5.0/jars"
+export AWS_IAM_HOME="/usr/local/opt/aws-iam-tools/libexec"
 
 # CloudWatch
 # -----------
@@ -128,26 +128,34 @@ export AWS_IAM_HOME="/usr/local/Cellar/aws-iam-tools/1.5.0/jars"
 #     mon-version
 #     mon-list-metrics
 #     mon-describe-alarms
-export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.12.1/jars"
+export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.13.4/libexec"
+export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
 export AWS_CLOUDWATCH_URL="https://monitoring.sa-east-1.amazonaws.com"
 
 # ElastiCache
 # -----------
 #     $ brew install aws-elasticache
 #
-export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
+export AWS_ELASTICACHE_HOME="/usr/local/Cellar/aws-elasticache/1.9.000/libexec"
+
+# Elastic Beanstalk
+# -----------------
+#     $ brew install aws-elasticbeanstalk
+#
+export AWS_ELASTICBEANSTALK_HOME="/usr/local/Cellar/aws-elasticbeanstalk/2.6.0"
+export AWS_ELASTICBEANSTALK_URL="https://elasticbeanstalk.sa-east-1.amazonaws.com"
 
 # CloudFormation
 # --------------
 #     $ brew install aws-cfn-tools
 #
-export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
+export AWS_CLOUDFORMATION_HOME="/usr/local/Cellar/aws-cfn-tools/1.0.12/libexec"
 
 # SNS
 # ---
 #     $ brew install aws-sns-cli
 #
-export AWS_SNS_HOME="/usr/local/Library/LinkedKegs/aws-sns-cli/jars"
+export AWS_SNS_HOME="/usr/local/Cellar/aws-sns-cli/2013-09-27/libexec"
 
 
 ###
