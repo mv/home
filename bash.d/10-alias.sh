@@ -23,7 +23,8 @@ alias scpresume='rsync --partial --progress --rsh=ssh'
 
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 alias    h='history'
-function hcount {
+
+hcount() {
     [ "$1" ] && _line=$1 || _line=10
   # history | awk '{a[$2]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
     history | awk '{a[$4]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
