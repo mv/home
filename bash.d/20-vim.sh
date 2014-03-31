@@ -17,11 +17,11 @@ case `uname -s` in
 
 #       export VIM_APP_DIR=~/App
 #       export MANPAGER="col -b | ~/bin/view  -c 'set ft=man nomod nolist' -"
-        export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
+#       export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
         ;;
     *)
         alias vi=vim
-        export MANPAGER="col -b | view  -c 'setspool ft=man nomod nolist' -"
+#       export MANPAGER="col -b | view  -c 'setspool ft=man nomod nolist' -"
         ;;
 esac
 
