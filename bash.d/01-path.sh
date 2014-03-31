@@ -44,6 +44,7 @@ manpathadd () {
 PATH=~/bin
 pathadd /opt/local/bin
 pathadd /opt/local/sbin                       after
+pathadd /Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/bin after
 pathadd /usr/local/bin                        after
 pathadd /usr/local/sbin                       after
 pathadd /Developer/usr/bin                    after
