@@ -1,6 +1,6 @@
 #!/bin/bash
-### mvf
-### bashrc lib
+
+# Ref: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 
 # Attribute codes:
 #   00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
@@ -9,7 +9,6 @@
 # Background color codes:
 #   40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 
-# Ref: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 # Black       0;30     Dark Gray     1;30
 # Red         0;31     Light Red     1;31
 # Green       0;32     Light Green   1;32
@@ -19,47 +18,39 @@
 # Cyan        0;36     Light Cyan    1;36
 # Light Gray  0;37     White         1;37
 
-     red="\[\e[01;31m\]"
-   green="\[\e[01;32m\]"
-  yellow="\[\e[01;33m\]"
-  orange="\[\e[00;33m\]"
-    blue="\[\e[01;34m\]"
- magenta="\[\e[01;35m\]"
-    cyan="\[\e[01;36m\]"
-   white="\[\e[01;37m\]"
-    gray="\[\e[00;37m\]"
-   reset="\[\e[0m\]"
+     red='\e[01;31m'
+   green='\e[01;32m'
+  yellow='\e[01;33m'
+  orange='\e[00;33m'
+    blue='\e[01;34m'
+ magenta='\e[01;35m'
+    cyan='\e[01;36m'
+   white='\e[01;37m'
+    gray='\e[00;37m'
+   reset='\e[0m'
 
-# Example
-# export PS1='\u@\h:\w\n\$ '
-# export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\]\n\$ '
-# export PS1='\[\e[01;33m\]\u\[\e[01;37m\]@\[\e[01;36m\]\h\[\e[01;37m\]:\[\e[00;33m\]\w\[\e[0m\] $(__git_ps1 "(%s)")\n\$ '
+# Default
+PS1="${yellow}\u${white}@${cyan}\H${white}:${orange}\w${reset}\n\\$ "
+PS2="${yellos}> ${reset}"
 
-# Default (and open single quote)
-#rompt="export PS1='${yellow}\\u${white}@${cyan}\\H${white}:${orange}\\w/"
-#rompt="export PS1='${yellow}\\u${gray}@${yellow}\\h${white}:${yellow}\\w/"
-prompt="export PS1='${orange}\\u${gray}@${orange}\\h${gray}:${orange}\\w/"
-
+# Dynamically, if possible
+prompt="${yellow}\u${white}@${cyan}\H${white}:${orange}\w"
+marker="${prompt}"
 
 # Fuctions exist?
-# type __ora_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__ora_ps1)'`"
-# type __mysql_ps1  2>/dev/null 1>/dev/null && prompt="`echo $prompt ${cyan}``echo '$(__mysql_ps1)'`"
-  type __rvm_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${red}``echo '$(__rvm_ps1)'`"
-  type __git_ps1    2>/dev/null 1>/dev/null && prompt="`echo $prompt ${green}``echo '$(__git_ps1 "(%s)")'`"
-  type __awsenv_ps1 2>/dev/null 1>/dev/null && prompt="`echo $prompt ${cyan}``echo '$(__awsenv_ps1)'`"
+# type __ora_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__ora_ps1)"
+# type __mysql_ps1  &>/dev/null && prompt="${prompt} ${cyan}\$(__mysql_ps1)"
+  type __rvm_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__rvm_ps1)"
+  type __git_ps1    &>/dev/null && prompt="${prompt} ${green}\$(__git_ps1 \"(%s)\")"
+  type __awsenv_ps1 &>/dev/null && prompt="${prompt} ${cyan}\$(__awsenv_ps1)"
 
-# Terminal tab string
-function __term_string() {
-   #echo -ne "\033]0;String_Here\007"
-    echo -ne "\033]0;${PWD##*/}/\007"
-}
-prompt="`echo ${prompt}``echo '$(__term_string)'`"
+if [ "${prompt}" != "${marker}" ]
+then
+  # Close (and adopt) dynamic prompt
+  PS1="${prompt}${reset}\n\\$ "
+fi
 
-# End colors and evaluate (and close single quote)
-prompt="$prompt $reset\n\\$ '"
-eval $prompt
-
-export PS2="\[\033[0;40m\]\[\033[0;33m\]> \[\033[1;37m\]\[\033[1m\]"
+export PS1 PS2
 
 # vim: ft=sh:
 
