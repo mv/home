@@ -55,7 +55,7 @@ export AWS_SECRET_ACCESS_KEY=$( awk -F= '/SecretKey/ {print $2}' $AWS_CREDENTIAL
 #     aws help
 #
 export AWS_DEFAULT_REGION=sa-east-1
-export AWS_DEFAULT_OUTPUT=table
+export AWS_DEFAULT_OUTPUT=text
 complete -C aws_completer aws    # bash-completion
 
 

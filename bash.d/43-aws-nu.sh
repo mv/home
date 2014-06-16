@@ -22,5 +22,8 @@ export LOCAL=true
 export NU_HOME=/work/nu/repo
 export PATH=$NU_HOME/nudev:$PATH
 
+alias sshu='ssh -l ubuntu'
+alias sshe='ssh -l ec2-user'
+
 # vim:ft=sh:
 
