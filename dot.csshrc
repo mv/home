@@ -4,7 +4,7 @@
 #
 
 ### Global
-screen = 1
+screen = 0
 ping_test
 ping_timeout = 3
 no_growl

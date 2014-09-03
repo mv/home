@@ -27,18 +27,25 @@
 *.gem
 *.pkg
 *.box
+*.iso
 
 # Compressed
-*.tar
-*.z
-*.bz2
-*.zip
-*.arj
-*.a[0-9][0-9]
-*.lha
+*tar
+*z
+*bz2
+*zip
+*arj
+*a[0-9][0-9]
+*lha
 
 # textfiles
 *.buf
 *.lst
 *.log
+
+# directories
+tmp/
+log/
+
+# This project
 

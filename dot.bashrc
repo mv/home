@@ -32,8 +32,8 @@ export CDPATH=$CDPATH:/pub
 # source /usr/local/lib/python2.7//site-packages/Powerline-beta-py2.7.egg/powerline/bindings/bash/powerline.sh
 
 # NuBank
-rvm use default
-awsenv-set nu
+#rvm use default
+#awsenv-set nu
 source ~/bash.d/43-aws-nu.sh
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

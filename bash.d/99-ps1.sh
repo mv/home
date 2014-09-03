@@ -31,7 +31,7 @@
 
 # Default
 PS1="${yellow}\u${white}@${cyan}\H${white}:${orange}\w${reset}\n\\$ "
-PS2="${yellos}> ${reset}"
+PS2="${yellow}> ${reset}"
 
 # Dynamically, if possible
 prompt="${yellow}\u${white}@${cyan}\H${white}:${orange}\w"
@@ -40,9 +40,9 @@ marker="${prompt}"
 # Fuctions exist?
 # type __ora_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__ora_ps1)"
 # type __mysql_ps1  &>/dev/null && prompt="${prompt} ${cyan}\$(__mysql_ps1)"
+  type __awsenv_ps1 &>/dev/null && prompt="${prompt} ${cyan}\$(__awsenv_ps1)"
   type __rvm_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__rvm_ps1)"
   type __git_ps1    &>/dev/null && prompt="${prompt} ${green}\$(__git_ps1 \"(%s)\")"
-  type __awsenv_ps1 &>/dev/null && prompt="${prompt} ${cyan}\$(__awsenv_ps1)"
 
 if [ "${prompt}" != "${marker}" ]
 then
@@ -51,6 +51,10 @@ then
 fi
 
 export PS1 PS2
+
+# xterm title
+#xport PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # vim: ft=sh:
 
