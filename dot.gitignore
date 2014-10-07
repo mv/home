@@ -28,6 +28,8 @@
 *.pkg
 *.box
 *.iso
+*.war
+*.jar
 
 # Compressed
 *tar
