@@ -30,11 +30,11 @@
    reset='\e[0m'
 
 # Default
-PS1="${yellow}\u${white}@${cyan}\H${white}:${orange}\w${reset}\n\\$ "
+PS1="${yellow}\u${white}@${cyan}\h${white}:${orange}\w${reset}\n\\$ "
 PS2="${yellow}> ${reset}"
 
 # Dynamically, if possible
-prompt="${yellow}\u${white}@${cyan}\H${white}:${orange}\w"
+prompt="${yellow}\u${white}@${cyan}\h${white}:${orange}\w"
 marker="${prompt}"
 
 # Fuctions exist?
