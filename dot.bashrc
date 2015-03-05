@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ft=sh foldlevel=0:
 
 ###
 ### mvf
@@ -27,13 +28,12 @@ export CDPATH=$CDPATH:/pub
 
 # source /usr/local/lib/python2.7//site-packages/Powerline-beta-py2.7.egg/powerline/bindings/bash/powerline.sh
 
-# NuBank
-#rvm use default
-#awsenv-set nu
-source ~/bash.d/43-aws-nu.sh
+# Ruby!
+rvm use default
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
-# vim: ft=sh foldlevel=0:
-
+# added by travis gem
+[ -f /Users/marcus/.travis/travis.sh ] && source /Users/marcus/.travis/travis.sh
 
