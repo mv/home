@@ -21,12 +21,8 @@ export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
 export CDPATH=.
 export CDPATH=$CDPATH:~/
 export CDPATH=$CDPATH:/work
-export CDPATH=$CDPATH:/work/nu
-export CDPATH=$CDPATH:/work/nu/repo
-export CDPATH=$CDPATH:/work/nu/infra
-export CDPATH=$CDPATH:/work/dev
-export CDPATH=$CDPATH:/work/devops
-export CDPATH=$CDPATH:/work/devops/puppet/global
+export CDPATH=$CDPATH:/work/mv
+export CDPATH=$CDPATH:/work/mv/dev
 export CDPATH=$CDPATH:/pub
 
 # source /usr/local/lib/python2.7//site-packages/Powerline-beta-py2.7.egg/powerline/bindings/bash/powerline.sh
