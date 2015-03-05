@@ -2,9 +2,6 @@
 ### mvf
 ### git-achievements
 
-dir=/work/dev
-myclone="git@github.com:mv/git-achievements.git"
-
 #
 # Setup your clone
 #
@@ -16,8 +13,12 @@ myclone="git@github.com:mv/git-achievements.git"
 #     git achievements --help
 #
 
-alias git="git-achievements"
-pathadd ${dir}/git-achievements
+myclone="git@github.com:mv/git-achievements.git"
+
+dir=/work/mv/dev
+#pathadd ${dir}/git-achievements
+
+alias git="${dir}/git-achievements/git-achievements"
 
 # vim: ft=sh:
 
