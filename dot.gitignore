@@ -48,6 +48,7 @@
 # directories
 tmp/
 log/
+.vagrant/
 
 # This project
 
