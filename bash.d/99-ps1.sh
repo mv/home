@@ -40,7 +40,7 @@ marker="${prompt}"
 # Fuctions exist?
 # type __ora_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__ora_ps1)"
 # type __mysql_ps1  &>/dev/null && prompt="${prompt} ${cyan}\$(__mysql_ps1)"
-  type __awsenv_ps1 &>/dev/null && prompt="${prompt} ${cyan}\$(__awsenv_ps1)"
+  type awscfg_ps1   &>/dev/null && prompt="${prompt} ${cyan}\$(awscfg_ps1)"
   type __rvm_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__rvm_ps1)"
   type __git_ps1    &>/dev/null && prompt="${prompt} ${green}\$(__git_ps1 \"(%s)\")"
 

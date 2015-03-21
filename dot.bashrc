@@ -31,6 +31,10 @@ export CDPATH=$CDPATH:/pub
 # Ruby!
 rvm use default
 
+# AWS config
+source ~/bin/awscfg.sh
+awscfg_set default > /dev/null
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 

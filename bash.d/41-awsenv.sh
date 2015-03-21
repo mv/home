@@ -15,7 +15,7 @@ export AWSENV_PROFILES_DIR AWSENV_TEMPLATES_DIR
 
 source ~/work/mv/dev/mv-awsenv/awsenv.sh
 
-awsenv-set "ferreira.mv"
+awsenv-set "mvtest"
 
 # vim:ft=sh:
 
