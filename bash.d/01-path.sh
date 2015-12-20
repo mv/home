@@ -73,8 +73,8 @@ alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo " 
 alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
 
 # Find In Path
-fip()  { find ${PATH//:/ } -name \*${1}\*; }
-filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
+#fip()  { find ${PATH//:/ } -name \*${1}\*; }
+#filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
 
 # vim: ft=sh:
 
