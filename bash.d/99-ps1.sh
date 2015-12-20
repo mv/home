@@ -54,7 +54,8 @@ export PS1 PS2
 
 # xterm title
 #xport PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+#xport PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
 # vim: ft=sh:
 
