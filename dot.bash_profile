@@ -3,7 +3,10 @@
 
 ###
 ### mvf
-### macos:~/.bashrc
+### macos:~/.profile
+
+[ -e ~/.shell-debug-enable ] && echo "~/.shell-debug-enable: [~/.bash_profile]"
+
 
 PS1='\u@\h:\w\n\$ '
 
