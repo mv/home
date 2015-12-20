@@ -26,18 +26,4 @@ export CDPATH=$CDPATH:~/work/mv
 export CDPATH=$CDPATH:~/work/mv/dev
 export CDPATH=$CDPATH:/pub
 
-# source /usr/local/lib/python2.7//site-packages/Powerline-beta-py2.7.egg/powerline/bindings/bash/powerline.sh
-
-# Ruby!
-rvm use default
-
-# AWS config
-source ~/bin/awscfg.sh
-awscfg_set default > /dev/null
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# added by travis gem
-[ -f /Users/marcus/.travis/travis.sh ] && source /Users/marcus/.travis/travis.sh
 
