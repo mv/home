@@ -21,7 +21,7 @@
      red='\e[01;31m'
    green='\e[01;32m'
   yellow='\e[01;33m'
-  orange='\e[00;33m'
+   brown='\e[00;33m'
     blue='\e[01;34m'
  magenta='\e[01;35m'
     cyan='\e[01;36m'
@@ -30,11 +30,11 @@
    reset='\e[0m'
 
 # Default
-PS1="${yellow}\u${white}@${cyan}\h${white}:${orange}\w${reset}\n\\$ "
+PS1="${yellow}\u${white}@${cyan}\h${white}:${brown}\w${reset}\n\\$ "
 PS2="${yellow}> ${reset}"
 
 # Dynamically, if possible
-prompt="${yellow}\u${white}@${cyan}\h${white}:${orange}\w"
+prompt="${yellow}\u${white}@${cyan}\h${white}:${brown}\w"
 marker="${prompt}"
 
 # Fuctions exist?
