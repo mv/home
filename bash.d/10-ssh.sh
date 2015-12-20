@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim: ft=sh:
 
 ###
 ### mvf
@@ -6,7 +7,7 @@
 
 alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no '
 
-alias csshx='csshX'
+alias scpresume='rsync --partial --progress --rsh=ssh'
 
-# vim: ft=sh:
+alias csshx='csshX'
 
