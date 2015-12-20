@@ -18,9 +18,6 @@ alias   dtdns='date "+%Y%m%d%H%M%S"'
 alias dtepoch='date "+%s"'
 
 
-alias ssane='stty sane'        # restore terminal
-alias scpresume='rsync --partial --progress --rsh=ssh'
-
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 alias    h='history'
 

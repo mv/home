@@ -82,8 +82,6 @@ function tags() {
 
 # alias rmsvn='find . -type d -name .svn      | xargs rm -rf'
 
-alias csshx='csshX'
-alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no '
 
 # vim: ft=sh:
 
