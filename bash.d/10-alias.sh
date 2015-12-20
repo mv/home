@@ -12,14 +12,19 @@ alias less='less -r'                    # raw control characters
 alias grep='egrep --color'              # show differences in colour
 alias csort='sort | uniq -c | sort -n' # column sort/count
 
+alias ssane='stty sane'        # restore terminal
+
+
+## /bin/date formats
 alias  dtfile='date "+%F_%H%M"'
 alias   dtiso='date "+%F %X"'
 alias   dtdns='date "+%Y%m%d%H%M%S"'
 alias dtepoch='date "+%s"'
 
 
+## history
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
-alias    h='history'
+alias h='history'
 
 hcount() {
     [ "$1" ] && _line=$1 || _line=10
