@@ -6,7 +6,7 @@
 #    git clone git://github.com/mv/home mv_home
 #
 
-DIR=/work/mv-home
+DIR=~/work/mv-home
 
 for f in ${DIR}/dot.*
 do

@@ -15,7 +15,7 @@
 
 myclone="git@github.com:mv/git-achievements.git"
 
-dir=/work/mv/dev
+dir=~/work/mv/dev
 #pathadd ${dir}/git-achievements
 
 alias git="${dir}/git-achievements/git-achievements"
