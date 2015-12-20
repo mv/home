@@ -10,13 +10,13 @@ DIR=~/work/mv-home
 
 for f in ${DIR}/dot.*
 do
-    ln -snf $f ~/.${f#*.}
+  ln -snf $f ~/.${f#*.}
 done
 
 cd ~/
 ln -snf  ${DIR}/bin
 ln -snf  ${DIR}/bash.d
-ln -snf  ${DIR}/bash-completion.d
+ln -snf  ${DIR}/bash_completion.d
 ln -snf  ${DIR}/vagrant.d/Vagrantfile  ~/.vagrant.d/Vagrantfile
 
 [ ! -d ~/var ] && mkdir ~/var
