@@ -71,12 +71,12 @@ fi
 
 # Devel {
 
-function tags() {
-    if [ -z "$1" ]
-    then ctags --verbose --recurse
-    else ctags --verbose --recurse --languages=$1
-    fi
-}
+# function tags() {
+#     if [ -z "$1" ]
+#     then ctags --verbose --recurse
+#     else ctags --verbose --recurse --languages=$1
+#     fi
+# }
 
 # }
 
