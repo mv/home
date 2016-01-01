@@ -23,7 +23,8 @@ do
     [ -x "$file" ] && source "$file"
 done
 
-[ -e ~/.bashrc ] && source ~/.bashrc
+# if interative and exists...
+[[ $- == *i* ]] && [[ -e ~/.bashrc ]] && source ~/.bashrc
 
 ###
 ### Add-ons

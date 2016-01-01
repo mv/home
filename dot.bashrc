@@ -13,6 +13,7 @@
 ##   bash login
 ##     1. /etc/profile
 ##     2. ~/.bash_profile | ~/.bash_login | ~/.profile
+##     3. ~/.bash_profile: source ~/.bashrc
 ##
 ##   bash logout
 ##     1. ~/.bash_logout
