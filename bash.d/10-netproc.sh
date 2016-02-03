@@ -67,6 +67,9 @@ alias    nmap0='sudo nmap -v -A -P0'
 
 alias      rdt='rdesktop -d UOFA -g 1024x768 -u '
 
+alias       p4='ping 4.2.2.1'
+alias       p8='ping 8.8.8.8'
+
 which rlwrap 2>&1 >/dev/null && alias nslookup='rlwrap nslookup'
 
 # vim: ft=sh:
