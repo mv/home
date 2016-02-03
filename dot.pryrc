@@ -1,4 +1,5 @@
 
+
 Pry.config.prompt = proc do |obj, level, _|
   prompt = ""
   prompt << "#{Rails.version}@" if defined?(Rails)
