@@ -33,14 +33,17 @@ done
 # [[ -s "/usr/local/rvm/scripts/rvm" ]] && {
 #    # Pre-req: /etc/rvmrc
 #    source "/usr/local/rvm/scripts/rvm"   # This loads RVM into a shell session.
-#    rvm 1.9.3
+#    rvm system
 # }
-
-rvm system
 
 function __rvm_ps1() {
     [ "$rvm_ruby_string" ] && echo "[$rvm_ruby_string]"
 }
 
+### rbenv
+if which rbenv
+then
+    eval "$(rbenv init -)"
+fi
 # vim: ft=sh:
 
