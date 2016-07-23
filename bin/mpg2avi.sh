@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Depend:
+#   brew install mplayer
 #
 
 [ -z "$1" ] && {
