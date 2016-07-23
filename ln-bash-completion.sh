@@ -17,11 +17,11 @@
 # ln -snf /usr/local/etc/bash_completion.d/chsh
   ln -snf /usr/local/etc/bash_completion.d/coreutils
   ln -snf /usr/local/etc/bash_completion.d/cpio
-# ln -snf /usr/local/etc/bash_completion.d/crontab
+  ln -snf /usr/local/etc/bash_completion.d/crontab
   ln -snf /usr/local/etc/bash_completion.d/dd
   ln -snf /usr/local/etc/bash_completion.d/findutils
 # ln -snf /usr/local/etc/bash_completion.d/fuse
-# ln -snf /usr/local/etc/bash_completion.d/gcc
+  ln -snf /usr/local/etc/bash_completion.d/gcc
 # ln -snf /usr/local/etc/bash_completion.d/gcl
 # ln -snf /usr/local/etc/bash_completion.d/gdb
 # ln -snf /usr/local/etc/bash_completion.d/getent
@@ -31,12 +31,12 @@
   ln -snf /usr/local/etc/bash_completion.d/gpg
   ln -snf /usr/local/etc/bash_completion.d/gpg2
   ln -snf /usr/local/etc/bash_completion.d/gzip
-# ln -snf /usr/local/etc/bash_completion.d/hping2
+  ln -snf /usr/local/etc/bash_completion.d/hping2
   ln -snf /usr/local/etc/bash_completion.d/hub.bash_completion.sh
   ln -snf /usr/local/etc/bash_completion.d/iconv
 # ln -snf /usr/local/etc/bash_completion.d/iftop
 # ln -snf /usr/local/etc/bash_completion.d/ifupdown
-# ln -snf /usr/local/etc/bash_completion.d/imagemagick
+  ln -snf /usr/local/etc/bash_completion.d/imagemagick
 # ln -snf /usr/local/etc/bash_completion.d/info
 # ln -snf /usr/local/etc/bash_completion.d/ipmitool
 # ln -snf /usr/local/etc/bash_completion.d/iproute2
