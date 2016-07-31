@@ -35,7 +35,7 @@ function __aws_config() {
   # add to the prompt:
   [ "${AWS_DEFAULT_PROFILE}" ] && msg="${AWS_DEFAULT_PROFILE}"
   [ "${AWS_DEFAULT_REGION}"  ] && msg="${msg}:${AWS_DEFAULT_REGION}"
-  [ "${AWS_DEFAULT_REGION}"  ] && msg="${msg} eb:${AWS_EB_PROFILE}"
+# [ "${AWS_DEFAULT_REGION}"  ] && msg="${msg} eb:${AWS_EB_PROFILE}"
   echo "[aws:${msg}]"
 }
 
