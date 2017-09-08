@@ -42,8 +42,13 @@ function __aws_config() {
 ###
 ### bash-completion
 ###
+
 if which aws_completer 2>/dev/null 1>/dev/null
-then complete -C $( which aws_completer ) aws
+then
+  complete -C aws_completer aws
+  if which _fzf-completer.sh 2>&1 > /dev/null
+  then complete -C ~/bin/_fzf-completer.sh aws
+  fi
 fi
 
 
