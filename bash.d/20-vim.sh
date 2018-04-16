@@ -11,7 +11,7 @@ case `uname -s` in
     Darwin)
         alias   vi='/usr/bin/vim'
 #       alias  vim='~/App/MacVim.app/Contents/MacOS/Vim'
-        alias tvim='gvim --remote-tab'
+        alias tvim='gvim --remote-tab 2>/dev/null'
 #       alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 #       alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
 
