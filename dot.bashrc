@@ -28,6 +28,8 @@ shopt -s cmdhist          # saves multines in one history line
 set -o vi
 umask 002
 
+export LANG=en_US.UTF-8
+
 export HISTCONTROL='ignoredups:erasedups'
 export HISTCONTROL='ignoredups'
 export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
