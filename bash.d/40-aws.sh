@@ -21,8 +21,9 @@
 #
 #     aws help
 #
-export AWS_DEFAULT_PROFILE="internal-mv"
 export AWS_DEFAULT_REGION="us-west-2"
+export AWS_DEFAULT_PROFILE="internal-mv"
+export AWS_PROFILE="${AWS_DEFAULT_PROFILE}"
 #xport AWS_DEFAULT_OUTPUT=table
 
 # awsebcli: Elasticbeanstalk CLI
