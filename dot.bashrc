@@ -38,5 +38,7 @@ export CDPATH=$CDPATH:~/work
 export CDPATH=$CDPATH:~/work/mv
 export CDPATH=$CDPATH:~/work/mv/dev
 export CDPATH=$CDPATH:/pub
+export CDPATH=$CDPATH:~/WorkDocs/amzn
+
 
 
