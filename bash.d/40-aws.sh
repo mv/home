@@ -1,8 +1,10 @@
 #!/bin/bash
+# vim:ft=sh:
 #
-# using ec2 tools
+# using aws cli
 #
 # Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
+#
 # 2011-11
 # 2013-10: awscli
 # 2015-12: awscli: aws configure
@@ -51,24 +53,4 @@ then
   fi
 fi
 
-
-###
-### Independent tools
-###
-#
-# S3
-# --
-#     $ brew install s3cmd
-#     http://s3tools.org/s3cmd
-#     s3cmd --help
-#     s3cmd ls
-# or
-#     $ curl https://raw.github.com/timkay/aws/master/aws -o /usr/local/bin/aws.pl && chmod +x /usr/local/bin/aws.pl
-#     http://timkay.com/aws/
-#     aws.pl
-
-#xport  S3_URL=https://s3.sa-east-1.amazonaws.com
-
-
-# vim:ft=sh:
 
