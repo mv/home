@@ -44,7 +44,7 @@ manpathadd () {
 PATH=~/bin
 pathadd /opt/local/bin
 pathadd /opt/local/sbin                       after
-pathadd /Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/bin after
+pathadd /usr/local/opt/python/libexec/bin     after
 pathadd /usr/local/bin                        after
 pathadd /usr/local/sbin                       after
 pathadd /Developer/usr/bin                    after
@@ -54,7 +54,6 @@ pathadd /sbin                                 after
 pathadd /usr/bin                              after
 pathadd /usr/sbin                             after
 pathadd /usr/X11/bin                          after
-pathadd /usr/local/Cellar/ruby/2.0.0-p247/bin
 pathadd /usr/local/heroku/bin/
 
 # LD_LIBRARY_PATH=/opt/local/lib
