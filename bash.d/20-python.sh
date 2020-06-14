@@ -16,8 +16,9 @@
 export PYTHONDONTWRITEBYTECODE=1
 
 # virtualenv
-alias pyactivate="source .venv/bin/activate"
+alias pyactivate="source venv/bin/activate"
 alias pydeactivate="deactivate"
+
 
 
 # Tip: pip completion
