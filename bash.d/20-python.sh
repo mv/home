@@ -5,22 +5,21 @@
 ### mvf
 ### Python
 
-# pyenv
-# https://github.com/pyenv/pyenv
-
-# export PYENV_ROOT=~/work/dev/pyenv
-# export PYENV_ROOT=~/.pyenv
-# eval "$(pyenv init -)"
-
 # Disable __pycache__ dirs
 export PYTHONDONTWRITEBYTECODE=1
+
+# Tip: pip completion
+# pip completion --bash > ~/bash_completion.d/pip.bash-completion
 
 # virtualenv
 alias pyactivate="source venv/bin/activate"
 alias pydeactivate="deactivate"
 
+# pyenv
+# https://github.com/pyenv/pyenv
+# export PYENV_ROOT=~/.pyenv
+eval "$(pyenv init -)"
 
-
-# Tip: pip completion
-# pip completion --bash > ~/bash_completion.d/pip.bash-completion
+# pipenv: Pipfile.lock
+export PIPENV_VERBOSITY=-1
 

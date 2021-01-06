@@ -31,7 +31,12 @@ function echo_source() {
 
 for file in ~/bash.d/*sh
 do
-    [ -x "$file" ] && source "$file"
+    # only executables
+    if [ -x "$file" ]
+    then
+        [ -e ~/.shell-debug-enable ] && echo "[${file}]"
+        source "$file"
+    fi
 done
 
 # if interative and exists...
