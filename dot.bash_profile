@@ -48,3 +48,4 @@ done
 ##[ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
 
 
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

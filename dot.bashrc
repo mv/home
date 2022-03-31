@@ -36,4 +36,6 @@ export CDPATH=$CDPATH:/pub
 export CDPATH=$CDPATH:~/WorkDocs/amzn
 
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
