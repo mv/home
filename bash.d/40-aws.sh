@@ -28,9 +28,6 @@
 export AWS_PROFILE="internal-mv"
 export AWS_DEFAULT_PROFILE="internal-mv"
 
-# awsebcli: Elasticbeanstalk CLI
-export AWS_EB_PROFILE="${AWS_DEFAULT_PROFILE}"
-
 ###
 ### PS1
 ###
