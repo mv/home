@@ -9,35 +9,31 @@
 # 2013-10: awscli
 # 2015-12: awscli: aws configure
 # 2018-12: PS1 values from ~/.aws/config
-
+# 2022-08: refactor env VARS. Ref to aws cli v2
 
 ###
 ### AWS cli, python version
 ###
-#     http://aws.amazon.com/cli/
-#     http://docs.aws.amazon.com/cli/latest/reference/
+#     https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+#     https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
+#     https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html
 #
-#     $ easy_install awscli
+#     $ brew install awscli
 #     or
-#     $ easy_install pip
-#     $ pip install awscli
-#
-#     aws help
+#     $ pip3 install awscliv2
 #
 
-export AWS_PROFILE="internal-mv"
-export AWS_DEFAULT_PROFILE="internal-mv"
+export AWS_PROFILE="pp-bp-test-03"
 
 ###
-### PS1
-###
-export AWS_DEFAULT_REGION=$( egrep -A 3 ${AWS_DEFAULT_PROFILE} ~/.aws/config | head -3 | awk -F= '/region/ {print $2}' | sed -e 's/ //' )
-export AWS_DEFAULT_OUTPUT=$( egrep -A 3 ${AWS_DEFAULT_PROFILE} ~/.aws/config | head -3 | awk -F= '/output/ {print $2}' | sed -e 's/ //' )
+### PS1: show in the prompt what is defined in aws/config chosen profile
+###   
+export AWS_DEFAULT_REGION=$( egrep -A 6 ${AWS_PROFILE} ~/.aws/config | awk -F= '/^region/ {print $2}' | sed -e 's/ //' )
 
 function __aws_config() {
   # add to the prompt:
-  [ "${AWS_DEFAULT_PROFILE}" ] && msg="${AWS_DEFAULT_PROFILE}"
-  [ "${AWS_DEFAULT_REGION}"  ] && msg="${msg}:${AWS_DEFAULT_REGION}"
+  [ "${AWS_PROFILE}"        ] && msg="${AWS_PROFILE}"
+  [ "${AWS_DEFAULT_REGION}" ] && msg="${msg}:${AWS_DEFAULT_REGION}"
   echo "[aws:${msg}]"
 }
 
@@ -53,5 +49,3 @@ then
   then complete -C ~/bin/_fzf-completer.sh aws
   fi
 fi
-
-
