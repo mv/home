@@ -14,7 +14,9 @@ export PYTHONDONTWRITEBYTECODE=1
 # pyenv
 # https://github.com/pyenv/pyenv
 # export PYENV_ROOT=~/.pyenv
-eval "$(pyenv init -)"
+if which pyenv 2>/dev/null 1>/dev/null
+then eval "$(pyenv init -)"
+fi
 
 
 # pipenv: Pipfile.lock
