@@ -23,17 +23,23 @@
 #     $ pip3 install awscliv2
 #
 
-export AWS_PROFILE="pp-bp-test-03"
+# 'default' as a placeholder
+[ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"
 
 ###
 ### PS1: show in the prompt what is defined in aws/config chosen profile
 ###   
-export AWS_DEFAULT_REGION=$( egrep -A 6 ${AWS_PROFILE} ~/.aws/config | awk -F= '/^region/ {print $2}' | sed -e 's/ //' )
 
 function __aws_config() {
+
+  _aws_region=$( egrep -A 6 "profile ${AWS_PROFILE}" ~/.aws/config | awk -F= '/^region/ {print $2}' | sed -e 's/ //' )
+
+  [ "${AWS_REGION}" ] && _aws_region="${AWS_REGION}"
+
+
   # add to the prompt:
-  [ "${AWS_PROFILE}"        ] && msg="${AWS_PROFILE}"
-  [ "${AWS_DEFAULT_REGION}" ] && msg="${msg}:${AWS_DEFAULT_REGION}"
+  [ "${AWS_PROFILE}" ] && msg="${AWS_PROFILE}"
+  [ "${_aws_region}" ] && msg="${msg}:${_aws_region}"
   echo "[aws:${msg}]"
 }
 
@@ -49,3 +55,4 @@ then
   then complete -C ~/bin/_fzf-completer.sh aws
   fi
 fi
+
