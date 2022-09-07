@@ -44,13 +44,22 @@ manpathadd () {
 PATH=~/bin
 pathadd /opt/local/bin
 pathadd /opt/local/sbin                       after
+
+## Homebrew: Mac M1/ARM
+pathadd /opt/homebrew/opt/python/libexec/bin  after
 pathadd /opt/homebrew/bin                     after
 pathadd /opt/homebrew/sbin                    after
+
+## Homebrew
 pathadd /usr/local/opt/python/libexec/bin     after
 pathadd /usr/local/bin                        after
 pathadd /usr/local/sbin                       after
+
+## XCode
 pathadd /Developer/usr/bin                    after
 pathadd /Developer/usr/sbin                   after
+
+## Final
 pathadd /bin                                  after
 pathadd /sbin                                 after
 pathadd /usr/bin                              after
