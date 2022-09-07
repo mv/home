@@ -10,7 +10,7 @@ DIR=~/work/mv-home
 
 for f in ${DIR}/dot.*
 do
-  ln -snf $f ~/.${f#*.}
+  ln -snf $f ~/.${f#*dot.}
 done
 
 cd ~/
