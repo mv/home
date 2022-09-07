@@ -44,6 +44,8 @@ manpathadd () {
 PATH=~/bin
 pathadd /opt/local/bin
 pathadd /opt/local/sbin                       after
+pathadd /opt/homebrew/bin                     after
+pathadd /opt/homebrew/sbin                    after
 pathadd /usr/local/opt/python/libexec/bin     after
 pathadd /usr/local/bin                        after
 pathadd /usr/local/sbin                       after
