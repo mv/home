@@ -10,6 +10,7 @@
 # 2015-12: awscli: aws configure
 # 2018-12: PS1 values from ~/.aws/config
 # 2022-08: refactor env VARS. Ref to aws cli v2
+# 2023-02: separate 'ps1' and 'completer'
 
 ###
 ### AWS cli, python version
@@ -25,16 +26,3 @@
 
 # 'default' as a placeholder
 [ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"
-
-###
-### bash-completion
-###
-
-if which aws_completer 2>/dev/null 1>/dev/null
-then
-  complete -C aws_completer aws
-  if which _fzf-completer.sh 2>&1 > /dev/null
-  then complete -C ~/bin/_fzf-completer.sh aws
-  fi
-fi
-
