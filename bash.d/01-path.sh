@@ -3,6 +3,7 @@
 ###
 ### mvf
 ### bashrc lib
+### also: see ./99-path.sh
 
 # *PATH {
 [ -x /bin/egrep     ] && EGREP=/bin/egrep
