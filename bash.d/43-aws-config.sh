@@ -19,6 +19,12 @@ function aws-config() {
   else _section="${1}"
   fi
 
+  if [ "${1}" == "-l" ]
+  then 
+    grep "^\[profile" ~/.aws/config | sort
+    return 0
+  fi
+
   # awk: capture text between /regex-1/,/regex-2/
 
   echo
