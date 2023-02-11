@@ -22,6 +22,11 @@ export TF_LOG=off
 ### bash-completion
 ###
 
-if which /usr/local/bin/terraform 2>/dev/null 1>/dev/null
+if which         /usr/local/bin/terraform 2>/dev/null 1>/dev/null
 then complete -C /usr/local/bin/terraform terraform
 fi
+
+if which         /opt/homebrew/bin/terraform 2>/dev/null 1>/dev/null
+then complete -C /opt/homebrew/bin/terraform terraform
+fi
+
