@@ -19,11 +19,18 @@ export TF_LOG_PATH=./terraform.log
 export TF_LOG=off
 
 alias tf='terraform'
-alias tfpl='terraform plan'
-alias tfsh='terraform show'
-alias tfst='terraform state'
-alias tfva='terraform validate'
 alias tfve='terraform version'
+
+
+alias tfpl='terraform plan'
+alias tfco='terraform console'
+alias tfva='terraform validate'
+
+alias tfapaa='terraform apply -auto-approve'
+
+alias tfsh='terraform show'
+alias tfstls='terraform state list'
+alias tfstsh='terraform state show'
 
 ###
 ### bash-completion
