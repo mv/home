@@ -26,11 +26,16 @@ alias tfpl='terraform plan'
 alias tfco='terraform console'
 alias tfva='terraform validate'
 
+alias tfap='terraform apply -auto-approve'
 alias tfapaa='terraform apply -auto-approve'
 
 alias tfsh='terraform show'
 alias tfstls='terraform state list'
 alias tfstsh='terraform state show'
+
+function tfst() {
+  terraform state list | awk -F'.' '{print $1"."$2}' | sort | uniq
+}
 
 ###
 ### bash-completion
