@@ -34,3 +34,4 @@ function aws-config() {
   awk "/^\[profile ${_section}\]/,/^$/" ~/.aws/config
 
 }
+

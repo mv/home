@@ -14,6 +14,12 @@
 
 function aws-profile() {
 
+  if [ "${1}" == "-l" ]
+  then 
+    grep "^\[profile" ~/.aws/config | sort
+    return 0
+  fi
+
   if ! [ "${1}" == "" ]
   then
     export AWS_PROFILE="${1}"
@@ -23,3 +29,4 @@ function aws-profile() {
   echo "AWS_PROFILE='${AWS_PROFILE}'" 
   echo
 }
+
