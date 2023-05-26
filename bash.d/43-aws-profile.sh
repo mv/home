@@ -1,26 +1,34 @@
 #!/bin/bash
 # vim:ft=sh:
 #
-# aws-profile [<profile-name>]
+# aws-profile [<profile-name>] | -l | -d
 #   View/change AWS_PROFILE
+#   -d  details of current profile
+#   -l  list all profiles
 #
 # Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
 # 2023-02
 #
 
-###
-###
-###
-
 function aws-profile() {
 
+  # -l: list all profiles
   if [ "${1}" == "-l" ]
   then
     grep "^\[profile" ~/.aws/config | sort
     return 0
   fi
 
-  if ! [ "${1}" == "" ]
+  # -d: details of current profile
+  if [ "${1}" == "-d" ]
+  then
+    # capture text between /regex-1/,/regex-2/
+    awk "/^\[profile ${AWS_PROFILE}\]/ , /^$/"  ~/.aws/config
+    return 0
+  fi
+
+  # set to new profile
+  if [ "${1}" != "" ]
   then export AWS_PROFILE="${1}"
   fi
 
