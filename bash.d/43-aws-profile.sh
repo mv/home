@@ -25,6 +25,15 @@ function aws-profile() {
   fi
 
   echo
-  echo "AWS_PROFILE='${AWS_PROFILE}'"
+  echo "  AWS_PROFILE='${AWS_PROFILE}'"
   echo
 }
+
+
+# https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial
+function _complete-aws-profile() {
+  _profiles="$( awk '/^\[profile/ {print $2}' ~/.aws/config | tr -d ']' )"
+  COMPREPLY=( $(compgen -W "${_profiles}" "${COMP_WORDS[1]}") )
+}
+
+complete -F _complete-aws-profile  aws-profile
