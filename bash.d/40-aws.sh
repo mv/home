@@ -26,3 +26,4 @@
 
 # 'default' as a placeholder
 [ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"
+
