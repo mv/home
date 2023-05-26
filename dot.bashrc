@@ -26,6 +26,7 @@ export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
 export CDPATH=.
 export CDPATH=$CDPATH:~/
 export CDPATH=$CDPATH:~/work
+export CDPATH=$CDPATH:~/work/pismo
 export CDPATH=$CDPATH:~/work/aws
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
