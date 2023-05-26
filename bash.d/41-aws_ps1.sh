@@ -32,5 +32,7 @@ function __aws_ps1() {
   [ "${AWS_PROFILE}" ]  && _ps1="${AWS_PROFILE}"
   [ "${_aws_region}" ]  && _ps1="${_ps1}:${_aws_region}"
   [ "${_aws_account}" ] && _ps1="${_ps1}:${_aws_account}"
-  echo "[aws:${_ps1}]"
+# echo "[aws:${_ps1}]"
+  echo "[${_ps1}]"
 }
+
