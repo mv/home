@@ -15,8 +15,11 @@
 #     $ terraform -install-autocomplete
 #
 
-export TF_LOG_PATH=./terraform.log
-export TF_LOG=off
+# off, error, warn, info, debug, trace
+#xport TF_LOG=info
+#xport TF_LOG_CORE=info
+#xport TF_LOG_AWS=info
+#xport TF_LOG_PATH=./terraform.log
 
 alias tf='terraform'
 alias tfve='terraform version'
@@ -48,4 +51,3 @@ fi
 if which         /opt/homebrew/bin/terraform 2>/dev/null 1>/dev/null
 then complete -C /opt/homebrew/bin/terraform terraform
 fi
-
