@@ -15,7 +15,7 @@ function aws-profile() {
   # -l: list all profiles
   if [ "${1}" == "-l" ]
   then
-    grep "^\[profile" ~/.aws/config | sort
+    grep "^\[profile" ${AWS_CONFIG_FILE} | sort
     return 0
   fi
 
@@ -23,7 +23,7 @@ function aws-profile() {
   if [ "${1}" == "-d" ]
   then
     # capture text between /regex-1/,/regex-2/
-    awk "/^\[profile ${AWS_PROFILE}\]/ , /^$/"  ~/.aws/config
+    awk "/^\[profile ${AWS_PROFILE}\]/ , /^$/"  ${AWS_CONFIG_FILE}
     return 0
   fi
 

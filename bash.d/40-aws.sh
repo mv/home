@@ -25,5 +25,6 @@
 #
 
 # 'default' as a placeholder
-[ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"
+[ ! "${AWS_PROFILE}" ]     && export AWS_PROFILE="default"
+[ ! "${AWS_CONFIG_FILE}" ] && export AWS_CONFIG_FILE="${HOME}/.aws/config"
 
