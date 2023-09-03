@@ -14,7 +14,7 @@
 
 function aws-sso-login() {
 
-  if [ "${1}" == "" ] 
+  if [ "${1}" == "" ]
   then
     echo "Usage: aws-sso-login <profile-name>"
     echo
