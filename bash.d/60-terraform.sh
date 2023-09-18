@@ -22,19 +22,19 @@
 #xport TF_LOG_PATH=./terraform.log
 
 alias tf='terraform'
-alias tfve='terraform version'
+alias tfve='tf version'
 
 
-alias tfpl='terraform plan'
-alias tfco='terraform console'
-alias tfva='terraform validate'
+alias tfpl='tf plan'
+alias tfco='tf console'
+alias tfva='tf validate'
 
-alias tfap='terraform apply -auto-approve'
-alias tfapaa='terraform apply -auto-approve'
+alias tfap='tf apply -auto-approve'
+alias tfapaa='tf apply -auto-approve'
 
-alias tfsh='terraform show'
-alias tfstls='terraform state list'
-alias tfstsh='terraform state show'
+alias tfsh='tf show'
+alias tfstls='tf state list'
+alias tfstsh='tf state show'
 
 function tfst() {
   terraform state list | awk -F'.' '{print $1"."$2}' | sort | uniq
@@ -44,10 +44,9 @@ function tfst() {
 ### bash-completion
 ###
 
-if which         /usr/local/bin/terraform 2>/dev/null 1>/dev/null
-then complete -C /usr/local/bin/terraform terraform
+if which terraform 2>/dev/null 1>/dev/null
+then 
+  complete -C $( dirname `which terraform` )/terraform terraform
+  complete -C $( dirname `which terraform` )/terraform tf
 fi
 
-if which         /opt/homebrew/bin/terraform 2>/dev/null 1>/dev/null
-then complete -C /opt/homebrew/bin/terraform terraform
-fi
