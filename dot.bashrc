@@ -30,16 +30,8 @@ export CDPATH=$CDPATH:~/work/pismo
 export CDPATH=$CDPATH:~/work/aws
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
-export CDPATH=$CDPATH:~/WorkDocs
-export CDPATH=$CDPATH:~/WorkDocs/amzn
-export CDPATH=$CDPATH:~/WorkDocs/training
-export CDPATH=$CDPATH:/pub
-export CDPATH=$CDPATH:~/WorkDocs/amzn
-
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
 eval "$(direnv hook bash)"
 
