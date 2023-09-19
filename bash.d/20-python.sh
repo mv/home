@@ -8,6 +8,14 @@
 # Disable __pycache__ dirs
 export PYTHONDONTWRITEBYTECODE=1
 
+# pip install
+# https://pip.pypa.io/en/latest/topics/configuration/#location
+#   Global: /etc/xdg/pip/pip.conf
+#   Global: /etc/pip.conf
+#   User:   $HOME/.config/pip/pip.conf
+#   Site:   $VIRTUAL_ENV/pip.conf
+export PIP_CONFIG_FILE="${HOME}/pip.conf"
+
 # Tip: pip completion
 # pip completion --bash > ~/bash_completion.d/pip.bash-completion
 

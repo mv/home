@@ -7,6 +7,7 @@
 
 # Python/Requests
 export REQUESTS_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/nscacert.pem"
+export REQUESTS_CA_BUNDLE="/etc/ssl/certs/nscacert.pem"
 
 #export CURL_CA_BUNDLE=
 #export GIT_SSL_CAPATH=
