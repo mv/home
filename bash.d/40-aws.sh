@@ -10,6 +10,7 @@
 # 2015-12: awscli: aws configure
 # 2018-12: PS1 values from ~/.aws/config
 # 2022-08: refactor env VARS. Ref to aws cli v2
+# 2023-02: separate 'ps1' and 'completer'
 
 ###
 ### AWS cli, python version
@@ -23,29 +24,5 @@
 #     $ pip3 install awscliv2
 #
 
-export AWS_PROFILE="pp-bp-test-03"
-
-###
-### PS1: show in the prompt what is defined in aws/config chosen profile
-###   
-export AWS_DEFAULT_REGION=$( egrep -A 6 ${AWS_PROFILE} ~/.aws/config | awk -F= '/^region/ {print $2}' | sed -e 's/ //' )
-
-function __aws_config() {
-  # add to the prompt:
-  [ "${AWS_PROFILE}"        ] && msg="${AWS_PROFILE}"
-  [ "${AWS_DEFAULT_REGION}" ] && msg="${msg}:${AWS_DEFAULT_REGION}"
-  echo "[aws:${msg}]"
-}
-
-
-###
-### bash-completion
-###
-
-if which aws_completer 2>/dev/null 1>/dev/null
-then
-  complete -C aws_completer aws
-  if which _fzf-completer.sh 2>&1 > /dev/null
-  then complete -C ~/bin/_fzf-completer.sh aws
-  fi
-fi
+# 'default' as a placeholder
+[ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"

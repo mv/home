@@ -18,31 +18,34 @@
 export TF_LOG_PATH=./terraform.log
 export TF_LOG=off
 
+alias tf='terraform'
+alias tfve='terraform version'
+
+
+alias tfpl='terraform plan'
+alias tfco='terraform console'
+alias tfva='terraform validate'
+
+alias tfap='terraform apply -auto-approve'
+alias tfapaa='terraform apply -auto-approve'
+
+alias tfsh='terraform show'
+alias tfstls='terraform state list'
+alias tfstsh='terraform state show'
+
+function tfst() {
+  terraform state list | awk -F'.' '{print $1"."$2}' | sort | uniq
+}
+
 ###
 ### bash-completion
 ###
 
-if which /usr/local/bin/terraform 2>/dev/null 1>/dev/null
+if which         /usr/local/bin/terraform 2>/dev/null 1>/dev/null
 then complete -C /usr/local/bin/terraform terraform
 fi
 
-###
-###
-###
-alias tfr="terraform refresh"
-alias tfp="terraform plan"
-alias tfa="terraform apply"
-alias tfs="terraform show"
+if which         /opt/homebrew/bin/terraform 2>/dev/null 1>/dev/null
+then complete -C /opt/homebrew/bin/terraform terraform
+fi
 
-function tfo() {
-  _plan="plan-$( date +'%s').plan"
-  echo "terraform plan -out: ${_plan}"
-  terraform plan -out ${_plan}
-}
-
-function tfg() {
-  _graph="graph-$( date +'%s')"
-  echo "terraform graph : ${_graph}"
-  terraform graph | dot -Tsvg -o ${_graph}.svg \
-  && open ${_graph}.svg
-}
