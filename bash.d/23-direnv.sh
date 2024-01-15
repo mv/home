@@ -2,15 +2,10 @@
 # Jun/2023
 #
 #
-_direnv_hook() {
-  local previous_exit_status=$?;
-  trap -- '' SIGINT;
-  eval "$("/usr/local/bin/direnv" export bash)";
-  trap - SIGINT;
-  return $previous_exit_status;
-};
 
-if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
-  PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
-fi
+# Remember:
+#   add: eval "$(direnv hook bash)"
+#   to the end of .bashrc 
+#   to ensure it executes after all bash.d processing
+#
 

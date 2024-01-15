@@ -14,6 +14,8 @@ shopt -s cdable_vars      # enable 'cd mydir' for 'cd $mydir'
 shopt -s cmdhist          # saves multines in one history line
 #hopt -s mailwarn         # check mailfile
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 set -o vi
 umask 002
 
@@ -22,20 +24,14 @@ export LANG=en_US.UTF-8
 export HISTCONTROL='ignoredups:erasedups'
 export HISTCONTROL='ignoredups'
 export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
+export HISTTIMEFORMAT='[%Y-%m-%d %T] '
 
 export CDPATH=.
 export CDPATH=$CDPATH:~/
 export CDPATH=$CDPATH:~/work
-export CDPATH=$CDPATH:~/work/aws
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
-export CDPATH=$CDPATH:~/WorkDocs
-export CDPATH=$CDPATH:~/WorkDocs/amzn
-export CDPATH=$CDPATH:~/WorkDocs/training
-export CDPATH=$CDPATH:/pub
-export CDPATH=$CDPATH:~/WorkDocs/amzn
 
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
+eval "$(direnv hook bash)"
 
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

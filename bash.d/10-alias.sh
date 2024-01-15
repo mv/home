@@ -6,6 +6,7 @@
 
 alias    env='env | sort'
 alias   envg='env | sort | grep -i '
+alias   setg='set | sort | grep -i '
 alias aliasg='alias | grep -i '
 
 alias less='less -r'                    # raw control characters
