@@ -19,7 +19,9 @@ case `uname -s` in
         ;;
 esac
 
-[ `which gls 2>/dev/null` ] && alias ls='gls -AFh --color=auto --time-style=long-iso --group-directories-first'
+if which gls 2>/dev/null 1>/dev/null 
+then alias ls='gls -AFh --color=auto --time-style=long-iso --group-directories-first'
+fi
 
 alias ll='ls -l'                       # long list
 alias lr='ls -ltr'                     # long list

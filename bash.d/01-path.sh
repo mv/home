@@ -5,17 +5,19 @@
 ### bashrc lib
 ### also: see ./99-path.sh
 
-# *PATH {
+# PATH will be reset: make 'grep' a literal command to use
 [ -x /bin/grep     ] && EGREP="/bin/grep"
 [ -x /usr/bin/grep ] && EGREP="/usr/bin/grep"
 
 pathadd () {
-    if [ -d $1 ]
+    [ -f ~/.shell-debug-enable ] && echo "-- check:[$1]"
+    if [ -d "$1" ]
     then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
          then if [ "$2" = "after" ]
-              then PATH=$PATH:$1
-              else PATH=$1:$PATH
+              then PATH=$PATH:"$1"
+              else PATH="$1":$PATH
               fi
+              [ -f ~/.shell-debug-enable ] && echo "== added:[$1]"
         fi
     fi
 }
@@ -60,6 +62,17 @@ pathadd /usr/local/sbin                       after
 pathadd /Developer/usr/bin                    after
 pathadd /Developer/usr/sbin                   after
 
+## Pyenv
+pathadd ~/.local/bin                          after
+
+## Git/Bash
+pathadd /mingw64/bin                                after
+pathadd "/cygdrive/c/Program Files/Git/mingw64/bin" after
+
+## VSCode
+pathadd "/mnt/c/Program Files/Microsoft VS Code/bin"      after
+pathadd "/cygdrive/c/Program Files/Microsoft VS Code/bin" after
+
 ## Final
 pathadd /bin                                  after
 pathadd /sbin                                 after
@@ -87,5 +100,5 @@ alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo " 
 #fip()  { find ${PATH//:/ } -name \*${1}\*; }
 #filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
 
-# vim: ft=sh:
+set +x
 
