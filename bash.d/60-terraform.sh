@@ -25,6 +25,7 @@ alias tfve='terraform version'
 alias tfpl='terraform plan'
 alias tfco='terraform console'
 alias tfva='terraform validate'
+alias tfo='terraform output'
 
 alias tfap='terraform apply -auto-approve'
 alias tfapaa='terraform apply -auto-approve'
