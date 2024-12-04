@@ -16,6 +16,12 @@ function __aws_ps1() {
   # awk 1: capture text between /regex-1/,/regex-2/
   # awk 2: separate k/v pair by '='
 
+  if [ ! -f ~/.aws/config ] 
+  then
+    echo ''
+    return
+  fi
+
   _aws_region=$(  \
     awk "/^\[profile ${AWS_PROFILE}\]/,/^$/" ~/.aws/config | \
     awk -F= '/^region/ {print $2}' | sed -e 's/ //'          \
