@@ -17,15 +17,17 @@ then
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-    alias  gb='git branch'
-    alias gba='git branch -a -v'
+    alias  gs='git status'
+    alias  gb='git branch -a -v'
+    alias gcb='git checkout -b'
     alias  gc='git commit -v'
+
+    alias  gp='git push'
+    alias gpo='git push origin HEAD'
+
+    alias gpl='git pull'
     alias gpr='git pull --rebase'
     alias gpp='git pull && git push'
-    alias gpl='git pull'
-    alias gps='git push'
-    alias  gp='git push'
-    alias gst='git status'
     alias  gd='git diff | vim -'
 
     alias gitk='gitk --all &'
@@ -54,7 +56,7 @@ function git-new-branch() {
     [ -z "$1" ] && return
 
     git push origin $1:refs/heads/$1
-#   git checkout --track -b $1 origin/$1
+    git checkout --track -b $1 origin/$1
 }
 
 function git-rm-branch() {
