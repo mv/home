@@ -18,7 +18,6 @@ if which pyenv 2>/dev/null 1>/dev/null
 then eval "$(pyenv init -)"
 fi
 
-
 # pipenv: Pipfile.lock
 export PIPENV_VERBOSITY=-1
 
@@ -51,13 +50,11 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
    reset='\e[0m'
 
 function __venv_ps1() {
-
     if [ "${VIRTUAL_ENV}" ]
     then
 #       msg = "${green}[${yellow}🐍 ${VIRTUAL_ENV##*/}${green}]"
 #       echo -n '🐍 '
         echo -n "[${VIRTUAL_ENV##*/}]🐍"
     fi
-
 }
 
