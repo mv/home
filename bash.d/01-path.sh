@@ -6,8 +6,8 @@
 ### also: see ./99-path.sh
 
 # *PATH {
-[ -x /bin/egrep     ] && EGREP=/bin/egrep
-[ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
+[ -x /bin/grep     ] && EGREP="/bin/grep"
+[ -x /usr/bin/grep ] && EGREP="/usr/bin/grep"
 
 pathadd () {
     if [ -d $1 ]
