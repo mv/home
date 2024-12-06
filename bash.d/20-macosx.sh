@@ -38,10 +38,10 @@ alias vncoff='sudo rm    /etc/ScreenSharing.launchd' # Disables VNC on OS X
 
 # Remove .DS_Store files.
 rmdst() {
-	if [[ $1 == "" ]]
-  then echo "usage: rmds [directory]";
-	else find $1 -name ".DS_Store" -type f -print -delete;
-	fi
+  if [[ $1 == "" ]]
+  then echo "usage: rmdst [directory]";
+  else find $1 -name ".DS_Store" -type f -print -delete;
+  fi
 }
 
 
