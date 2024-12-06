@@ -29,13 +29,17 @@
     gray='\e[00;37m'
    reset='\e[0m'
 
-# Default
-PS1="${yellow}\u${white}@${cyan}\h${white}:${brown}\w${reset}\n\\$ "
-PS2="${yellow}> ${reset}"
+# Reference
+# PS1="${yellow}\u${white}@${cyan}\h${white}:${brown}\w${reset}\n\\$ "
+# PS2="${yellow}> ${reset}"
 
-# Dynamically, if possible
+# Default
 prompt="${yellow}\u${white}@${cyan}\h${white}:${brown}\w"
 marker="${prompt}"
+
+# Win/Cygwin/WSL
+[ "${TERM}"    == "cygwin"  ] && prompt="${gray}\u${white}@${green}Cygwin${white}:${brown}\w"
+[ "${MSYSTEM}" == "MINGW64" ] && prompt="${blue}\u${red}@${green}MinGW64${white}:${brown}\w"
 
 # Fuctions exist?
 # type __ora_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__ora_ps1)"
