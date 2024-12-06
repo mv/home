@@ -38,8 +38,7 @@ function tgst() {
 # if which         /usr/local/bin/terragrunt 2>/dev/null 1>/dev/null
 # then complete -C /usr/local/bin/terragrunt terragrunt
 # fi
-# 
+#
 # if which         /opt/homebrew/bin/terragrunt 2>/dev/null 1>/dev/null
 # then complete -C /opt/homebrew/bin/terragrunt terragrunt
 # fi
-

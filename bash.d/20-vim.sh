@@ -5,7 +5,7 @@
 ### bashrc lib
 
 # Vim {
-if which vim &>/dev/null 
+if which vim &>/dev/null
 then
     export EDITOR=vim
     alias vi=vim
@@ -24,7 +24,7 @@ fi
 #         alias tvim='gvim --remote-tab 2>/dev/null'
 # #       alias gvim='~/App/MacVim.app/Contents/MacOS/Vim -g'
 # #       alias vimd='~/App/MacVim.app/Contents/MacOS/Vim -g -d'
-# 
+#
 # #       export VIM_APP_DIR=~/App
 # #       export MANPAGER="col -b | ~/bin/view  -c 'set ft=man nomod nolist' -"
 # #       export MANPAGER="col -b | ~/bin/mview -c 'set ft=man nomod nolist' -"
@@ -36,4 +36,3 @@ fi
 # esac
 
 # vim: ft=sh:
-

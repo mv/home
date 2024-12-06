@@ -5,7 +5,7 @@
 ### vagrant aliases
 
 # set -x
-if which vagrant 2>/dev/null 1>/dev/null
+if which vagrant &>/dev/null
 then
     alias  vdf='vagrant destroy -f'
     alias  vst='vagrant status'
@@ -15,4 +15,3 @@ then
 fi
 
 # vim: ft=sh:
-

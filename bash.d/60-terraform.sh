@@ -53,4 +53,3 @@ fi
 if which         /opt/homebrew/bin/terraform 2>/dev/null 1>/dev/null
 then complete -C /opt/homebrew/bin/terraform terraform
 fi
-

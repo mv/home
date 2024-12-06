@@ -20,15 +20,17 @@ export PYTHONDONTWRITEBYTECODE=1
 # pyenv
 # https://github.com/pyenv/pyenv
 if [ -d ~/.pyenv ]
-then 
+then
     export PYENV_ROOT=~/.pyenv
-    pathadd ${PYENV_ROOT}/bin after
+    pathadd ${PYENV_ROOT}/bin
     eval "$(pyenv init -)"
 fi
 
 
 # pipenv: Pipfile.lock
 export PIPENV_VERBOSITY=-1
+
+pathadd ~/.local/bin
 
 
 # virtualenv
@@ -66,4 +68,3 @@ function __venv_ps1() {
         echo -n "[${VIRTUAL_ENV##*/}]🐍"
     fi
 }
-

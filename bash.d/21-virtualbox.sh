@@ -4,7 +4,7 @@
 ### mvf
 ### bashrc lib
 
-if which VBoxManage 2>/dev/null 1>/dev/null
+if which VBoxManage &>/dev/null
 then
     alias vbm="VBoxManage"
     alias vboxmanage="VBoxManage"
@@ -15,4 +15,3 @@ then
 fi
 
 # vim: ft=sh:
-

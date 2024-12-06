@@ -8,8 +8,15 @@
 #alias git='/mnt/c/Program\ Files/Git/mingw64/bin/git.exe'
 
 ## set default browser to be open from terminal
-if [ -f "/mnt/c/Program Files/BrowserPicker/BrowserPicker.exe" ]
-then export BROWSER="/mnt/c/Program Files/BrowserPicker/BrowserPicker.exe"
+_choosy="/mnt/c/Program Files/BrowserPicker/BrowserPicker.exe"
+if [ -f "${_choosy}" ]
+then export BROWSER="${_choosy}"
 fi
 
-# export LOCALE="C.UTF-8"
+## Git/Bash
+pathadd /mingw64/bin
+pathadd "/cygdrive/c/Program Files/Git/mingw64/bin"
+
+## VSCode
+pathadd "/mnt/c/Program Files/Microsoft VS Code/bin"
+pathadd "/cygdrive/c/Program Files/Microsoft VS Code/bin"

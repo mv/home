@@ -44,49 +44,23 @@ manpathadd () {
     fi
 }
 
-PATH=~/bin
-pathadd /opt/local/bin
-pathadd /opt/local/sbin                       after
 
-## Homebrew: Mac M1/ARM
-pathadd /opt/homebrew/opt/python/libexec/bin  after
-pathadd /opt/homebrew/bin                     after
-pathadd /opt/homebrew/sbin                    after
+## Start: reset
+PATH=/bin
+pathadd /sbin          after
+pathadd /usr/bin       after
+pathadd /usr/sbin      after
+pathadd /usr/X11/bin   after
 
-## Homebrew
-pathadd /usr/local/opt/python/libexec/bin     after
-pathadd /usr/local/bin                        after
-pathadd /usr/local/sbin                       after
+## add 'before'
+pathadd /usr/local/sbin
+pathadd /usr/local/bin
 
-## XCode
-pathadd /Developer/usr/bin                    after
-pathadd /Developer/usr/sbin                   after
-
-## Pyenv
-pathadd ~/.local/bin                          after
-
-## Git/Bash
-pathadd /mingw64/bin                                after
-pathadd "/cygdrive/c/Program Files/Git/mingw64/bin" after
-
-## VSCode
-pathadd "/mnt/c/Program Files/Microsoft VS Code/bin"      after
-pathadd "/cygdrive/c/Program Files/Microsoft VS Code/bin" after
-
-## Final
-pathadd /bin                                  after
-pathadd /sbin                                 after
-pathadd /usr/bin                              after
-pathadd /usr/sbin                             after
-pathadd /usr/X11/bin                          after
-pathadd /usr/local/heroku/bin/
 
 # LD_LIBRARY_PATH=/opt/local/lib
 # ldpathadd /usr/local/lib                after
 
-MANPATH=/opt/local/share/man
-manpathadd /usr/local/share/man         after
-manpathadd /Developer/usr/share/man     after
+MANPATH=/usr/local/share/man
 manpathadd /usr/share/man               after
 
 export PATH LD_LIBRARY_PATH MANPATH
@@ -101,4 +75,3 @@ alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo " 
 #filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
 
 set +x
-

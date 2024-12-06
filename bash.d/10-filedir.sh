@@ -31,4 +31,3 @@ alias  sizef='find . -type f | xargs du -h | sort -hr | head'
 alias  sized='find . -type d | xargs du -h | sort -hr | uniq | head'
 
 # vim: ft=sh:
-

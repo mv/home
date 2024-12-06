@@ -31,4 +31,3 @@ function gpass() {
 
 
 # vim: ft=sh:
-

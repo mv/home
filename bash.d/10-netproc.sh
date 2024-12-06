@@ -70,9 +70,8 @@ alias      rdt='rdesktop -d UOFA -g 1024x768 -u '
 alias       p4='ping 4.2.2.1'
 alias       p8='ping 8.8.8.8'
 
-if which rlwrap 2>/dev/null 1>/dev/null 
+if   which rlwrap &>/dev/null
 then alias nslookup='rlwrap nslookup'
 fi
 
 # vim: ft=sh:
-

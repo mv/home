@@ -7,8 +7,9 @@
 alias df='df -Phl'
 alias du='du -h'
 
-which column > /dev/null && alias mount='mount | column -t'
+if   which column &>/dev/null
+then alias mount='mount | column -t'
+fi
 
 
 # vim: ft=sh:
-
