@@ -45,13 +45,11 @@ marker="${prompt}"
   type __venv_ps1   &>/dev/null && prompt="${prompt}${yellow}\$(__venv_ps1)"
   type __git_ps1    &>/dev/null && prompt="${prompt}${green}\$(__git_ps1)"
 
-# Close (and adopt) dynamic prompt if any function was added
-if [ "${prompt}" != "${marker}" ]
-then
-  # \012 or \n
-  # https://stackoverflow.com/questions/33712750/git-config-global-returns-syntax-error-near-unexpected-token-error
-  export PS1="${prompt}${reset}\012\\$ "
-fi
+###
+### \012 or \n
+### https://stackoverflow.com/questions/33712750/git-config-global-returns-syntax-error-near-unexpected-token-error
+export PS1="${prompt}${reset}\012\\$ "
+
 
 if [ -f ~/.shell-debug-enable ]
 then
@@ -68,6 +66,3 @@ export PS1 PS2
 #xport PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 #xport PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
-
-# vim: ft=sh:
-
