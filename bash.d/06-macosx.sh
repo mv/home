@@ -8,6 +8,28 @@
 
 [ `uname -s` != "Darwin" ] && return
 
+## XCode
+pathadd /Developer/usr/bin
+pathadd /Developer/usr/sbin
+
+manpathadd /Developer/usr/share/man
+
+## Homebrew: Mac M1/ARM
+pathadd /opt/homebrew/opt/python/libexec/bin
+pathadd /opt/homebrew/bin
+pathadd /opt/homebrew/sbin
+
+## Homebrew
+pathadd /usr/local/opt/python/libexec/bin
+pathadd /usr/local/bin
+pathadd /usr/local/sbin
+
+pathadd /opt/local/bin
+pathadd /opt/local/sbin
+
+manpathadd /opt/local/share/man
+
+
 alias sleep_ram='sudo pmset -a hibernatemode 0'
 alias sleep_hdd='sudo pmset -a hibernatemode 1'
 alias sleep_combined='sudo pmset -a hibernatemode 3'
@@ -46,4 +68,3 @@ rmdst() {
 
 
 # vim: ft=sh:
-
