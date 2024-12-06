@@ -12,6 +12,6 @@
 #     https://direnv.net/docs/hook.html
 #
 
-if which direnv 2>/dev/null 1>/dev/null 
+if which direnv &>/dev/null
 then eval "$(direnv hook bash)"
 fi

@@ -5,7 +5,7 @@
 ### bashrc lib
 
 # Vim {
-if which vim 2>/dev/null 1>/dev/null 
+if which vim &>/dev/null 
 then
     export EDITOR=vim
     alias vi=vim
