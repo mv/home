@@ -11,12 +11,16 @@ export PYTHONDONTWRITEBYTECODE=1
 # Tip: pip completion
 # pip completion --bash > ~/bash_completion.d/pip.bash-completion
 
+
 # pyenv
 # https://github.com/pyenv/pyenv
-# export PYENV_ROOT=~/.pyenv
-if which pyenv 2>/dev/null 1>/dev/null
-then eval "$(pyenv init -)"
+if [ -d ~/.pyenv ]
+then 
+    export PYENV_ROOT=~/.pyenv
+    pathadd ${PYENV_ROOT}/bin after
+    eval "$(pyenv init -)"
 fi
+
 
 # pipenv: Pipfile.lock
 export PIPENV_VERBOSITY=-1

@@ -9,7 +9,7 @@
 
 ## cleanup: 01-path.sh
 
-unset pathadd
+#nset pathadd
 unset ldpathadd
 unset manpathadd
 
