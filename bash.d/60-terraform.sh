@@ -15,8 +15,12 @@
 #     $ terraform -install-autocomplete
 #
 
-export TF_LOG_PATH=./terraform.log
-export TF_LOG=off
+if ! which terraform &>/dev/null
+then return
+fi
+
+#xport TF_LOG_PATH=./terraform.log
+#xport TF_LOG=off
 
 alias tf='terraform'
 alias tfve='terraform version'

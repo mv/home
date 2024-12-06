@@ -5,6 +5,11 @@
 ### mvf
 ### Python
 
+
+if ! which python3 &>/dev/null
+then return
+fi
+
 # Disable __pycache__ dirs
 export PYTHONDONTWRITEBYTECODE=1
 

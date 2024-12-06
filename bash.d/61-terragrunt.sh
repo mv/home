@@ -8,8 +8,9 @@
 # 2024-12: Terragrunt
 
 
-# export TF_LOG_PATH=./terragrunt.log
-# export TF_LOG=off
+if ! which terratrunt &>/dev/null
+then return
+fi
 
 alias tg='terragrunt'
 alias tgve='terragrunt version'
