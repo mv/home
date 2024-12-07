@@ -24,12 +24,16 @@ then
     export PYENV_ROOT=~/.pyenv
     pathadd ${PYENV_ROOT}/bin
     eval "$(pyenv init -)"
+
+    alias pylist="pyenv install -l | grep '^  3.[12]' | tail -20"
+    alias pyver="python3 -V ; which python3 ; pyenv versions; pip list"
 fi
 
 
 # pipenv: Pipfile.lock
 export PIPENV_VERBOSITY=-1
 
+# pip3/system
 pathadd ~/.local/bin
 
 
