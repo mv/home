@@ -29,6 +29,18 @@ alias lr='ls -ltr'     # long list
 alias la='ls -A'       # all but . and ..
 alias  l='ls --color'
 
-# bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
-# eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
-export LS_COLORS='*sql=33:*log=93:*buf=31'
+# View current ls colors
+#   dircolors --print-ls-colors           > colors-ansi.txt
+#   dircolors -p | grep -v -e '^ ?#|TERM' > colors-defs.txt
+#   paste colors-ansi.txt colors-defs.txt
+if   which dircolors &>/dev/null
+then
+    eval 'dircolors'
+
+    # add more colors
+    export LS_COLORS=${LS_COLORS}:'*.txt=32:*.log=33:*.sql=31:*.buf=31'
+
+    # WSL/Fedora: redefine
+    [ "${WSL_DISTRO_NAME}" ] && export LS_COLORS=${LS_COLORS}:'tw=33;04:ow=34;04:ex='
+
+fi
