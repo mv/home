@@ -20,3 +20,6 @@ pathadd "/cygdrive/c/Program Files/Git/mingw64/bin"
 ## VSCode
 pathadd "/mnt/c/Program Files/Microsoft VS Code/bin"
 pathadd "/cygdrive/c/Program Files/Microsoft VS Code/bin"
+
+## Homebrew/Linux
+pathadd /home/linuxbrew/.linuxbrew/bin
