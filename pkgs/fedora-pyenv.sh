@@ -22,6 +22,6 @@ echo pyenv install 3.13
 echo pyenv versions
 echo pyenv global 3.13
 echo pip list
-echo pip install ipython
+echo pip install ipython virtualenv
 echo pip list
 echo
