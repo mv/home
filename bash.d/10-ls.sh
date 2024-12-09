@@ -38,7 +38,7 @@ then
     eval 'dircolors' &>/dev/null
 
     # add more colors
-    export LS_COLORS=${LS_COLORS}:'*.txt=32:*.log=33:*.sql=31:*.buf=31'
+    export LS_COLORS=${LS_COLORS}:'*.txt=32:*.log=33:*.sql=31:*.conf=31'
 
     # WSL/Fedora: redefine
     [ "${WSL_DISTRO_NAME}" ] && export LS_COLORS=${LS_COLORS}:'tw=33;04:ow=34;04'
