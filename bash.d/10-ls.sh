@@ -41,6 +41,6 @@ then
     export LS_COLORS=${LS_COLORS}:'*.txt=32:*.log=33:*.sql=31:*.buf=31'
 
     # WSL/Fedora: redefine
-    [ "${WSL_DISTRO_NAME}" ] && export LS_COLORS=${LS_COLORS}:'tw=33;04:ow=34;04:ex='
+    [ "${WSL_DISTRO_NAME}" ] && export LS_COLORS=${LS_COLORS}:'tw=33;04:ow=34;04'
 
 fi
