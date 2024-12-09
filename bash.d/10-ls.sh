@@ -11,7 +11,7 @@ case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias ls="ls ${_bsd}"
         ;;
-    Linux)
+    Linux | MINGW* | CYGWIN* )
         alias ls="ls ${_gnu}"
         ;;
     *)
