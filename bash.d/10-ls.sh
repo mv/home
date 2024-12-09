@@ -35,7 +35,7 @@ alias  l='ls --color'
 #   paste colors-ansi.txt colors-defs.txt
 if   which dircolors &>/dev/null
 then
-    eval 'dircolors'
+    eval 'dircolors' &>/dev/null
 
     # add more colors
     export LS_COLORS=${LS_COLORS}:'*.txt=32:*.log=33:*.sql=31:*.buf=31'
