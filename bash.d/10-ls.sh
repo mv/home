@@ -5,7 +5,12 @@
 ### bashrc lib
 
 _bsd='-AFhG'
-_gnu='-AFh --color=auto --time-style=long-iso --group-directories-first'
+_gnu='-AFh --color=auto --group-directories-first --time-style=long-iso'
+_box='-AFh --color=auto --group-directories-first'
+
+if [ -f /etc/os-release ]
+then _os_release=$(awk -F= '/^ID/ {print $2}' /etc/os-release)
+fi
 
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
@@ -13,6 +18,10 @@ case `uname -s` in
         ;;
     Linux | MINGW* | CYGWIN* )
         alias ls="ls ${_gnu}"
+
+        if [ "${_os_release}" == "alpine" ]
+        then alias ls="ls ${_box}"
+        fi
         ;;
     *)
         alias ls='ls -AF'
@@ -33,7 +42,7 @@ alias  l='ls --color'
 #   dircolors --print-ls-colors           > colors-ansi.txt
 #   dircolors -p | grep -v -e '^ ?#|TERM' > colors-defs.txt
 #   paste colors-ansi.txt colors-defs.txt
-if   which dircolors &>/dev/null
+if  which dircolors &>/dev/null
 then
     eval 'dircolors' &>/dev/null
 

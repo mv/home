@@ -5,8 +5,8 @@
 ### bashrc generic utils
 
 alias    env='env | sort'
-alias   envg='env | sort | grep -i '
-alias aliasg='alias | grep -i '
+alias   envg='env | sort | grep -i'
+alias aliasg='alias | grep -i'
 
 alias less='less -r'                    # raw control characters
 alias grep='egrep --color'              # show differences in colour

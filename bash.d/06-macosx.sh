@@ -19,7 +19,7 @@ pathadd /opt/homebrew/opt/python/libexec/bin
 pathadd /opt/homebrew/bin
 pathadd /opt/homebrew/sbin
 
-## Homebrew
+## Homebrew: Intel
 pathadd /usr/local/opt/python/libexec/bin
 pathadd /usr/local/bin
 pathadd /usr/local/sbin

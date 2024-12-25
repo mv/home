@@ -12,6 +12,8 @@
 #     https://direnv.net/docs/hook.html
 #
 
-if   which direnv &>/dev/null
-then eval "$(direnv hook bash)"
+if  which direnv &>/dev/null
+then
+    echo "Direnv: loading"
+    eval "$(direnv hook bash)"
 fi

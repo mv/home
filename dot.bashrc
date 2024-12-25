@@ -7,35 +7,22 @@
 
 [ -e ~/.shell-debug-enable ] && echo "~/.shell-debug-enable: [~/.bashrc]"
 
-# Bash Options
-shopt -s checkhash        # ignore CTRL-D at prompt
-shopt -s cdspell          # corrects dir names
-shopt -s cdable_vars      # enable 'cd mydir' for 'cd $mydir'
-shopt -s cmdhist          # saves multines in one history line
-#hopt -s mailwarn         # check mailfile
+## no '/' in the end
+export    TF_LIVE_DIR=~/work/inoa/live-at
+export TF_MODULES_DIR=~/work/inoa/tf
 
-set -o vi
-umask 002
+export at_current=${TF_LIVE_DIR}/at-saas/sandbox/tst/bulkhead-01
 
-export LANG=en_US.UTF-8
+alias cdl="cd ${TF_LIVE_DIR}"
+alias cdm="cd ${TF_MODULES_DIR}"
 
-export HISTCONTROL='ignoredups:erasedups'
-export HISTCONTROL='ignoredups'
-export HISTIGNORE='&:ls:lr:ll:[bf]g:pwd'
+alias cdc="cd ${at_current}"
 
-export CDPATH=.
-export CDPATH=$CDPATH:~/
-export CDPATH=$CDPATH:~/work
-export CDPATH=$CDPATH:~/work/aws
-export CDPATH=$CDPATH:~/work/dev
-export CDPATH=$CDPATH:~/work/mv
-export CDPATH=$CDPATH:~/WorkDocs
-export CDPATH=$CDPATH:~/WorkDocs/amzn
-export CDPATH=$CDPATH:~/WorkDocs/training
-export CDPATH=$CDPATH:/pub
-export CDPATH=$CDPATH:~/WorkDocs/amzn
+if  which direnv &>/dev/null
+then
+    echo "Direnv: loading"
+    eval "$(direnv hook bash)"
+fi
 
+export CDPATH=~/work/inoa:${CDPATH}
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-export AWS_PROFILE="at-staging"

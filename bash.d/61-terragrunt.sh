@@ -23,6 +23,9 @@ alias tgo='terragrunt output'
 alias tgap='terragrunt apply -auto-approve'
 alias tgapaa='terragrunt apply -auto-approve'
 
+alias   tgd='terragrunt destroy --terragrunt-no-destroy-dependencies-check'
+alias tgdap='terragrunt destroy --terragrunt-no-destroy-dependencies-check --terragrunt-non-interactive -auto-approve'
+
 alias tgsh='terragrunt show'
 alias tgstls='terragrunt state list'
 alias tgstsh='terragrunt state show'
