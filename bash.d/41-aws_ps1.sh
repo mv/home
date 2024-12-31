@@ -9,14 +9,14 @@
 
 ###
 ### PS1: show in the prompt what is defined by aws/config chosen profile
-###   
+###
 
 function __aws_ps1() {
 
   # awk 1: capture text between /regex-1/,/regex-2/
   # awk 2: separate k/v pair by '='
 
-  if [ ! -f ~/.aws/config ] 
+  if [ ! -f ~/.aws/config ]
   then
     echo ''
     return
@@ -32,11 +32,18 @@ function __aws_ps1() {
     awk -F= '/^sso_account_id/ {print $2}' | sed -e 's/ //'  \
   )
 
+  _aws_role=$( \
+    awk "/^\[profile ${AWS_PROFILE}\]/,/^$/" ~/.aws/config | \
+    awk -F= '/^role_arn/ {print $2}' | sed -e 's/ //'      | \
+    sed -e 's/arn:aws:iam:://' \
+  )
+
   #
   # build the prompt:
   #
   [ "${AWS_PROFILE}" ]  && _ps1="${AWS_PROFILE}"
   [ "${_aws_region}" ]  && _ps1="${_ps1}:${_aws_region}"
   [ "${_aws_account}" ] && _ps1="${_ps1}:${_aws_account}"
+  [ "${_aws_role}"    ] && _ps1="${_ps1}:${_aws_role}"
   echo "[aws:${_ps1}]"
 }
