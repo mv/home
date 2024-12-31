@@ -8,15 +8,15 @@
 [ -e ~/.shell-debug-enable ] && echo "~/.shell-debug-enable: [~/.bashrc]"
 
 ## no '/' in the end
-export    TF_LIVE_DIR=~/work/inoa/live-at
-export TF_MODULES_DIR=~/work/inoa/tf
-
-export at_current=${TF_LIVE_DIR}/at-saas/sandbox/tst/bulkhead-01
+export    TF_LIVE_DIR=/mnt/c/Users/MarcusViniciusFerrei/work/inoa/live-at
+export TF_MODULES_DIR=/mnt/c/Users/MarcusViniciusFerrei/work/inoa/tf
+export  TF_AT_CURRENT=${TF_LIVE_DIR}/at-saas/sandbox/tst/bulkhead-01
+export  TF_AT_CURRENT=${TF_LIVE_DIR}/foundations/tgw-ng/live/sandbox-edge/us-east-2/edge
 
 alias cdl="cd ${TF_LIVE_DIR}"
 alias cdm="cd ${TF_MODULES_DIR}"
+alias cdc="cd ${TF_AT_CURRENT}"
 
-alias cdc="cd ${at_current}"
 
 if  which direnv &>/dev/null
 then
@@ -25,4 +25,3 @@ then
 fi
 
 export CDPATH=~/work/inoa:${CDPATH}
-
