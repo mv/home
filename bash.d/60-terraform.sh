@@ -23,24 +23,31 @@ fi
 #xport TF_LOG=off
 
 alias tf='terraform'
-alias tfve='terraform version'
 
+alias    tfo='echodo_ terraform output'
+alias   tfpl='echodo_ terraform plan'
+alias   tfco='echodo_ terraform console'
+alias   tfva='echodo_ terraform validate'
+alias   tfve='echodo_ terraform version'
 
-alias tfpl='terraform plan'
-alias tfco='terraform console'
-alias tfva='terraform validate'
-alias tfo='terraform output'
+alias   tfap='echodo_ terraform apply -auto-approve'
+alias tfapaa='echodo_ terraform apply -auto-approve'
 
-alias tfap='terraform apply -auto-approve'
-alias tfapaa='terraform apply -auto-approve'
-
-alias tfsh='terraform show'
-alias tfstls='terraform state list'
-alias tfstsh='terraform state show'
+alias   tfsh='echodo_ terraform show'
+alias tfstls='echodo_ terraform state list'
+alias tfstsh='echodo_ terraform state show'
 
 function tfst() {
   terraform state list | awk -F'.' '{print $1"."$2}' | sort | uniq
 }
+
+function echodo_() {
+  echo
+  echo "$ ${@}"
+  echo
+  ${@}
+}
+
 
 ###
 ### bash-completion

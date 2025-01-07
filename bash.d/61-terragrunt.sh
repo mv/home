@@ -13,25 +13,37 @@ then return
 fi
 
 alias tg='terragrunt'
-alias tgve='terragrunt version'
 
-alias tgpl='terragrunt plan'
-alias tgco='terragrunt console'
-alias tgva='terragrunt validate'
-alias tgo='terragrunt output'
+alias    tgi='echodo_ terragrunt init'
+alias    tgo='echodo_ terragrunt output'
+alias   tgco='echodo_ terragrunt console'
+alias   tgva='echodo_ terragrunt validate'
+alias   tgve='echodo_ terragrunt version'
 
-alias tgap='terragrunt apply -auto-approve'
-alias tgapaa='terragrunt apply -auto-approve'
+alias   tgpl='echodo_ terragrunt plan -out=/tmp/tfplan'
+alias  tgpld='echodo_ terragrunt plan -destroy -out=/tmp/tfplan'
 
-alias   tgd='terragrunt destroy --terragrunt-no-destroy-dependencies-check'
-alias tgdaa='terragrunt destroy --terragrunt-no-destroy-dependencies-check --terragrunt-non-interactive -auto-approve'
+alias   tgap='echodo_ terragrunt apply'
+alias  tgapp='echodo_ terragrunt apply /tmp/tfplan'
+alias tgapaa='echodo_ terragrunt apply -auto-approve'
 
-alias tgsh='terragrunt show'
-alias tgstls='terragrunt state list'
-alias tgstsh='terragrunt state show'
+alias    tgd='echodo_ terragrunt destroy --terragrunt-no-destroy-dependencies-check'
+alias  tgdaa='echodo_ terragrunt destroy --terragrunt-no-destroy-dependencies-check --terragrunt-non-interactive -auto-approve'
+alias  tgdap='echodo_ terragrunt destroy --terragrunt-no-destroy-dependencies-check --terragrunt-non-interactive -auto-approve'
+
+alias   tgsh='echodo_ terragrunt show'
+alias tgstls='echodo_ terragrunt state list'
+alias tgstsh='echodo_ terragrunt state show'
 
 function tgst() {
   terragrunt state list | awk -F'.' '{print $1"."$2}' | sort | uniq
+}
+
+function echodo_() {
+  echo
+  echo "$ ${@}"
+  echo
+  ${@}
 }
 
 export TERRAGRUNT_NO_AUTO_INIT=1
