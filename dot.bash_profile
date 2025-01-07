@@ -19,33 +19,10 @@
 ##     1. ~/.bash_logout
 
 
-PS1='\u@\h:\w\n\$ '
 
 function echo_source() {
 	echo "$1" && source "$1"
 }
 
-###
-### My Bash 'modules'
-###
-
-for file in ~/bash.d/*sh
-do
-    # only executables
-    if [ -x "$file" ]
-    then
-        [ -e ~/.shell-debug-enable ] && echo "[${file}]"
-        source "$file"
-    fi
-done
-
 # if interative and exists...
 [[ $- == *i* ]] && [[ -e ~/.bashrc ]] && source ~/.bashrc
-
-###
-### Add-ons
-###
-##[ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
-
-
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
