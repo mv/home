@@ -12,8 +12,7 @@
 ### Shortcuts
 ###
 function aws-r53-list() {
-  aws route53 list-hosted-zones | grep hosted | awk '{print $4}' | \
-
+  aws route53 list-hosted-zones --output text| grep hosted | awk '{print $4}' | \
   while read z
   do echo $z
      aws route53 get-hosted-zone --id $z --output json | grep '"Name"|ns-'
@@ -28,11 +27,41 @@ function aws-get-caller-identity() {
 echo "== Sourcing: defined: [aws-get-caller-identity]"
 
 
+function aws-account-list() {
+  aws organizations list-accounts --query Accounts[].[Id,Name] --output text | sort -k 2
+}
+echo "== Sourcing: defined: [aws-account-list]"
+
+
 function aws-ssm-parameters-list() {
   aws ssm describe-parameters --query Parameters[].Name --output json
 }
 echo "== Sourcing: defined: [aws-ssm-parameters-list]"
 
+
+function aws-ssm-parameters-scan() {
+  [ "${1}" == "" ] && {
+    echo
+    echo "Usage: aws-ssm-parameters-scan <parameter-name>"
+    echo
+    return 1
+  }
+  aws ssm describe-parameters --query Parameters[].Name --output json \
+  | grep "${1}"  \
+  | tr -d ',[]" ' \
+  | while read _ssm
+  do
+    # skip whitelines
+    [ "${_ssm}" == "" ] && continue
+
+    _value=$( aws ssm get-parameter --name ${_ssm} --query Parameter.Value )
+
+    echo "SSM Parameter Name : [${_ssm}]"
+    echo "SSM Parameter Value: [${_value}]"
+    echo
+  done
+}
+echo "== Sourcing: defined: [aws-ssm-parameters-scan]"
 
 function aws-ssm-parameters-values() {
   aws ssm describe-parameters --query Parameters[].Name --output json \
@@ -63,3 +92,8 @@ function aws-ssm-connection-info() {
   fi
 }
 echo "== Sourcing: defined: [aws-ssm-connection-info]"
+
+function aws-sts-assume-svc() {
+  aws sts assume-role --role-arn ${job_role_name} --role-session-name ${job_role_session}
+}
+echo "== Sourcing: defined: [aws-sts-assume-svc]"
