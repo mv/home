@@ -23,8 +23,10 @@ function __aws_ps1() {
   fi
 
   _aws_region=$(  \
-    awk "/^\[profile ${AWS_PROFILE}\]/,/^$/" ~/.aws/config | \
-    awk -F= '/^region/ {print $2}' | sed -e 's/ //'          \
+    if [ "${AWS_REGION}" == "" ] ; \
+    then awk "/^\[profile ${AWS_PROFILE}\]/,/^$/" ~/.aws/config | awk -F= '/^region/ {print $2}' | sed -e 's/ //' ; \
+    else echo "${AWS_REGION}" ; \
+    fi
   )
 
   _aws_account=$( \
