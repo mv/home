@@ -31,20 +31,30 @@ fi
 
 ## Job:
 ## no '/' in the end
-export    TF_LIVE_DIR=/mnt/c/Users/MarcusViniciusFerrei/work/inoa/live-at
-export TF_MODULES_DIR=/mnt/c/Users/MarcusViniciusFerrei/work/inoa/tf
-
-export    TF_LIVE_DIR=~/work/inoa/live-at
-export TF_MODULES_DIR=~/work/inoa/tf
-export  TF_AT_CURRENT=${TF_LIVE_DIR}/at-saas/sandbox/tst/bulkhead-01
-export  TF_AT_CURRENT=${TF_LIVE_DIR}/foundations/tgw-ng/live/sandbox-edge/us-east-2/edge
-
-alias cdl="cd ${TF_LIVE_DIR}"
+export TF_MODULES_DIR=/home/marcus/work/inoa/iac/tf
 alias cdm="cd ${TF_MODULES_DIR}"
+
+export  TF_AT_LIVE_DIR=/home/marcus/work/inoa/iac/at-live
+export  TF_AT_CURRENT=${TF_AT_LIVE_DIR}/at-saas/prod/pool-br/us-east-2/
+
+export TF_HUB_LIVE_DIR=/home/marcus/work/inoa/iac/hub-live
+export TF_HUB_CURRENT=${TF_HUB_LIVE_DIR}/live/stg/tst/us-east-2/hub-inoa/network
+
+alias cdl="cd ${TF_AT_LIVE_DIR}"
 alias cdc="cd ${TF_AT_CURRENT}"
 
+alias cdla="cd ${TF_AT_LIVE_DIR}"
+alias cdca="cd ${TF_AT_CURRENT}"
 
-export CDPATH=~/work/inoa:${CDPATH}
+alias cdlh="cd ${TF_HUB_LIVE_DIR}"
+alias cdch="cd ${TF_HUB_CURRENT}"
+
+# export CDPATH=~/work/inoa:${CDPATH}
+# export CDPATH=~/work/inoa/iac:${CDPATH}
 
 export    job_role_name="arn:aws:iam::617006464372:role/inoa-platform-service"
 export job_role_session="INOA-Session"
+
+# eval "$(ssh-agent -s)"
+
+
