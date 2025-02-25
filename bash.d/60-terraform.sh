@@ -25,12 +25,13 @@ fi
 alias tf='terraform'
 
 alias    tfo='echodo_ terraform output'
-alias   tfpl='echodo_ terraform plan'
+alias   tfpl='echodo_ terraform plan -out=/tmp/tfplan'
 alias   tfco='echodo_ terraform console'
 alias   tfva='echodo_ terraform validate'
 alias   tfve='echodo_ terraform version'
 
-alias   tfap='echodo_ terraform apply -auto-approve'
+alias   tfap='echodo_ terraform apply'
+alias tfaptf='echodo_ terraform apply /tmp/tfplan'
 alias tfapaa='echodo_ terraform apply -auto-approve'
 
 alias   tfsh='echodo_ terraform show'

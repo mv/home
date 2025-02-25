@@ -24,7 +24,7 @@ alias   tgpl='echodo_ terragrunt plan -out=/tmp/tfplan'
 alias  tgpld='echodo_ terragrunt plan -destroy -out=/tmp/tfplan'
 
 alias   tgap='echodo_ terragrunt apply'
-alias  tgapp='echodo_ terragrunt apply /tmp/tfplan'
+alias tgaptf='echodo_ terragrunt apply /tmp/tfplan'
 alias tgapaa='echodo_ terragrunt apply -auto-approve'
 
 alias    tgd='echodo_ terragrunt destroy --terragrunt-no-destroy-dependencies-check'
