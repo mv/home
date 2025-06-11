@@ -12,6 +12,8 @@
 
 .*
 !.gitignore
+!.gitkeep
+!.envrc
 
 *.[oa]
 *.log
