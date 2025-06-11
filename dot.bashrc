@@ -35,3 +35,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 eval "$(direnv hook bash)"
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+

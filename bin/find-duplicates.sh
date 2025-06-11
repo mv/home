@@ -40,9 +40,9 @@ do
 	# removes trailing '/', if exists
   find "${_path%/*}" -type f | while read _file
   do
-		_msg "# File: ['${_file}']"
-		_md5=$(md5sum  "${_file}" | awk '{print $1'})
-		echo "${_md5} ['${_file}']" >> "${_tmp_list}"
+		_msg  "# File: ['${_file}']"
+		_md5=$(md5sum   "${_file}" | awk '{print $1'})
+		echo "[${_md5}]['${_file}'][${_file##*/}]" >> "${_tmp_list}"
   done
 done
 
@@ -50,10 +50,10 @@ done
 ##
 ## Step 2: find duplicates based on MD5 hash
 ##
-awk '{print $1}' "${_tmp_list}" | grep -v '^#' | sort | uniq -d | while read _dup
+awk -F'[' '{print $2}' "${_tmp_list}" | grep -v '^#' | sort | uniq -d | while read _dup
 do
   echo ""
-	echo "== Dup: [${_dup}]"
+	echo "-- Dup: [${_dup}"
 	grep "${_dup}"  "${_tmp_list}"
 done
 
