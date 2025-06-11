@@ -50,7 +50,6 @@
 # directories
 tmp/
 log/
-.vagrant/
 __pycache__/
 
 # This project
