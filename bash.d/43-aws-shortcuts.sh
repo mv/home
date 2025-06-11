@@ -23,5 +23,9 @@ function aws-current-account() {
     aws sts get-caller-identity --query "Account" --output text
 }
 
+function aws-get-caller-identity() {
+    aws sts get-caller-identity --query "Account" --output text
+}
+
 
 # vim:ft=sh:

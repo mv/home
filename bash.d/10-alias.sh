@@ -5,8 +5,12 @@
 ### bashrc generic utils
 
 alias    env='env | sort'
-alias   envg='env | sort | grep -i '
-alias   setg='set | sort | grep -i '
+#alias   envg='env | sort | grep -i '
+envg() {
+  [ "${1}" != "" ] && {
+    env | sort | egrep -i "${1}"
+  }
+}
 alias aliasg='alias | grep -i '
 
 alias less='less -r'                    # raw control characters

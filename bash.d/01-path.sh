@@ -51,6 +51,9 @@ pathadd /opt/homebrew/opt/python/libexec/bin  after
 pathadd /opt/homebrew/bin                     after
 pathadd /opt/homebrew/sbin                    after
 
+pathadd /opt/homebrew/opt/coreutils/libexec/gnubin after
+pathadd /opt/homebrew/opt/findutils/libexec/gnubin after
+
 ## Homebrew
 pathadd /usr/local/opt/python/libexec/bin     after
 pathadd /usr/local/bin                        after
