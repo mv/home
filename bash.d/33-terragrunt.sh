@@ -8,6 +8,14 @@
 #
 # 2023-09: Terragrunt 0.50.14
 
+_bashrc_verbose "== Terragrunt"
+
+if   _cmd_exists terragrunt
+then :
+else return 0
+fi
+
+
 ###
 #     https://https://terragrunt.gruntwork.io/
 #     https://terragrunt.gruntwork.io/docs/getting-started/install/#install-terragrunt

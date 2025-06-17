@@ -5,15 +5,13 @@
 ### mvf
 ### bashrc lib
 
-if which VBoxManage 2>/dev/null 1>/dev/null
+_bashrc_verbose "== Virtualbox"
+
+if _cmd_exists VBoxManage
 then
     alias vbm="VBoxManage"
     alias vboxmanage="VBoxManage"
     alias vbox="VirtualBox &"
 
     alias vlist='vbm list vms'
-
 fi
-
-# vim: ft=sh:
-

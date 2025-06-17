@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc lib
 
+_bashrc_verbose "== Git"
+
 # Version control {
 #[ `which svn 2> /dev/null` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
 #[ `which svk 2> /dev/null` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
@@ -82,7 +84,3 @@ fi
 # }
 
 # alias rmsvn='find . -type d -name .svn      | xargs rm -rf'
-
-
-# vim: ft=sh:
-

@@ -5,8 +5,10 @@
 ### mvf
 ### vagrant aliases
 
+_bashrc_verbose "== Vagrant"
+
 # set -x
-if which vagrant 2>/dev/null 1>/dev/null
+if _cmd_exists vagrant
 then
     alias  vdf='vagrant destroy -f'
     alias  vst='vagrant status'
@@ -14,6 +16,3 @@ then
     alias  vup='vagrant up'
     alias vssh='vagrant ssh'
 fi
-
-# vim: ft=sh:
-

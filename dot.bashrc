@@ -5,7 +5,10 @@
 ### mvf
 ### macos:~/.bashrc
 
-[ -e ~/.shell-debug-enable ] && echo "~/.shell-debug-enable: [~/.bashrc]"
+# [ -e ~/.bashrc-debug   ] && echo "[~/.bashrc]: found: ~/.bashrc-debug"
+# [ -e ~/.bashrc-verbose ] && echo "[~/.bashrc]: found: ~/.bashrc-verbose"
+export _BASHRC_VERBOSE="true"
+export _BASHRC_DEBUG="false"
 
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
@@ -32,13 +35,4 @@ export CDPATH=$CDPATH:~/work
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
 
-
 eval "$(direnv hook bash)"
-
-eval "$(direnv hook bash)"
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-
-

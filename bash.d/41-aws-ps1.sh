@@ -7,6 +7,9 @@
 #
 # 2023-02: add 'account-id' because of AWS SSO/multiple accounts
 
+_bashrc_verbose "== AWS/PS1"
+
+
 ###
 ### PS1: show in the prompt what is defined by aws/config chosen profile
 ###

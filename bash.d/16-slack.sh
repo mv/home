@@ -5,7 +5,8 @@
 ### MvOps
 if  [ -f ~/work/mv-priv/mvops/export-slack-mvops.sh ]
 then
-  source ~/work/mv-priv/mvops/export-slack-mvops.sh 
+  _bashrc_verbose "== Slack"
+  source ~/work/mv-priv/mvops/export-slack-mvops.sh
 fi
 
 

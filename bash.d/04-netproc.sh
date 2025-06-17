@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc lib
 
+_bashrc_verbose "== Bash/Netproc"
+
 # Net & processes
 
 function ifconfig {
@@ -72,6 +74,3 @@ alias       p4='ping 4.2.2.1'
 alias       p8='ping 8.8.8.8'
 
 which rlwrap 2>&1 >/dev/null && alias nslookup='rlwrap nslookup'
-
-# vim: ft=sh:
-

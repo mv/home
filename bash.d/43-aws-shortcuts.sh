@@ -7,6 +7,7 @@
 #
 # 2023-02: collection
 
+_bashrc_verbose "== AWS/Shortcuts"
 
 ###
 ### Shortcuts
@@ -27,6 +28,3 @@ function aws-current-account() {
 function aws-get-caller-identity() {
     aws sts get-caller-identity --query "Account" --output text
 }
-
-
-# vim:ft=sh:

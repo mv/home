@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc lib
 
+_bashrc_verbose "== Bash/File/Dir"
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -31,6 +33,3 @@ alias kountf='for f in *; do printf "%40s %9d\n" "$f" `find "$f" -type f | wc -l
 
 alias  sizef='find . -type f | xargs du -h | sort -hr | head'
 alias  sized='find . -type d | xargs du -h | sort -hr | uniq | head'
-
-# vim: ft=sh:
-

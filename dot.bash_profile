@@ -1,11 +1,14 @@
 #!/bin/bash
-# vim:ft=sh:
+# vim: ft=sh:ts=4:sts=4:et:
 
 ###
 ### mvf
 ### macos:~/.profile
 
-[ -e ~/.shell-debug-enable ] && echo "~/.shell-debug-enable: [~/.bash_profile]"
+# [ -e ~/.bashrc-debug   ] && echo "[~/.bashrc]: found: ~/.bashrc-debug"
+# [ -e ~/.bashrc-verbose ] && echo "[~/.bashrc]: found: ~/.bashrc-verbose"
+export _BASHRC_VERBOSE="true"
+export _BASHRC_DEBUG="false"
 
 ## to remember:
 ## https://www.gnu.org/software/bash/manual/bashref.html#Bash-Startup-Files
@@ -32,20 +35,10 @@ function echo_source() {
 for file in ~/bash.d/*sh
 do
     # only executables
-    if [ -x "$file" ]
-    then
-        [ -e ~/.shell-debug-enable ] && echo "[${file}]"
-        source "$file"
+    if [ -x "${file}" ]
+    then source "${file}"
     fi
 done
 
 # if interative and exists...
 [[ $- == *i* ]] && [[ -e ~/.bashrc ]] && source ~/.bashrc
-
-###
-### Add-ons
-###
-##[ -f /usr/local/Cellar/coreutils/8.5/aliases         ] && echo_source /usr/local/Cellar/coreutils/8.5/aliases
-
-
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

@@ -6,8 +6,9 @@
 ### bashrc lib
 ### also: see ./01-path.sh
 
-## cleanup: 01-path.sh
+_bashrc_verbose "== Bash/Path/99"
 
+## cleanup: 01-path.sh
 unset pathadd
 unset ldpathadd
 unset manpathadd

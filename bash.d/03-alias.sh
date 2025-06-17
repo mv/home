@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc generic utils
 
+_bashrc_verbose "== Bash/Alias"
+
 alias    env='env | sort'
 #alias   envg='env | sort | grep -i '
 envg() {
@@ -32,11 +34,19 @@ alias dtepoch='date "+%s"'
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 alias h='history'
 
+## history count
 hcount() {
     [ "$1" ] && _line=$1 || _line=10
   # history | awk '{a[$2]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
     history | awk '{a[$4]++} END{ for(i in a){ print a[i] " " i} }' | sort -rn | head -${_line}
 }
+
+
+## disk utils
+alias df='df -Phl'
+alias du='du -h'
+
+which column > /dev/null && alias mount='mount | column -t'
 
 
 # man() {

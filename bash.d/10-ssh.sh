@@ -5,9 +5,10 @@
 ### mvf
 ### ssh utils
 
+_bashrc_verbose "== SSH"
+
 alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no '
 
 alias scpresume='rsync --partial --progress --rsh=ssh'
 
 alias csshx='csshX'
-

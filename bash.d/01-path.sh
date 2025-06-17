@@ -6,6 +6,7 @@
 ### bashrc lib
 ### also: see ./99-path.sh
 
+_bashrc_verbose "== Bash/Path/01"
 
 # Default
 [ -x /bin/grep      ] && EGREP="/bin/grep -e"

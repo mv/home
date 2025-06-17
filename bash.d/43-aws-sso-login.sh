@@ -8,9 +8,8 @@
 # 2023-02
 #
 
-###
-###
-###
+_bashrc_verbose "== AWS/SSOLogin"
+
 
 function aws-sso-login() {
 

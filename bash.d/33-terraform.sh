@@ -15,6 +15,14 @@
 #     $ terraform -install-autocomplete
 #
 
+_bashrc_verbose "== Terraform"
+
+if   _cmd_exists terraform
+then :
+else return 0
+fi
+
+
 # off, error, warn, info, debug, trace
 #xport TF_LOG=info
 #xport TF_LOG_CORE=info
@@ -45,7 +53,7 @@ function tfst() {
 ###
 
 if which terraform 2>/dev/null 1>/dev/null
-then 
+then
   complete -C $( dirname `which terraform` )/terraform terraform
   complete -C $( dirname `which terraform` )/terraform tf
 fi

@@ -7,6 +7,8 @@
 #
 # 2023-02: refactor: FZF completer
 
+_bashrc_verbose "== AWS/Completer"
+
 ###
 ### bash-completion
 ###

@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc lib
 
+_bashrc_verbose "== Bash/Completion"
+
 
 export BASH_COMPLETION_DIR="~/bash_completion.d"
 
@@ -13,4 +15,3 @@ export BASH_COMPLETION_DIR="~/bash_completion.d"
   [ -f /opt/homebrew/etc/bash_completion ] && source /opt/homebrew/etc/bash_completion
 
 ##[ -f /usr/local/etc/bash_completion.d/cdargs-bash.sh ] && echo_source /usr/local/etc/bash_completion.d/cdargs-bash.sh
-

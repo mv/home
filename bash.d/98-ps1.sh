@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # vim: ft=sh:ts=2:sts=2:et:
 
+_bashrc_verbose "== Bash/PS1"
+
 # Ref: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 
 # Attribute codes:
@@ -39,10 +41,10 @@ prompt="${yellow}\u${white}@${cyan}\h${white}:${brown}\w "
 marker="${prompt}"
 
 # Fuctions exist?
-# type __ora_ps1    &>/dev/null && prompt="${prompt} ${red}\$(__ora_ps1)"
-# type __mysql_ps1  &>/dev/null && prompt="${prompt} ${cyan}\$(__mysql_ps1)"
-  type __aws_ps1    &>/dev/null && prompt="${prompt} ${cyan}\$(__aws_ps1)"
+# type __ora_ps1    &>/dev/null && prompt="${prompt}${red}\$(__ora_ps1)"
+# type __mysql_ps1  &>/dev/null && prompt="${prompt}${cyan}\$(__mysql_ps1)"
 # type __rvm_ps1    &>/dev/null && prompt="${prompt}${red}\$(__rvm_ps1)"
+  type __aws_ps1    &>/dev/null && prompt="${prompt}${cyan}\$(__aws_ps1)"
   type __git_ps1    &>/dev/null && prompt="${prompt}${green}\$(__git_ps1 \"(%s)\")"
   type __venv_ps1   &>/dev/null && prompt="${prompt}${yellow}\$(__venv_ps1)"
 
@@ -58,6 +60,4 @@ export PS1 PS2
 #xport PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 #xport PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
-
-# vim: ft=sh:
 

@@ -9,8 +9,10 @@
 # 2025-06: Docker run stuff
 #
 
-if   which docker 2>/dev/null 1>/dev/null
-then echo "== bash.d: Docker"
+_bashrc_verbose "== Docker"
+
+if   _cmd_exists docker
+then :
 else return 0
 fi
 

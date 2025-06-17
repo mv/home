@@ -10,6 +10,8 @@
 # 2023-02
 #
 
+_bashrc_verbose "== AWS/Profile"
+
 function aws-profile() {
 
   # -l: list all profiles

@@ -6,9 +6,11 @@
 #
 #
 
+_bashrc_verbose "== Direnv"
+
 # Remember:
 #   add: eval "$(direnv hook bash)"
-#   to the end of .bashrc 
+#   to the end of .bashrc
 #   to ensure it executes after all bash.d processing
 #
 

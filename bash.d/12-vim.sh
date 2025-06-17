@@ -5,6 +5,8 @@
 ### mvf
 ### bashrc lib
 
+_bashrc_verbose "== Vim"
+
 # Vim {
 export EDITOR=vim
 
@@ -34,7 +36,3 @@ esac
 
 # [ -f ~/auth/webco.bfa ] && alias auth='vim ~/auth/webco.bfa'
 # }
-
-
-# vim: ft=sh:
-

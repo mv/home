@@ -5,7 +5,8 @@
 ### mvf
 ### bashrc lib
 
-# ls {
+_bashrc_verbose "== Bash/ls"
+
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias ls='ls -AFhG'
@@ -27,8 +28,3 @@ alias lr='ls -ltr'                     # long list
 alias la='ls -A'                       # all but . and ..
 alias  l='gls --color'
 export LS_COLORS='*sql=33:*log=93:*buf=31'
-# }
-
-
-# vim: ft=sh:
-
