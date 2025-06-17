@@ -1,5 +1,5 @@
-#!/bin/bash
-# vim: ft=sh:
+#!/usr/bin/env bash
+# vim: ft=sh:ts=2:sts=2:et:
 
 ## Ref:
 ##   https://docs.netskope.com/en/netskope-help/data-security/netskope-secure-web-gateway/configuring-cli-based-tools-and-development-frameworks-to-work-with-netskope-ssl-interception/

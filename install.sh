@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # mv/home (git repos) install
 # Marcus Vinicius Ferreira  ferreira.mv[ at ]gmail.com

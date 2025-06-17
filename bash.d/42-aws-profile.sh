@@ -1,5 +1,5 @@
-#!/bin/bash
-# vim:ft=sh:
+#!/usr/bin/env bash
+# vim: ft=sh:ts=2:sts=2:et:
 #
 # aws-profile [<profile-name>] | -l | -d
 #   View/change AWS_PROFILE

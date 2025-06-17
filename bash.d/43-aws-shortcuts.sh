@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# vim: ft=sh:ts=2:sts=2:et:
 #
 # Collected shortcuts
 #

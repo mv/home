@@ -1,5 +1,5 @@
-#!/bin/bash
-# vim: ft=sh:ts=4:sts=4:et:
+#!/usr/bin/env bash
+# vim: ft=sh:ts=2:sts=2:et:
 
 ###
 ### mvf
