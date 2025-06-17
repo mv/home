@@ -1,44 +1,55 @@
 #!/bin/bash
+# vim: ft=sh:ts=4:sts=4:et:
 
 ###
 ### mvf
 ### bashrc lib
 ### also: see ./99-path.sh
 
-# *PATH {
+
+# Default
+[ -x /bin/grep      ] && EGREP="/bin/grep -e"
+[ -x /usr/bin/grep  ] && EGREP="/usr/bin/grep -e"
+# Prefer 'egrep' if exists
 [ -x /bin/egrep     ] && EGREP=/bin/egrep
 [ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
 
 pathadd () {
     if [ -d $1 ]
-    then if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
-         then if [ "$2" = "after" ]
-              then PATH=$PATH:$1
-              else PATH=$1:$PATH
-              fi
+    then
+        if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
+        then
+            if [ "$2" = "after" ]
+            then PATH=$PATH:$1
+            else PATH=$1:$PATH
+            fi
         fi
     fi
 }
 
 ldpathadd () {
     if [ -d $1 ]
-    then if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)"
-         then if [ "$2" = "after" ]
-              then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
-              else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
-              fi
-         fi
+    then
+        if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)"
+        then
+            if [ "$2" = "after" ]
+            then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
+            else LD_LIBRARY_PATH=$1:$LD_LIBRARY_PATH
+            fi
+        fi
     fi
 }
 
 manpathadd () {
     if [ -d $1 ]
-    then if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)"
-         then if [ "$2" = "after" ]
-              then MANPATH=$MANPATH:$1
-              else MANPATH=$1:$MANPATH
-              fi
-         fi
+    then
+        if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)"
+        then
+            if [ "$2" = "after" ]
+            then MANPATH=$MANPATH:$1
+            else MANPATH=$1:$MANPATH
+            fi
+        fi
     fi
 }
 
@@ -54,7 +65,7 @@ pathadd /opt/homebrew/sbin                    after
 pathadd /opt/homebrew/opt/coreutils/libexec/gnubin after
 pathadd /opt/homebrew/opt/findutils/libexec/gnubin after
 
-## Homebrew
+## Homebrew: Intel
 pathadd /usr/local/opt/python/libexec/bin     after
 pathadd /usr/local/bin                        after
 pathadd /usr/local/sbin                       after
@@ -90,5 +101,4 @@ alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo " 
 #fip()  { find ${PATH//:/ } -name \*${1}\*; }
 #filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
 
-# vim: ft=sh:
 
