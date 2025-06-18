@@ -52,9 +52,6 @@ function tfst() {
 ### bash-completion
 ###
 
-if which terraform 2>/dev/null 1>/dev/null
-then
-  complete -C $( dirname `which terraform` )/terraform terraform
-  complete -C $( dirname `which terraform` )/terraform tf
-fi
+complete -C $( dirname `which terraform` )/terraform terraform
+complete -C $( dirname `which terraform` )/terraform tf
 

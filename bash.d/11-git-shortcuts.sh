@@ -7,32 +7,31 @@
 
 _bashrc_verbose "== Git"
 
-# Version control {
-#[ `which svn 2> /dev/null` ] && alias    pset='svn propset svn:keywords "Id URL Rev Author Date"'
-#[ `which svk 2> /dev/null` ] && alias svkpset='svk propset svn:keywords "Id URL Rev Author Date"'
+if _cmd_exists git
+then :
+else return 0
+fi
 
-if which git 2>&1 >/dev/null
-then
 
-    [ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
+[ -f ~/bin/git-completion.sh ] && source ~/bin/git-completion.sh
 
-    export GIT_EDITOR=vim
-    export GIT_PS1_SHOWDIRTYSTATE=1
-    export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_EDITOR=vim
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-    alias  gb='git branch'
-    alias gba='git branch -a -v'
-    alias  gc='git commit -v'
-    alias gpr='git pull --rebase'
-    alias gpp='git pull && git push'
-    alias gpl='git pull'
-    alias gps='git push'
-    alias  gp='git push'
-    alias gst='git status'
-    alias  gd='git diff | vim -'
+alias  gb='git branch'
+alias gba='git branch -a -v'
+alias  gc='git commit -v'
+alias gpr='git pull --rebase'
+alias gpp='git pull && git push'
+alias gpl='git pull'
+alias gps='git push'
+alias  gp='git push'
+alias gst='git status'
+alias  gd='git diff | vim -'
 
-    alias gitk='gitk --all &'
-    alias gitclean='git remote prune origin && git remote update'
+alias gitk='gitk --all &'
+alias gitclean='git remote prune origin && git remote update'
 
 function git-add() {
     [ -z "$1" ] && {
@@ -69,7 +68,6 @@ function git-rm-branch() {
 
 }
 
-fi
 # }
 
 # Devel {

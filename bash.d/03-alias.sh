@@ -46,7 +46,9 @@ hcount() {
 alias df='df -Phl'
 alias du='du -h'
 
-which column > /dev/null && alias mount='mount | column -t'
+if _cmd_exists column
+then && alias mount='mount | column -t'
+fi
 
 
 # man() {

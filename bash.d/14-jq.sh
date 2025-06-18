@@ -28,7 +28,7 @@ _bashrc_verbose "== jq"
 # arrays    1;37    bright white
 # objects   1;37    bright white
 
-if _cmd_exists which jq
+if _cmd_exists jq
 then
   # My scheme:
   # null      0;37    underscore white
