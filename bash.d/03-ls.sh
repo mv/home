@@ -5,7 +5,7 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Bash/ls"
+_bashrc_verbose "== Bash/Alias/ls"
 
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)

@@ -5,7 +5,7 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Bash/File/Dir"
+_bashrc_verbose "== Bash/Alias/File/Dir"
 
 alias cp='cp -i'
 alias mv='mv -i'
