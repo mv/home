@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-# vim: ft=sh:ts=2:sts=2:et:
+#!/bin/bash
 #
 # Collected shortcuts
 #
@@ -7,7 +6,6 @@
 #
 # 2023-02: collection
 
-_bashrc_verbose "== AWS/Shortcuts"
 
 ###
 ### Shortcuts
@@ -28,3 +26,6 @@ function aws-current-account() {
 function aws-get-caller-identity() {
     aws sts get-caller-identity --query "Account" --output text
 }
+
+
+# vim:ft=sh:

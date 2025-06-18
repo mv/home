@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# vim: ft=sh:ts=2:sts=2:et:
+#!/bin/bash
+# vim:ft=sh:
 #
 # using aws cli
 #
@@ -11,8 +11,6 @@
 # 2018-12: PS1 values from ~/.aws/config
 # 2022-08: refactor env VARS. Ref to aws cli v2
 # 2023-02: separate 'ps1' and 'completer'
-
-_bashrc_verbose "== AWS"
 
 ###
 ### AWS cli, python version
@@ -27,6 +25,4 @@ _bashrc_verbose "== AWS"
 #
 
 # 'default' as a placeholder
-[ ! "${AWS_PROFILE}" ]     && export AWS_PROFILE="default"
-[ ! "${AWS_CONFIG_FILE}" ] && export AWS_CONFIG_FILE="${HOME}/.aws/config"
-
+[ ! "${AWS_PROFILE}" ] && export AWS_PROFILE="default"

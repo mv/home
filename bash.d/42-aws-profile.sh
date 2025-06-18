@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# vim: ft=sh:ts=2:sts=2:et:
+#!/bin/bash
+# vim:ft=sh:
 #
 # aws-profile [<profile-name>] | -l | -d
 #   View/change AWS_PROFILE
@@ -9,8 +9,6 @@
 # Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
 # 2023-02
 #
-
-_bashrc_verbose "== AWS/Profile"
 
 function aws-profile() {
 
