@@ -1,5 +1,5 @@
 #!/bin/bash
-# vim: ft=sh:ts=4:sts=4:et:
+# vim: ft=sh:ts=2:sts=2:et:
 
 ###
 ### mvf
@@ -22,11 +22,8 @@ export _BASHRC_DEBUG="false"
 ##     1. ~/.bash_logout
 
 
-PS1='\u@\h:\w\n\$ '
-
-function echo_source() {
-	echo "$1" && source "$1"
-}
+#xport PS1=""u@\h:\w\n\\$ "  # root fallback
+export PS1='\u@\h:\w\n\$ '
 
 ###
 ### My Bash 'modules'

@@ -1,5 +1,5 @@
 #!/bin/bash
-# vim: ft=sh foldlevel=0:
+# vim: ft=sh:ts=2:sts=2:et:
 
 ###
 ### mvf
