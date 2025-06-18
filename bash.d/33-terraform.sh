@@ -22,27 +22,24 @@ then :
 else return 0
 fi
 
-
-# off, error, warn, info, debug, trace
-#xport TF_LOG=info
-#xport TF_LOG_CORE=info
-#xport TF_LOG_AWS=info
 #xport TF_LOG_PATH=./terraform.log
+#xport TF_LOG=off
 
 alias tf='terraform'
-alias tfve='tf version'
 
+alias    tfo='_echodo terraform output'
+alias   tfpl='_echodo terraform plan -out=/tmp/tfplan'
+alias   tfco='_echodo terraform console'
+alias   tfva='_echodo terraform validate'
+alias   tfve='_echodo terraform version'
 
-alias tfpl='tf plan'
-alias tfco='tf console'
-alias tfva='tf validate'
+alias   tfap='_echodo terraform apply'
+alias tfaptf='_echodo terraform apply /tmp/tfplan'
+alias tfapaa='_echodo terraform apply -auto-approve'
 
-alias tfap='tf apply -auto-approve'
-alias tfapaa='tf apply -auto-approve'
-
-alias tfsh='tf show'
-alias tfstls='tf state list'
-alias tfstsh='tf state show'
+alias   tfsh='_echodo terraform show'
+alias tfstls='_echodo terraform state list'
+alias tfstsh='_echodo terraform state show'
 
 function tfst() {
   terraform state list | awk -F'.' '{print $1"."$2}' | sort | uniq
@@ -54,4 +51,3 @@ function tfst() {
 
 complete -C $( dirname `which terraform` )/terraform terraform
 complete -C $( dirname `which terraform` )/terraform tf
-

@@ -47,7 +47,7 @@ alias df='df -Phl'
 alias du='du -h'
 
 if _cmd_exists column
-then && alias mount='mount | column -t'
+then alias mount='mount | column -t'
 fi
 
 

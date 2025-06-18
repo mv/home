@@ -8,13 +8,15 @@
 # 2023-02
 #
 
+_bashrc_verbose "== AWS/SSOLogin"
+
 ###
 ###
 ###
 
 function aws-sso-login() {
 
-  if [ "${1}" == "" ] 
+  if [ "${1}" == "" ]
   then
     echo "Usage: aws-sso-login <profile-name>"
     echo

@@ -41,6 +41,13 @@ function _cmd_exists() {
     fi
 }
 
+function _echodo() {
+  echo
+  echo "$ ${@}"
+  echo
+  ${@}
+}
+
 
 ##
 ## colors

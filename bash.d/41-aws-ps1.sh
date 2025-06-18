@@ -8,22 +8,15 @@
 # 2023-02: add 'account-id' because of AWS SSO/multiple accounts
 # 2024-01: simplify colors
 
+_bashrc_verbose "== AWS/PS1"
+
 ###
 ### PS1: show in the prompt what is defined by aws/config chosen profile
 ###
 
-     red='\e[01;31m'
-   green='\e[01;32m'
-  yellow='\e[01;33m'
-   brown='\e[00;33m'
-    blue='\e[01;34m'
- magenta='\e[01;35m'
-    cyan='\e[01;36m'
-   white='\e[01;37m'
-    gray='\e[00;37m'
-   reset='\e[0m'
-
 function __aws_ps1() {
+
+  [ "${AWS_CONFIG_FILE}" == "" ] && return
 
   # no quotes: expand tilde
   _default=~/.aws/config

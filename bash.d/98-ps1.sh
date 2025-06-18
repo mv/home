@@ -44,7 +44,7 @@ marker="${prompt}"
 # type __ora_ps1    &>/dev/null && prompt="${prompt}${red}\$(__ora_ps1)"
 # type __mysql_ps1  &>/dev/null && prompt="${prompt}${cyan}\$(__mysql_ps1)"
 # type __rvm_ps1    &>/dev/null && prompt="${prompt}${red}\$(__rvm_ps1)"
-  type __aws_ps1    &>/dev/null && prompt="${prompt}${cyan}\$(__aws_ps1)"
+# type __aws_ps1    &>/dev/null && prompt="${prompt}${cyan}\$(__aws_ps1)"
   type __git_ps1    &>/dev/null && prompt="${prompt}${green}\$(__git_ps1 \"(%s)\")"
   type __venv_ps1   &>/dev/null && prompt="${prompt}${yellow}\$(__venv_ps1)"
 

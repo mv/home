@@ -7,6 +7,7 @@
 #
 # 2023-02: collection
 
+_bashrc_verbose "== AWS/Shortcuts"
 
 ###
 ### Shortcuts
@@ -14,8 +15,9 @@
 function aws-r53-list() {
   aws route53 list-hosted-zones --output text| grep hosted | awk '{print $4}' | \
   while read z
-  do echo $z
-     aws route53 get-hosted-zone --id $z --output json | grep '"Name"|ns-'
+  do
+    echo $z
+    aws route53 get-hosted-zone --id $z --output json | grep '"Name"|ns-'
   done
 }
 echo "== Sourcing: defined: [aws-r53-list]"

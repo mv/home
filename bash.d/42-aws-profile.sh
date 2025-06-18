@@ -1,47 +1,88 @@
 #!/bin/bash
 # vim:ft=sh:
 #
-# aws-profile [<profile-name>] | -l | -d
+# aws-profile [<profile-name>]
 #   View/change AWS_PROFILE
-#   -d  details of current profile
-#   -l  list all profiles
 #
 # Marcus Vinicius Fereira            ferreira.mv[ at ].gmail.com
-# 2023-02
+# 2023-12
 #
 
-function aws-profile() {
+_bashrc_verbose "== AWS/Profile"
 
-  # -l: list all profiles
+function aws-config-file() {
+  # default
+  if [ "${AWS_CONFIG_FILE}" == "" ]
+  then AWS_CONFIG_FILE=~/.aws/config
+  fi
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "== AWS_CONFIG_FILE='${AWS_CONFIG_FILE}'";
+    echo
+    echo "To change AWS_CONFIG_FILE"
+    echo "   aws-config-file <file>"
+    echo
+    echo "Current: [${AWS_CONFIG_FILE}]"
+    echo
+    return 0
+  fi
+  if [ "${1}" != "" ] && [ -f ${1} ]
+  then
+    # tilde expansion
+    export AWS_CONFIG_FILE=${1}
+    echo
+    echo "== AWS_CONFIG_FILE='${AWS_CONFIG_FILE}'";
+    echo
+  else
+    echo
+    echo "== NOT FOUND: [${1}]"
+    echo
+  fi
+}
+echo "== Sourcing: defined: [aws-config-file]"
+
+
+function aws-profile() {
+  # config
+  if [ "${AWS_CONFIG_FILE}" == "" ]
+  then AWS_CONFIG_FILE=~/.aws/config
+  fi
+
+  # list
   if [ "${1}" == "-l" ]
   then
-    grep "^\[profile" ${AWS_CONFIG_FILE} | sort
-    return 0
+    grep --color "^\[profile" ${AWS_CONFIG_FILE} | sort;
+    return 0;
   fi
-
-  # -d: details of current profile
-  if [ "${1}" == "-d" ]
+  # details
+  if [ "${1}" == "-s" ]
   then
-    # capture text between /regex-1/,/regex-2/
-    awk "/^\[profile ${AWS_PROFILE}\]/ , /^$/"  ${AWS_CONFIG_FILE}
+    awk "/^\[profile ${AWS_PROFILE}\]/ , /^$/" ${AWS_CONFIG_FILE};
     return 0
   fi
-
-  # set to new profile
+  # set
   if [ "${1}" != "" ]
-  then export AWS_PROFILE="${1}"
+  then
+    export AWS_PROFILE="${1}";
+    echo
+    echo "== AWS_PROFILE='${AWS_PROFILE}'";
+    echo
+    return 0
   fi
-
+  # usage
   echo
-  echo "  AWS_PROFILE='${AWS_PROFILE}'"
+  echo "== AWS_PROFILE='${AWS_PROFILE}'";
+  echo
+  echo "To change AWS_profile"
+  echo "   aws-profile -l        # list available profiles in AWS_CONFIG_FILE"
+  echo "   aws-profile -s        # show definition of profile"
+  echo "   aws-profile <target>  # set new profile"
+  echo
+  echo "Current: [${AWS_PROFILE}]";
   echo
 }
+echo "== Sourcing: defined: [aws-profile]"
 
-
-# https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial
-function _complete-aws-profile() {
-  _profiles="$( awk '/^\[profile/ {print $2}' ~/.aws/config | tr -d ']' )"
-  COMPREPLY=( $(compgen -W "${_profiles}" "${COMP_WORDS[1]}") )
-}
-
-complete -F _complete-aws-profile  aws-profile
+###
+echo
