@@ -20,25 +20,25 @@ function aws-r53-list() {
     aws route53 get-hosted-zone --id $z --output json | grep '"Name"|ns-'
   done
 }
-echo "== Sourcing: defined: [aws-r53-list]"
+_bashrc_verbose "-- Sourcing: defined: [aws-r53-list]"
 
 
 function aws-get-caller-identity() {
   aws sts get-caller-identity --query "Account" --output text
 }
-echo "== Sourcing: defined: [aws-get-caller-identity]"
+_bashrc_verbose "-- Sourcing: defined: [aws-get-caller-identity]"
 
 
 function aws-account-list() {
   aws organizations list-accounts --query Accounts[].[Id,Name] --output text | sort -k 2
 }
-echo "== Sourcing: defined: [aws-account-list]"
+_bashrc_verbose "-- Sourcing: defined: [aws-account-list]"
 
 
 function aws-ssm-parameters-list() {
   aws ssm describe-parameters --query Parameters[].Name --output json
 }
-echo "== Sourcing: defined: [aws-ssm-parameters-list]"
+_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-list]"
 
 
 function aws-ssm-parameters-scan() {
@@ -63,7 +63,7 @@ function aws-ssm-parameters-scan() {
     echo
   done
 }
-echo "== Sourcing: defined: [aws-ssm-parameters-scan]"
+_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-scan]"
 
 function aws-ssm-parameters-values() {
   aws ssm describe-parameters --query Parameters[].Name --output json \
@@ -79,7 +79,7 @@ function aws-ssm-parameters-values() {
     echo
   done
 }
-echo "== Sourcing: defined: [aws-ssm-parameters-values]"
+_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-values]"
 
 
 function aws-ssm-connection-info() {
@@ -93,9 +93,25 @@ function aws-ssm-connection-info() {
     echo ${_output} | jq
   fi
 }
-echo "== Sourcing: defined: [aws-ssm-connection-info]"
+_bashrc_verbose "-- Sourcing: defined: [aws-ssm-connection-info]"
 
 function aws-sts-assume-svc() {
   aws sts assume-role --role-arn ${job_role_name} --role-session-name ${job_role_session}
 }
-echo "== Sourcing: defined: [aws-sts-assume-svc]"
+_bashrc_verbose "-- Sourcing: defined: [aws-sts-assume-svc]"
+
+function aws-sso-login() {
+
+  if [ "${1}" == "" ]
+  then
+    echo "Usage: aws-sso-login <profile-name>"
+    echo
+    echo "  Reads SSO info from ~/.aws/config"
+    echo
+  else
+    aws sso login --profile="${1}"
+  fi
+
+}
+
+_bashrc_verbose "-- Sourcing: defined: [aws-sso-login]"

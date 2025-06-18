@@ -40,7 +40,7 @@ function aws-config-file() {
     echo
   fi
 }
-echo "== Sourcing: defined: [aws-config-file]"
+_bashrc_verbose "-- Sourcing: defined: [aws-config-file]"
 
 
 function aws-profile() {
@@ -82,7 +82,4 @@ function aws-profile() {
   echo "Current: [${AWS_PROFILE}]";
   echo
 }
-echo "== Sourcing: defined: [aws-profile]"
-
-###
-echo
+_bashrc_verbose "-- Sourcing: defined: [aws-profile]"
