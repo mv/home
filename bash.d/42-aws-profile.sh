@@ -27,7 +27,8 @@ function aws-config-file() {
     echo
     return 0
   fi
-  if [ "${1}" != "" ] && [ -f ${1} ]
+# if [ "${1}" != "" ] && [ -f ${1} ]
+  if [ "${1}" ] && [ -f ${1} ]
   then
     # tilde expansion
     export AWS_CONFIG_FILE=${1}
@@ -62,7 +63,8 @@ function aws-profile() {
     return 0
   fi
   # set
-  if [ "${1}" != "" ]
+# if [ "${1}" != "" ]
+  if [ "${1}" ]
   then
     export AWS_PROFILE="${1}";
     echo
