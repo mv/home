@@ -8,17 +8,16 @@
 
 _bashrc_verbose "== Bash/Path/01"
 
-# Default
-[ -x /bin/grep      ] && EGREP="/bin/grep -e"
-[ -x /usr/bin/grep  ] && EGREP="/usr/bin/grep -e"
-# Prefer 'egrep' if exists
-[ -x /bin/egrep     ] && EGREP=/bin/egrep
-[ -x /usr/bin/egrep ] && EGREP=/usr/bin/egrep
+# Check if 'grep -E' recognizes regexes
+if echo "/bin:/test" | grep -E "(^|:)/test($|:)" -q
+then EGREP="/bin/grep -E"
+else EGREP="egrep"
+fi
 
-pathadd () {
+function pathadd() {
     if [ -d $1 ]
     then
-        if ! echo $PATH | $EGREP -q "(^|:)$1($|:)"
+        if ! echo $PATH | $EGREP "(^|:)$1($|:)" -q
         then
             if [ "$2" = "after" ]
             then PATH=$PATH:$1
@@ -28,10 +27,10 @@ pathadd () {
     fi
 }
 
-ldpathadd () {
+function ldpathadd() {
     if [ -d $1 ]
     then
-        if ! echo $LD_LIBRARY_PATH | $EGREP -q "(^|:)$1($|:)"
+        if ! echo $LD_LIBRARY_PATH | $EGREP "(^|:)$1($|:)" -q
         then
             if [ "$2" = "after" ]
             then LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$1
@@ -41,10 +40,10 @@ ldpathadd () {
     fi
 }
 
-manpathadd () {
+function manpathadd() {
     if [ -d $1 ]
     then
-        if ! echo $MANPATH | $EGREP -q "(^|:)$1($|:)"
+        if ! echo $MANPATH | $EGREP "(^|:)$1($|:)" -q
         then
             if [ "$2" = "after" ]
             then MANPATH=$MANPATH:$1
@@ -56,46 +55,27 @@ manpathadd () {
 
 PATH=~/bin
 pathadd /opt/local/bin
-pathadd /opt/local/sbin                       after
+pathadd /opt/local/sbin   after
+pathadd /usr/local/bin    after
+pathadd /usr/local/sbin   after
 
-## Homebrew: Mac M1/ARM
-pathadd /opt/homebrew/opt/python/libexec/bin  after
-pathadd /opt/homebrew/bin                     after
-pathadd /opt/homebrew/sbin                    after
-
-pathadd /opt/homebrew/opt/coreutils/libexec/gnubin after
-pathadd /opt/homebrew/opt/findutils/libexec/gnubin after
-
-## Homebrew: Intel
-pathadd /usr/local/opt/python/libexec/bin     after
-pathadd /usr/local/bin                        after
-pathadd /usr/local/sbin                       after
-
-## XCode
-pathadd /Developer/usr/bin                    after
-pathadd /Developer/usr/sbin                   after
-
-## Final
-pathadd /bin                                  after
-pathadd /sbin                                 after
-pathadd /usr/bin                              after
-pathadd /usr/sbin                             after
-pathadd /usr/X11/bin                          after
-pathadd /usr/local/heroku/bin/
+pathadd /bin              after
+pathadd /sbin             after
+pathadd /usr/bin          after
+pathadd /usr/sbin         after
+pathadd /usr/X11/bin      after
 
 # LD_LIBRARY_PATH=/opt/local/lib
 # ldpathadd /usr/local/lib                after
 
 MANPATH=/opt/local/share/man
-manpathadd /usr/local/share/man         after
-manpathadd /Developer/usr/share/man     after
-manpathadd /usr/share/man               after
+manpathadd /usr/local/share/man   after
+manpathadd /usr/share/man         after
 
 export PATH LD_LIBRARY_PATH MANPATH
 
 alias     path='IFS=: && echo path     ; for f in $PATH             ; do echo "    $f"; done'
 alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo "    $f"; done'
-alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
 
 # Find In Path

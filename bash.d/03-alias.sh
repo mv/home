@@ -16,8 +16,9 @@ envg() {
 }
 alias aliasg='alias | grep -i '
 
-alias less='less -r'                    # raw control characters
-alias grep='egrep --color'              # show differences in colour
+alias less='less -r'                   # raw control characters
+alias grep='grep --color'              # show differences in colour
+alias egrep='egrep --color'            # show differences in colour
 alias csort='sort | uniq -c | sort -n' # column sort/count
 
 alias ssane='stty sane'        # restore terminal

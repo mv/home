@@ -21,8 +21,8 @@ function mkcd  {
 
 alias     ..='\cd .. && ls -F --color'
 alias   cd..='\cd .. && ls -F --color'
-alias  findd='find . -type d | egrep -i '
-alias  findf='find . -type f | egrep -i '
+alias  findd='find . -type d | grep -i '
+alias  findf='find . -type f | grep -i '
 alias    chg='find .         -exec chmod g+w,o-w {} \;'
 alias    chd='find . -type d -exec chmod 775 {} \;'
 alias    chf='find . -type f -exec chmod 664 {} \;'

@@ -57,8 +57,8 @@ case `uname -s` in
     *) ;;
 esac
 
-alias      ifa='/sbin/ifconfig -a | egrep "inet "'
-alias      ifc='/sbin/ifconfig -a | egrep "inet |^[a-z]"'
+alias      ifa='/sbin/ifconfig -a | grep "inet "'
+alias      ifc='/sbin/ifconfig -a | grep -E alias"inet |^[a-z]"'
 alias       ip='curl -s "http://whatismyip.org" -w "\n"'
 alias   sortip='sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 '
 
