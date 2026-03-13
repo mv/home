@@ -7,7 +7,8 @@
 
 if   _cmd_exists netskop
 then _bashrc_verbose "== Netskop"
-else return 0
+else :
+#   _bashrc_verbose "== Netskop: NOT FOUND"
 fi
 
 # Python/Requests

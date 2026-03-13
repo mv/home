@@ -5,7 +5,6 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Ruby"
 
 ### Rails
 
@@ -30,6 +29,7 @@ _bashrc_verbose "== Ruby"
 ### RVM
 if _cmd_exists rvm
 then
+    _bashrc_verbose "== Ruby"
     # bash-completion
     [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
