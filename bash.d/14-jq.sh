@@ -5,8 +5,6 @@
 ### mvf
 ### jq colors
 
-_bashrc_verbose "== jq"
-
 # https://jqlang.github.io/jq/manual/#Colors
 #
 # 1 (bright)          # 30 (black)
@@ -30,6 +28,8 @@ _bashrc_verbose "== jq"
 
 if _cmd_exists jq
 then
+  _bashrc_verbose "== jq"
+
   # My scheme:
   # null      0;37    underscore white
   # false     1;31    bright red
@@ -39,4 +39,6 @@ then
   # arrays    1;37    bright white
   # objects   1;33    bright yellow
   export "JQ_COLORS=4;37:1;31:1;36:0;37:0;32:1;37:1;33"
+else :
+  _bashrc_verbose "== jq: NOT FOUND"
 fi

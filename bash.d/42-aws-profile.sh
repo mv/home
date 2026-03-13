@@ -8,7 +8,12 @@
 # 2023-12
 #
 
-_bashrc_verbose "== AWS/Profile"
+if _cmd_exists aws
+then :
+  _bashrc_verbose "== AWS/Profile"
+else :
+  return
+fi
 
 function aws-config-file() {
   # default

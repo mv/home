@@ -15,11 +15,11 @@
 #     $ terraform -install-autocomplete
 #
 
-_bashrc_verbose "== Terraform"
-
 if   _cmd_exists terraform
 then :
-else return 0
+  _bashrc_verbose "== Terraform"
+else :
+  return 0
 fi
 
 #xport TF_LOG_PATH=./terraform.log

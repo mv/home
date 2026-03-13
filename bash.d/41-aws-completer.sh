@@ -7,7 +7,6 @@
 #
 # 2023-02: refactor: FZF completer
 
-_bashrc_verbose "== AWS/Completer"
 
 ###
 ### bash-completion
@@ -15,10 +14,15 @@ _bashrc_verbose "== AWS/Completer"
 
 if _cmd_exists aws_completer
 then
+  _bashrc_verbose "== AWS/Completer"
   complete -C aws_completer aws
+else :
 fi
 
-if _cmd_exists _fzf-completer.sh
-then complete -C ~/bin/_fzf-completer.sh aws
-fi
+# if _cmd_exists _fzf-completer.sh
+# then
+#   _bashrc_verbose "== FZF/Completer"
+#   complete -C ~/bin/_fzf-completer.sh aws
+# else :
+# fi
 

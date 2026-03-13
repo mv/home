@@ -12,7 +12,13 @@
 # 2022-08: refactor env VARS. Ref to aws cli v2
 # 2023-02: separate 'ps1' and 'completer'
 
-_bashrc_verbose "== AWS"
+if _cmd_exists aws
+then :
+  _bashrc_verbose "== AWS"
+else :
+  _bashrc_verbose "== AWS: NOT FOUND"
+  return
+fi
 
 ###
 ### AWS cli, python version

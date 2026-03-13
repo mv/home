@@ -7,7 +7,13 @@
 #
 # 2023-02: collection
 
-_bashrc_verbose "== AWS/Shortcuts"
+
+if _cmd_exists aws
+then :
+  _bashrc_verbose "== AWS/Shortcuts"
+else :
+  return
+fi
 
 ###
 ### Shortcuts

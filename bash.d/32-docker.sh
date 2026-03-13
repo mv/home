@@ -9,11 +9,13 @@
 # 2025-06: Docker run stuff
 #
 
-_bashrc_verbose "== Docker"
 
-if   _cmd_exists docker
+if  _cmd_exists docker
 then :
-else return 0
+    _bashrc_verbose "== Docker"
+else :
+#   _bashrc_verbose "== Docker: NOT FOUND"
+    return
 fi
 
 alias drm="   docker rm"

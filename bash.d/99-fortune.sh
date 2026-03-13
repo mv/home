@@ -5,7 +5,15 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Fortune"
+if   _cmd_exists fortune
+then :
+  _bashrc_verbose "== Fortune"
+else :
+  return 0
+fi
+
+# DTerm.app:
+#     $TERM: fortune only available if inside a REAL terminal
 
 # DTerm.app:
 #     $TERM: fortune only available if inside a REAL terminal
@@ -13,8 +21,7 @@ _bashrc_verbose "== Fortune"
 
 [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
 
-if _cmd_exists fortune \
-&& echo $TERM | grep term > /dev/null \
+if echo $TERM | grep term > /dev/null \
 && [ "${_BASHRC_VERBOSE}" == "true" ] # && [ -e ~/.bashrc-verbose ]
 then
     echo "______________________________________________________________________"

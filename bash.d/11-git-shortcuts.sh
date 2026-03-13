@@ -5,11 +5,12 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Git"
 
 if _cmd_exists git
 then :
-else return 0
+  _bashrc_verbose "== Git"
+else :
+  _bashrc_verbose "== Git: NOT FOUND"
 fi
 
 

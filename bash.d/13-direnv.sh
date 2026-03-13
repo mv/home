@@ -6,7 +6,11 @@
 #
 #
 
-_bashrc_verbose "== Direnv"
+if _cmd_exists direnv
+then :
+  _bashrc_verbose "== Direnv"
+else :
+fi
 
 # Remember:
 #   add: eval "$(direnv hook bash)"

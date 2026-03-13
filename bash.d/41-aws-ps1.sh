@@ -8,7 +8,12 @@
 # 2023-02: add 'account-id' because of AWS SSO/multiple accounts
 # 2024-01: simplify colors
 
-_bashrc_verbose "== AWS/PS1"
+if _cmd_exists aws
+then :
+  _bashrc_verbose "== AWS/PS1"
+else :
+  return
+fi
 
 ###
 ### PS1: show in the prompt what is defined by aws/config chosen profile
