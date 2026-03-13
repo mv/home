@@ -22,3 +22,5 @@ ln -snf  ${DIR}/bash.d
 
 [ ! -d ~/var ] && mkdir ~/var
 
+cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Matching
+cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Offending

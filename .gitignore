@@ -65,4 +65,4 @@ mvdba.sh
 # extra thing at ~mv/bin
 bin/
 bash_completion.d/
-
+bin/chdf.pl
