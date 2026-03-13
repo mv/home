@@ -15,7 +15,7 @@ NewBranch: # {
     git config --global user.name "Marcus Vinicius Ferreira"
     git config --global user.email ferreira.mv@gmail.com
     git config --global github.user mv
-    git config --global github.token b2578f3f3901d24fabc5d1780d54516e
+    git config --global github.token abcdefghgithub
 
 ### ssh config
 Host githubmv
@@ -39,7 +39,7 @@ git clone             githubmv:mv/codework
     git config --global user.name "Marcus Vinicius Ferreira"
     git config --global user.email marcus_ferreira@yahoo.com
     git config --global github.user mvdba
-    git config --global github.token e4bc8bea4158b67275c5b9b6f79b105a
+    git config --global github.token abcdefghgithub
 
 ### ssh config
 Host githubmvdba
