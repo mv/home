@@ -5,11 +5,34 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== MacOS"
 
 # MacOS X {
 
-[ `uname -s` != "Darwin" ] && return
+if [ `uname -s` != "Darwin" ]
+then return
+else _bashrc_verbose "== MacOS"
+fi
+
+## Homebrew: Mac M1/ARM
+pathadd /opt/homebrew/opt/python/libexec/bin  after
+pathadd /opt/homebrew/bin                     after
+pathadd /opt/homebrew/sbin                    after
+
+pathadd /opt/homebrew/opt/coreutils/libexec/gnubin after
+pathadd /opt/homebrew/opt/findutils/libexec/gnubin after
+
+## Homebrew: Intel
+pathadd /usr/local/opt/python/libexec/bin     after
+pathadd /usr/local/bin                        after
+pathadd /usr/local/sbin                       after
+
+## XCode
+pathadd /Developer/usr/bin                    after
+pathadd /Developer/usr/sbin                   after
+
+manpathadd /Developer/usr/share/man     after
+
+alias dyldpath='IFS=: && echo dyldpath ; for f in $DYLD_LIBRARY_PATH; do echo "    $f"; done'
 
 alias sleep_ram='sudo pmset -a hibernatemode 0'
 alias sleep_hdd='sudo pmset -a hibernatemode 1'

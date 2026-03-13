@@ -9,7 +9,7 @@
 _bashrc_verbose "== Bash/Path/99"
 
 ## cleanup: 01-path.sh
-unset pathadd
+# unset pathadd
 unset ldpathadd
 unset manpathadd
 
