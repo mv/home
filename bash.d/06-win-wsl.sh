@@ -8,7 +8,8 @@
 
 # MacOS X {
 
-if uname -a | /bin/grep 'WSL2' -q
+# if uname -a | /bin/grep 'WSL2' -q
+if [ "${WSL_DISTRO_NAME}" ]
 then :
   _bashrc_verbose "== Win/WSL2"
 else :
@@ -20,3 +21,7 @@ pathadd /mnt/c/Windows after
 #athadd /mnt/c/Windows/System32
 
 alias open="explorer"
+
+# WSL/dircolors: stuff in a Windows mount point
+export LS_COLORS=${LS_COLORS}:'tw=33;04:ow=34;04'
+

@@ -17,10 +17,5 @@ cd ~/
 ln -snf  ${DIR}/bin
 ln -snf  ${DIR}/bash.d
 
-# ln -snf  ${DIR}/bash_completion.d
-# ln -snf  ${DIR}/vagrant.d/Vagrantfile  ~/.vagrant.d/Vagrantfile
-
-[ ! -d ~/var ] && mkdir ~/var
-
 cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Matching
 cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Offending

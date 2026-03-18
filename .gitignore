@@ -52,6 +52,7 @@ log/
 __pycache__/
 
 # This project
+dot.bashrc
 
 # file links at ~mv/bin/
 mate
@@ -66,3 +67,5 @@ mvdba.sh
 bin/
 bash_completion.d/
 bin/chdf.pl
+bin/Matching
+bin/Offending
