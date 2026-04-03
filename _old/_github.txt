@@ -14,8 +14,11 @@ NewBranch: # {
 ###
     git config --global user.name "Marcus Vinicius Ferreira"
     git config --global user.email ferreira.mv@gmail.com
+
+    git config --global credential.helper store
+
     git config --global github.user mv
-    git config --global github.token abcdefghgithub
+    # git hub password: get a valid App Token for HTTPS
 
 ### ssh config
 Host githubmv
