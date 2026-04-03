@@ -42,19 +42,29 @@ function __venv_ps1() {
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT/bin ]
 then
+    _bashrc_verbose "-- Pyenv: enabled"
+
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init - bash)"
-
-    _bashrc_verbose "-- Pyenv: enabled"
 fi
+
+alias pyenv-list="pyenv install -l | grep -e '^  3' | tail -40"
+_bashrc_verbose "-- Pyenv: defined: [pyenv-list]"
+
+_bashrc_verbose "-- Pip: TODO: autocomplete"
+_bashrc_verbose "-- uv:  TODO: autocomplete"
+
+
 
 
 ###
 ### pipenv
 ###
 # pipenv: Pipfile.lock
-if _cmd_exists pipenv
+if false # _cmd_exists pipenv
 then
+    _bashrc_verbose "-- Pipenv: enabled"
+
     export PIPENV_CUSTOM_VENV_NAME=venv
     export PIPENV_VENV_IN_PROJECT=1
     export PIPENV_VERBOSITY=-1

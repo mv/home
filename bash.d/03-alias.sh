@@ -10,7 +10,8 @@ _bashrc_verbose "== Bash/Alias"
 alias    env='env | sort'
 #alias   envg='env | sort | grep -i '
 envg() {
-  [ "${1}" != "" ] && {
+# [ "${1}" != "" ] && {
+  [ "${1}" ] && {
     env | sort | egrep -i "${1}"
   }
 }

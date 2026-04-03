@@ -35,7 +35,5 @@ export CDPATH=$CDPATH:~/work
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
 
-# Direnv works better in ~/.bashrc
-if   which "direnv" &>/dev/null
-then eval "$(direnv hook bash)"
-fi
+eval "$(direnv hook bash)"
+
