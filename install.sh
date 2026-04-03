@@ -6,16 +6,41 @@
 #    git clone git://github.com/mv/home mv_home
 #
 
-DIR=~/work/mv-home
+
+_lnsnf() {
+  printf "==== home: link %-40s  %s\n"  "[${1}]" "[${2}]"
+  ln -snf  "${1}"  ${2}
+}
+
+_save() {
+  if [[ -L ${1} ]]
+  then echo "==== home: copy ${1}: skipping..."
+  elif [[ -f ${1} ]]
+  then echo "==== home: copy ${1}: saved"
+       /bin/cp ${1}  ${1}.$( date '+%s' )
+  else echo "==== home: copy ${1}: ignore..."
+  fi
+}
+
+
+DIR=$( pwd $(dirname "${0}") )
+
+echo
+echo "==== home: install [${0}] "
+echo "==== home: dir     [${DIR}] "
+
+_save ~/.bashrc
+_save ~/.bash_profile
+
 
 for f in ${DIR}/dot.*
 do
-  ln -snf $f ~/.${f#*dot.}
+  _lnsnf "${f}"  ~/.${f#*dot.}
 done
 
-cd ~/
-ln -snf  ${DIR}/bin
-ln -snf  ${DIR}/bash.d
+_lnsnf  ${DIR}/bin    ~/bin
+_lnsnf  ${DIR}/bash.d ~/bash.d
 
-cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Matching
-cd ~/work/mv-home/bin/ && ln -snf clearssh.sh Offending
+
+cd ~/bin/  && _lnsnf ssh-clearssh.sh Matching
+cd ~/bin/  && _lnsnf ssh-clearssh.sh Offending

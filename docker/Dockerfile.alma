@@ -1,0 +1,11 @@
+
+
+FROM almalinux
+
+RUN dnf install -y sudo shadow-utils util-linux
+RUN groupadd -g 1001    dev
+RUN useradd  -u 1001 -g dev -d /home/marcus marcus
+
+WORKDIR /work/mv-home
+
+CMD [ "/bin/bash" ]
