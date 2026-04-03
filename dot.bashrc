@@ -36,3 +36,4 @@ export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
 
 eval "$(direnv hook bash)"
+
