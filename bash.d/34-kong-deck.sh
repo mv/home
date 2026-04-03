@@ -14,10 +14,8 @@
 #     $ brew install kubernetes-cli
 #
 
-_bashrc_verbose "== kong/deck/cli"
-
 if   _cmd_exists deck
-then :
+then _bashrc_verbose "== kong/deck/cli"
 else return 0
 fi
 

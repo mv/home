@@ -16,7 +16,7 @@ if _cmd_exists aws
 then :
   _bashrc_verbose "== AWS"
 else :
-  _bashrc_verbose "== AWS: NOT FOUND"
+  _bashrc_debug   "== AWS: NOT FOUND"
   return
 fi
 

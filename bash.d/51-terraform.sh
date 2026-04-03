@@ -16,10 +16,8 @@
 #
 
 if   _cmd_exists terraform
-then :
-  _bashrc_verbose "== Terraform"
-else :
-  return 0
+then _bashrc_verbose "== Terraform"
+else return 0
 fi
 
 #xport TF_LOG_PATH=./terraform.log

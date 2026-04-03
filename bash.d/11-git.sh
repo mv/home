@@ -7,10 +7,8 @@
 
 
 if _cmd_exists git
-then :
-  _bashrc_verbose "== Git"
-else :
-  _bashrc_verbose "== Git: NOT FOUND"
+then _bashrc_verbose "== Git"
+else _bashrc_verbose "== Git: NOT FOUND"
 fi
 
 

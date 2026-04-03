@@ -10,7 +10,7 @@
 
 if _cmd_exists aws
 then :
-  _bashrc_verbose "== AWS/PS1"
+  _bashrc_info "== AWS/PS1"
 else :
   return
 fi

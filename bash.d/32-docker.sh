@@ -11,8 +11,7 @@
 
 
 if  _cmd_exists docker
-then :
-    _bashrc_verbose "== Docker"
+then _bashrc_verbose "== Docker"
 else :
 #   _bashrc_verbose "== Docker: NOT FOUND"
     return

@@ -7,9 +7,8 @@
 #
 
 if _cmd_exists direnv
-then :
-  _bashrc_verbose "== Direnv"
-else :
+then _bashrc_verbose "== Direnv"
+else _bashrc_verbose "== Direnv: NOT FOUND"
 fi
 
 # Remember:

@@ -5,7 +5,7 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Bash/Alias/Net"
+_bashrc_verbose "== Bash/Net"
 
 # Net & processes
 

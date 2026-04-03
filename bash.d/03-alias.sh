@@ -26,10 +26,14 @@ alias ssane='stty sane'        # restore terminal
 
 
 ## /bin/date formats
+if _cmd_exists gdate
+then alias date=gdate
+fi
 alias  dtfile='date "+%F_%H%M"'
 alias   dtiso='date "+%F %X"'
+alias   dtutc='date "+%F %X" -u'
 alias   dtdns='date "+%Y%m%d%H%M%S"'
-alias dtepoch='date "+%s"'
+alias     dts='date "+%s"'
 
 
 ## history

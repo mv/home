@@ -9,19 +9,34 @@
 #  alias _bashrc_debug_enable="   touch ~/.bashrc-debug"
 #  alias _bashrc_debug_disable="/bin/rm ~/.bashrc-debug"
 
-function _bashrc_debug() {
-#   [ -e ~/.bashrc-debug ] && echo "${@}"
+function _bashrc_log() {
     [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
-    [ "${_BASHRC_DEBUG}" == "true"   ] && echo "${@}" # do it
+    [ "${_BASHRC_VERBOSE}" == "true" ] || return 0
+
+    if   [ "${_BASHRC_LOGLEVEL}" == "debug" ]
+    then echo "${@}"
+    elif [ "${_BASHRC_LOGLEVEL}" == "info" ]
+    then echo "${@}"
+    elif [ "${_BASHRC_LOGLEVEL}" == "error" ]
+    then echo "${@}"
+    fi
+}
+
+function _bashrc_debug() {
+    _bashrc_log "${@}"
+}
+function _bashrc_info()  {
+    _bashrc_log "${@}"
+}
+function _bashrc_error() {
+    _bashrc_log "${@}"
 }
 
 # alias _bashrc_verbose_enable="   touch ~/.bashrc-verbose"
 # alias _bashrc_verbose_disable="/bin/rm ~/.bashrc-verbose"
 
 function _bashrc_verbose() {
-#   [ -e ~/.bashrc-verbose ] && echo "${@}"
-    [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
-    [ "${_BASHRC_VERBOSE}" == "true" ] && echo "${@}" # do it
+    echo "${@}"
 }
 
 _bashrc_verbose "== Bashrc/Setup"
@@ -31,12 +46,13 @@ _bashrc_verbose "== Bashrc/Setup"
 ##
 function _cmd_exists() {
 #   if which "${1}" 2>/dev/null 1>/dev/null
-    if which "${1}" &>/dev/null
+#   if which "${1}" &>/dev/null
+    if command -v "${1}" > /dev/null
     then
-        _bashrc_debug "_cmd_exists: FOUND: [${1}]"
+        _bashrc_debug ">> _cmd_exists: FOUND: [${1}]"
         return 0  # found
     else
-        _bashrc_debug "_cmd_exists: NOT FOUND: [${1}]"
+        _bashrc_debug ">> _cmd_exists: NOT FOUND: [${1}]"
         return 1  # not found
     fi
 }

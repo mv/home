@@ -9,10 +9,8 @@
 
 
 if   _cmd_exists terragrunt
-then :
-  _bashrc_verbose "== Terragrunt"
-else :
-  return 0
+then _bashrc_verbose "== Terragrunt"
+else return 0
 fi
 
 ###

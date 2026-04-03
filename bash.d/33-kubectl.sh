@@ -14,11 +14,9 @@
 #     $ brew install kubernetes-cli
 #
 
-_bashrc_verbose "== K8s/kubectl-cli"
-
 if   _cmd_exists kubectl
-then :
-else return 0
+then _bashrc_verbose "== K8s/kubectl-cli"
+else return
 fi
 
 

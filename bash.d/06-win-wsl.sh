@@ -10,10 +10,8 @@
 
 # if uname -a | /bin/grep 'WSL2' -q
 if [ "${WSL_DISTRO_NAME}" ]
-then :
-  _bashrc_verbose "== Win/WSL2"
-else :
-  return
+then _bashrc_verbose "== Win/WSL2"
+else return
 fi
 
 

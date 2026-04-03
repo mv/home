@@ -10,9 +10,14 @@ _bashrc_verbose "== Bash/Path/01"
 
 # Check if 'grep -E' recognizes regexes
 if echo "/bin:/test" | grep -E "(^|:)/test($|:)" -q
-then EGREP="/bin/grep -E"
-else EGREP="egrep"
+then EGREP="$(command -v grep) -E"
+elif command -v egrep
+then EGREP="$(command -v egrep)"
+elif command -v ggrep
+then EGREP="$(command -v ggrep)"
 fi
+
+_bashrc_debug "-- EGREP=[$EGREP]"
 
 function pathadd() {
     if [ -d $1 ]
