@@ -8,17 +8,17 @@
 
 
 _lnsnf() {
-  printf "==== home: link %-40s  %s\n"  "[${1}]" "[${2}]"
+  printf "==== home: link    %-50s  %s\n"  "[${1}]" "[${2}]"
   ln -snf  "${1}"  ${2}
 }
 
 _save() {
   if [[ -L ${1} ]]
-  then echo "==== home: copy ${1}: skipping..."
+  then echo "==== home: copy    ${1}: skipping..."
   elif [[ -f ${1} ]]
-  then echo "==== home: copy ${1}: saved"
+  then echo "==== home: copy    ${1}: saved"
        /bin/cp ${1}  ${1}.$( date '+%s' )
-  else echo "==== home: copy ${1}: ignore..."
+  else echo "==== home: copy    ${1}: ignore..."
   fi
 }
 
