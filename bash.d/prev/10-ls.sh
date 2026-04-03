@@ -4,6 +4,8 @@
 ### mvf
 ### bashrc lib
 
+
+
 _bsd='-AFhG'
 _gnu='-AFh --color=auto --group-directories-first --time-style=long-iso'
 _box='-AFh --color=auto --group-directories-first'
@@ -37,12 +39,3 @@ alias ll='ls -l'       # long list
 alias lr='ls -ltr'     # long list
 alias la='ls -A'       # all but . and ..
 alias  l='ls --color'
-
-# View current ls colors
-#   dircolors --print-ls-colors           > colors-ansi.txt
-#   dircolors -p | grep -v -e '^ ?#|TERM' > colors-defs.txt
-#   paste colors-ansi.txt colors-defs.txt
-if  which dircolors &>/dev/null
-then
-    eval 'dircolors' &>/dev/null
-fi
