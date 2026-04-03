@@ -79,7 +79,11 @@ alias   ldpath='IFS=: && echo ldpath   ; for f in $LD_LIBRARY_PATH  ; do echo " 
 alias  manpath='IFS=: && echo manpath  ; for f in $MANPATH          ; do echo "    $f"; done'
 
 # Find In Path
-#fip()  { find ${PATH//:/ } -name \*${1}\*; }
-#filp() { find ${LD_LIBRARY_PATH//:/ } -name \*${1}\*; }
-
+pathfind() {
+  IFS=: && for p in $PATH
+  do
+  echo "    $p"
+  test -f ${p}/${1} && echo "    ${p}/${1}"
+  done
+}
 
