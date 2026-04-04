@@ -19,6 +19,15 @@ bash install.sh
 
 ```
 
+## Simple: one shot installation
+
+Scenario: when working in a temporary virtual machine
+
+```
+curl -s https://github.com/mv/home/simple-home.sh | sudo bash -x
+```
+
+
 ## Note to self: latest bash
 
 ```
