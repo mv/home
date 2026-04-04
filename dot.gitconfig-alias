@@ -1,0 +1,112 @@
+# vim:ft=gitconfig:foldlevel=0:et:
+
+[help]
+    # autocorrect mispelled commands
+    autocorrect = 1
+
+[commit]
+#   template = ~/.gitmessage.txt
+
+[apply]
+    ## ignore changes by whitespace only
+    whitespace = nowarn
+
+[branch]
+    ## always assume --track (setup upstream info)
+    # autosetupmerge = true
+
+    ## always perform a push --rebase
+    # autosetuprebase = always
+
+[push]
+#   default = tracking
+    default = simple
+
+[pull]
+	rebase = false
+
+[rebase]
+    stat = true
+    # autosquash = true
+
+[status]
+    relativePaths = true
+    showUntrackedFiles = all
+
+[log]
+    date = iso
+    decorate = short
+
+[merge]
+    summary = true
+    verbosity = 2
+    tool = gvimdiff
+    conflictstyle = diff3
+
+[diff]
+    mnemonicprefix = true
+
+[diff "exif"]
+    textconv = exiftool
+
+
+
+[alias]
+    # simple shortcuts
+    sw = show
+    ls = ls-files --stage
+    rshow = remote show origin
+
+    # add
+    upd = add -u -v
+
+    # checkout
+    co = checkout
+    ct = checkout -t
+    prior = checkout --
+
+    # reset: git reset HEAD -- <file>
+    unstage = reset HEAD --
+
+    # commit
+    cm = commit -m
+    ca = commit --amend -m
+    ci = commit -a -m
+
+    # branch
+    br = branch
+    ba = branch -a --column
+    bc = branch --contains
+
+    # push --set-upstream origin HEAD
+    pushu = push -u origin HEAD
+
+    # status
+    st = status
+    sb = status -sb --ignored
+    sti = status
+    sbi = status -sb --ignored
+
+    # diff
+    d = diff
+    dc = diff --cached
+    dw = diff --word-diff
+
+    # log
+#   one = log --pretty='format:%Cgreen%h %Cred%ai %Creset%an %Creset- %s'
+#   one = log --pretty='format:%C(yellow)%h %C(green)%ai %Creset%an %Creset- %s'
+    one = log --pretty='format:%C(yellow bold)%h %C(cyan bold)%ai %C(green bold)%an %C(yellow)%d %C(reset)%s'
+    two = log --pretty='format:%C(yellow)%h %C(green)%H %C(cyan bold)%ai %C(green bold)%an %C(yellow)%d %C(reset)%s'
+    gr  = log --pretty=oneline --graph --abbrev-commit --decorate
+    logp = log -p
+    logs = log --stat --summary
+    last = log -1
+    #ast = log -1 HEAD
+
+    # submodule
+    si = submodule init
+    su = submodule update
+    ss = submodule status
+
+    # stash
+    stash-unapply = '!git stash show -p | git apply -R'
