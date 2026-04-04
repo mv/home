@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # vim: ft=sh:ts=2:sts=2:et:
 
-if _cmd_exists git
+if _cmd_exists java
 then _bashrc_verbose "== Java"
 else return
 fi
