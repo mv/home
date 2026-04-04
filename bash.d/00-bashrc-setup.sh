@@ -11,24 +11,21 @@
 
 function _bashrc_log() {
     [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
-    [ "${_BASHRC_VERBOSE}" == "true" ] || return 0
+    [ "${_BASHRC_VERBOSE}" != "true" ] && return 0
 
-    if   [ "${_BASHRC_LOGLEVEL}" == "debug" ]
-    then echo "${@}"
-    elif [ "${_BASHRC_LOGLEVEL}" == "info" ]
-    then echo "${@}"
-    elif [ "${_BASHRC_LOGLEVEL}" == "error" ]
-    then echo "${@}"
-    fi
+    echo "${@}"
 }
 
 function _bashrc_debug() {
+    [ "${_BASHRC_LOGLEVEL}" != "debug" ] && return
     _bashrc_log "${@}"
 }
 function _bashrc_info()  {
+    [ "${_BASHRC_LOGLEVEL}" != "info" ]  && return
     _bashrc_log "${@}"
 }
 function _bashrc_error() {
+    [ "${_BASHRC_LOGLEVEL}" != "error" ] && return
     _bashrc_log "${@}"
 }
 
@@ -36,7 +33,7 @@ function _bashrc_error() {
 # alias _bashrc_verbose_disable="/bin/rm ~/.bashrc-verbose"
 
 function _bashrc_verbose() {
-    echo "${@}"
+    _bashrc_log "${@}"
 }
 
 _bashrc_verbose "== Bashrc/Setup"
