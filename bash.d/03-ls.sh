@@ -11,13 +11,13 @@ _bsd='-AFhG'
 _gnu='-AFh --color=auto --group-directories-first --time-style=long-iso'
 _box='-AFh --color=auto --group-directories-first'
 
-if [ -f /etc/os-release ]
-then _os_release=$(awk -F= '/^ID/ {print $2}' /etc/os-release)
-fi
-
 case `uname -s` in
     Darwin | FreeBSD | OpenBSD)
         alias ls='ls -AFhG'
+
+        if _cmd_exists gls
+        then alias ls='gls -AFh --color=auto --time-style=long-iso --group-directories-first'
+        fi
         ;;
     Linux)
         alias ls="ls ${_gnu}"
@@ -25,7 +25,12 @@ case `uname -s` in
         # bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
         # eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
 
-        # apk add coreutils
+#       if [ -f /etc/os-release ]
+#       then _os_release=$(awk -F= '/^ID/ {print $2}' /etc/os-release)
+#       fi
+
+        # GNU ls: apk add coreutils
+        # else:
 #       if [ "${_os_release}" == "alpine" ]
 #       then alias ls="ls ${_box}"
 #       fi
@@ -34,10 +39,6 @@ case `uname -s` in
         alias ls='ls -AF'
         ;;
 esac
-
-if _cmd_exists gls
-then alias ls='gls -AFh --color=auto --time-style=long-iso --group-directories-first'
-fi
 
 alias ll='ls -l'                       # long list
 alias lr='ls -ltr'                     # long list
