@@ -9,7 +9,12 @@
 
 _copy() {
   printf "==== home: copy    %-50s  %s\n"  "[${1}]" "[${2}]"
+
+  test -L ${2} && /bin/rm -f ${2}
+# echo /bin/cp "${1}"  ${2}
   /bin/cp "${1}"  ${2}
+  echo
+  echo
 }
 
 _lnsnf() {
@@ -36,8 +41,8 @@ echo "==== home: dir     [${DIR}] "
 
 _save ~/.bashrc
 _save ~/.bash_profile
-_copy ${DIR}/bashrc       ~/.bashrc
-_copy ${DIR}/bash_profile ~/.bash_profile
+_copy ${DIR}/bash.bashrc       ~/.bashrc
+_copy ${DIR}/bash.bash_profile ~/.bash_profile
 
 
 for f in ${DIR}/dot.*

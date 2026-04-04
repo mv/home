@@ -8,7 +8,7 @@
 # [ -e ~/.bashrc-debug   ] && echo "[~/.bashrc]: found: ~/.bashrc-debug"
 # [ -e ~/.bashrc-verbose ] && echo "[~/.bashrc]: found: ~/.bashrc-verbose"
 export _BASHRC_VERBOSE="true"
-export _BASHRC_LOGLEVEL="none"
+export _BASHRC_LOGLEVEL="error"
 
 ## to remember:
 ## https://www.gnu.org/software/bash/manual/bashref.html#Bash-Startup-Files
