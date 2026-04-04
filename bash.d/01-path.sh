@@ -9,12 +9,17 @@
 _bashrc_verbose "== Bash/Path/01"
 
 # Check if 'grep -E' recognizes regexes
-if echo "/bin:/test" | grep -E "(^|:)/test($|:)" -q
-then EGREP="$(command -v grep) -E"
-elif command -v egrep
-then EGREP="$(command -v egrep)"
-elif command -v ggrep
+if   echo "/bin:/test" | /bin/grep -E "(^|:)/test($|:)" -q 2>/dev/null
+then EGREP="/bin/grep -E"
+elif echo "/bin:/test" | /usr/bin/grep -E "(^|:)/test($|:)" -q 2>/dev/null
+then EGREP="/usr/bin/grep -E"
+elif test -f /bin/egrep
+then EGREP="/bin/egrep"
+elif test -f /usr/bin/egrep
+then EGREP="/usr/bin/egrep"
+elif ommand -v ggrep
 then EGREP="$(command -v ggrep)"
+else EGREP="grep"
 fi
 
 _bashrc_debug "-- EGREP=[$EGREP]"

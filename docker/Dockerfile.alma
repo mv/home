@@ -2,9 +2,10 @@
 
 FROM almalinux
 
-RUN dnf install -y sudo shadow-utils util-linux
+RUN dnf install -y bash sudo shadow-utils util-linux
 RUN groupadd -g 1001    dev
-RUN useradd  -u 1001 -g dev -d /home/marcus marcus
+RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
+RUN echo dev | passwd --stdin dev
 
 WORKDIR /work/mv-home
 
