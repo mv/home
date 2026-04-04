@@ -78,13 +78,13 @@ function _echodo() {
 # Cyan        0;36     Light Cyan    1;36
 # Light Gray  0;37     White         1;37
 
-export     red='\e[01;31m'
-export   green='\e[01;32m'
-export  yellow='\e[01;33m'
-export   brown='\e[00;33m'
-export    blue='\e[01;34m'
-export magenta='\e[01;35m'
-export    cyan='\e[01;36m'
-export   white='\e[01;37m'
-export    gray='\e[00;37m'
-export   reset='\e[0m'
+# export     red='\e[01;31m'
+# export   green='\e[01;32m'
+# export  yellow='\e[01;33m'
+# export   brown='\e[00;33m'
+# export    blue='\e[01;34m'
+# export magenta='\e[01;35m'
+# export    cyan='\e[01;36m'
+# export   white='\e[01;37m'
+# export    gray='\e[00;37m'
+# export   reset='\e[0m'
