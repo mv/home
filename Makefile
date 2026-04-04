@@ -70,3 +70,14 @@ alpine-build: ## - Build
 .PHONY: alpine-run
 alpine-run: ## - Run Alpine
 	@make _run
+
+
+_distro:=ubuntu
+_tag:=${_pkg}-${_distro}
+.PHONY: ubuntu-build
+ubuntu-build: ## - Build
+	@make _build
+
+.PHONY: ubuntu-run
+ubuntu-run: ## - Run Ubuntu
+	@make _run

@@ -5,7 +5,7 @@ FROM almalinux
 RUN dnf install -y bash util-linux which
 
 # this container
-RUN sudo shadow-utils git
+RUN dnf install -y sudo shadow-utils git
 
 RUN groupadd -g 1001    dev
 RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
