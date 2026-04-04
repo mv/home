@@ -1,5 +1,8 @@
 
-# Bash Home 
+# Bash Home
+
+<img src="img/Bash_Logo_Colored.240.png" style="float: right; margin-left: 15px; width: 80" >
+
 
 My "~/home" bash scripts.
 
@@ -8,18 +11,18 @@ My "~/home" bash scripts.
 
 ```bash
 mkdir ~/work
-cd ~/work
+cd    ~/work
 git clone https://github.com/mv/home.git mv-home
 
-cd ./mv-home
+cd mv-home
 bash install.sh
 
 ```
 
-## Remember: latest bash
-```bash
+## Note to self: latest bash
+
+```
 brew install bash bash-completion
-/usr/local/bin/bash
 
 ```
 
