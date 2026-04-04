@@ -2,7 +2,7 @@
 
 # My vars: simple
 _os             := $(shell uname -sr)
-_distro         := $(shell test -f /etc/os-release && awk -F= '/^ID/ {print $$2}' /etc/os-release)
+_release        := $(shell test -f /etc/os-release && awk -F= '/^ID/ {print $$2}' /etc/os-release)
 _pkg            := mv-home
 #venv           := .venv
 #python_version := $(shell python -V)
@@ -16,14 +16,14 @@ help:   ## - Default goal: list of targets in Makefile
 	@awk '\
 	  BEGIN { FS = ":.*##"; printf "\nUsage:\n  make \033[01;33m<target>\033[0m\n" }        \
 	  /^##@/                  { printf "\n\033[01;37m  %s   \033[0m\n"   , substr($$0, 5) } \
-	  /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[01;33m  %-25s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
+	  /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[01;33m  %-15s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 	@echo
 
 .PHONY: show
 show:   ## - Show header vars
 	@echo
 	@echo "  ## OS             [${_os}]"
-	@echo "  ## Distro         [${_distro}]"
+	@echo "  ## Release        [${_release}]"
 #	@echo "  ## Python Version [${_python_version}]"
 #	@echo "  ## Virtualenv     [${_venv}]"
 	@echo "  ## Pkg            [${_pkg}]"
@@ -68,5 +68,5 @@ alpine-build: ## - Build
 	@make _build
 
 .PHONY: alpine-run
-alpine-run: ## - Run AlmaLinux
+alpine-run: ## - Run Alpine
 	@make _run

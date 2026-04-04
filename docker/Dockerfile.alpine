@@ -1,9 +1,10 @@
 
-
 FROM alpine
 
+# common stuff
 RUN apk add bash coreutils util-linux-misc which
 
+# this container
 RUN apk add sudo shadow git
 RUN mkdir -p /home/dev && chown -R 1001:1001 /home/dev
 RUN groupadd -g 1001    dev

@@ -1,12 +1,15 @@
 
-
 FROM almalinux
+
+# common stuff
+RUN dnf install -y bash util-linux which
+
+# this container
+RUN sudo shadow-utils git
 
 RUN groupadd -g 1001    dev
 RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
 RUN echo dev | passwd --stdin dev
-
-RUN dnf install -y bash sudo shadow-utils util-linux which
 
 WORKDIR /work/mv-home
 
