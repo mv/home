@@ -59,3 +59,14 @@ alma-build: ## - Build
 .PHONY: alma-run
 alma-run: ## - Run AlmaLinux
 	@make _run
+
+
+_distro:=alpine
+_tag:=${_pkg}-${_distro}
+.PHONY: alpine-build
+alpine-build: ## - Build
+	@make _build
+
+.PHONY: alpine-run
+alpine-run: ## - Run AlmaLinux
+	@make _run

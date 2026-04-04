@@ -25,9 +25,10 @@ case `uname -s` in
         # bright colors: http://www.walkernews.net/2007/03/29/brighten-linux-ls-command-output-with-ls_colors/
         # eval `echo $LS_COLORS | sed 's/00;/01;/g' | awk '{print "export LS_COLORS=\""$0"\""}' `
 
-        if [ "${_os_release}" == "alpine" ]
-        then alias ls="ls ${_box}"
-        fi
+        # apk add coreutils
+#       if [ "${_os_release}" == "alpine" ]
+#       then alias ls="ls ${_box}"
+#       fi
         ;;
     *)
         alias ls='ls -AF'

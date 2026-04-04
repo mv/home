@@ -1,12 +1,13 @@
 
 
-FROM almalinux
+FROM alpine
 
+RUN apk add bash sudo shadow util-linux-misc which coreutils
+
+RUN mkdir -p /home/dev && chown -R 1001:1001 /home/dev
 RUN groupadd -g 1001    dev
 RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
 RUN echo dev | passwd --stdin dev
-
-RUN dnf install -y bash sudo shadow-utils util-linux which
 
 WORKDIR /work/mv-home
 
