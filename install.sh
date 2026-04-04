@@ -10,11 +10,9 @@
 _copy() {
   printf "==== home: copy    %-50s  %s\n"  "[${1}]" "[${2}]"
 
+  # remove if previous is a symlink
   test -L ${2} && /bin/rm -f ${2}
-# echo /bin/cp "${1}"  ${2}
   /bin/cp "${1}"  ${2}
-  echo
-  echo
 }
 
 _lnsnf() {
