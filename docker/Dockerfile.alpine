@@ -2,8 +2,9 @@
 
 FROM alpine
 
-RUN apk add bash sudo shadow util-linux-misc which coreutils
+RUN apk add bash coreutils util-linux-misc which
 
+RUN apk add sudo shadow
 RUN mkdir -p /home/dev && chown -R 1001:1001 /home/dev
 RUN groupadd -g 1001    dev
 RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
