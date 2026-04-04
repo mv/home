@@ -37,5 +37,5 @@ do
     fi
 done
 
-# if interative and exists...
+# Next step: if terminal interative and .bashrc exists...
 [[ $- == *i* ]] && [[ -e ~/.bashrc ]] && source ~/.bashrc
