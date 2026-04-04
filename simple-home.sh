@@ -103,6 +103,7 @@ cat > ${_aliases} <<EOF
 # vim:ft=sh:
 #
 export PS1="\e[01;33m\u\e[01;37m@\e[01;36m\h\e[01;37m:\e[00;33m\w\e[0m\n\$ "
+set -o vi
 
 # mvf: for some time....
 alias ls='ls -hAF --color=auto --time-style=long-iso'
