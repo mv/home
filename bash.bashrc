@@ -5,11 +5,6 @@
 ### mvf
 ### macos:~/.bashrc
 
-# [ -e ~/.bashrc-debug   ] && echo "[~/.bashrc]: found: ~/.bashrc-debug"
-# [ -e ~/.bashrc-verbose ] && echo "[~/.bashrc]: found: ~/.bashrc-verbose"
-export _BASHRC_VERBOSE="true"
-export _BASHRC_DEBUG="false"
-
 # Bash Options
 shopt -s checkhash        # ignore CTRL-D at prompt
 shopt -s cdspell          # corrects dir names
@@ -35,7 +30,5 @@ export CDPATH=$CDPATH:~/work
 export CDPATH=$CDPATH:~/work/dev
 export CDPATH=$CDPATH:~/work/mv
 
-# Direnv works better in ~/.bashrc
-if   which "direnv" &>/dev/null
-then eval "$(direnv hook bash)"
-fi
+# eval "$(direnv hook bash)"
+

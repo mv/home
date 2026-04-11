@@ -10,7 +10,7 @@
 
 if _cmd_exists aws
 then :
-  _bashrc_verbose "== AWS/Shortcuts"
+  _bashrc_info "== AWS/Shortcuts"
 else :
   return
 fi
@@ -26,25 +26,25 @@ function aws-r53-list() {
     aws route53 get-hosted-zone --id $z --output json | grep '"Name"|ns-'
   done
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-r53-list]"
+_bashrc_info "-- Sourcing: defined: [aws-r53-list]"
 
 
 function aws-get-caller-identity() {
   aws sts get-caller-identity --query "Account" --output text
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-get-caller-identity]"
+_bashrc_info "-- Sourcing: defined: [aws-get-caller-identity]"
 
 
 function aws-account-list() {
   aws organizations list-accounts --query Accounts[].[Id,Name] --output text | sort -k 2
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-account-list]"
+_bashrc_info "-- Sourcing: defined: [aws-account-list]"
 
 
 function aws-ssm-parameters-list() {
   aws ssm describe-parameters --query Parameters[].Name --output json
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-list]"
+_bashrc_info "-- Sourcing: defined: [aws-ssm-parameters-list]"
 
 
 function aws-ssm-parameters-scan() {
@@ -69,7 +69,7 @@ function aws-ssm-parameters-scan() {
     echo
   done
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-scan]"
+_bashrc_info "-- Sourcing: defined: [aws-ssm-parameters-scan]"
 
 function aws-ssm-parameters-values() {
   aws ssm describe-parameters --query Parameters[].Name --output json \
@@ -85,7 +85,7 @@ function aws-ssm-parameters-values() {
     echo
   done
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-ssm-parameters-values]"
+_bashrc_info "-- Sourcing: defined: [aws-ssm-parameters-values]"
 
 
 function aws-ssm-connection-info() {
@@ -99,12 +99,12 @@ function aws-ssm-connection-info() {
     echo ${_output} | jq
   fi
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-ssm-connection-info]"
+_bashrc_info "-- Sourcing: defined: [aws-ssm-connection-info]"
 
 function aws-sts-assume-svc() {
   aws sts assume-role --role-arn ${job_role_name} --role-session-name ${job_role_session}
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-sts-assume-svc]"
+_bashrc_info "-- Sourcing: defined: [aws-sts-assume-svc]"
 
 function aws-sso-login() {
 
@@ -120,4 +120,4 @@ function aws-sso-login() {
 
 }
 
-_bashrc_verbose "-- Sourcing: defined: [aws-sso-login]"
+_bashrc_info "-- Sourcing: defined: [aws-sso-login]"

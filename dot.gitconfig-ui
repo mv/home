@@ -1,0 +1,97 @@
+# vim:ft=gitconfig:foldlevel=0:et:
+
+##
+## UI/CLI...
+##
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = vim
+    quotepath = true
+#   pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+    pager = ~/bin/diff-highlight | less
+
+    ## Global excludes file
+    excludesfile = ~/.gitignore
+
+[pager]
+    # to test in the command line:
+    #     git log -p --color | /path/to/diff-highlight
+    log =  ~/bin/diff-highlight | less
+    show = ~/bin/diff-highlight | less
+    diff = ~/bin/diff-highlight | less
+
+[color]
+    # color: normal, black, red, green, yellow, blue, magenta, cyan and white
+    # attributes: bold, dim, ul, blink and reverse
+    ui = auto
+
+[color "branch"]
+    current = green bold
+    local   = white bold
+    remote  = cyan
+
+[color "diff"]
+    meta  = yellow
+    frag  = cyan
+    func  = yellow bold
+
+    old   = red bold
+    new   = green bold
+    plain = white
+    whitespace = white bold
+
+    commit = yellow
+
+[color "decorate"]
+    branch = yellow
+    HEAD   = cyan bold
+    remoteBranch = red bold
+    tag    = yellow bold
+    stash  = white yellow bold
+
+[color "interactive"]
+    header = white blue bold
+    prompt = cyan bold
+    help   = green
+    error  = red bold
+
+[color "status"]
+    header = white
+    branch = cyan bold
+
+    added     = green
+    updated   = green bold
+    changed   = red bold
+    untracked = red
+
+    nobranch = magenta bold
+
+[column]
+    # (almost) everybody in columns
+    ui = never
+
+    # not in columns
+    status = never
+
+[pretty]
+    two = format:%Cgreen%h %Cred%ai %Creset%an %Creset- %s
+
+[mergetool]
+    prompt = false
+
+[mirror]
+    summary = true
+
+
+# Ref:
+#    http://mislav.uniqpath.com/2010/07/git-tips/
+#
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

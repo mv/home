@@ -5,7 +5,7 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Bash/Alias/Net"
+_bashrc_verbose "== Bash/Net"
 
 # Net & processes
 
@@ -28,7 +28,7 @@ case `uname -s` in
     Darwin | FreeBSD | OpenBSD) # {
         alias   netr='netstat -rn -f inet'
         alias   neta='netstat -an -f inet'
-        alias   netl='netstat -an -f inet | grep -i listen'
+        alias   netl='netstat -an -f inet | grep -i listen | sort'
         alias   ifcf='ifconfig en0 ; ifconfig en1'
 
         alias    top='top -ocpu -Otime -X'         # MacOS: order by cpu and then time, old display format
@@ -38,7 +38,7 @@ case `uname -s` in
     SunOS) # {
         alias   netr='netstat -rn -f inet'
         alias   neta='netstat -an -f inet'
-        alias   netl='netstat -an -f inet | grep -i listen'
+        alias   netl='netstat -an -f inet | grep -i listen | sort'
         alias   ifcf='ifconfig hme0 ; ifconfig bfe0'
 
         alias    top='top -Z -B'
@@ -48,7 +48,7 @@ case `uname -s` in
     Linux) # {
         alias   neta='netstat -rn | grep -w tcp'
         alias   neta='netstat -an | grep -w tcp'
-        alias   netl='netstat -an | grep -i listen'
+        alias   netl='netstat -an | grep -i listen | sort'
         alias   ifcf='ifconfig eth0 ; ifconfig eth1'
 
         alias    top='top -Z -B'                    # color + bold

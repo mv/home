@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # vim: ft=sh:ts=2:sts=2:et:
 
-_bashrc_verbose "== Java"
-
+if _cmd_exists java
+then _bashrc_verbose "== Java"
+else return
+fi
 
 export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 

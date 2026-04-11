@@ -14,7 +14,7 @@
 
 if _cmd_exists aws_completer
 then
-  _bashrc_verbose "== AWS/Completer"
+  _bashrc_info "== AWS/Completer"
   complete -C aws_completer aws
 else :
 fi

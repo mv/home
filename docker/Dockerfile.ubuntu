@@ -1,0 +1,23 @@
+
+FROM ubuntu
+
+# common stuff
+RUN apt-get update -y
+RUN apt-get install -y vim
+RUN apt-get install -y util-linux net-tools
+#UN apt-get install -y bash util-linux which shadow-utils
+
+# this container
+#UN apt-get install -y sudo
+#UN apt-get install -y git
+#UN apt-get update -y
+#UN apt-get install -y curl inetutils-ping vim
+
+RUN mkdir -p /home/dev && chown -R 1001:1001 /home/dev
+RUN groupadd -g 1001    dev
+RUN useradd  -u 1001 -g dev -s /bin/bash -d /home/dev dev
+#RUN echo dev | passwd --stdin dev
+
+WORKDIR /work/mv-home
+
+CMD [ "/bin/bash" ]

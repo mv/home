@@ -5,7 +5,10 @@
 ### mvf
 ### Python
 
-_bashrc_verbose "== Python"
+if _cmd_exists python
+then _bashrc_verbose "== Python"
+else _bashrc_verbose "== Python: NOT FOUND"
+fi
 
 # Disable __pycache__ dirs
 # https://docs.python-guide.org/writing/gotchas/#disabling-bytecode-pyc-files
@@ -42,19 +45,29 @@ function __venv_ps1() {
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT/bin ]
 then
+    _bashrc_info "-- Pyenv: enabled"
+
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init - bash)"
-
-    _bashrc_verbose "-- Pyenv: enabled"
 fi
+
+alias pyenv-list="pyenv install -l | grep -e '^  3' | tail -40"
+_bashrc_info "-- Pyenv: defined: [pyenv-list]"
+
+_bashrc_info "-- Pip: TODO: autocomplete"
+_bashrc_info "-- uv:  TODO: autocomplete"
+
+
 
 
 ###
 ### pipenv
 ###
 # pipenv: Pipfile.lock
-if _cmd_exists pipenv
+if false # _cmd_exists pipenv
 then
+    _bashrc_info "-- Pipenv: enabled"
+
     export PIPENV_CUSTOM_VENV_NAME=venv
     export PIPENV_VENV_IN_PROJECT=1
     export PIPENV_VERBOSITY=-1

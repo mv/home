@@ -9,19 +9,31 @@
 #  alias _bashrc_debug_enable="   touch ~/.bashrc-debug"
 #  alias _bashrc_debug_disable="/bin/rm ~/.bashrc-debug"
 
-function _bashrc_debug() {
-#   [ -e ~/.bashrc-debug ] && echo "${@}"
+function _bashrc_log() {
     [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
-    [ "${_BASHRC_DEBUG}" == "true"   ] && echo "${@}" # do it
+    [ "${_BASHRC_VERBOSE}" != "true" ] && return 0
+
+    echo "${@}"
+}
+
+function _bashrc_debug() {
+    [ "${_BASHRC_LOGLEVEL}" != "debug" ] && return
+    _bashrc_log "${@}"
+}
+function _bashrc_info()  {
+    [ "${_BASHRC_LOGLEVEL}" != "info" ]  && return
+    _bashrc_log "${@}"
+}
+function _bashrc_error() {
+    [ "${_BASHRC_LOGLEVEL}" != "error" ] && return
+    _bashrc_log "${@}"
 }
 
 # alias _bashrc_verbose_enable="   touch ~/.bashrc-verbose"
 # alias _bashrc_verbose_disable="/bin/rm ~/.bashrc-verbose"
 
 function _bashrc_verbose() {
-#   [ -e ~/.bashrc-verbose ] && echo "${@}"
-    [ "${TERM_PROGRAM}"  == "vscode" ] && return 0    # skip vscode terminal
-    [ "${_BASHRC_VERBOSE}" == "true" ] && echo "${@}" # do it
+    _bashrc_log "${@}"
 }
 
 _bashrc_verbose "== Bashrc/Setup"
@@ -31,12 +43,13 @@ _bashrc_verbose "== Bashrc/Setup"
 ##
 function _cmd_exists() {
 #   if which "${1}" 2>/dev/null 1>/dev/null
-    if which "${1}" &>/dev/null
+#   if which "${1}" &>/dev/null
+    if command -v "${1}" > /dev/null
     then
-        _bashrc_debug "_cmd_exists: FOUND: [${1}]"
+        _bashrc_debug ">> _cmd_exists: FOUND: [${1}]"
         return 0  # found
     else
-        _bashrc_debug "_cmd_exists: NOT FOUND: [${1}]"
+        _bashrc_debug ">> _cmd_exists: NOT FOUND: [${1}]"
         return 1  # not found
     fi
 }
@@ -62,13 +75,13 @@ function _echodo() {
 # Cyan        0;36     Light Cyan    1;36
 # Light Gray  0;37     White         1;37
 
-export     red='\e[01;31m'
-export   green='\e[01;32m'
-export  yellow='\e[01;33m'
-export   brown='\e[00;33m'
-export    blue='\e[01;34m'
-export magenta='\e[01;35m'
-export    cyan='\e[01;36m'
-export   white='\e[01;37m'
-export    gray='\e[00;37m'
-export   reset='\e[0m'
+# export     red='\e[01;31m'
+# export   green='\e[01;32m'
+# export  yellow='\e[01;33m'
+# export   brown='\e[00;33m'
+# export    blue='\e[01;34m'
+# export magenta='\e[01;35m'
+# export    cyan='\e[01;36m'
+# export   white='\e[01;37m'
+# export    gray='\e[00;37m'
+# export   reset='\e[0m'

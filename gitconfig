@@ -1,0 +1,20 @@
+[user]
+  email = ferreira.mv@gmail.com
+	name = Marcus Vinicius Ferreira
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[include]
+  path = ~/.gitconfig-alias
+  path = ~/.gitconfig-ui
+
+  # github, codebase, et al
+# path = ~/work/mv-priv/gitconfig/dot.provider.bitbucket.gitconfig
+# path = ~/work/mv-priv/gitconfig/dot.provider.codebase.gitconfig
+# path = ~/work/mv-priv/gitconfig/dot.provider.github.gitconfig
+# path = ~/work/mv-priv/gitconfig/dot.work.pismo.gitconfig
+

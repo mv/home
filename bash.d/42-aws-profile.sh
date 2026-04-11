@@ -10,7 +10,7 @@
 
 if _cmd_exists aws
 then :
-  _bashrc_verbose "== AWS/Profile"
+  _bashrc_info "== AWS/Profile"
 else :
   return
 fi
@@ -32,7 +32,8 @@ function aws-config-file() {
     echo
     return 0
   fi
-  if [ "${1}" != "" ] && [ -f ${1} ]
+# if [ "${1}" != "" ] && [ -f ${1} ]
+  if [ "${1}" ] && [ -f ${1} ]
   then
     # tilde expansion
     export AWS_CONFIG_FILE=${1}
@@ -45,7 +46,7 @@ function aws-config-file() {
     echo
   fi
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-config-file]"
+_bashrc_info "-- Sourcing: defined: [aws-config-file]"
 
 
 function aws-profile() {
@@ -67,7 +68,8 @@ function aws-profile() {
     return 0
   fi
   # set
-  if [ "${1}" != "" ]
+# if [ "${1}" != "" ]
+  if [ "${1}" ]
   then
     export AWS_PROFILE="${1}";
     echo
@@ -87,4 +89,4 @@ function aws-profile() {
   echo "Current: [${AWS_PROFILE}]";
   echo
 }
-_bashrc_verbose "-- Sourcing: defined: [aws-profile]"
+_bashrc_info "-- Sourcing: defined: [aws-profile]"

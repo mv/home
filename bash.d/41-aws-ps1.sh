@@ -10,7 +10,7 @@
 
 if _cmd_exists aws
 then :
-  _bashrc_verbose "== AWS/PS1"
+  _bashrc_info "== AWS/PS1"
 else :
   return
 fi
@@ -33,7 +33,7 @@ function __aws_ps1() {
   _default=~/.aws/config
 
   # sanity check: if custom defined, must exists
-  if [ "${AWS_CONFIG_FILE}" == "" ]
+  if [ ! "${AWS_CONFIG_FILE}" ]
   then  AWS_CONFIG_FILE=${_default}
   fi
 

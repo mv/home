@@ -6,10 +6,8 @@
 ### bashrc lib
 
 if   _cmd_exists fortune
-then :
-  _bashrc_verbose "== Fortune"
-else :
-  return 0
+then _bashrc_verbose "== Fortune"
+else return 0
 fi
 
 # DTerm.app:

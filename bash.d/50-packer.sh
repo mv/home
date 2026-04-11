@@ -8,13 +8,12 @@
 # 2022-12: brew install packer
 # 2025-03: Download from Hashicorp
 
+
+if _cmd_exists packer
+then _bashrc_verbose "== Packer"
+else return
+fi
+
 ## https://developer.hashicorp.com/packer/docs/commands#autocompletion
 ##
 complete -C /opt/homebrew/Cellar/packer/1.9.4/libexec/bin/packer packer
-
-if _cmd_exists packer
-then :
-  _bashrc_verbose "== Packer"
-else :
-  return
-fi

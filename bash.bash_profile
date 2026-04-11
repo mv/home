@@ -8,7 +8,7 @@
 # [ -e ~/.bashrc-debug   ] && echo "[~/.bashrc]: found: ~/.bashrc-debug"
 # [ -e ~/.bashrc-verbose ] && echo "[~/.bashrc]: found: ~/.bashrc-verbose"
 export _BASHRC_VERBOSE="true"
-export _BASHRC_DEBUG="false"
+export _BASHRC_LOGLEVEL="error"
 
 ## to remember:
 ## https://www.gnu.org/software/bash/manual/bashref.html#Bash-Startup-Files
@@ -37,5 +37,5 @@ do
     fi
 done
 
-# if interative and exists...
+# Next step: if terminal interative and .bashrc exists...
 [[ $- == *i* ]] && [[ -e ~/.bashrc ]] && source ~/.bashrc

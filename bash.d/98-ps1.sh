@@ -41,6 +41,7 @@ prompt="${yellow}\u${white}@${cyan}\h${white}:${brown}\w "
 marker="${prompt}"
 
 # Fuctions exist?
+  type __docker_ps1 &>/dev/null && prompt="${yellow}\u${white}@${cyan}$(__docker_ps1)${white}:${brown}\w "
 # type __ora_ps1    &>/dev/null && prompt="${prompt}${red}\$(__ora_ps1)"
 # type __mysql_ps1  &>/dev/null && prompt="${prompt}${cyan}\$(__mysql_ps1)"
 # type __rvm_ps1    &>/dev/null && prompt="${prompt}${red}\$(__rvm_ps1)"

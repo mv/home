@@ -5,7 +5,10 @@
 ### mvf
 ### bashrc lib
 
-_bashrc_verbose "== Vim"
+if _cmd_exists git
+then _bashrc_verbose "== Vim"
+else _bashrc_verbose "== Vim: NOT FOUND"
+fi
 
 # Vim {
 export EDITOR=vim
