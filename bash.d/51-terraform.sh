@@ -22,6 +22,18 @@ else :
   return 0
 fi
 
+## Caching
+export TF_PLUGIN_CACHE_DIR=~/terraform-cache
+export TF_PLUGIN_CACHE_DIR=~/.terraform.d
+
+if [ -d "${TF_PLUGIN_CACHE_DIR}" ]
+then
+  _bashrc_verbose "== Terraform: plugin cache: [${TF_PLUGIN_CACHE_DIR}]"
+else
+  mkdir -p "${TF_PLUGIN_CACHE_DIR}"
+  _bashrc_verbose "== Terraform: plugin cache: [${TF_PLUGIN_CACHE_DIR}]: created."
+fi
+
 #xport TF_LOG_PATH=./terraform.log
 #xport TF_LOG=off
 
