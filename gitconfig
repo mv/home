@@ -1,6 +1,6 @@
 [user]
   email = ferreira.mv@gmail.com
-	name = Marcus Vinicius Ferreira
+  name = Marcus Vinicius Ferreira
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -18,3 +18,5 @@
 # path = ~/work/mv-priv/gitconfig/dot.provider.github.gitconfig
 # path = ~/work/mv-priv/gitconfig/dot.work.pismo.gitconfig
 
+[credential]
+  helper = store
