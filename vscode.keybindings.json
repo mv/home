@@ -1,0 +1,154 @@
+// Place your key bindings in this file to override the defaults
+// MacOS: ~/Library/Application\ Support/Code/User/keybindings.json */
+//   Win:              ~/AppData/Roaming/Code/User/keybindings.json */
+[
+  // ========== SPLIT WINDOW ==========
+  {
+    "key": ", s l",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", s h",
+    "command": "workbench.action.splitEditorLeft",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", s j",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", s k",
+    "command": "workbench.action.splitEditorUp",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // ========== SPLIT WINDOW MOVE ==========
+  {
+    "key": ", j h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", j l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", j j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", j k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // ========== SPLIT WINDOW CLOSE ==========
+  {
+    "key": ", Q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", s o",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+
+  {
+    "key": ", s =",
+    "command": "workbench.action.evenEditorWidths",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+
+  // ========== WRITE SAVE ==========
+  {
+    "key": ", w",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", W",
+    "command": "workbench.action.files.save",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // ========== Others ==========
+  {
+    "key": ", p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", f",
+    "command": "workbench.action.findInFiles",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", b",
+    "command": "workbench.action.showAllEditors",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", c",
+    "command": "workbench.action.showCommands",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", g",
+    "command": "workbench.view.scm",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": ", e",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // ========== LINE NUMBERS ==========
+  {
+    "key": ", r",
+    "command": "settings.cycle",
+    "args": {
+        "id": "relativeLineNumbers",
+        "values": [
+            { "editor.lineNumbers": "on" },
+            { "editor.lineNumbers": "relative" }
+        ]
+      },
+    "when": "editorTextFocus && neovim.mode == 'normal'",
+  },
+  // ========== Keep in VSCode ==========
+  {
+    "key": "ctrl+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && neovim.mode == 'visual'"
+  },
+  {
+    "key": ", y",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && neovim.mode == 'visual'"
+  },
+  // ========== Send to NeoVIM ==========
+  {
+    "key": ", ;",
+    "command": "vscode-neovim.send",
+    "args": ":",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // ========== Extensions
+  {
+      "key": "shift+enter",
+      "command": "extension.jumpy-word",
+      "when": "editorTextFocus"
+  },
+  {
+      "key": "Escape",
+      "command": "extension.jumpy-exit",
+      "when": "editorTextFocus && jumpy.isJumpyMode"
+  }
+]

@@ -1,5 +1,9 @@
+/* MacOS: ~/Library/Application\ Support/Code/User/settings.json */
+/*   Win:              ~/AppData/Roaming/Code/User/settings.json */
 {
-    "[python]": { "diffEditor.ignoreTrimWhitespace": false },
+    "[python]": {
+      "diffEditor.ignoreTrimWhitespace": false,
+    },
     "diffEditor.hideUnchangedRegions.enabled": true,
     "diffEditor.wordWrap": "off",
     "editor.autoClosingQuotes": "never",
@@ -9,8 +13,16 @@
     "editor.cursorSurroundingLinesStyle": "all",
     "editor.cursorWidth": 3,
     "editor.experimentalWhitespaceRendering": "off",
+    "editor.fontFamily": "Cascadia Code, Cascadia Mono, Consolas, 'Courier New', monospace",
+    /**
+    "editor.fontFamily": "Cascadia Mono",
     "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
-    "editor.fontSize": 13,
+    ***/
+    /*** Line numbers: width*/
+    "editor.lineDecorationsWidth": 20,
+    "editor.glyphMargin": true,
+    "editor.folding": true,
+    /***/
     "editor.lightbulb.enabled": "off",
     "editor.lineNumbers":"relative",
     "editor.minimap.enabled": false,
@@ -38,7 +50,7 @@
     "notebook.output.wordWrap": true,
     "path-autocomplete.triggerOutsideStrings": true,
     "security.workspace.trust.untrustedFiles": "open",
-    "settingsSync.ignoredExtensions": [ "ms-azuretools.vscode-docker" ],
+    "settingsSync.ignoredExtensions": [ "ms-azuretools.vscode-docker", "github.copilot-chat" ],
     "vim.cursorStylePerMode.insert": "block-outline",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.replace": "underline",
@@ -52,6 +64,9 @@
     "vim.shell": "/usr/local/bin/bash",
     "vim.smartRelativeLine": true,
     "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": "#1e4371",
+    "vim.statusBarColors.replace": "#005f5e",
+    "vim.statusBarColors.insert": "#730613",
     "vim.targets.smartQuotes.enable": false,
     "vim.textwidth": 120,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -61,11 +76,12 @@
       { "before": ["<leader>", "q"], "commands": [":q!"] },
       { "before": ["<leader>", "n"], "commands": [":set number"] },
       { "before": ["<leader>", "r"], "commands": [":set invrelativenumber"] },
+      /* window split */
+      { "before": ["<leader>", "w", "j"], "after": ["<C-W>","j"] },
       /* window navigation */
       { "before": ["<leader>", "w", "j"], "after": ["<C-W>","j"] },
       { "before": ["<leader>", "w", "k"], "after": ["<C-W>","k"] },
       { "before": ["<leader>", "w", "l"], "after": ["<C-W>","l"] },
-      { "before": ["<leader>", "w", "h"], "after": ["<C-W>","h"] },
       { "before": ["<leader>", "w", "h"], "after": ["<C-W>","h"] },
       /* tab navigation */
       { "before": ["<leader>",","]      , "after": ["g","t"] },
@@ -76,6 +92,8 @@
       { "before": ["<leader>", "s", "_"], "after": ["y","y","p","v","$","r","_"] },
       { "before": ["<leader>", "s", "*"], "after": ["y","y","p","v","$","r","*"] },
       { "before": ["<leader>", "s", "#"], "after": ["y","y","p","v","$","r","#"] },
+      /* join text K ~ J*/
+      { "before": ["K"], "after": ["d","d","p","k","J"] } ,
       /* navigation in wrap mode */
       { "before": ["j"], "after": ["g","j"] } ,
       { "before": ["k"], "after": ["g","k"] } ,
@@ -83,16 +101,22 @@
       { "before": ["$"], "after": ["g","$","h"] } ,
       /* Re-hardwrap paragraphs of text */
       { "before": ["<leader>", "g", "="], "after": ["g","q","i","p"] },
+      /* Cmd-Shift-E: explorer window
+        { "before": ["<leader>","f"], "after": ["D-S-e","j","o"] },
+        /***/
     ],
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "vscode-neovim.revealCursorScrollLine": true,
     "vsicons.dontShowNewVersionMessage": true,
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Dark+",
     "workbench.editor.enablePreview": false,
     "workbench.editorLargeFileConfirmation": 10240,
     "workbench.iconTheme": "vscode-icons",
-    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "workbench.preferredHighContrastColorTheme": "Dark+",
+    "workbench.statusBar.visible": true,
+    "editor.fontSize": 14,
+    "workbench.quickOpen.fontSize": 16,
+    "workbench.quickOpen.lineHeight": 24,
     "peacock.favoriteColors": [
         { "name": "Blue-01", "value": "#1857a4" },
         { "name": "Blue-02", "value": "#007fff" },
@@ -149,25 +173,58 @@
         { "name": "Vue Green", "value": "#42b883" },
     ],
     "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#1f6fd0",
-      "activityBar.background": "#1f6fd0",
-      "activityBar.foreground": "#e7e7e7",
-      "activityBar.inactiveForeground": "#e7e7e799",
-      "activityBarBadge.background": "#ee90bb",
-      "activityBarBadge.foreground": "#15202b",
-      "commandCenter.border": "#e7e7e799",
-      "sash.hoverBorder": "#1f6fd0",
-      "statusBar.background": "#005f5f",
-      "statusBar.foreground": "#ffffff",
-      "statusBarItem.hoverBackground": "#1f6fd0",
-      "statusBarItem.remoteBackground": "#1857a4",
-      "statusBarItem.remoteForeground": "#e7e7e7",
-      "titleBar.activeBackground": "#1857a4",
-      "titleBar.activeForeground": "#e7e7e7",
-      "titleBar.inactiveBackground": "#1857a499",
-      "titleBar.inactiveForeground": "#e7e7e799",
-      "statusBar.noFolderBackground": "#005f5f",
-      "statusBar.debuggingBackground": "#005f5f",
-      "statusBar.debuggingForeground": "#ffffff"
+      "activityBar.activeBackground": "#e1eb21",
+      "activityBar.background": "#e1eb21",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#10a8af",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#15202b99",
+      "sash.hoverBorder": "#e1eb21",
+      "statusBar.background": "#1e4371",
+      "statusBar.foreground": "#15202b",
+      "statusBarItem.hoverBackground": "#91980e",
+      "statusBarItem.remoteBackground": "#bec712",
+      "statusBarItem.remoteForeground": "#15202b",
+      "titleBar.activeBackground": "#bec712",
+      "titleBar.activeForeground": "#15202b",
+      "titleBar.inactiveBackground": "#bec71299",
+      "titleBar.inactiveForeground": "#15202b99",
+      "statusBar.noFolderBackground": "#1e4371",
+      "statusBar.debuggingBackground": "#1e4371",
+      "statusBar.debuggingForeground": "#ffffff",
+      "tab.activeBorder": "#e1eb21"
     },
+    "peacock.showColorInStatusBar": false,
+    "peacock.surpriseMeOnStartup": true,
+    "peacock.affectTabActiveBorder": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.env.osx": {
+      "_BASHRC_VERBOSE": "false",
+      "_BASHRC_DEBUG": "false",
+    },
+    "terminal.integrated.env.linux": {
+      "mv_terminal": "vscode",
+    },
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+    "chat.agent.enabled": false,
+    "github.copilot.enable": {
+      "*": false,
+      "plaintext": false,
+      "markdown": false,
+      "scminput": false
+    },
+    "azureTerraform.survey": {
+      "surveyPromptDate": "2026-04-23T14:17:32.056Z",
+      "surveyPromptIgnoredCount": 1
+    },
+    "workbench.startupEditor": "none",
+    "remote.SSH.configFile": "~/.ssh/config",
+    "remote.SSH.remotePlatform": {
+      "alma-01": "linux",
+      "192.168.132.100": "linux"
+    },
+    "chat.disableAIFeatures": true,
   }
