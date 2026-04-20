@@ -45,7 +45,8 @@ alias   tfve='_echodo terraform version'
 
 alias   tfap='_echodo terraform apply'
 alias tfaptf='_echodo terraform apply /tmp/tfplan'
-alias tfapaa='_echodo terraform apply -auto-approve'
+alias tfapaa='_echodo terraform apply   -auto-approve'
+alias  tfdaa='_echodo terraform destroy -auto-approve'
 
 alias   tfsh='_echodo terraform show'
 alias tfstls='_echodo terraform state list'
