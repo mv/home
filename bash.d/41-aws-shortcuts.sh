@@ -101,6 +101,88 @@ function aws-ssm-connection-info() {
 }
 _bashrc_info "-- Sourcing: defined: [aws-ssm-connection-info]"
 
+function aws-ssm-start-session() {
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "Usage: aws-ssm-start-seesion instance-id"
+    echo
+  else
+    aws ssm start-session --target "${1}"
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ssm-start-session]"
+
+function aws-ssm-list-session() {
+  if [ "${1}" == "-h" ]
+  then
+    echo
+    echo "Usage: aws-ssm-list-session instance-id"
+    echo
+  else
+    aws ssm describe-sessions --state Active --query 'Sessions[].[Target,Status,SessionId]' --output text
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ssm-list-session]"
+
+function aws-ssm-term-session() {
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "Usage: aws-ssm-term-session instance-id"
+    echo
+  else
+    aws ssm terminate-session --session-id "${1}"
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ssm-term-session]"
+
+function aws-ssm-term-all() {
+  if [ "${1}" != "-y" ]
+  then
+    echo
+    echo "Usage: aws-ssm-term-all -y"
+    echo
+  else
+    aws-ssm-list-session | awk '{print $3}' | while read s
+    do echo aws-ssm-term-session $s
+    done
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ssm-term-session]"
+
+function aws-ec2-list() {
+  if [ "${1}" == "-h" ]
+  then
+    echo
+    echo "Usage: aws-ec2-list -h"
+    echo
+  else
+    aws ec2 describe-instances \
+        --query 'Reservations[*].Instances[].[InstanceId,LaunchTime,State.Name,Tags[?Key==`Name`].Value|[0]]' \
+        --output text | column -t |sort -k 3 \
+    # echo ${_output} | jq
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
+
+function aws-elbv2-list() {
+  if [ "${1}" == "-h" ]
+  then
+    echo
+    echo "Usage: aws-elbv2-list -h"
+    echo
+  else
+    aws elbv2 describe-load-balancers \
+        --query 'LoadBalancers[].[LoadBalancerName,Type,Scheme,DNSName]' \
+        --output text | column -t | sort
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
+
+
+
+
 function aws-sts-assume-svc() {
   aws sts assume-role --role-arn ${job_role_name} --role-session-name ${job_role_session}
 }
