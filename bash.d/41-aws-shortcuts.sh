@@ -35,6 +35,12 @@ function aws-get-caller-identity() {
 _bashrc_info "-- Sourcing: defined: [aws-get-caller-identity]"
 
 
+function aws-account-id() {
+  aws sts get-caller-identity --query "Account" --output text
+}
+_bashrc_info "-- Sourcing: defined: [aws-account-id]"
+
+
 function aws-account-list() {
   aws organizations list-accounts --query Accounts[].[Id,Name] --output text | sort -k 2
 }
