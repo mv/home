@@ -190,10 +190,32 @@ function aws-elbv2-list() {
         --output text | column -t | sort
   fi
 }
-_bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
+_bashrc_info "-- Sourcing: defined: [aws-elbv2-list]"
 
 
+function aws-elbv2-tg-health() {
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "Usage: aws-elbv2-health target-group"
+    echo
+  else
+    aws elbv2 describe-target-health \
+        --target-group-arn ${1} \
+        --query 'TargetHealthDescriptions[].[Target.Id,TargetHealth.State,TargetHealth.Reason]' \
+        --output text | column -t | sort -k 2
+  fi
+}
+_bashrc_info "-- Sourcing: defined: [aws-elbv2-tg-health]"
 
+
+function aws-asg-activity() {
+  aws autoscaling describe-scaling-activities \
+      --query 'Activities[].[AutoScalingGroupName,StartTime,EndTime,StatusCode,Progress]' \
+      --output text | sort -k 2
+#     --query 'Activities[].[AutoScalingGroupName,StartTime,EndTime,StatusCode,Progress,Description]' \
+}
+_bashrc_info "-- Sourcing: defined: [aws-asg-activity]"
 
 function aws-sts-assume-svc() {
   aws sts assume-role --role-arn ${job_role_name} --role-session-name ${job_role_session}
@@ -274,7 +296,8 @@ _bashrc_info "-- Sourcing: defined: [aws-sg-list]"
 function aws-ec2-list() {
   aws ec2 describe-instances \
       --query 'Reservations[].[Instances][][][].[Tags[?Key==`Name`].Value|[0],InstanceId,VpcId,SubnetId,PrivateIpAddress,InstanceType,VirtualizationType,Architecture, LaunchTime,State.Name]' \
-      --output text | grep -i running | column -t | sort -k 2
+      --output text | column -t | sort -k 2
+#     --output text | grep -i running | column -t | sort -k 2
 
 }
 _bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
