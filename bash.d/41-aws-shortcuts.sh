@@ -29,6 +29,12 @@ function aws-r53-list() {
 _bashrc_info "-- Sourcing: defined: [aws-r53-list]"
 
 
+function aws-account-id() {
+  aws sts get-caller-identity --query "Account" --output text
+}
+_bashrc_info "-- Sourcing: defined: [aws-account_id]"
+
+
 function aws-get-caller-identity() {
   aws sts get-caller-identity --query "Account" --output text
 }
@@ -119,5 +125,74 @@ function aws-sso-login() {
   fi
 
 }
-
 _bashrc_info "-- Sourcing: defined: [aws-sso-login]"
+
+function aws-ami-list() {
+
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "Usage: aws-ami-list ami_name"
+    echo
+  else
+    _ami_name="${1}"
+    aws ec2 describe-images \
+        --filters "Name=name,Values=*${_ami_name}*" \
+        --query   'Images[][Name,ImageId,OwnerId,ImageOwnerAlias,CreationDate]' \
+        --owners  'self' \
+        --output text | column -t | sort -k 5 -r
+  fi
+
+}
+_bashrc_info "-- Sourcing: defined: [aws-ami-list]"
+
+function aws-ec2-userdata() {
+
+  if [ "${1}" == "" ]
+  then
+    echo
+    echo "Usage: aws-ec2-userdata instance_id"
+    echo
+  else
+    _instance_id="${1}"
+    aws ec2 describe-instance-attribute \
+      --instance-id "${_instance_id}"   \
+      --attribute userData --query "UserData.Value" \
+      --output text \
+      | base64 --decode
+  fi
+
+}
+_bashrc_info "-- Sourcing: defined: [aws-ec2-userdata]"
+
+function aws-vpc-list() {
+  aws ec2 describe-vpcs --query 'Vpcs[].[OwnerId,VpcId,CidrBlock,IsDefault,Tags[?Key==`Name`].Value|[0]]' --output text
+}
+_bashrc_info "-- Sourcing: defined: [aws-vpc-list]"
+
+
+function aws-subnet-list() {
+  aws ec2 describe-subnets --query 'Subnets[].[OwnerId,VpcId,SubnetId,AvailabilityZone,AvailabilityZoneId,CidrBlock,State,Tags[?Key==`Name`].Value|[0]]' --output text | sort -k 8
+}
+_bashrc_info "-- Sourcing: defined: [aws-subnet-list]"
+
+
+function aws-sg-list() {
+  aws ec2 describe-security-groups --query 'SecurityGroups[].[VpcId,GroupId,Tags[?Key==`Name`].Value|[0]]' --output text | sort -k 3
+}
+_bashrc_info "-- Sourcing: defined: [aws-sg-list]"
+
+
+function aws-ec2-list() {
+  aws ec2 describe-instances \
+      --query 'Reservations[].[Instances][][][].[Tags[?Key==`Name`].Value|[0],InstanceId,VpcId,SubnetId,PrivateIpAddress,InstanceType,VirtualizationType,Architecture, LaunchTime,State.Name]' \
+      --output text | grep -i running | column -t | sort -k 2
+
+}
+_bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
+
+
+function aws-instance-profile-list() {
+  aws iam list-instance-profiles --query 'InstanceProfiles[].[InstanceProfileName,Arn,CreateDate]' --output text | column -t
+}
+_bashrc_info "-- Sourcing: defined: [aws-instance-profile-list]"
