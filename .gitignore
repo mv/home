@@ -62,6 +62,7 @@ view
 vim
 tw
 mvdba.sh
+*.json
 
 # extra thing at ~mv/bin
 bin/
