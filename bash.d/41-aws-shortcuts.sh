@@ -9,10 +9,8 @@
 
 
 if _cmd_exists aws
-then :
-  _bashrc_info "== AWS/Shortcuts"
-else :
-  return
+then _bashrc_info "== AWS/Shortcuts"
+else return
 fi
 
 ###
@@ -172,8 +170,8 @@ function aws-ec2-list() {
   else
     aws ec2 describe-instances \
         --query 'Reservations[*].Instances[].[InstanceId,LaunchTime,State.Name,Tags[?Key==`Name`].Value|[0]]' \
-        --output text | column -t |sort -k 3 \
-    # echo ${_output} | jq
+        --output text | column -t |sort -k 3
+#   echo ${_output} | jq
   fi
 }
 _bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
@@ -250,7 +248,8 @@ function aws-ami-list() {
         --filters "Name=name,Values=*${_ami_name}*" \
         --query   'Images[][Name,ImageId,OwnerId,ImageOwnerAlias,CreationDate]' \
         --owners  'self' \
-        --output text | column -t | sort -k 5 -r
+        --output  text \
+        | column -t | sort -k 5 -r
   fi
 
 }
@@ -266,29 +265,37 @@ function aws-ec2-userdata() {
   else
     _instance_id="${1}"
     aws ec2 describe-instance-attribute \
-      --instance-id "${_instance_id}"   \
-      --attribute userData --query "UserData.Value" \
-      --output text \
-      | base64 --decode
+        --instance-id "${_instance_id}"   \
+        --attribute userData --query "UserData.Value" \
+        --output text \
+        | base64 --decode
   fi
 
 }
 _bashrc_info "-- Sourcing: defined: [aws-ec2-userdata]"
 
 function aws-vpc-list() {
-  aws ec2 describe-vpcs --query 'Vpcs[].[OwnerId,VpcId,CidrBlock,IsDefault,Tags[?Key==`Name`].Value|[0]]' --output text
+  aws ec2 describe-vpcs
+      --query 'Vpcs[].[OwnerId,VpcId,CidrBlock,IsDefault,Tags[?Key==`Name`].Value|[0]]' \
+      --output text
 }
 _bashrc_info "-- Sourcing: defined: [aws-vpc-list]"
 
 
 function aws-subnet-list() {
-  aws ec2 describe-subnets --query 'Subnets[].[OwnerId,VpcId,SubnetId,AvailabilityZone,AvailabilityZoneId,CidrBlock,State,Tags[?Key==`Name`].Value|[0]]' --output text | sort -k 8
+  aws ec2 describe-subnets
+      --query 'Subnets[].[OwnerId,VpcId,SubnetId,AvailabilityZone,AvailabilityZoneId,CidrBlock,State,Tags[?Key==`Name`].Value|[0]]' \
+      --output text \
+      | sort -k 8
 }
 _bashrc_info "-- Sourcing: defined: [aws-subnet-list]"
 
 
 function aws-sg-list() {
-  aws ec2 describe-security-groups --query 'SecurityGroups[].[VpcId,GroupId,Tags[?Key==`Name`].Value|[0]]' --output text | sort -k 3
+  aws ec2 describe-security-groups \
+      --query 'SecurityGroups[].[VpcId,GroupId,Tags[?Key==`Name`].Value|[0]]' \
+      --output text \
+      | sort -k 3
 }
 _bashrc_info "-- Sourcing: defined: [aws-sg-list]"
 
@@ -296,14 +303,18 @@ _bashrc_info "-- Sourcing: defined: [aws-sg-list]"
 function aws-ec2-list() {
   aws ec2 describe-instances \
       --query 'Reservations[].[Instances][][][].[Tags[?Key==`Name`].Value|[0],InstanceId,VpcId,SubnetId,PrivateIpAddress,InstanceType,VirtualizationType,Architecture, LaunchTime,State.Name]' \
-      --output text | column -t | sort -k 2
-#     --output text | grep -i running | column -t | sort -k 2
+      --output text \
+      | column -t | sort -k 2 \
+#     | column -t | sort -k 2 | grep -i running
 
 }
 _bashrc_info "-- Sourcing: defined: [aws-ec2-list]"
 
 
-function aws-instance-profile-list() {
-  aws iam list-instance-profiles --query 'InstanceProfiles[].[InstanceProfileName,Arn,CreateDate]' --output text | column -t
+function aws-iam-instance-profile-list() {
+  aws iam list-instance-profiles \
+      --query 'InstanceProfiles[].[InstanceProfileName,Arn,CreateDate]' \
+      --output text \
+      | column -t
 }
-_bashrc_info "-- Sourcing: defined: [aws-instance-profile-list]"
+_bashrc_info "-- Sourcing: defined: [aws-iam-instance-profile-list]"
