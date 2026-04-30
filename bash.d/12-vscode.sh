@@ -7,7 +7,7 @@
 
 if _cmd_exists code
 then _bashrc_verbose "== VSCode"
-else return
+#else return
 fi
 
 ##
@@ -16,7 +16,7 @@ fi
 
 if [ `uname -s` == "Darwin" ]
 then
-  _bashrc_info "-- VSCode/Vim/MacOS"
+  _bashrc_info "-- VSCode/MacOS"
 
   # Ref:
   #   https://github.com/VSCodeVim/Vim?tab=readme-ov-file#mac
@@ -32,12 +32,15 @@ fi
 ## WSL
 ##
 
-# pathadd "$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
+# in WSL/Bash:
+#   $ cd $HOME
+#   $ ln -snf /mnt/c/Users/username/AppData/
 
-if _cmd_exists "$HOME/AppData/Local/Programs/Microsoft VS Code/bin/code"
+if test -f "$HOME/AppData/Local/Programs/Microsoft VS Code/bin/code"
 then :
-    _bashrc_verbose "== Visual Studio Code"
+    _bashrc_verbose "== VSCode/WSL/link"
     alias code="$HOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
-else :
-#   _bashrc_verbose "== Visual Studio Code: NOT FOUND"
+else
+    _bashrc_verbose "== VSCode: NOT FOUND"
 fi
+
