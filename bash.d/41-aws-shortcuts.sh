@@ -34,7 +34,7 @@ _bashrc_info "-- Sourcing: defined: [aws-account_id]"
 
 
 function aws-get-caller-identity() {
-  aws sts get-caller-identity --query "Account" --output text
+  aws sts get-caller-identity --output json
 }
 _bashrc_info "-- Sourcing: defined: [aws-get-caller-identity]"
 
