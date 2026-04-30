@@ -9,6 +9,7 @@ if _cmd_exists nvim
 then
     _bashrc_verbose "== Vim: NeoVim"
     alias vi=nvim
+    alias vim=nvim
     export EDITOR=nvim
 elif _cmd_exists vim
 then
@@ -62,4 +63,6 @@ fi
 #
 #   Plug 'tpope/vim-commentary'
 # call plug#end()
+#
+# colorscheme slate
 #
