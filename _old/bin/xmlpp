@@ -1,0 +1,192 @@
+#!/usr/bin/perl -s
+
+#
+# Copyright 2007-2009 Timothy Kay
+# http://timkay.com/xmlpp/
+# You are welcome to use this script [without any warranty express or implied]
+# provided you retain my copyright notice and, when possible, a link to my website.
+#
+
+# THIS PROGRAM IS OFFERED WITHOUT ANY WARRANTY EXPRESSED OR
+# IMPLIED. NO WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE IS OFFERED.
+# THE USER ASSUMES THE ENTIRE RISK OF USING THE PROGRAM.  ANY
+# LIABILITY OF SELLER OR MANUFACTURE IS LIMITED EXCLUSIVELY TO REFUND
+# OF THE PURCHASE PRICE.
+
+$program_version = "1.04";
+
+die "usage: $0 [-tab] [-indent=WHAT] [-cut] [FILE...]\nxmlpp version v$program_version\n" if $h || $help;
+
+if ($cut)
+{
+    my $columns = $ENV{COLUMNS};
+    ($columns) = qx[stty -a <&2] =~ /;\s*columns\s*(\d+);/s unless $columns;
+    $columns -= exists $ENV{EMACS};
+    open STDOUT, "|cut -c -$columns";
+}
+
+$indent = "\t" if $tab;
+
+s/^(.*\.gz)$/zcat $1|/ for @ARGV;
+$xml = do {local($/); <>};
+xmlpp($xml, $indent);
+
+sub xmlpp
+{
+    my($xml, $indent) = @_;
+    my($result, @xml, @path, $defer, @defer, %closing);
+    my(%rank, %nested);
+
+    $indent ||= "  ";
+
+    my($html);
+
+    if ($ {"-html"})
+    {
+	$html++;
+
+	%rank = (
+		 br => -1,
+		 li => 10,
+		 ol => 12,
+		 ul => 12,
+		 div => 14,
+		 td => 16,
+		 th => 16,
+		 tr => 18,
+		 table => 20,
+		 "!--[if" => 40,
+		 body => 60,
+		 html => 80,
+		 );
+
+	# When we see a nested tag, scan backwards, closing all matching tags,
+	# until we find a tag that ranks higher
+
+	@nested{qw(li tr td)} = undef;
+
+	@xml = $xml =~ /<style.*?<\/style>|<script.*?<\/script>|<(?:".*?"|'.*?'|.)+?>|[^<]*/sg;
+	# figure out which tags don't need closing
+	for (@xml)
+	{
+	    $closing{lc $1} = undef if /^<\/(\w+)/;
+	}
+
+	delete @closing{qw(br)};
+    }
+    else
+    {
+	@xml = $xml =~ /<.+?>|[^<]*/sg;
+    }
+
+    for (@xml)
+    {
+	s/[\r\s]+/ /sg if $b;
+
+	if ($v)
+	{
+	    print "\t";
+	    print " $_" for @path;
+	    print "\n";
+	}
+
+	if (/^<\/([\w\:]+)/ || /^<(!\[endif)/)		# </... or <!--[endif]
+	{
+	    my($tag) = ($1);
+	    $tag = "!--[if" if $tag eq "![endif";
+	    push @path, @defer;
+	    while (@path)
+	    {
+		if ($path[$#path] eq $tag)
+		{
+		    pop @path;
+		    last;
+		}
+		if ($rank{$tag} <= $rank{$path[$#path]})
+		{
+		    output(@path - 1, "@{[$defer =~ /^\s*(.*?)\s*$/s]}\n") if $defer;
+		    $defer = "";
+		    last;
+		}
+		output(@path + 0, "@{[$defer =~ /^\s*(.*?)\s*$/s]}\n") if $defer;
+		$defer = "";
+		pop @path;
+	    }
+	    output(@path + 0, "@{[$defer =~ /^\s*(.*?)\s*$/s]}$_\n") if $defer || $_;
+            $defer = "";
+	    @defer = ();
+ 	}
+
+	elsif (/[\/\?]\s*\>$/ || /<(\w+)/ && $html && !exists $closing{lc $1})	# .../> or ...?> or <... (no closing)
+	{
+            output(@path + 0, $defer =~ /^\s*(.*?)\s*$/s, "\n") if $defer;
+	    push @path, @defer;
+            output(@path + 0, /^\s*(.*?)\s*$/s, "\n") if $_;
+            $defer = "";
+	    @defer = ();
+	}
+
+	elsif (/^(?:[^<]|<!(?:[^-]|--[^\[]))/)		# (not <) or (<! then not -) or (<!-- then not [)
+	{
+	    if (!/^\s*$/)
+	    {
+		if ($defer)
+		{
+		    $defer .= $_;
+		}
+		else
+		{
+		    output(@path + 0, /^\s*(.*?)\s*$/s, "\n");
+		}
+	    }
+	}
+
+	else						# <...
+	{
+	    my($tag) = /<(\w+)/;
+	    output(@path + 0, $defer =~ /^\s*(.*?)\s*$/s, "\n") if $defer;
+	    push @path, @defer;
+	    if (exists $nested{$tag})
+	    {
+		for (my $i = 0; $i < @path; $i++)
+		{
+		    # we found a <ul>, for example, when trying to close <li>
+		    my $this = $path[$#path - $i];
+		    last if $rank{$this} > $rank{$tag};
+		    if ($this eq $tag)
+		    {
+			# close it!
+			my @x = splice(@path, $#path - $i);
+			print "\tnested $tag ($rank{$tag}) - closing @x (@{[map {$rank{$_}} @x]})\n";
+			last;
+		    }
+		}
+	    }
+	    $defer = $_;
+	    @defer = /^<([^<>\s]+)/;
+	}
+    }
+
+    output(@path + 0, $defer =~ /^\s*(.*?)\s*$/s, "\n") if $defer;
+
+    $result;
+
+    sub output
+    {
+	my $depth = shift;
+	my($output);
+	$output .= sprintf("%2d ", $depth + 1) if $ {"-depth"};
+	$output .= ($indent x $depth) . join("", @_);
+	# change this if you want the result returned instead of printed
+	$result .= $output if 0;
+	print $output if 1;
+    }
+}
+
+# Perl seems to exit without closing STDOUT,
+# which causes -cut output to continue past
+# the prompt.  Why doesn't Perl close STDOUT?
+END
+{
+    close STDOUT;
+}

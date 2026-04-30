@@ -65,7 +65,6 @@ mvdba.sh
 *.json
 
 # extra thing at ~mv/bin
-bin/
 bash_completion.d/
 bin/chdf.pl
 bin/Matching
