@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# vim: ft=sh:ts=2:sts=2:et:
 
 ###
 ### mvf
@@ -16,6 +14,7 @@ fi
 
 if [ `uname -s` == "Darwin" ]
 then
+  _bashrc_info "-- VSCode/MacOS"
   _bashrc_info "-- VSCode/MacOS"
 
   # Ref:
@@ -37,10 +36,26 @@ fi
 #   $ ln -snf /mnt/c/Users/username/AppData/
 
 if test -f "$HOME/AppData/Local/Programs/Microsoft VS Code/bin/code"
+_vscode() {
+  if _cmd_exists "${1}"
+  then
+    _bashrc_verbose "== VSCode [$1]"
+    alias code="$( echo ${1} | sed -e 's/ /\\ /g' )"
+    return 0
+  else
+    return 1
+  fi
+}
+
+if   _vscode "$HOME/AppData/Local/Programs/Microsoft VS Code/bin/code"
+then :
+#lif _vscode "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"
+elif _vscode "/mnt/c/Program Files/Microsoft VS Code/bin/code"
 then :
     _bashrc_verbose "== VSCode/WSL/link"
     alias code="$HOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
-else
+else :
     _bashrc_verbose "== VSCode: NOT FOUND"
 fi
+
 

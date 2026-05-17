@@ -14,7 +14,8 @@ if [ -d /home/linuxbrew/.linuxbrew ]
 then :
   _bashrc_verbose "== Homebrew/Linux"
 
-  pathadd /home/linuxbrew/.linuxbrew/bin after
+# pathadd /home/linuxbrew/.linuxbrew/bin after
+  pathadd /home/linuxbrew/.linuxbrew/bin 
 
 elif [ -d /opt/homebrew/bin ]
 then :
